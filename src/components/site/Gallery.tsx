@@ -38,18 +38,18 @@ export function Gallery({
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground">{intro}</p>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-14 grid auto-rows-[minmax(0,1fr)] grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {gallery.map((g, i) => (
             <button
               key={g.url + i}
               type="button"
               onClick={() => setOpen(i)}
               className={cn(
-                "group relative overflow-hidden rounded-xl bg-muted outline-none",
-                i % 6 === 0 && "lg:col-span-2 lg:row-span-2",
+                "group relative aspect-[4/3] overflow-hidden rounded-xl bg-muted outline-none",
+                i % 6 === 0 && "lg:col-span-2 lg:row-span-2 lg:aspect-auto",
               )}
-              style={{ aspectRatio: i % 6 === 0 ? "1 / 1" : "4 / 3" }}
             >
+
               <img
                 src={g.url}
                 alt={g.alt}
