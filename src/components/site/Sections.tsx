@@ -58,7 +58,7 @@ export function PageHero({
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-32 bottom--20 size-96 rounded-full blur-3xl"
+        className="pointer-events-none absolute -bottom-20 -left-32 size-96 rounded-full blur-3xl"
         style={{ background: "var(--coral)", opacity: 0.2 }}
       />
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
