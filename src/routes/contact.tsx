@@ -219,7 +219,7 @@ function Contact() {
               <div className="mt-6 space-y-5 text-sm">
                 <p className="flex gap-4 leading-relaxed text-white/80">
                   <MapPin className="mt-0.5 size-4 shrink-0 text-coral" />
-                  {contactDetails.address}
+                  {contactDetails.office}
                 </p>
                 <p className="flex gap-4 text-white/80">
                   <Phone className="size-4 shrink-0 text-coral" />
