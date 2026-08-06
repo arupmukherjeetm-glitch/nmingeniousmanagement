@@ -47,7 +47,7 @@ function ServiceDetail() {
           <div className="lg:col-span-7">
             <Eyebrow>The work</Eyebrow>
             <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
-              {service.body.map((p) => (
+              {service.body.map((p: string) => (
                 <p key={p.slice(0, 24)}>{p}</p>
               ))}
             </div>
@@ -80,7 +80,7 @@ function ServiceDetail() {
                 What's included
               </h2>
               <ul className="mt-6 space-y-3">
-                {service.includes.map((inc) => (
+                {service.includes.map((inc: string) => (
                   <li key={inc} className="flex items-start gap-3">
                     <Check className="mt-0.5 size-4 shrink-0 text-coral" strokeWidth={3} />
                     <span className="text-sm leading-relaxed text-foreground/85">{inc}</span>
