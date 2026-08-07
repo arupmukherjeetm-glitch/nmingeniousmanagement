@@ -99,6 +99,98 @@ function ServiceDetail() {
         </div>
       </section>
 
+      {detail && (
+        <>
+          {/* Unique: the challenge */}
+          <section className="bg-sand py-24 lg:py-32">
+            <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
+              <div className="lg:col-span-5">
+                <Eyebrow>The challenge</Eyebrow>
+                <h2 className="mt-6 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-4xl">
+                  {detail.challengeTitle}
+                </h2>
+              </div>
+              <div className="space-y-5 text-base leading-relaxed text-muted-foreground lg:col-span-7">
+                {detail.challenge.map((p) => (
+                  <p key={p.slice(0, 20)}>{p}</p>
+                ))}
+                <div className="grid gap-4 pt-4 sm:grid-cols-3">
+                  {detail.metrics.map((m) => (
+                    <div key={m.label} className="brand-box p-5">
+                      <p className="font-display text-2xl font-extrabold text-brand">{m.value}</p>
+                      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                        {m.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Unique: the method */}
+          <section className="bg-background py-24 lg:py-32">
+            <div className="mx-auto max-w-7xl px-5 lg:px-8">
+              <Eyebrow>{detail.approachTitle}</Eyebrow>
+              <div className="mt-12 grid gap-4 lg:grid-cols-4">
+                {detail.approach.map((a, i) => (
+                  <Reveal key={a.step} delay={i * 70}>
+                    <div className="brand-box flex h-full flex-col p-7">
+                      <span className="font-display text-sm font-extrabold text-coral">
+                        {a.step}
+                      </span>
+                      <h3 className="mt-4 font-display text-lg font-extrabold text-foreground">
+                        {a.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.body}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Unique: fit + FAQs */}
+          <section className="bg-background pb-24 lg:pb-32">
+            <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
+              <div className="lg:col-span-5">
+                <div
+                  className="h-full rounded-xl p-8 text-white lg:p-10"
+                  style={{ background: "var(--gradient-brand)" }}
+                >
+                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/55">
+                    {detail.bestForTitle}
+                  </p>
+                  <ul className="mt-7 space-y-4">
+                    {detail.bestFor.map((b) => (
+                      <li key={b} className="flex gap-3 text-sm leading-relaxed text-white/85">
+                        <Check className="mt-0.5 size-4 shrink-0 text-coral" strokeWidth={3} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="lg:col-span-7">
+                <Eyebrow>Questions we get asked</Eyebrow>
+                <dl className="mt-8 divide-y divide-border border-y border-border">
+                  {detail.faqs.map((f) => (
+                    <div key={f.q} className="py-6">
+                      <dt className="font-display text-base font-extrabold text-foreground">
+                        {f.q}
+                      </dt>
+                      <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.a}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+
+
       <section className="bg-sand py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
