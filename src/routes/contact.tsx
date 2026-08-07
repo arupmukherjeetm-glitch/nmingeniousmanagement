@@ -187,7 +187,12 @@ function Contact() {
                       </Field>
                     </div>
                     <Field id="message" label="Where is the sale getting stuck?">
-                      <Textarea id="message" name="message" rows={5} className={fieldClass} />
+                      <Textarea
+                        id="message"
+                        name="message"
+                        rows={5}
+                        className={fieldClass.replace("h-12 ", "")}
+                      />
                     </Field>
 
                   </fieldset>
