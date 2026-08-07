@@ -39,6 +39,11 @@ const goals = [
 
 const scales = ["Under 50 outlets", "50 – 250 outlets", "250 – 1000 outlets", "1000+ outlets"];
 
+// Corporate, placeholder-free fields: label above, quiet underline that
+// lifts to brand on focus.
+const fieldClass =
+  "h-12 rounded-none border-0 border-b-2 border-border bg-transparent px-0 shadow-none transition-colors focus-visible:border-brand focus-visible:ring-0 focus-visible:ring-offset-0";
+
 const steps = [
   { title: "Your brief", body: "Tell us the category, the footprint and where the sale is stuck." },
   { title: "Store reality check", body: "We audit a sample of your outlets and competitors." },
