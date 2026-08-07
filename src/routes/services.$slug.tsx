@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
-import { serviceDetails, services } from "@/lib/site-data";
+import { serviceDetails, services, type ServiceDetail as ServiceDetailData } from "@/lib/site-data";
 import { CtaBand, Eyebrow, PageHero, Reveal } from "@/components/site/Sections";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -30,7 +30,8 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 function ServiceDetail() {
-  const { service, detail } = Route.useLoaderData();
+  const { service, detail: rawDetail } = Route.useLoaderData();
+  const detail = rawDetail as ServiceDetailData | null;
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
   return (
