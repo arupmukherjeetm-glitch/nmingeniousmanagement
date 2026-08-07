@@ -1,24 +1,23 @@
-import a1 from "@/assets/a1.webp.asset.json";
-import a2 from "@/assets/a2.webp.asset.json";
-import a3 from "@/assets/a3.webp.asset.json";
-import a4 from "@/assets/a4.webp.asset.json";
-import a5 from "@/assets/a5.webp.asset.json";
-import a6 from "@/assets/a6.webp.asset.json";
-import a7 from "@/assets/a7.webp.asset.json";
-import a8 from "@/assets/a8.webp.asset.json";
-import a9 from "@/assets/a9.webp.asset.json";
-import a10 from "@/assets/a10.webp.asset.json";
-import a11 from "@/assets/a11.webp.asset.json";
-import a12 from "@/assets/a12.webp.asset.json";
-import logoAsset from "@/assets/logo.jpg.asset.json";
-import heroVideoAsset from "@/assets/hero.mp4.asset.json";
-import madhaviAsset from "@/assets/madhavi.webp.asset.json";
-import virenAsset from "@/assets/viren.webp.asset.json";
+// Media lives in /public/media so it ships with the build and works on any host
+// (Netlify, Vercel, Lovable) without depending on external asset infrastructure.
+const a1 = { url: "/media/a1.webp" };
+const a2 = { url: "/media/a2.webp" };
+const a3 = { url: "/media/a3.webp" };
+const a4 = { url: "/media/a4.webp" };
+const a5 = { url: "/media/a5.webp" };
+const a6 = { url: "/media/a6.webp" };
+const a7 = { url: "/media/a7.webp" };
+const a8 = { url: "/media/a8.webp" };
+const a9 = { url: "/media/a9.webp" };
+const a10 = { url: "/media/a10.webp" };
+const a11 = { url: "/media/a11.webp" };
+const a12 = { url: "/media/a12.webp" };
 
-export const logoUrl = logoAsset.url;
-export const heroVideoUrl = heroVideoAsset.url;
-export const madhaviUrl = madhaviAsset.url;
-export const virenUrl = virenAsset.url;
+export const logoUrl = "/media/logo.jpg";
+export const heroVideoUrl = "/media/hero.mp4";
+export const madhaviUrl = "/media/madhavi.webp";
+export const virenUrl = "/media/viren.webp";
+
 
 export const contactDetails = {
   email: "madhavi@ingeniousmanagement.com",
