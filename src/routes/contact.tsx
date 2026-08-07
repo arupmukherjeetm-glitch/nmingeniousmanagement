@@ -157,10 +157,10 @@ function Contact() {
                     </legend>
                     <div className="grid gap-5 sm:grid-cols-2">
                       <Field id="name" label="Full name" required>
-                        <Input id="name" name="name" required placeholder="Your name" />
+                        <Input id="name" name="name" required className={fieldClass} />
                       </Field>
                       <Field id="company" label="Company" required>
-                        <Input id="company" name="company" required placeholder="Brand or company" />
+                        <Input id="company" name="company" required />
                       </Field>
                       <Field id="email" label="Work email" required>
                         <Input
@@ -168,17 +168,16 @@ function Contact() {
                           name="email"
                           type="email"
                           required
-                          placeholder="you@company.com"
                         />
                       </Field>
                       <Field id="phone" label="Phone">
-                        <Input id="phone" name="phone" type="tel" placeholder="+91" />
+                        <Input id="phone" name="phone" type="tel" />
                       </Field>
                       <Field id="role" label="Your role">
-                        <Input id="role" name="role" placeholder="e.g. Activation Manager" />
+                        <Input id="role" name="role" />
                       </Field>
                       <Field id="category" label="Category">
-                        <Input id="category" name="category" placeholder="e.g. Beauty & Personal Care" />
+                        <Input id="category" name="category" />
                       </Field>
                     </div>
                     <Field id="message" label="Where is the sale getting stuck?">
@@ -186,7 +185,6 @@ function Contact() {
                         id="message"
                         name="message"
                         rows={5}
-                        placeholder="Listed in 400 MT outlets, offtake flat for two quarters, promoters present but conversion unclear…"
                       />
                     </Field>
                   </fieldset>
