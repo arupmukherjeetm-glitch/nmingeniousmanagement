@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Menu, X, Phone } from "lucide-react";
+import { ChevronDown, Mail, Menu, X, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { logoUrl, services, contactDetails } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
