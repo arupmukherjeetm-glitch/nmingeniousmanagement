@@ -15,6 +15,7 @@ import {
 import { StatBoard } from "@/components/site/Counter";
 import { DikhtaBikta } from "@/components/site/DikhtaBikta";
 import { ShelfTestimonials } from "@/components/site/ShelfTestimonials";
+import { CorporateTestimonials } from "@/components/site/CorporateTestimonials";
 import { Gallery } from "@/components/site/Gallery";
 import { CtaBand, Eyebrow, LogoWall, Reveal } from "@/components/site/Sections";
 
@@ -58,6 +59,7 @@ function Home() {
       <Gallery />
       <LogoWall />
       <ShelfTestimonials />
+      <CorporateTestimonials />
       <WeeklySection />
       <CtaBand />
     </>

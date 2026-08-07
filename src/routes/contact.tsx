@@ -39,6 +39,11 @@ const goals = [
 
 const scales = ["Under 50 outlets", "50 – 250 outlets", "250 – 1000 outlets", "1000+ outlets"];
 
+// Corporate, placeholder-free fields: label above, quiet underline that
+// lifts to brand on focus.
+const fieldClass =
+  "h-12 rounded-none border-0 border-b-2 border-border bg-transparent px-0 shadow-none transition-colors focus-visible:border-brand focus-visible:ring-0 focus-visible:ring-offset-0";
+
 const steps = [
   { title: "Your brief", body: "Tell us the category, the footprint and where the sale is stuck." },
   { title: "Store reality check", body: "We audit a sample of your outlets and competitors." },
@@ -155,12 +160,12 @@ function Contact() {
                     <legend className="font-display text-sm font-extrabold uppercase tracking-[0.16em] text-brand">
                       03 — Who are we speaking to?
                     </legend>
-                    <div className="grid gap-5 sm:grid-cols-2">
+                    <div className="grid gap-6 sm:grid-cols-2">
                       <Field id="name" label="Full name" required>
-                        <Input id="name" name="name" required placeholder="Your name" />
+                        <Input id="name" name="name" required className={fieldClass} />
                       </Field>
                       <Field id="company" label="Company" required>
-                        <Input id="company" name="company" required placeholder="Brand or company" />
+                        <Input id="company" name="company" required className={fieldClass} />
                       </Field>
                       <Field id="email" label="Work email" required>
                         <Input
@@ -168,17 +173,17 @@ function Contact() {
                           name="email"
                           type="email"
                           required
-                          placeholder="you@company.com"
+                          className={fieldClass}
                         />
                       </Field>
                       <Field id="phone" label="Phone">
-                        <Input id="phone" name="phone" type="tel" placeholder="+91" />
+                        <Input id="phone" name="phone" type="tel" className={fieldClass} />
                       </Field>
                       <Field id="role" label="Your role">
-                        <Input id="role" name="role" placeholder="e.g. Activation Manager" />
+                        <Input id="role" name="role" className={fieldClass} />
                       </Field>
                       <Field id="category" label="Category">
-                        <Input id="category" name="category" placeholder="e.g. Beauty & Personal Care" />
+                        <Input id="category" name="category" className={fieldClass} />
                       </Field>
                     </div>
                     <Field id="message" label="Where is the sale getting stuck?">
@@ -186,9 +191,10 @@ function Contact() {
                         id="message"
                         name="message"
                         rows={5}
-                        placeholder="Listed in 400 MT outlets, offtake flat for two quarters, promoters present but conversion unclear…"
+                        className={fieldClass.replace("h-12 ", "")}
                       />
                     </Field>
+
                   </fieldset>
 
                   <div className="flex flex-col gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">

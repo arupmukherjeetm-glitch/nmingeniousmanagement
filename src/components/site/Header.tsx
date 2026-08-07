@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Menu, X, Phone } from "lucide-react";
+import { ChevronDown, Mail, Menu, X, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { logoUrl, services, contactDetails } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -38,11 +38,41 @@ export function Header() {
           : "border-transparent bg-background",
       )}
     >
+      {/* Utility bar */}
+      <div className="text-white" style={{ background: "var(--gradient-brand)" }}>
+        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
+          <p className="hidden text-xs font-medium tracking-wide text-white/70 sm:block">
+            Sell-out acceleration across 31 states &amp; UTs
+          </p>
+          <div className="flex w-full items-center justify-between gap-5 sm:w-auto sm:justify-end">
+            <a
+              href={`mailto:${contactDetails.email}`}
+              className="flex items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-white"
+            >
+              <Mail className="size-3.5 text-coral" />
+              <span className="truncate">{contactDetails.email}</span>
+            </a>
+            <a
+              href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}
+              className="flex items-center gap-2 text-xs font-semibold text-white/85 transition-colors hover:text-white"
+            >
+              <Phone className="size-3.5 text-coral" />
+              {contactDetails.phone}
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-5 lg:px-8">
         <Link to="/" className="flex shrink-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={logoUrl} alt="NM Ingenious Management Services" className="h-11 w-auto" />
+          <img
+            src={logoUrl}
+            alt="NM Ingenious Management Services"
+            className="h-14 w-auto lg:h-16"
+          />
           <span className="sr-only">NM Ingenious</span>
         </Link>
+
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
@@ -112,20 +142,14 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <a
-            href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}
-            className="flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-brand"
-          >
-            <Phone className="size-4" />
-            {contactDetails.phone}
-          </a>
           <Link
             to="/contact"
             className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:bg-brand-deep hover:shadow-[var(--shadow-lift)]"
           >
-            Contact Us
+            Request an Audit
           </Link>
         </div>
+
 
         <button
           type="button"
@@ -140,7 +164,7 @@ export function Header() {
       {/* Mobile drawer */}
       <div
         className={cn(
-          "fixed inset-x-0 top-20 z-40 h-[calc(100dvh-5rem)] overflow-y-auto border-t border-border bg-background transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-[7.5rem] z-40 h-[calc(100dvh-7.5rem)] overflow-y-auto border-t border-border bg-background transition-all duration-300 lg:hidden",
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0",
         )}
       >
@@ -183,8 +207,9 @@ export function Header() {
             onClick={() => setOpen(false)}
             className="mt-4 block rounded-full bg-brand px-6 py-3.5 text-center text-sm font-semibold text-primary-foreground"
           >
-            Contact Us
+            Request an Audit
           </Link>
+
         </div>
       </div>
     </header>

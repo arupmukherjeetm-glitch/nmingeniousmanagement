@@ -689,3 +689,469 @@ export const leadership = [
     body: "With over 37 years of diverse experience in corporate planning across EdTech, IT, BPO and telecom, Viren is a seasoned design thinker and MBA. His leadership extends to driving strategic roadmaps, contributing significantly to executive team planning at NMIMSPL.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Deep, unique editorial content for each service page. No fold is shared
+// across services: every slug has its own challenge, method, numbers and FAQs.
+// ---------------------------------------------------------------------------
+export type ServiceDetail = {
+  challengeTitle: string;
+  challenge: string[];
+  approachTitle: string;
+  approach: { step: string; title: string; body: string }[];
+  metrics: { value: string; label: string }[];
+  bestForTitle: string;
+  bestFor: string[];
+  faqs: { q: string; a: string }[];
+};
+
+export const serviceDetails: Record<string, ServiceDetail> = {
+  "promoter-deployment": {
+    challengeTitle: "Attendance is not selling",
+    challenge: [
+      "Most promoter programmes are measured on how many people showed up. That number tells a brand nothing about whether a shopper was approached, whether the product story landed, or whether a competitor walked away with the sale.",
+      "The cost of a weak promoter is not the salary. It is the shopper who stood in front of your SKU, had one question, got no answer and bought something else.",
+    ],
+    approachTitle: "How a promoter reaches your shelf",
+    approach: [
+      {
+        step: "01",
+        title: "Profile before hiring",
+        body: "We write the profile with your team: category familiarity, language, grooming standard, store format experience and shift pattern. Sourcing starts only after the profile is signed off.",
+      },
+      {
+        step: "02",
+        title: "Product-story training",
+        body: "Two-part induction: your brand narrative and objection handling, then a live floor assessment before the promoter is billed to you.",
+      },
+      {
+        step: "03",
+        title: "Supervised deployment",
+        body: "One supervisor per cluster, weekly store visits, photo-verified attendance and a documented coaching note for every underperformer.",
+      },
+      {
+        step: "04",
+        title: "Conversion review",
+        body: "Monthly review on interactions per shift, conversion rate and bill value, not headcount. Bottom-quartile promoters are retrained or replaced.",
+      },
+    ],
+    metrics: [
+      { value: "2,150+", label: "Trained personnel on the ground" },
+      { value: "72 hrs", label: "Typical replacement turnaround" },
+      { value: "Weekly", label: "Supervisor store audits" },
+    ],
+    bestForTitle: "Deploy this when",
+    bestFor: [
+      "Offtake is flat in stores where you are already listed",
+      "Your existing agency reports attendance but not conversion",
+      "You are entering modern trade and need a scalable floor team",
+      "Attrition is eating your training investment every quarter",
+    ],
+    faqs: [
+      {
+        q: "What is the minimum deployment size?",
+        a: "We run programmes from 10 promoters upward, and scale to several hundred across states without changing your point of contact.",
+      },
+      {
+        q: "Who employs the promoter?",
+        a: "We do. Payroll, PF, ESIC and statutory records sit with us, so the compliance exposure never reaches your books.",
+      },
+      {
+        q: "How fast can we go live?",
+        a: "Two to three weeks for a city-level rollout, including profiling, hiring and product training.",
+      },
+    ],
+  },
+  "beauty-advisors": {
+    challengeTitle: "A beauty shopper buys a recommendation",
+    challenge: [
+      "In beauty and personal care, the shelf cannot answer the only question that matters: will this work for my skin, my hair, my concern? Without a credible advisor, the shopper defaults to the brand she already knows.",
+      "Premium SKUs suffer the most. The price gap is only defensible when someone explains the formulation, the routine and the result.",
+    ],
+    approachTitle: "The consultation model",
+    approach: [
+      {
+        step: "01",
+        title: "Diagnose",
+        body: "Advisors are trained to open with a skin, hair or concern question rather than a product pitch, which is what turns a browse into a consultation.",
+      },
+      {
+        step: "02",
+        title: "Demonstrate",
+        body: "Patch tests, shade matching, texture demos and routine building on the counter, with hygiene protocol maintained through the shift.",
+      },
+      {
+        step: "03",
+        title: "Justify the ladder",
+        body: "Advisors are scripted on trading a shopper up one step, from entry SKU to the variant that actually solves her stated concern.",
+      },
+      {
+        step: "04",
+        title: "Build the basket",
+        body: "Regimen selling: cleanser with serum, colour with after-care. Basket size is tracked per advisor, per store, per week.",
+      },
+    ],
+    metrics: [
+      { value: "8+", label: "Beauty and wellness brands served" },
+      { value: "3x", label: "Typical uplift in guided-category trials" },
+      { value: "100%", label: "Advisors assessed on live floor before billing" },
+    ],
+    bestForTitle: "Deploy this when",
+    bestFor: [
+      "Your premium variants sit while entry SKUs move",
+      "You are launching a regimen or multi-step range",
+      "Counter conversations decide the sale in your category",
+      "You need brand-standard grooming and etiquette on the floor",
+    ],
+    faqs: [
+      {
+        q: "Are advisors category specialists?",
+        a: "Yes. We hire from beauty, salon and wellness backgrounds, then layer your brand training on top.",
+      },
+      {
+        q: "Do you handle counter hygiene and testers?",
+        a: "Advisors follow a daily counter protocol covering tester condition, hygiene and stock of consumables, photographed on the reporting app.",
+      },
+      {
+        q: "Can advisors work across our range and a retailer's own brands?",
+        a: "They sell your range exclusively. Retailer-mandated support is agreed in writing before deployment.",
+      },
+    ],
+  },
+  merchandising: {
+    challengeTitle: "The shelf drifts every single week",
+    challenge: [
+      "A planogram signed in a head office meeting survives about ten days in a live store. Facings shrink, POSM goes missing, new launches get pushed to the bottom shelf and nobody reports it.",
+      "By the time a brand team notices, a full month of visibility spend has already been paid for and not delivered.",
+    ],
+    approachTitle: "Audit, correct, evidence",
+    approach: [
+      {
+        step: "01",
+        title: "Baseline the store",
+        body: "First visit captures current facings, share of shelf, competitor blocks, POSM present and planogram deviation, with photographs.",
+      },
+      {
+        step: "02",
+        title: "Correct on the spot",
+        body: "Merchandisers reset the block, restore facings, replace damaged POSM and escalate stock gaps to the store manager during the same visit.",
+      },
+      {
+        step: "03",
+        title: "Photo evidence",
+        body: "Before-and-after images tagged to store, date and time, so visibility investment is verifiable and not a claim.",
+      },
+      {
+        step: "04",
+        title: "Compliance scoring",
+        body: "Each store gets a weekly compliance score. Persistent low scorers get a joint visit with your regional lead.",
+      },
+    ],
+    metrics: [
+      { value: "2,000+", label: "MT and GT outlets covered" },
+      { value: "Before / after", label: "Photo evidence on every visit" },
+      { value: "Weekly", label: "Share-of-shelf scoring" },
+    ],
+    bestForTitle: "Deploy this when",
+    bestFor: [
+      "You pay for displays you cannot verify",
+      "New launches are not getting the agreed facings",
+      "Competitors are quietly expanding their block",
+      "Your team needs store-level visual proof for trade reviews",
+    ],
+    faqs: [
+      {
+        q: "Can merchandising run without promoters?",
+        a: "Yes. Many brands start with a visibility-only beat and add assisted selling in priority stores later.",
+      },
+      {
+        q: "How is coverage decided?",
+        a: "We build a beat plan from your outlet universe, weighted by throughput, so high-value stores get higher frequency.",
+      },
+      {
+        q: "Do you handle POSM logistics?",
+        a: "We can receive, store and distribute POSM to the beat, and report deployment store by store.",
+      },
+    ],
+  },
+  "btl-activations": {
+    challengeTitle: "Footfall is not a result",
+    challenge: [
+      "Most activation reports end with contacts and samples. Neither is a business outcome. The question a brand should ask is what a converted trial cost and how many of those shoppers came back.",
+      "Activations also fail quietly on placement: the right idea at the wrong catchment, on the wrong day, in front of the wrong shopper.",
+    ],
+    approachTitle: "Planned for reach, judged on trial",
+    approach: [
+      {
+        step: "01",
+        title: "Catchment selection",
+        body: "Sites chosen on shopper profile and footfall quality, not availability, with reach and frequency modelled before the calendar is locked.",
+      },
+      {
+        step: "02",
+        title: "Interaction design",
+        body: "The demo is built around one behaviour change: taste it, feel it, try the shade, smell the difference. One clear ask per shopper.",
+      },
+      {
+        step: "03",
+        title: "Trained activation crew",
+        body: "Crew rehearsed on the script, the sampling protocol and the data capture flow before day one.",
+      },
+      {
+        step: "04",
+        title: "Cost per conversion",
+        body: "Every campaign closes with contacts, samples, conversions and cost per trial, plus a recommendation on which sites to repeat.",
+      },
+    ],
+    metrics: [
+      { value: "185+", label: "Cities and towns activated" },
+      { value: "Per site", label: "Cost-per-trial reporting" },
+      { value: "48 hrs", label: "Post-campaign report turnaround" },
+    ],
+    bestForTitle: "Deploy this when",
+    bestFor: [
+      "You are launching into a new market or category",
+      "Trial is the barrier, not awareness",
+      "You want site-level proof before scaling a campaign",
+      "Sampling budgets need a defensible conversion number",
+    ],
+    faqs: [
+      {
+        q: "Do you handle permissions and site rentals?",
+        a: "Yes, including mall, society and modern trade tie-ups, with costs presented transparently.",
+      },
+      {
+        q: "What formats do you run?",
+        a: "In-store demos, sampling counters, society activations, RWA and corporate parks, and launch-day store takeovers.",
+      },
+      {
+        q: "How is data captured?",
+        a: "Digitally at the counter, with consent, so contacts flow to your CRM rather than sitting in a spreadsheet.",
+      },
+    ],
+  },
+  "retail-intelligence": {
+    challengeTitle: "Month-end data is a post-mortem",
+    challenge: [
+      "If you learn in week four that a top store went dry in week one, the sale is already lost and the shopper has already switched.",
+      "The other loss is invisible: competitor pricing, new schemes and shopper objections that never make it into a report because nobody was asked to record them.",
+    ],
+    approachTitle: "From shift to dashboard",
+    approach: [
+      {
+        step: "01",
+        title: "Capture at source",
+        body: "Field staff log sales, stock, competitor activity and shopper objections on the Recibo app during the shift, not from memory at night.",
+      },
+      {
+        step: "02",
+        title: "Validate",
+        body: "Geo-tagged, time-stamped entries with photo backup, reviewed by supervisors so the dashboard is not polluted with guesswork.",
+      },
+      {
+        step: "03",
+        title: "Surface exceptions",
+        body: "Stock-out alerts, zero-sale stores and sudden competitor price moves are pushed the same day, not buried in a monthly deck.",
+      },
+      {
+        step: "04",
+        title: "Act on it",
+        body: "A weekly action list per region: which store to fix, which promoter to retrain, which SKU to re-order.",
+      },
+    ],
+    metrics: [
+      { value: "Every shift", label: "Store-level data capture" },
+      { value: "Same day", label: "Stock-out escalation" },
+      { value: "SKU level", label: "Granularity of reporting" },
+    ],
+    bestForTitle: "Deploy this when",
+    bestFor: [
+      "You cannot see store-level performance between month ends",
+      "Stock-outs are discovered too late to fix",
+      "You need competitor intelligence from the floor",
+      "Trade marketing decisions are running on stale data",
+    ],
+    faqs: [
+      {
+        q: "Can reporting integrate with our systems?",
+        a: "Dashboards are exportable and can be mapped to your internal reporting formats and review cadence.",
+      },
+      {
+        q: "Who owns the data?",
+        a: "You do. All store-level data collected for your brand is handed over in full.",
+      },
+      {
+        q: "Is it available without a promoter programme?",
+        a: "Yes, it can run on a merchandiser-only beat or as a standalone audit engagement.",
+      },
+    ],
+  },
+  "workforce-compliance": {
+    challengeTitle: "The liability travels upstream",
+    challenge: [
+      "A missed PF filing or an unpaid minimum wage in a field team does not stay with the agency. In a principal-employer relationship, it eventually reaches the brand.",
+      "Most brands discover the gap during an audit, when reconstructing two years of records for a workforce that has already turned over twice.",
+    ],
+    approachTitle: "Compliance as an operating system",
+    approach: [
+      {
+        step: "01",
+        title: "Documented onboarding",
+        body: "Appointment letters, KYC, bank and statutory enrolments completed before day one on the floor, stored digitally.",
+      },
+      {
+        step: "02",
+        title: "Automated HRMS",
+        body: "FactoHR maintains attendance, leave, salary and statutory records, with every employee able to see their own file on mobile.",
+      },
+      {
+        step: "03",
+        title: "Statutory cycle",
+        body: "PF, ESIC, professional tax, minimum wages, bonus and gratuity filed on schedule, state by state.",
+      },
+      {
+        step: "04",
+        title: "Audit pack",
+        body: "A standing, retrievable evidence pack per client covering registers, challans and employee records.",
+      },
+    ],
+    metrics: [
+      { value: "31", label: "States and UTs covered" },
+      { value: "100%", label: "Statutory enrolment before deployment" },
+      { value: "Mobile", label: "Employee record access" },
+    ],
+    bestForTitle: "Deploy this when",
+    bestFor: [
+      "You engage field staff through multiple regional vendors",
+      "Principal-employer exposure is a board-level concern",
+      "Audits keep surfacing missing documentation",
+      "You operate across states with different labour norms",
+    ],
+    faqs: [
+      {
+        q: "Are you the employer of record?",
+        a: "Yes, for the field workforce we deploy, with full statutory responsibility held by us.",
+      },
+      {
+        q: "How are wage revisions handled?",
+        a: "Minimum wage notifications are tracked state-wise and applied in the cycle they take effect, with a cost note shared in advance.",
+      },
+      {
+        q: "Can you take over an existing team?",
+        a: "Yes. We run a documented transition covering records, dues and re-enrolment.",
+      },
+    ],
+  },
+  "payroll-services": {
+    challengeTitle: "Payroll is small until it breaks",
+    challenge: [
+      "For a lean company, payroll consumes senior time every month and returns nothing when it goes right, while a single error damages trust with the whole team.",
+      "The risk sits in the details: a late TDS deposit, a wrong PT slab, a missing Form 16, a full-and-final settlement that drags for months after an exit.",
+    ],
+    approachTitle: "One cycle, closed cleanly",
+    approach: [
+      {
+        step: "01",
+        title: "Inputs by a fixed date",
+        body: "A locked monthly calendar for attendance, variable pay and reimbursement inputs, so nothing is chased on the last day.",
+      },
+      {
+        step: "02",
+        title: "Processing and checks",
+        body: "Salary computation, statutory deductions and a reconciliation review before any disbursement is released.",
+      },
+      {
+        step: "03",
+        title: "Filing and evidence",
+        body: "PF, ESIC, PT and TDS filed within due dates, with challans filed into your monthly compliance folder.",
+      },
+      {
+        step: "04",
+        title: "Employee self-service",
+        body: "Slips, tax statements, Form 16 and claim status available to every employee on their phone, which removes the query load from your team.",
+      },
+    ],
+    metrics: [
+      { value: "Since 2019", label: "Running payroll as a service" },
+      { value: "One", label: "Monthly reconciliation per client" },
+      { value: "Mobile-first", label: "Employee self-service HRMS" },
+    ],
+    bestForTitle: "Deploy this when",
+    bestFor: [
+      "Founders or finance leads are still running payroll manually",
+      "You are hiring across states with different statutory rules",
+      "Exits and settlements are taking too long to close",
+      "You want audit-ready payroll records without a payroll hire",
+    ],
+    faqs: [
+      {
+        q: "What headcount do you support?",
+        a: "From roughly 15 employees to multi-thousand rosters across MSMEs, start-ups and MNC back offices.",
+      },
+      {
+        q: "Do you handle contractual and full-time staff together?",
+        a: "Yes, on one platform, with separate statutory treatment where the law requires it.",
+      },
+      {
+        q: "How is data kept confidential?",
+        a: "Access is role-restricted, and salary data is visible only to the named client approvers and the processing team.",
+      },
+    ],
+  },
+  "fractional-hr": {
+    challengeTitle: "Too big for no HR, too lean for a department",
+    challenge: [
+      "Somewhere between thirty and two hundred people, HR stops being an admin task and becomes a leadership function. Most companies notice only after an exit wave or a grievance that should never have escalated.",
+      "Hiring a full-time HR head at that stage is expensive and often premature, so the work lands on a founder or a finance lead who has neither the time nor the benchmark.",
+    ],
+    approachTitle: "A senior partner, a shared bench",
+    approach: [
+      {
+        step: "01",
+        title: "Diagnostic",
+        body: "A structured review of policy, hiring, onboarding, performance and attrition data, ending in a prioritised gap list.",
+      },
+      {
+        step: "02",
+        title: "Foundation build",
+        body: "Handbook, contracts, leave and grievance policy written to industry benchmark and to the states you operate in.",
+      },
+      {
+        step: "03",
+        title: "Operating rhythm",
+        body: "Fixed days on site or online each month: hiring reviews, manager coaching, confirmation and appraisal cycles.",
+      },
+      {
+        step: "04",
+        title: "Handover-ready",
+        body: "Everything is documented so an in-house HR hire can take over without rebuilding from zero.",
+      },
+    ],
+    metrics: [
+      { value: "1 partner", label: "Named senior HR lead per client" },
+      { value: "Fixed days", label: "Predictable monthly engagement" },
+      { value: "Fraction", label: "Of a full-time leadership cost" },
+    ],
+    bestForTitle: "Deploy this when",
+    bestFor: [
+      "Headcount has crossed thirty without an HR function",
+      "Managers are handling grievances with no framework",
+      "Hiring quality is inconsistent across teams",
+      "You want HR structure before, not after, the next funding round",
+    ],
+    faqs: [
+      {
+        q: "How much time do we get?",
+        a: "Engagements are scoped in days per month, typically two to eight, and adjusted as the team grows.",
+      },
+      {
+        q: "Does this include recruitment?",
+        a: "Sourcing support and hiring process design are included; large-volume recruitment is scoped separately.",
+      },
+      {
+        q: "What happens when we hire in-house HR?",
+        a: "We hand over documented systems and can stay on in an advisory capacity during the transition.",
+      },
+    ],
+  },
+};
