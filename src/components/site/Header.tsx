@@ -38,11 +38,41 @@ export function Header() {
           : "border-transparent bg-background",
       )}
     >
+      {/* Utility bar */}
+      <div className="text-white" style={{ background: "var(--gradient-brand)" }}>
+        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
+          <p className="hidden text-xs font-medium tracking-wide text-white/70 sm:block">
+            Sell-out acceleration across 31 states &amp; UTs
+          </p>
+          <div className="flex w-full items-center justify-between gap-5 sm:w-auto sm:justify-end">
+            <a
+              href={`mailto:${contactDetails.email}`}
+              className="flex items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-white"
+            >
+              <Mail className="size-3.5 text-coral" />
+              <span className="truncate">{contactDetails.email}</span>
+            </a>
+            <a
+              href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}
+              className="flex items-center gap-2 text-xs font-semibold text-white/85 transition-colors hover:text-white"
+            >
+              <Phone className="size-3.5 text-coral" />
+              {contactDetails.phone}
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-5 lg:px-8">
         <Link to="/" className="flex shrink-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={logoUrl} alt="NM Ingenious Management Services" className="h-11 w-auto" />
+          <img
+            src={logoUrl}
+            alt="NM Ingenious Management Services"
+            className="h-14 w-auto lg:h-16"
+          />
           <span className="sr-only">NM Ingenious</span>
         </Link>
+
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
