@@ -207,8 +207,9 @@ export function Header() {
             onClick={() => setOpen(false)}
             className="mt-4 block rounded-full bg-brand px-6 py-3.5 text-center text-sm font-semibold text-primary-foreground"
           >
-            Contact Us
+            Request an Audit
           </Link>
+
         </div>
       </div>
     </header>
