@@ -142,20 +142,14 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <a
-            href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}
-            className="flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-brand"
-          >
-            <Phone className="size-4" />
-            {contactDetails.phone}
-          </a>
           <Link
             to="/contact"
             className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:bg-brand-deep hover:shadow-[var(--shadow-lift)]"
           >
-            Contact Us
+            Request an Audit
           </Link>
         </div>
+
 
         <button
           type="button"
