@@ -3,6 +3,8 @@ import { ArrowRight, Repeat, Store, Users } from "lucide-react";
 import { industries, stats } from "@/lib/site-data";
 import { StatBoard } from "@/components/site/Counter";
 import { CtaBand, Eyebrow, LogoWall, PageHero, Reveal } from "@/components/site/Sections";
+import { OfflineExpansion } from "@/components/site/OfflineExpansion";
+import { ReachFrequency } from "@/components/site/ReachFrequency";
 
 export const Route = createFileRoute("/who-its-for")({
   head: () => ({
@@ -108,6 +110,8 @@ function WhoItsFor() {
         </div>
       </section>
 
+      <ReachFrequency />
+
       <section className="bg-brand-deep py-24 text-white lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-2xl">
@@ -175,6 +179,7 @@ function WhoItsFor() {
         </div>
       </section>
 
+      <OfflineExpansion />
       <LogoWall />
       <CtaBand />
     </>

@@ -17,6 +17,8 @@ import { DikhtaBikta } from "@/components/site/DikhtaBikta";
 import { ShelfTestimonials } from "@/components/site/ShelfTestimonials";
 import { CorporateTestimonials } from "@/components/site/CorporateTestimonials";
 import { Gallery } from "@/components/site/Gallery";
+import { OfflineExpansion } from "@/components/site/OfflineExpansion";
+import { ReachFrequency } from "@/components/site/ReachFrequency";
 import { CtaBand, Eyebrow, LogoWall, Reveal } from "@/components/site/Sections";
 
 export const Route = createFileRoute("/")({
@@ -56,6 +58,8 @@ function Home() {
       <ServicesSection />
       <ReportsSection />
       <WhoItsForSection />
+      <ReachFrequency />
+      <OfflineExpansion />
       <Gallery />
       <LogoWall />
       <ShelfTestimonials />
