@@ -12,6 +12,12 @@ const a9 = { url: "/media/a9.webp" };
 const a10 = { url: "/media/a10.webp" };
 const a11 = { url: "/media/a11.webp" };
 const a12 = { url: "/media/a12.webp" };
+const a13 = { url: "/media/a13.webp" };
+const a14 = { url: "/media/a14.webp" };
+const a15 = { url: "/media/a15.webp" };
+const a16 = { url: "/media/a16.webp" };
+const a17 = { url: "/media/a17.webp" };
+const a18 = { url: "/media/a18.webp" };
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero.mp4";
@@ -456,6 +462,12 @@ export const gallery = [
   { url: a2.url, alt: "Product counsellor explaining benefits to a shopper" },
   { url: a7.url, alt: "Sampling activation with shoppers" },
   { url: a12.url, alt: "Field team training session before store deployment" },
+  { url: a16.url, alt: "Snack category shelf merchandised across multiple facings in modern trade" },
+  { url: a17.url, alt: "Branded gondola header and shelf strips installed in a supermarket aisle" },
+  { url: a18.url, alt: "Limited edition floor display unit built at store entrance" },
+  { url: a15.url, alt: "Brand promoter at a haircare exhibition stall" },
+  { url: a14.url, alt: "Beauty advisor presenting a hair colour pack in a general trade store" },
+  { url: a13.url, alt: "Promoter at a haircare shelf in a general trade outlet" },
 ];
 
 export const clientLogos = [

@@ -143,7 +143,7 @@ export function Header() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <Link
-            to="/contact"
+            to="/request-an-audit"
             className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:bg-brand-deep hover:shadow-[var(--shadow-lift)]"
           >
             Request an Audit
@@ -203,7 +203,7 @@ export function Header() {
             ))}
           </div>
           <Link
-            to="/contact"
+            to="/request-an-audit"
             onClick={() => setOpen(false)}
             className="mt-4 block rounded-full bg-brand px-6 py-3.5 text-center text-sm font-semibold text-primary-foreground"
           >
