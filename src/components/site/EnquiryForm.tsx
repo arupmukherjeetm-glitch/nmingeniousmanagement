@@ -179,7 +179,7 @@ export function EnquiryForm({
             id="message"
             name="message"
             rows={5}
-            className={fieldClass.replace("h-12 ", "")}
+            className={`${fieldClass.replace("h-12 ", "")} resize-none py-3`}
           />
         </Field>
 
