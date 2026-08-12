@@ -61,7 +61,7 @@ export function Gallery({
                 className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 style={{
                   background:
-                    "linear-gradient(to top, oklch(0.22 0.098 295 / 0.85), transparent 60%)",
+                    "linear-gradient(to top, oklch(0.34 0.09 245 / 0.85), transparent 60%)",
                 }}
               />
               <span

@@ -71,11 +71,11 @@
 :root {
   --radius: 0.5rem;
 
-  --brand: oklch(0.33 0.135 295);
-  --brand-deep: oklch(0.22 0.098 295);
+  --brand: oklch(0.5 0.13 242);
+  --brand-deep: oklch(0.34 0.09 245);
   --brand-soft: oklch(0.955 0.018 295);
   --brand-glow: oklch(0.55 0.19 296);
-  --coral: oklch(0.635 0.183 32);
+  --coral: oklch(0.55 0.21 27);
   --coral-soft: oklch(0.965 0.022 32);
   --coral-foreground: oklch(0.99 0.005 32);
   --ink: oklch(0.19 0.035 292);
@@ -87,10 +87,10 @@
   --card-foreground: oklch(0.19 0.035 292);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.19 0.035 292);
-  --primary: oklch(0.33 0.135 295);
+  --primary: oklch(0.5 0.13 242);
   --primary-foreground: oklch(0.985 0.005 295);
   --secondary: oklch(0.965 0.012 295);
-  --secondary-foreground: oklch(0.33 0.135 295);
+  --secondary-foreground: oklch(0.5 0.13 242);
   --muted: oklch(0.968 0.008 295);
   --muted-foreground: oklch(0.505 0.028 292);
   --accent: oklch(0.965 0.022 32);
@@ -101,25 +101,25 @@
   --input: oklch(0.918 0.012 295);
   --ring: oklch(0.55 0.19 296);
 
-  --chart-1: oklch(0.33 0.135 295);
-  --chart-2: oklch(0.635 0.183 32);
+  --chart-1: oklch(0.5 0.13 242);
+  --chart-2: oklch(0.55 0.21 27);
   --chart-3: oklch(0.55 0.19 296);
   --chart-4: oklch(0.75 0.14 80);
   --chart-5: oklch(0.6 0.1 200);
 
   --sidebar: oklch(0.985 0.005 295);
   --sidebar-foreground: oklch(0.19 0.035 292);
-  --sidebar-primary: oklch(0.33 0.135 295);
+  --sidebar-primary: oklch(0.5 0.13 242);
   --sidebar-primary-foreground: oklch(0.985 0.005 295);
   --sidebar-accent: oklch(0.965 0.012 295);
-  --sidebar-accent-foreground: oklch(0.33 0.135 295);
+  --sidebar-accent-foreground: oklch(0.5 0.13 242);
   --sidebar-border: oklch(0.918 0.012 295);
   --sidebar-ring: oklch(0.55 0.19 296);
 
   --gradient-brand: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand) 45%, var(--brand-glow) 100%);
   --gradient-edge: linear-gradient(90deg, var(--brand) 0%, var(--coral) 50%, var(--brand-glow) 100%);
-  --shadow-soft: 0 1px 2px oklch(0.22 0.098 295 / 0.06), 0 12px 32px -18px oklch(0.22 0.098 295 / 0.35);
-  --shadow-lift: 0 2px 4px oklch(0.22 0.098 295 / 0.06), 0 26px 60px -24px oklch(0.22 0.098 295 / 0.45);
+  --shadow-soft: 0 1px 2px oklch(0.34 0.09 245 / 0.06), 0 12px 32px -18px oklch(0.34 0.09 245 / 0.35);
+  --shadow-lift: 0 2px 4px oklch(0.34 0.09 245 / 0.06), 0 26px 60px -24px oklch(0.34 0.09 245 / 0.45);
 }
 
 .dark {

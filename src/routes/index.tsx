@@ -95,7 +95,7 @@ function Hero() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(100deg, oklch(0.22 0.098 295 / 0.92) 0%, oklch(0.22 0.098 295 / 0.78) 45%, oklch(0.22 0.098 295 / 0.3) 100%)",
+            "linear-gradient(100deg, oklch(0.34 0.09 245 / 0.92) 0%, oklch(0.34 0.09 245 / 0.78) 45%, oklch(0.34 0.09 245 / 0.3) 100%)",
         }}
       />
       <div
@@ -125,7 +125,7 @@ function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-coral px-8 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:shadow-[0_20px_44px_-16px_oklch(0.635_0.183_32/0.75)] hover:brightness-110"
+              className="group inline-flex items-center gap-2 rounded-full bg-coral px-8 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:shadow-[0_20px_44px_-16px_oklch(0.55_0.21_27/0.75)] hover:brightness-110"
             >
               Request a Sell-Out Acceleration Audit
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -442,7 +442,7 @@ function ServicesSection() {
                     className="absolute inset-0"
                     style={{
                       background:
-                        "linear-gradient(to top, oklch(0.22 0.098 295 / 0.75), transparent 55%)",
+                        "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent 55%)",
                     }}
                   />
                   <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/80">

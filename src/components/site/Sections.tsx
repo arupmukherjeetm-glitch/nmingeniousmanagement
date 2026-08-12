@@ -107,7 +107,7 @@ export function CtaBand() {
             <div className="lg:col-span-4 lg:justify-self-end">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-coral px-8 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:shadow-[0_20px_40px_-16px_oklch(0.635_0.183_32/0.7)] hover:brightness-110"
+                className="inline-flex items-center gap-2 rounded-full bg-coral px-8 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:shadow-[0_20px_40px_-16px_oklch(0.55_0.21_27/0.7)] hover:brightness-110"
               >
                 Request a Sell-Out Acceleration Audit
                 <span aria-hidden>→</span>
