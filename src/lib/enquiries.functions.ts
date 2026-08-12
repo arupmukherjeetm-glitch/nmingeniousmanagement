@@ -46,24 +46,36 @@ async function notifyTeam(data: EnquiryInput): Promise<boolean> {
   if (!apiKey || !senderDomain) return false;
 
   const { sendLovableEmail } = await import("@lovable.dev/email-js");
-  await sendLovableEmail({
-    apiKey,
-    senderDomain,
-    from: `NM Ingenious Website <notify@${senderDomain}>`,
-    to,
-    subject: `New ${data.formType === "audit" ? "audit request" : "enquiry"}: ${data.company}`,
-    html: `<h2>${data.subject}</h2>
-      <p><b>Name:</b> ${escapeHtml(data.name)}<br/>
-      <b>Company:</b> ${escapeHtml(data.company)}<br/>
-      <b>Email:</b> ${escapeHtml(data.email)}<br/>
-      <b>Phone:</b> ${escapeHtml(data.phone ?? "")}<br/>
-      <b>Role:</b> ${escapeHtml(data.role ?? "")}<br/>
-      <b>Footprint:</b> ${escapeHtml(data.footprint)}<br/>
-      <b>Timeline:</b> ${escapeHtml(data.timeline)}</p>
-      <p>${escapeHtml(data.message).replace(/\n/g, "<br/>")}</p>`,
-  } as never);
+  const lines = [
+    `Subject: ${data.subject}`,
+    `Name: ${data.name}`,
+    `Company: ${data.company}`,
+    `Email: ${data.email}`,
+    `Phone: ${data.phone ?? ""}`,
+    `Role: ${data.role ?? ""}`,
+    `Footprint: ${data.footprint}`,
+    `Timeline: ${data.timeline}`,
+    "",
+    data.message,
+  ];
+
+  await sendLovableEmail(
+    {
+      to,
+      from: `NM Ingenious Website <notify@${senderDomain}>`,
+      sender_domain: senderDomain,
+      subject: `New ${data.formType === "audit" ? "audit request" : "enquiry"}: ${data.company}`,
+      text: lines.join("\n"),
+      html: `<h2>${escapeHtml(data.subject)}</h2><p>${lines
+        .slice(1)
+        .map((l) => escapeHtml(l))
+        .join("<br/>")}</p>`,
+    },
+    { apiKey },
+  );
   return true;
 }
+
 
 function escapeHtml(value: string) {
   return value
