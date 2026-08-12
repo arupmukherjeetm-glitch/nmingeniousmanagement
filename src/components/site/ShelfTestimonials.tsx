@@ -48,8 +48,8 @@ export function ShelfTestimonials() {
                       style={{
                         background: t.spine,
                         boxShadow: isActive
-                          ? "0 24px 40px -18px oklch(0.22 0.098 295 / 0.6)"
-                          : "0 10px 20px -14px oklch(0.22 0.098 295 / 0.5)",
+                          ? "0 24px 40px -18px oklch(0.34 0.09 245 / 0.6)"
+                          : "0 10px 20px -14px oklch(0.34 0.09 245 / 0.5)",
                         transformOrigin: "bottom center",
                       }}
                     >
