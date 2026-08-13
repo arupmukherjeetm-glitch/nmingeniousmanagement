@@ -6,7 +6,7 @@
 
 /*
  * NM Ingenious design system.
- * Brand: deep imperial purple + retail coral. Corporate typography:
+ * Brand: electric blue #3F00FF. Corporate typography:
  * Google Sans Flex (display / headings) + Roboto (body).
  */
 
@@ -75,21 +75,21 @@
 :root {
   --radius: 0.5rem;
 
-  --brand: oklch(0.5 0.13 242);
-  --brand-deep: oklch(0.34 0.09 245);
-  --brand-soft: oklch(0.965 0.024 235);
-  --brand-glow: oklch(0.70 0.12 233);
-  --coral: oklch(0.55 0.21 27);
-  --coral-soft: oklch(0.965 0.022 27);
-  --coral-foreground: oklch(0.99 0.005 27);
+  --brand: #3F00FF;
+  --brand-deep: #3200CC;
+  --brand-soft: #F0EDFF;
+  --brand-glow: #6B4CFF;
+  --coral: #3F00FF;
+  --coral-soft: #F0EDFF;
+  --coral-foreground: #FFFFFF;
   --ink: oklch(0.19 0.035 242);
   --sand: oklch(0.975 0.006 90);
 
   /* Indigo scale used by the testimonial band (indigo + white only) */
-  --indigo: oklch(0.47 0.16 275);
-  --indigo-deep: oklch(0.33 0.13 277);
-  --indigo-soft: oklch(0.968 0.018 275);
-  --indigo-glow: oklch(0.68 0.13 278);
+  --indigo: #3F00FF;
+  --indigo-deep: #3200CC;
+  --indigo-soft: #F0EDFF;
+  --indigo-glow: #6B4CFF;
   --gradient-indigo-light: linear-gradient(
     160deg,
     oklch(1 0 0) 0%,
@@ -134,8 +134,8 @@
 
   --gradient-brand: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand) 45%, var(--brand-glow) 100%);
   --gradient-edge: linear-gradient(90deg, var(--brand) 0%, var(--coral) 50%, var(--brand-glow) 100%);
-  --shadow-soft: 0 1px 2px oklch(0.34 0.09 245 / 0.06), 0 12px 32px -18px oklch(0.34 0.09 245 / 0.35);
-  --shadow-lift: 0 2px 4px oklch(0.34 0.09 245 / 0.06), 0 26px 60px -24px oklch(0.34 0.09 245 / 0.45);
+  --shadow-soft: none;
+  --shadow-lift: none;
 }
 
 .dark {
@@ -179,6 +179,15 @@
   h5 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+  }
+
+
+  /* ---------- Shadow-free design ---------- */
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 
   ::selection {
@@ -246,7 +255,7 @@
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: var(--shadow-lift);
+    box-shadow: none;
   }
 
   &:hover::before {
@@ -273,7 +282,7 @@
     position: absolute;
     width: 14px;
     height: 14px;
-    border-color: var(--coral);
+    border-color: #3F00FF;
     opacity: 0;
     transition:
       opacity 0.35s ease,
