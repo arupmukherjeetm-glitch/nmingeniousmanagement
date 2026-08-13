@@ -85,6 +85,18 @@
   --ink: oklch(0.19 0.035 242);
   --sand: oklch(0.975 0.006 90);
 
+  /* Indigo scale used by the testimonial band (indigo + white only) */
+  --indigo: oklch(0.47 0.16 275);
+  --indigo-deep: oklch(0.33 0.13 277);
+  --indigo-soft: oklch(0.968 0.018 275);
+  --indigo-glow: oklch(0.68 0.13 278);
+  --gradient-indigo-light: linear-gradient(
+    160deg,
+    oklch(1 0 0) 0%,
+    var(--indigo-soft) 55%,
+    oklch(0.955 0.028 276) 100%
+  );
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.19 0.035 242);
   --card: oklch(1 0 0);
