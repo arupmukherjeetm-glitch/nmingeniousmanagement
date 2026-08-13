@@ -68,7 +68,9 @@ function RequestAudit() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-7">
             <EnquiryForm
+              formType="audit"
               defaultSubject="Sell-Out Acceleration Audit"
+
               lockSubject
               title="Audit request"
               submitLabel="Request my audit"
