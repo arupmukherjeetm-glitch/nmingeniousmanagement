@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as RequestAnAuditRouteImport } from './routes/request-an-audit'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as WhoItsForRouteImport } from './routes/who-its-for'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
@@ -37,6 +38,11 @@ const RequestAnAuditRoute = RequestAnAuditRouteImport.update({
   path: '/request-an-audit',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhoItsForRoute = WhoItsForRouteImport.update({
   id: '/who-its-for',
   path: '/who-its-for',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/request-an-audit': typeof RequestAnAuditRoute
+  '/thank-you': typeof ThankYouRoute
   '/who-its-for': typeof WhoItsForRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/request-an-audit': typeof RequestAnAuditRoute
+  '/thank-you': typeof ThankYouRoute
   '/who-its-for': typeof WhoItsForRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/request-an-audit': typeof RequestAnAuditRoute
+  '/thank-you': typeof ThankYouRoute
   '/who-its-for': typeof WhoItsForRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/request-an-audit'
+    | '/thank-you'
     | '/who-its-for'
     | '/services/$slug'
     | '/services/'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/request-an-audit'
+    | '/thank-you'
     | '/who-its-for'
     | '/services/$slug'
     | '/services'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/request-an-audit'
+    | '/thank-you'
     | '/who-its-for'
     | '/services/$slug'
     | '/services/'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   RequestAnAuditRoute: typeof RequestAnAuditRoute
+  ThankYouRoute: typeof ThankYouRoute
   WhoItsForRoute: typeof WhoItsForRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RequestAnAuditRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/who-its-for': {
       id: '/who-its-for'
       path: '/who-its-for'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   RequestAnAuditRoute: RequestAnAuditRoute,
+  ThankYouRoute: ThankYouRoute,
   WhoItsForRoute: WhoItsForRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
