@@ -474,7 +474,13 @@ export const gallery = [
   { url: a15.url, alt: "Brand promoter at a haircare exhibition stall" },
   { url: a14.url, alt: "Beauty advisor presenting a hair colour pack in a general trade store" },
   { url: a13.url, alt: "Promoter at a haircare shelf in a general trade outlet" },
+  { url: a19.url, alt: "Sampling promoter carrying an edible oil display tray through a store aisle" },
+  { url: a20.url, alt: "Assisted-selling team demonstrating a bulk oil pack in modern trade" },
+  { url: a21.url, alt: "Premium chocolate display manned by a brand advisor in Mumbai" },
+  { url: a22.url, alt: "Haircare advisor detailing a shampoo range at a branded display in Kolkata" },
+  { url: a23.url, alt: "Exhibition hostess at a branded haircare counter" },
 ];
+
 
 export const clientLogos = [
   { name: "Procter & Gamble", url: "https://nm-ingenious.vercel.app/media/logos/logo-pg.png" },
