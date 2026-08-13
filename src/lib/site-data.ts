@@ -18,6 +18,12 @@ const a15 = { url: "/media/a15.webp" };
 const a16 = { url: "/media/a16.webp" };
 const a17 = { url: "/media/a17.webp" };
 const a18 = { url: "/media/a18.webp" };
+const a19 = { url: "/media/a19.webp" };
+const a20 = { url: "/media/a20.webp" };
+const a21 = { url: "/media/a21.webp" };
+const a22 = { url: "/media/a22.webp" };
+const a23 = { url: "/media/a23.webp" };
+
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero.mp4";
