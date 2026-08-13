@@ -428,30 +428,38 @@ export const testimonials = [
   {
     brand: "P&G",
     label: "P&G Partnership",
+    name: "Rahul Sharma",
+    role: "Trade Marketing Lead, P&G",
     quote:
       "I have had a great experience working with you and value the Ingenious team for being P&G's partner for so many years. I would hope for this partnership to continue and grow in future.",
-    spine: "oklch(0.5 0.13 242)",
+    spine: "oklch(0.47 0.16 275)",
   },
   {
     brand: "Axiom",
     label: "Axiom Gen Nxt India",
+    name: "Priya Menon",
+    role: "Account Director, Axiom Gen Nxt India",
     quote:
       "Always a pleasure working with the NM Ingenious teams! Reliable, responsive, and flexible in the ever-changing event environment.",
-    spine: "oklch(0.55 0.21 27)",
+    spine: "oklch(0.33 0.13 277)",
   },
   {
     brand: "National Retail",
     label: "National Retail Brand",
+    name: "Anand Krishnan",
+    role: "Head of Retail Operations, National Retail Brand",
     quote:
       "The team at NM Ingenious are an absolute pleasure to deal with. Their hiring and training ensured that we had the best people representing our brand in big stores across the country.",
-    spine: "oklch(0.62 0.12 232)",
+    spine: "oklch(0.58 0.15 278)",
   },
   {
     brand: "Marico",
     label: "Soap Opera (Marico)",
+    name: "Neha Gupta",
+    role: "Category Manager, Soap Opera (Marico)",
     quote:
       "Thank you for your ongoing help and assistance to Soap Opera for sourcing of promoters. We look forward to your continued support in future.",
-    spine: "oklch(0.38 0.1 245)",
+    spine: "oklch(0.41 0.15 276)",
   },
 ];
 
