@@ -52,6 +52,10 @@
   --color-coral-foreground: var(--coral-foreground);
   --color-ink: var(--ink);
   --color-sand: var(--sand);
+  --color-indigo: var(--indigo);
+  --color-indigo-deep: var(--indigo-deep);
+  --color-indigo-soft: var(--indigo-soft);
+  --color-indigo-glow: var(--indigo-glow);
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
