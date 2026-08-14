@@ -3,32 +3,38 @@ import {
   ChevronLeft,
   ChevronRight,
   Expand,
+  X,
 } from "lucide-react";
 import { gallery } from "@/lib/site-data";
+
+type GalleryProps = {
+  title?: string;
+  eyebrow?: string;
+  intro?: string;
+};
 
 export function Gallery({
   title = "On the floor, every day",
   eyebrow = "Gallery",
   intro = "Our teams inside modern trade and general trade stores across India: promoters, beauty advisors, merchandizers and activation crews at the last three feet.",
-}: {
-  title?: string;
-  eyebrow?: string;
-  intro?: string;
-}) {
+}: GalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   /*
-   * Remove duplicate image URLs.
+   * ------------------------------------------------------------
+   * REMOVE DUPLICATE IMAGES
+   * ------------------------------------------------------------
    */
+
   const uniqueGallery = useMemo(() => {
     const seen = new Set<string>();
 
     return gallery.filter((item) => {
       const normalizedUrl = item.url
         .split("?")[0]
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
       if (seen.has(normalizedUrl)) {
         return false;
@@ -40,46 +46,62 @@ export function Gallery({
   }, []);
 
   /*
-   * Keep active index valid if gallery changes.
+   * ------------------------------------------------------------
+   * KEEP ACTIVE INDEX VALID
+   * ------------------------------------------------------------
    */
+
   useEffect(() => {
-    if (activeIndex >= uniqueGallery.length) {
+    if (
+      uniqueGallery.length > 0 &&
+      activeIndex >= uniqueGallery.length
+    ) {
       setActiveIndex(0);
     }
   }, [activeIndex, uniqueGallery.length]);
 
   /*
-   * NEXT
+   * ------------------------------------------------------------
+   * NEXT IMAGE
+   * ------------------------------------------------------------
    */
+
   const next = useCallback(() => {
-    setActiveIndex((current) =>
-      uniqueGallery.length
-        ? (current + 1) % uniqueGallery.length
-        : 0,
-    );
+    if (uniqueGallery.length <= 1) return;
+
+    setActiveIndex((current) => {
+      return (current + 1) % uniqueGallery.length;
+    });
   }, [uniqueGallery.length]);
 
   /*
-   * PREVIOUS
+   * ------------------------------------------------------------
+   * PREVIOUS IMAGE
+   * ------------------------------------------------------------
    */
+
   const previous = useCallback(() => {
-    setActiveIndex((current) =>
-      uniqueGallery.length
-        ? (current - 1 + uniqueGallery.length) %
-          uniqueGallery.length
-        : 0,
-    );
+    if (uniqueGallery.length <= 1) return;
+
+    setActiveIndex((current) => {
+      return (
+        (current - 1 + uniqueGallery.length) %
+        uniqueGallery.length
+      );
+    });
   }, [uniqueGallery.length]);
 
   /*
-   * AUTO PLAY
+   * ------------------------------------------------------------
+   * AUTOMATIC SLIDESHOW
    *
-   * Changes image every 4 seconds.
-   * Stops while user is hovering over the gallery.
+   * Changes every 3.5 seconds.
+   * It does NOT pause on hover.
+   * ------------------------------------------------------------
    */
+
   useEffect(() => {
     if (
-      isPaused ||
       lightboxOpen ||
       uniqueGallery.length <= 1
     ) {
@@ -87,36 +109,37 @@ export function Gallery({
     }
 
     const timer = window.setInterval(() => {
-      next();
-    }, 4000);
+      setActiveIndex((current) => {
+        return (current + 1) % uniqueGallery.length;
+      });
+    }, 3500);
 
     return () => {
       window.clearInterval(timer);
     };
-  }, [
-    isPaused,
-    lightboxOpen,
-    next,
-    uniqueGallery.length,
-  ]);
+  }, [lightboxOpen, uniqueGallery.length]);
 
   /*
-   * Keyboard controls for lightbox.
+   * ------------------------------------------------------------
+   * KEYBOARD CONTROLS
+   * ------------------------------------------------------------
    */
+
   useEffect(() => {
-    if (!lightboxOpen) return;
-
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setLightboxOpen(false);
-      }
-
       if (event.key === "ArrowRight") {
         next();
       }
 
       if (event.key === "ArrowLeft") {
         previous();
+      }
+
+      if (
+        event.key === "Escape" &&
+        lightboxOpen
+      ) {
+        setLightboxOpen(false);
       }
     };
 
@@ -125,27 +148,49 @@ export function Gallery({
       handleKeyDown,
     );
 
+    return () => {
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown,
+      );
+    };
+  }, [next, previous, lightboxOpen]);
+
+  /*
+   * ------------------------------------------------------------
+   * LOCK BODY SCROLL WHEN LIGHTBOX IS OPEN
+   * ------------------------------------------------------------
+   */
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+
     const previousOverflow =
       document.body.style.overflow;
 
     document.body.style.overflow = "hidden";
 
     return () => {
-      window.removeEventListener(
-        "keydown",
-        handleKeyDown,
-      );
-
       document.body.style.overflow =
         previousOverflow;
     };
-  }, [lightboxOpen, next, previous]);
+  }, [lightboxOpen]);
 
   /*
-   * Calculate circular distance between an image
-   * and the currently active image.
+   * ------------------------------------------------------------
+   * GET RELATIVE POSITION
+   *
+   * 0  = active
+   * -1 = previous
+   * +1 = next
+   * -2 = far previous
+   * +2 = far next
+   * ------------------------------------------------------------
    */
-  const getRelativePosition = (index: number) => {
+
+  const getRelativePosition = (
+    index: number,
+  ) => {
     const total = uniqueGallery.length;
 
     if (!total) return 0;
@@ -165,120 +210,135 @@ export function Gallery({
   };
 
   /*
-   * Get visual properties for each card.
+   * ------------------------------------------------------------
+   * CARD STYLE
+   * ------------------------------------------------------------
    */
+
   const getCardStyle = (
     position: number,
   ): React.CSSProperties => {
     /*
-     * CENTER
+     * ACTIVE CENTER IMAGE
      */
+
     if (position === 0) {
       return {
         left: "50%",
         top: "50%",
         width:
-          "clamp(250px, 32vw, 410px)",
+          "clamp(250px, 31vw, 420px)",
         height:
-          "clamp(330px, 42vw, 510px)",
+          "clamp(320px, 43vw, 520px)",
         transform:
           "translate(-50%, -50%) scale(1)",
-        zIndex: 30,
         opacity: 1,
+        zIndex: 40,
       };
     }
 
     /*
-     * IMMEDIATELY LEFT
+     * PREVIOUS IMAGE
      */
+
     if (position === -1) {
       return {
         left:
-          "calc(50% - clamp(210px, 25vw, 330px))",
+          "calc(50% - clamp(200px, 25vw, 340px))",
         top: "50%",
         width:
-          "clamp(210px, 27vw, 340px)",
+          "clamp(205px, 27vw, 350px)",
         height:
-          "clamp(280px, 35vw, 420px)",
+          "clamp(275px, 36vw, 425px)",
         transform:
           "translate(-50%, -50%) scale(0.88)",
-        zIndex: 20,
-        opacity: 0.82,
+        opacity: 0.78,
+        zIndex: 30,
       };
     }
 
     /*
-     * IMMEDIATELY RIGHT
+     * NEXT IMAGE
      */
+
     if (position === 1) {
       return {
         left:
-          "calc(50% + clamp(210px, 25vw, 330px))",
+          "calc(50% + clamp(200px, 25vw, 340px))",
         top: "50%",
         width:
-          "clamp(210px, 27vw, 340px)",
+          "clamp(205px, 27vw, 350px)",
         height:
-          "clamp(280px, 35vw, 420px)",
+          "clamp(275px, 36vw, 425px)",
         transform:
           "translate(-50%, -50%) scale(0.88)",
-        zIndex: 20,
-        opacity: 0.82,
+        opacity: 0.78,
+        zIndex: 30,
       };
     }
 
     /*
-     * FAR LEFT
+     * FAR PREVIOUS
      */
+
     if (position === -2) {
       return {
         left:
-          "calc(50% - clamp(390px, 45vw, 560px))",
+          "calc(50% - clamp(350px, 43vw, 570px))",
         top: "50%",
         width:
-          "clamp(170px, 22vw, 280px)",
+          "clamp(170px, 21vw, 280px)",
         height:
-          "clamp(230px, 29vw, 350px)",
+          "clamp(225px, 29vw, 350px)",
         transform:
-          "translate(-50%, -50%) scale(0.76)",
-        zIndex: 10,
-        opacity: 0.45,
+          "translate(-50%, -50%) scale(0.75)",
+        opacity: 0.38,
+        zIndex: 20,
       };
     }
 
     /*
-     * FAR RIGHT
+     * FAR NEXT
      */
+
     if (position === 2) {
       return {
         left:
-          "calc(50% + clamp(390px, 45vw, 560px))",
+          "calc(50% + clamp(350px, 43vw, 570px))",
         top: "50%",
         width:
-          "clamp(170px, 22vw, 280px)",
+          "clamp(170px, 21vw, 280px)",
         height:
-          "clamp(230px, 29vw, 350px)",
+          "clamp(225px, 29vw, 350px)",
         transform:
-          "translate(-50%, -50%) scale(0.76)",
-        zIndex: 10,
-        opacity: 0.45,
+          "translate(-50%, -50%) scale(0.75)",
+        opacity: 0.38,
+        zIndex: 20,
       };
     }
 
     /*
-     * Everything else is hidden.
+     * HIDDEN IMAGES
      */
+
     return {
       left: "50%",
       top: "50%",
-      width: "260px",
-      height: "340px",
+      width: "250px",
+      height: "320px",
       transform:
         "translate(-50%, -50%) scale(0.6)",
-      zIndex: 0,
       opacity: 0,
+      zIndex: 0,
       pointerEvents: "none",
     };
   };
+
+  /*
+   * ------------------------------------------------------------
+   * EMPTY STATE
+   * ------------------------------------------------------------
+   */
 
   if (!uniqueGallery.length) {
     return null;
@@ -286,6 +346,12 @@ export function Gallery({
 
   const activeImage =
     uniqueGallery[activeIndex];
+
+  /*
+   * ------------------------------------------------------------
+   * RENDER
+   * ------------------------------------------------------------
+   */
 
   return (
     <>
@@ -298,21 +364,23 @@ export function Gallery({
           lg:py-32
         "
       >
-        {/* =================================================
+        {/* =====================================================
             HEADER
-        ================================================== */}
+        ====================================================== */}
 
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div
             className="
               flex
               flex-col
-              gap-7
+              gap-8
               lg:flex-row
               lg:items-end
               lg:justify-between
             "
           >
+            {/* LEFT */}
+
             <div className="max-w-3xl">
               <div className="flex items-center gap-3">
                 <span className="h-px w-9 bg-coral" />
@@ -346,6 +414,8 @@ export function Gallery({
                 {title}
               </h2>
             </div>
+
+            {/* RIGHT */}
 
             <div className="max-w-md">
               <p
@@ -395,31 +465,25 @@ export function Gallery({
           </div>
         </div>
 
-        {/* =================================================
-            CAROUSEL
-        ================================================== */}
+        {/* =====================================================
+            CAROUSEL AREA
+        ====================================================== */}
 
         <div
           className="
             relative
             mx-auto
-            mt-16
-            h-[500px]
+            mt-14
+            h-[520px]
             w-full
             max-w-[1500px]
             overflow-hidden
-            sm:h-[560px]
+            sm:h-[570px]
             lg:mt-20
-            lg:h-[620px]
+            lg:h-[630px]
           "
-          onMouseEnter={() =>
-            setIsPaused(true)
-          }
-          onMouseLeave={() =>
-            setIsPaused(false)
-          }
         >
-          {/* Soft central glow */}
+          {/* Background glow */}
 
           <div
             aria-hidden
@@ -428,12 +492,12 @@ export function Gallery({
               absolute
               left-1/2
               top-1/2
-              h-[400px]
-              w-[500px]
+              h-[450px]
+              w-[600px]
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
-              opacity-20
+              opacity-[0.14]
               blur-3xl
             "
             style={{
@@ -444,24 +508,16 @@ export function Gallery({
 
           {/* Cards */}
 
-          <div
-            className="
-              absolute
-              inset-0
-            "
-          >
+          <div className="absolute inset-0">
             {uniqueGallery.map(
               (item, index) => {
                 const position =
                   getRelativePosition(index);
 
-                const style =
-                  getCardStyle(position);
-
                 /*
-                 * Only render the five visible
-                 * positions for performance.
+                 * Only render visible cards.
                  */
+
                 if (Math.abs(position) > 2) {
                   return null;
                 }
@@ -483,7 +539,7 @@ export function Gallery({
                     aria-label={
                       isActive
                         ? `Open image: ${item.alt}`
-                        : `View image: ${item.alt}`
+                        : `Show image: ${item.alt}`
                     }
                     className="
                       absolute
@@ -491,8 +547,8 @@ export function Gallery({
                       rounded-[24px]
                       bg-brand-deep
                       text-left
-                      shadow-[0_25px_70px_rgba(0,0,0,0.18)]
                       outline-none
+                      shadow-[0_25px_70px_rgba(0,0,0,0.18)]
                       transition-all
                       duration-[900ms]
                       ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -500,9 +556,11 @@ export function Gallery({
                       focus-visible:ring-coral
                       focus-visible:ring-offset-4
                     "
-                    style={style}
+                    style={getCardStyle(
+                      position,
+                    )}
                   >
-                    {/* Image */}
+                    {/* IMAGE */}
 
                     <img
                       src={item.url}
@@ -519,13 +577,12 @@ export function Gallery({
                         w-full
                         object-cover
                         transition-transform
-                        duration-[1000ms]
+                        duration-[900ms]
                         ease-[cubic-bezier(0.22,1,0.36,1)]
-                        group-hover:scale-105
                       "
                     />
 
-                    {/* Gradient */}
+                    {/* OVERLAY */}
 
                     <div
                       aria-hidden
@@ -533,13 +590,13 @@ export function Gallery({
                         absolute
                         inset-0
                         bg-gradient-to-t
-                        from-black/75
-                        via-black/5
+                        from-black/80
+                        via-black/10
                         to-transparent
                       "
                     />
 
-                    {/* Active image border */}
+                    {/* ACTIVE BORDER */}
 
                     {isActive && (
                       <div
@@ -555,7 +612,7 @@ export function Gallery({
                       />
                     )}
 
-                    {/* Active image expand button */}
+                    {/* EXPAND */}
 
                     {isActive && (
                       <span
@@ -580,7 +637,25 @@ export function Gallery({
                       </span>
                     )}
 
-                    {/* Caption */}
+                    {/* NUMBER */}
+
+                    <span
+                      className="
+                        absolute
+                        left-5
+                        top-5
+                        text-[9px]
+                        font-bold
+                        tracking-[0.28em]
+                        text-white/65
+                      "
+                    >
+                      {String(
+                        index + 1,
+                      ).padStart(2, "0")}
+                    </span>
+
+                    {/* ACTIVE CAPTION */}
 
                     {isActive && (
                       <div
@@ -593,6 +668,7 @@ export function Gallery({
                       >
                         <p
                           className="
+                            max-w-[90%]
                             text-xs
                             font-semibold
                             leading-5
@@ -609,7 +685,7 @@ export function Gallery({
                             font-bold
                             uppercase
                             tracking-[0.28em]
-                            text-white/50
+                            text-white/45
                           "
                         >
                           {String(
@@ -629,76 +705,94 @@ export function Gallery({
           </div>
 
           {/* =================================================
-              CONTROLS
+              NAVIGATION BUTTONS
           ================================================== */}
 
           <div
             className="
               absolute
-              bottom-2
+              bottom-1
               left-1/2
-              z-40
+              z-[60]
               flex
               -translate-x-1/2
               items-center
-              gap-5
+              gap-6
             "
           >
+            {/* PREVIOUS */}
+
             <button
               type="button"
               aria-label="Previous image"
-              onClick={previous}
+              onClick={(event) => {
+                event.stopPropagation();
+                previous();
+              }}
               className="
                 flex
                 size-12
+                shrink-0
                 items-center
                 justify-center
                 rounded-full
                 border
                 border-foreground/20
-                bg-background/80
+                bg-background
                 text-foreground
-                backdrop-blur-md
+                shadow-lg
                 transition-all
                 duration-300
                 hover:-translate-x-0.5
-                hover:bg-background
+                hover:scale-105
+                hover:bg-foreground
+                hover:text-background
               "
             >
               <ChevronLeft className="size-4" />
             </button>
 
+            {/* NEXT */}
+
             <button
               type="button"
               aria-label="Next image"
-              onClick={next}
+              onClick={(event) => {
+                event.stopPropagation();
+                next();
+              }}
               className="
                 flex
                 size-12
+                shrink-0
                 items-center
                 justify-center
                 rounded-full
                 border
                 border-foreground/20
-                bg-background/80
+                bg-background
                 text-foreground
-                backdrop-blur-md
+                shadow-lg
                 transition-all
                 duration-300
                 hover:translate-x-0.5
-                hover:bg-background
+                hover:scale-105
+                hover:bg-foreground
+                hover:text-background
               "
             >
               <ChevronRight className="size-4" />
             </button>
           </div>
 
-          {/* Progress */}
+          {/* =================================================
+              PROGRESS
+          ================================================== */}
 
           <div
             className="
               absolute
-              bottom-5
+              bottom-7
               left-5
               right-5
               hidden
@@ -732,9 +826,9 @@ export function Gallery({
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =======================================================
           LIGHTBOX
-      ====================================================== */}
+      ======================================================== */}
 
       {lightboxOpen && activeImage && (
         <div
@@ -745,7 +839,7 @@ export function Gallery({
             flex
             items-center
             justify-center
-            bg-black/[0.96]
+            bg-black/[0.97]
             p-4
             backdrop-blur-2xl
             animate-in
@@ -759,6 +853,8 @@ export function Gallery({
           aria-modal="true"
           aria-label="Image viewer"
         >
+          {/* CLOSE */}
+
           <button
             type="button"
             aria-label="Close image viewer"
@@ -781,12 +877,15 @@ export function Gallery({
               text-white
               backdrop-blur-xl
               transition-all
+              duration-300
               hover:scale-105
               hover:bg-white/10
             "
           >
-            ×
+            <X className="size-5" />
           </button>
+
+          {/* PREVIOUS */}
 
           <button
             type="button"
@@ -811,12 +910,15 @@ export function Gallery({
               bg-black/30
               text-white
               backdrop-blur-xl
+              transition-all
               hover:bg-white/10
               lg:left-8
             "
           >
             <ChevronLeft className="size-5" />
           </button>
+
+          {/* NEXT */}
 
           <button
             type="button"
@@ -841,12 +943,15 @@ export function Gallery({
               bg-black/30
               text-white
               backdrop-blur-xl
+              transition-all
               hover:bg-white/10
               lg:right-8
             "
           >
             <ChevronRight className="size-5" />
           </button>
+
+          {/* ACTIVE IMAGE */}
 
           <figure
             onClick={(event) =>
