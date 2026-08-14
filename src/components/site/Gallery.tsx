@@ -641,7 +641,7 @@ export function Gallery({
               flex
               -translate-x-1/2
               items-center
-              gap-3
+              gap-5
             "
           >
             <button
