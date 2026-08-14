@@ -19,17 +19,19 @@ export function Gallery({
   const [open, setOpen] = useState<number | null>(null);
 
   /*
-   * Remove duplicate image URLs automatically.
+   * Remove duplicate URLs.
    */
   const uniqueGallery = useMemo(() => {
     const seen = new Set<string>();
 
     return gallery.filter((item) => {
-      const url = item.url.split("?")[0].toLowerCase();
+      const normalized = item.url.split("?")[0].toLowerCase();
 
-      if (seen.has(url)) return false;
+      if (seen.has(normalized)) {
+        return false;
+      }
 
-      seen.add(url);
+      seen.add(normalized);
       return true;
     });
   }, []);
@@ -84,260 +86,489 @@ export function Gallery({
   const active =
     open === null ? null : uniqueGallery[open] ?? null;
 
+  /*
+   * Controlled gallery patterns.
+   *
+   * IMPORTANT:
+   * Every row has the same height.
+   * There are NO row spans.
+   * There are NO overlapping cards.
+   *
+   * The visual rhythm comes from different column widths.
+   */
+  const layouts = [
+    // Row 1
+    ["col-span-7", "col-span-5"],
+
+    // Row 2
+    ["col-span-4", "col-span-4", "col-span-4"],
+
+    // Row 3
+    ["col-span-5", "col-span-7"],
+
+    // Row 4
+    ["col-span-4", "col-span-5", "col-span-3"],
+
+    // Row 5
+    ["col-span-7", "col-span-5"],
+
+    // Row 6
+    ["col-span-3", "col-span-3", "col-span-6"],
+  ];
+
+  /*
+   * Convert the flat gallery into visual rows.
+   */
+  const rows: typeof uniqueGallery[] = [];
+
+  let imageIndex = 0;
+
+  layouts.forEach((layout) => {
+    const row = uniqueGallery.slice(
+      imageIndex,
+      imageIndex + layout.length,
+    );
+
+    if (row.length === layout.length) {
+      rows.push(row);
+      imageIndex += layout.length;
+    }
+  });
+
+  /*
+   * Any remaining images are rendered in a final
+   * clean 3-column row.
+   */
+  const remaining = uniqueGallery.slice(imageIndex);
+
+  if (remaining.length > 0) {
+    for (let i = 0; i < remaining.length; i += 3) {
+      rows.push(remaining.slice(i, i + 3));
+    }
+  }
+
+  let globalIndex = 0;
+
   return (
-    <section className="relative overflow-hidden bg-background py-24 lg:py-32">
-      {/* Very subtle ambient background */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[700px] -translate-x-1/2 rounded-full opacity-20 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in oklab, var(--coral) 14%, transparent), transparent 68%)",
-        }}
-      />
+    <>
+      <section className="relative overflow-hidden bg-background py-24 lg:py-32">
 
-      {/* =========================
-          HEADER
-      ========================== */}
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-coral" />
+        {/* =====================================================
+            BACKGROUND
+        ====================================================== */}
 
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-coral">
-                {eyebrow}
-              </p>
-            </div>
-
-            <h2 className="mt-5 font-display text-4xl font-extrabold leading-[0.95] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              {title}
-            </h2>
-          </div>
-
-          <div className="max-w-md">
-            <p className="text-sm leading-7 text-muted-foreground">
-              {intro}
-            </p>
-
-            <div className="mt-6 flex items-center gap-3">
-              <span className="text-2xl font-bold tracking-tight text-foreground">
-                {String(uniqueGallery.length).padStart(2, "0")}
-              </span>
-
-              <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
-                Field moments
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* =========================
-          GALLERY
-      ========================== */}
-      <div className="relative mx-auto mt-16 max-w-7xl px-5 lg:mt-20 lg:px-8">
         <div
+          aria-hidden
           className="
-            grid
-            grid-cols-1
-            gap-4
-            sm:grid-cols-2
-            lg:grid-cols-3
+            pointer-events-none
+            absolute
+            -top-40
+            left-1/2
+            h-[600px]
+            w-[800px]
+            -translate-x-1/2
+            rounded-full
+            opacity-[0.12]
+            blur-3xl
           "
-        >
-          {uniqueGallery.map((item, index) => (
-            <button
-              key={`${item.url}-${index}`}
-              type="button"
-              onClick={() => setOpen(index)}
-              aria-label={`Open image: ${item.alt}`}
-              className="
-                group
-                relative
-                overflow-hidden
-                rounded-2xl
-                bg-brand-deep
-                text-left
-                outline-none
-                transition-all
-                duration-500
-                ease-[cubic-bezier(0.22,1,0.36,1)]
-                hover:-translate-y-1
-                hover:shadow-2xl
-                focus-visible:ring-2
-                focus-visible:ring-coral
-                focus-visible:ring-offset-4
-              "
-            >
-              {/* IMAGE FRAME
-                  Fixed height means portrait images
-                  cannot become excessively tall.
-              */}
-              <div
+          style={{
+            background:
+              "radial-gradient(circle, color-mix(in oklab, var(--coral) 25%, transparent), transparent 70%)",
+          }}
+        />
+
+        {/* =====================================================
+            HEADER
+        ====================================================== */}
+
+        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+
+            <div className="max-w-4xl">
+
+              <div className="flex items-center gap-3">
+                <span className="h-px w-10 bg-coral" />
+
+                <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-coral">
+                  {eyebrow}
+                </p>
+              </div>
+
+              <h2
                 className="
-                  relative
-                  h-[260px]
-                  overflow-hidden
-                  sm:h-[280px]
-                  lg:h-[300px]
-                  xl:h-[320px]
+                  mt-6
+                  max-w-4xl
+                  font-display
+                  text-4xl
+                  font-extrabold
+                  leading-[0.92]
+                  tracking-[-0.04em]
+                  text-foreground
+                  sm:text-5xl
+                  lg:text-7xl
                 "
               >
-                <img
-                  src={item.url}
-                  alt={item.alt}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  className="
-                    absolute
-                    inset-0
-                    h-full
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-[900ms]
-                    ease-[cubic-bezier(0.22,1,0.36,1)]
-                    group-hover:scale-[1.07]
-                  "
-                />
+                {title}
+              </h2>
+            </div>
 
-                {/* Dark gradient */}
-                <div
-                  aria-hidden
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-black/75
-                    via-black/10
-                    to-transparent
-                    opacity-70
-                    transition-opacity
-                    duration-500
-                    group-hover:opacity-100
-                  "
-                />
+            <div className="max-w-md">
 
-                {/* Top left number */}
+              <p className="text-sm leading-7 text-muted-foreground">
+                {intro}
+              </p>
+
+              <div className="mt-7 flex items-center gap-4">
+
                 <span
                   className="
-                    absolute
-                    left-4
-                    top-4
+                    text-3xl
+                    font-bold
+                    tracking-tight
+                    text-foreground
+                  "
+                >
+                  {String(uniqueGallery.length).padStart(2, "0")}
+                </span>
+
+                <span
+                  className="
                     text-[9px]
                     font-bold
-                    tracking-[0.25em]
-                    text-white/70
+                    uppercase
+                    tracking-[0.3em]
+                    text-muted-foreground
                   "
                 >
-                  {String(index + 1).padStart(2, "0")}
+                  Moments<br />
+                  from the field
                 </span>
 
-                {/* Open icon */}
-                <span
-                  aria-hidden
-                  className="
-                    absolute
-                    right-4
-                    top-4
-                    flex
-                    size-10
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-white/20
-                    bg-black/20
-                    text-white
-                    opacity-0
-                    backdrop-blur-md
-                    transition-all
-                    duration-500
-                    group-hover:scale-100
-                    group-hover:opacity-100
-                  "
-                >
-                  <ArrowUpRight className="size-4" />
-                </span>
-
-                {/* Caption */}
-                <div
-                  className="
-                    absolute
-                    inset-x-0
-                    bottom-0
-                    p-5
-                  "
-                >
-                  <p
-                    className="
-                      max-w-[90%]
-                      translate-y-2
-                      text-xs
-                      font-semibold
-                      leading-5
-                      text-white
-                      opacity-0
-                      transition-all
-                      duration-500
-                      group-hover:translate-y-0
-                      group-hover:opacity-100
-                    "
-                  >
-                    {item.alt}
-                  </p>
-                </div>
               </div>
+            </div>
 
-              {/* Clean card footer */}
-              <div
-                className="
-                  flex
-                  items-center
-                  justify-between
-                  border-t
-                  border-white/10
-                  bg-brand-deep
-                  px-5
-                  py-4
-                "
-              >
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
-                  Field execution
-                </span>
-
-                <ArrowUpRight
-                  className="
-                    size-4
-                    text-white/40
-                    transition-all
-                    duration-300
-                    group-hover:-translate-y-0.5
-                    group-hover:translate-x-0.5
-                    group-hover:text-white
-                  "
-                />
-              </div>
-            </button>
-          ))}
+          </div>
         </div>
-      </div>
 
-      {/* =========================
+        {/* =====================================================
+            GALLERY WALL
+        ====================================================== */}
+
+        <div className="relative mt-16 lg:mt-20">
+
+          {/* Thin top rule */}
+          <div className="mx-auto max-w-[1500px] border-t border-border/60" />
+
+          <div className="mx-auto max-w-[1500px]">
+
+            {rows.map((row, rowIndex) => {
+              const rowLayout =
+                rowIndex < layouts.length
+                  ? layouts[rowIndex]
+                  : Array(row.length).fill("col-span-4");
+
+              return (
+                <div
+                  key={`gallery-row-${rowIndex}`}
+                  className="
+                    grid
+                    grid-cols-12
+                    gap-[2px]
+                    bg-border/60
+                  "
+                >
+                  {row.map((item, columnIndex) => {
+
+                    const currentIndex = globalIndex++;
+
+                    const span =
+                      rowLayout[columnIndex] || "col-span-4";
+
+                    return (
+                      <button
+                        key={`${item.url}-${currentIndex}`}
+                        type="button"
+                        onClick={() => setOpen(currentIndex)}
+                        aria-label={`Open image: ${item.alt}`}
+                        className={`
+                          group
+                          relative
+                          ${span}
+                          h-[220px]
+                          overflow-hidden
+                          bg-brand-deep
+                          text-left
+                          outline-none
+
+                          sm:h-[260px]
+
+                          lg:h-[310px]
+
+                          xl:h-[340px]
+
+                          transition-all
+                          duration-500
+                        `}
+                      >
+
+                        {/* =================================================
+                            IMAGE
+                        ================================================== */}
+
+                        <img
+                          src={item.url}
+                          alt={item.alt}
+                          loading={
+                            currentIndex === 0
+                              ? "eager"
+                              : "lazy"
+                          }
+                          className="
+                            absolute
+                            inset-0
+                            h-full
+                            w-full
+                            object-cover
+
+                            transition-transform
+                            duration-[900ms]
+                            ease-[cubic-bezier(0.22,1,0.36,1)]
+
+                            group-hover:scale-[1.06]
+                          "
+                        />
+
+                        {/* =================================================
+                            HOVER OVERLAY
+                        ================================================== */}
+
+                        <div
+                          aria-hidden
+                          className="
+                            absolute
+                            inset-0
+                            bg-black/0
+
+                            transition-all
+                            duration-500
+
+                            group-hover:bg-black/30
+                          "
+                        />
+
+                        {/* Bottom gradient */}
+
+                        <div
+                          aria-hidden
+                          className="
+                            absolute
+                            inset-x-0
+                            bottom-0
+                            h-2/3
+
+                            bg-gradient-to-t
+                            from-black/80
+                            via-black/20
+                            to-transparent
+
+                            opacity-60
+
+                            transition-opacity
+                            duration-500
+
+                            group-hover:opacity-100
+                          "
+                        />
+
+                        {/* =================================================
+                            NUMBER
+                        ================================================== */}
+
+                        <span
+                          className="
+                            absolute
+                            left-5
+                            top-5
+
+                            text-[9px]
+                            font-bold
+                            tracking-[0.28em]
+                            text-white/60
+
+                            transition-colors
+                            duration-300
+
+                            group-hover:text-white
+                          "
+                        >
+                          {String(currentIndex + 1).padStart(2, "0")}
+                        </span>
+
+                        {/* =================================================
+                            ARROW
+                        ================================================== */}
+
+                        <span
+                          aria-hidden
+                          className="
+                            absolute
+                            right-5
+                            top-5
+
+                            flex
+                            size-11
+                            items-center
+                            justify-center
+
+                            rounded-full
+
+                            border
+                            border-white/20
+
+                            bg-black/20
+
+                            text-white
+
+                            opacity-0
+                            scale-75
+
+                            backdrop-blur-xl
+
+                            transition-all
+                            duration-500
+
+                            group-hover:scale-100
+                            group-hover:opacity-100
+                          "
+                        >
+                          <ArrowUpRight className="size-4" />
+                        </span>
+
+                        {/* =================================================
+                            CAPTION
+                        ================================================== */}
+
+                        <div
+                          className="
+                            absolute
+                            inset-x-0
+                            bottom-0
+                            p-5
+                            lg:p-6
+                          "
+                        >
+                          <p
+                            className="
+                              max-w-[90%]
+
+                              translate-y-3
+
+                              text-xs
+                              font-semibold
+                              leading-5
+                              text-white
+
+                              opacity-0
+
+                              transition-all
+                              duration-500
+
+                              group-hover:translate-y-0
+                              group-hover:opacity-100
+                            "
+                          >
+                            {item.alt}
+                          </p>
+                        </div>
+
+                        {/* =================================================
+                            BORDER
+                        ================================================== */}
+
+                        <span
+                          aria-hidden
+                          className="
+                            pointer-events-none
+                            absolute
+                            inset-0
+
+                            border
+                            border-white/0
+
+                            transition-colors
+                            duration-500
+
+                            group-hover:border-white/25
+                          "
+                        />
+
+                      </button>
+                    );
+                  })}
+                </div>
+              );
+            })}
+
+          </div>
+
+          {/* Bottom rule */}
+          <div className="mx-auto max-w-[1500px] border-b border-border/60" />
+        </div>
+
+        {/* =====================================================
+            SMALL FOOTER LABEL
+        ====================================================== */}
+
+        <div className="mx-auto mt-6 flex max-w-[1500px] items-center justify-between px-5 lg:px-8">
+
+          <span
+            className="
+              text-[9px]
+              font-bold
+              uppercase
+              tracking-[0.3em]
+              text-muted-foreground
+            "
+          >
+            Field execution
+          </span>
+
+          <span
+            className="
+              text-[9px]
+              font-bold
+              uppercase
+              tracking-[0.3em]
+              text-muted-foreground
+            "
+          >
+            India · MT · GT
+          </span>
+
+        </div>
+      </section>
+
+      {/* =======================================================
           LIGHTBOX
-      ========================== */}
+      ======================================================== */}
+
       {active && (
         <div
           className="
             fixed
             inset-0
             z-[100]
+
             flex
             items-center
             justify-center
-            bg-black/95
+
+            bg-black/[0.97]
+
             p-4
-            backdrop-blur-xl
+
+            backdrop-blur-2xl
+
             animate-in
             fade-in
             duration-300
@@ -347,7 +578,9 @@ export function Gallery({
           aria-modal="true"
           aria-label="Image viewer"
         >
+
           {/* Close */}
+
           <button
             type="button"
             aria-label="Close image viewer"
@@ -356,19 +589,27 @@ export function Gallery({
               absolute
               right-5
               top-5
-              z-20
+              z-30
+
               flex
               size-11
               items-center
               justify-center
+
               rounded-full
+
               border
-              border-white/20
+              border-white/15
+
               bg-white/5
+
               text-white
-              backdrop-blur-md
+
+              backdrop-blur-xl
+
               transition-all
               duration-300
+
               hover:scale-105
               hover:bg-white/10
             "
@@ -377,6 +618,7 @@ export function Gallery({
           </button>
 
           {/* Previous */}
+
           <button
             type="button"
             aria-label="Previous image"
@@ -388,20 +630,31 @@ export function Gallery({
               absolute
               left-3
               top-1/2
-              z-20
+              z-30
+
               flex
               size-12
               -translate-y-1/2
               items-center
               justify-center
+
               rounded-full
+
               border
-              border-white/20
+              border-white/15
+
               bg-black/30
+
               text-white
-              backdrop-blur-md
+
+              backdrop-blur-xl
+
               transition-all
+              duration-300
+
+              hover:scale-105
               hover:bg-white/10
+
               lg:left-8
             "
           >
@@ -409,6 +662,7 @@ export function Gallery({
           </button>
 
           {/* Next */}
+
           <button
             type="button"
             aria-label="Next image"
@@ -420,27 +674,39 @@ export function Gallery({
               absolute
               right-3
               top-1/2
-              z-20
+              z-30
+
               flex
               size-12
               -translate-y-1/2
               items-center
               justify-center
+
               rounded-full
+
               border
-              border-white/20
+              border-white/15
+
               bg-black/30
+
               text-white
-              backdrop-blur-md
+
+              backdrop-blur-xl
+
               transition-all
+              duration-300
+
+              hover:scale-105
               hover:bg-white/10
+
               lg:right-8
             "
           >
             <ChevronRight className="size-5" />
           </button>
 
-          {/* Active image */}
+          {/* Image */}
+
           <figure
             key={active.url}
             onClick={(event) => event.stopPropagation()}
@@ -450,36 +716,53 @@ export function Gallery({
               max-w-[90vw]
               flex-col
               items-center
+
               animate-in
               fade-in
               zoom-in-95
               duration-500
             "
           >
+
             <img
               src={active.url}
               alt={active.alt}
               className="
                 max-h-[78vh]
                 max-w-[88vw]
-                rounded-2xl
+
+                rounded-xl
+
                 object-contain
+
                 shadow-2xl
               "
             />
 
             <figcaption className="mt-5 max-w-2xl text-center">
+
               <p className="text-sm font-medium leading-relaxed text-white">
                 {active.alt}
               </p>
 
-              <p className="mt-2 text-[9px] font-bold uppercase tracking-[0.3em] text-white/40">
+              <p
+                className="
+                  mt-2
+                  text-[9px]
+                  font-bold
+                  uppercase
+                  tracking-[0.3em]
+                  text-white/40
+                "
+              >
                 {(open ?? 0) + 1} / {uniqueGallery.length}
               </p>
+
             </figcaption>
+
           </figure>
         </div>
       )}
-    </section>
+    </>
   );
 }
