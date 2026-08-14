@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
-  X,
+  Expand,
 } from "lucide-react";
 import { gallery } from "@/lib/site-data";
 
@@ -16,196 +15,332 @@ export function Gallery({
   eyebrow?: string;
   intro?: string;
 }) {
-  const [open, setOpen] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   /*
-   * Remove duplicate URLs.
+   * Remove duplicate image URLs.
    */
   const uniqueGallery = useMemo(() => {
     const seen = new Set<string>();
 
     return gallery.filter((item) => {
-      const normalized = item.url.split("?")[0].toLowerCase();
+      const normalizedUrl = item.url
+        .split("?")[0]
+        .toLowerCase();
 
-      if (seen.has(normalized)) {
+      if (seen.has(normalizedUrl)) {
         return false;
       }
 
-      seen.add(normalized);
+      seen.add(normalizedUrl);
       return true;
     });
   }, []);
 
-  const close = useCallback(() => {
-    setOpen(null);
-  }, []);
-
-  const next = useCallback(() => {
-    setOpen((current) => {
-      if (current === null || uniqueGallery.length === 0) {
-        return current;
-      }
-
-      return (current + 1) % uniqueGallery.length;
-    });
-  }, [uniqueGallery.length]);
-
-  const prev = useCallback(() => {
-    setOpen((current) => {
-      if (current === null || uniqueGallery.length === 0) {
-        return current;
-      }
-
-      return (
-        (current - 1 + uniqueGallery.length) %
-        uniqueGallery.length
-      );
-    });
-  }, [uniqueGallery.length]);
-
+  /*
+   * Keep active index valid if gallery changes.
+   */
   useEffect(() => {
-    if (open === null) return;
+    if (activeIndex >= uniqueGallery.length) {
+      setActiveIndex(0);
+    }
+  }, [activeIndex, uniqueGallery.length]);
+
+  /*
+   * NEXT
+   */
+  const next = useCallback(() => {
+    setActiveIndex((current) =>
+      uniqueGallery.length
+        ? (current + 1) % uniqueGallery.length
+        : 0,
+    );
+  }, [uniqueGallery.length]);
+
+  /*
+   * PREVIOUS
+   */
+  const previous = useCallback(() => {
+    setActiveIndex((current) =>
+      uniqueGallery.length
+        ? (current - 1 + uniqueGallery.length) %
+          uniqueGallery.length
+        : 0,
+    );
+  }, [uniqueGallery.length]);
+
+  /*
+   * AUTO PLAY
+   *
+   * Changes image every 4 seconds.
+   * Stops while user is hovering over the gallery.
+   */
+  useEffect(() => {
+    if (
+      isPaused ||
+      lightboxOpen ||
+      uniqueGallery.length <= 1
+    ) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      next();
+    }, 4000);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [
+    isPaused,
+    lightboxOpen,
+    next,
+    uniqueGallery.length,
+  ]);
+
+  /*
+   * Keyboard controls for lightbox.
+   */
+  useEffect(() => {
+    if (!lightboxOpen) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-      if (event.key === "ArrowRight") next();
-      if (event.key === "ArrowLeft") prev();
+      if (event.key === "Escape") {
+        setLightboxOpen(false);
+      }
+
+      if (event.key === "ArrowRight") {
+        next();
+      }
+
+      if (event.key === "ArrowLeft") {
+        previous();
+      }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener(
+      "keydown",
+      handleKeyDown,
+    );
 
-    const previousOverflow = document.body.style.overflow;
+    const previousOverflow =
+      document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown,
+      );
+
+      document.body.style.overflow =
+        previousOverflow;
     };
-  }, [open, close, next, prev]);
-
-  const active =
-    open === null ? null : uniqueGallery[open] ?? null;
+  }, [lightboxOpen, next, previous]);
 
   /*
-   * Controlled gallery patterns.
-   *
-   * IMPORTANT:
-   * Every row has the same height.
-   * There are NO row spans.
-   * There are NO overlapping cards.
-   *
-   * The visual rhythm comes from different column widths.
+   * Calculate circular distance between an image
+   * and the currently active image.
    */
-  const layouts = [
-    // Row 1
-    ["col-span-7", "col-span-5"],
+  const getRelativePosition = (index: number) => {
+    const total = uniqueGallery.length;
 
-    // Row 2
-    ["col-span-4", "col-span-4", "col-span-4"],
+    if (!total) return 0;
 
-    // Row 3
-    ["col-span-5", "col-span-7"],
+    let difference =
+      index - activeIndex;
 
-    // Row 4
-    ["col-span-4", "col-span-5", "col-span-3"],
-
-    // Row 5
-    ["col-span-7", "col-span-5"],
-
-    // Row 6
-    ["col-span-3", "col-span-3", "col-span-6"],
-  ];
-
-  /*
-   * Convert the flat gallery into visual rows.
-   */
-  const rows: typeof uniqueGallery[] = [];
-
-  let imageIndex = 0;
-
-  layouts.forEach((layout) => {
-    const row = uniqueGallery.slice(
-      imageIndex,
-      imageIndex + layout.length,
-    );
-
-    if (row.length === layout.length) {
-      rows.push(row);
-      imageIndex += layout.length;
+    if (difference > total / 2) {
+      difference -= total;
     }
-  });
+
+    if (difference < -total / 2) {
+      difference += total;
+    }
+
+    return difference;
+  };
 
   /*
-   * Any remaining images are rendered in a final
-   * clean 3-column row.
+   * Get visual properties for each card.
    */
-  const remaining = uniqueGallery.slice(imageIndex);
-
-  if (remaining.length > 0) {
-    for (let i = 0; i < remaining.length; i += 3) {
-      rows.push(remaining.slice(i, i + 3));
+  const getCardStyle = (
+    position: number,
+  ): React.CSSProperties => {
+    /*
+     * CENTER
+     */
+    if (position === 0) {
+      return {
+        left: "50%",
+        top: "50%",
+        width:
+          "clamp(250px, 32vw, 410px)",
+        height:
+          "clamp(330px, 42vw, 510px)",
+        transform:
+          "translate(-50%, -50%) scale(1)",
+        zIndex: 30,
+        opacity: 1,
+      };
     }
+
+    /*
+     * IMMEDIATELY LEFT
+     */
+    if (position === -1) {
+      return {
+        left:
+          "calc(50% - clamp(210px, 25vw, 330px))",
+        top: "50%",
+        width:
+          "clamp(210px, 27vw, 340px)",
+        height:
+          "clamp(280px, 35vw, 420px)",
+        transform:
+          "translate(-50%, -50%) scale(0.88)",
+        zIndex: 20,
+        opacity: 0.82,
+      };
+    }
+
+    /*
+     * IMMEDIATELY RIGHT
+     */
+    if (position === 1) {
+      return {
+        left:
+          "calc(50% + clamp(210px, 25vw, 330px))",
+        top: "50%",
+        width:
+          "clamp(210px, 27vw, 340px)",
+        height:
+          "clamp(280px, 35vw, 420px)",
+        transform:
+          "translate(-50%, -50%) scale(0.88)",
+        zIndex: 20,
+        opacity: 0.82,
+      };
+    }
+
+    /*
+     * FAR LEFT
+     */
+    if (position === -2) {
+      return {
+        left:
+          "calc(50% - clamp(390px, 45vw, 560px))",
+        top: "50%",
+        width:
+          "clamp(170px, 22vw, 280px)",
+        height:
+          "clamp(230px, 29vw, 350px)",
+        transform:
+          "translate(-50%, -50%) scale(0.76)",
+        zIndex: 10,
+        opacity: 0.45,
+      };
+    }
+
+    /*
+     * FAR RIGHT
+     */
+    if (position === 2) {
+      return {
+        left:
+          "calc(50% + clamp(390px, 45vw, 560px))",
+        top: "50%",
+        width:
+          "clamp(170px, 22vw, 280px)",
+        height:
+          "clamp(230px, 29vw, 350px)",
+        transform:
+          "translate(-50%, -50%) scale(0.76)",
+        zIndex: 10,
+        opacity: 0.45,
+      };
+    }
+
+    /*
+     * Everything else is hidden.
+     */
+    return {
+      left: "50%",
+      top: "50%",
+      width: "260px",
+      height: "340px",
+      transform:
+        "translate(-50%, -50%) scale(0.6)",
+      zIndex: 0,
+      opacity: 0,
+      pointerEvents: "none",
+    };
+  };
+
+  if (!uniqueGallery.length) {
+    return null;
   }
 
-  let globalIndex = 0;
+  const activeImage =
+    uniqueGallery[activeIndex];
 
   return (
     <>
-      <section className="relative overflow-hidden bg-background py-24 lg:py-32">
-
-        {/* =====================================================
-            BACKGROUND
-        ====================================================== */}
-
-        <div
-          aria-hidden
-          className="
-            pointer-events-none
-            absolute
-            -top-40
-            left-1/2
-            h-[600px]
-            w-[800px]
-            -translate-x-1/2
-            rounded-full
-            opacity-[0.12]
-            blur-3xl
-          "
-          style={{
-            background:
-              "radial-gradient(circle, color-mix(in oklab, var(--coral) 25%, transparent), transparent 70%)",
-          }}
-        />
-
-        {/* =====================================================
+      <section
+        className="
+          relative
+          overflow-hidden
+          bg-background
+          py-24
+          lg:py-32
+        "
+      >
+        {/* =================================================
             HEADER
-        ====================================================== */}
+        ================================================== */}
 
-        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-
-            <div className="max-w-4xl">
-
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div
+            className="
+              flex
+              flex-col
+              gap-7
+              lg:flex-row
+              lg:items-end
+              lg:justify-between
+            "
+          >
+            <div className="max-w-3xl">
               <div className="flex items-center gap-3">
-                <span className="h-px w-10 bg-coral" />
+                <span className="h-px w-9 bg-coral" />
 
-                <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-coral">
+                <p
+                  className="
+                    text-[10px]
+                    font-bold
+                    uppercase
+                    tracking-[0.32em]
+                    text-coral
+                  "
+                >
                   {eyebrow}
                 </p>
               </div>
 
               <h2
                 className="
-                  mt-6
-                  max-w-4xl
+                  mt-5
                   font-display
                   text-4xl
                   font-extrabold
-                  leading-[0.92]
-                  tracking-[-0.04em]
+                  leading-[0.95]
+                  tracking-[-0.035em]
                   text-foreground
                   sm:text-5xl
-                  lg:text-7xl
+                  lg:text-6xl
                 "
               >
                 {title}
@@ -213,22 +348,35 @@ export function Gallery({
             </div>
 
             <div className="max-w-md">
-
-              <p className="text-sm leading-7 text-muted-foreground">
+              <p
+                className="
+                  text-sm
+                  leading-7
+                  text-muted-foreground
+                "
+              >
                 {intro}
               </p>
 
-              <div className="mt-7 flex items-center gap-4">
-
+              <div
+                className="
+                  mt-5
+                  flex
+                  items-center
+                  gap-3
+                "
+              >
                 <span
                   className="
-                    text-3xl
+                    text-2xl
                     font-bold
                     tracking-tight
                     text-foreground
                   "
                 >
-                  {String(uniqueGallery.length).padStart(2, "0")}
+                  {String(
+                    uniqueGallery.length,
+                  ).padStart(2, "0")}
                 </span>
 
                 <span
@@ -236,432 +384,439 @@ export function Gallery({
                     text-[9px]
                     font-bold
                     uppercase
-                    tracking-[0.3em]
+                    tracking-[0.28em]
                     text-muted-foreground
                   "
                 >
-                  Moments<br />
-                  from the field
+                  Field moments
                 </span>
-
               </div>
             </div>
-
           </div>
         </div>
 
-        {/* =====================================================
-            GALLERY WALL
-        ====================================================== */}
+        {/* =================================================
+            CAROUSEL
+        ================================================== */}
 
-        <div className="relative mt-16 lg:mt-20">
+        <div
+          className="
+            relative
+            mx-auto
+            mt-16
+            h-[500px]
+            w-full
+            max-w-[1500px]
+            overflow-hidden
+            sm:h-[560px]
+            lg:mt-20
+            lg:h-[620px]
+          "
+          onMouseEnter={() =>
+            setIsPaused(true)
+          }
+          onMouseLeave={() =>
+            setIsPaused(false)
+          }
+        >
+          {/* Soft central glow */}
 
-          {/* Thin top rule */}
-          <div className="mx-auto max-w-[1500px] border-t border-border/60" />
+          <div
+            aria-hidden
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              h-[400px]
+              w-[500px]
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              opacity-20
+              blur-3xl
+            "
+            style={{
+              background:
+                "radial-gradient(circle, color-mix(in oklab, var(--coral) 20%, transparent), transparent 70%)",
+            }}
+          />
 
-          <div className="mx-auto max-w-[1500px]">
+          {/* Cards */}
 
-            {rows.map((row, rowIndex) => {
-              const rowLayout =
-                rowIndex < layouts.length
-                  ? layouts[rowIndex]
-                  : Array(row.length).fill("col-span-4");
+          <div
+            className="
+              absolute
+              inset-0
+            "
+          >
+            {uniqueGallery.map(
+              (item, index) => {
+                const position =
+                  getRelativePosition(index);
 
-              return (
-                <div
-                  key={`gallery-row-${rowIndex}`}
-                  className="
-                    grid
-                    grid-cols-12
-                    gap-[2px]
-                    bg-border/60
-                  "
-                >
-                  {row.map((item, columnIndex) => {
+                const style =
+                  getCardStyle(position);
 
-                    const currentIndex = globalIndex++;
+                /*
+                 * Only render the five visible
+                 * positions for performance.
+                 */
+                if (Math.abs(position) > 2) {
+                  return null;
+                }
 
-                    const span =
-                      rowLayout[columnIndex] || "col-span-4";
+                const isActive =
+                  position === 0;
 
-                    return (
-                      <button
-                        key={`${item.url}-${currentIndex}`}
-                        type="button"
-                        onClick={() => setOpen(currentIndex)}
-                        aria-label={`Open image: ${item.alt}`}
-                        className={`
-                          group
-                          relative
-                          ${span}
-                          h-[220px]
-                          overflow-hidden
-                          bg-brand-deep
-                          text-left
-                          outline-none
+                return (
+                  <button
+                    key={`${item.url}-${index}`}
+                    type="button"
+                    onClick={() => {
+                      if (isActive) {
+                        setLightboxOpen(true);
+                      } else {
+                        setActiveIndex(index);
+                      }
+                    }}
+                    aria-label={
+                      isActive
+                        ? `Open image: ${item.alt}`
+                        : `View image: ${item.alt}`
+                    }
+                    className="
+                      absolute
+                      overflow-hidden
+                      rounded-[24px]
+                      bg-brand-deep
+                      text-left
+                      shadow-[0_25px_70px_rgba(0,0,0,0.18)]
+                      outline-none
+                      transition-all
+                      duration-[900ms]
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      focus-visible:ring-2
+                      focus-visible:ring-coral
+                      focus-visible:ring-offset-4
+                    "
+                    style={style}
+                  >
+                    {/* Image */}
 
-                          sm:h-[260px]
+                    <img
+                      src={item.url}
+                      alt={item.alt}
+                      loading={
+                        isActive
+                          ? "eager"
+                          : "lazy"
+                      }
+                      className="
+                        absolute
+                        inset-0
+                        h-full
+                        w-full
+                        object-cover
+                        transition-transform
+                        duration-[1000ms]
+                        ease-[cubic-bezier(0.22,1,0.36,1)]
+                        group-hover:scale-105
+                      "
+                    />
 
-                          lg:h-[310px]
+                    {/* Gradient */}
 
-                          xl:h-[340px]
+                    <div
+                      aria-hidden
+                      className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-t
+                        from-black/75
+                        via-black/5
+                        to-transparent
+                      "
+                    />
 
-                          transition-all
-                          duration-500
-                        `}
+                    {/* Active image border */}
+
+                    {isActive && (
+                      <div
+                        aria-hidden
+                        className="
+                          pointer-events-none
+                          absolute
+                          inset-0
+                          rounded-[24px]
+                          border
+                          border-white/20
+                        "
+                      />
+                    )}
+
+                    {/* Active image expand button */}
+
+                    {isActive && (
+                      <span
+                        aria-hidden
+                        className="
+                          absolute
+                          right-5
+                          top-5
+                          flex
+                          size-10
+                          items-center
+                          justify-center
+                          rounded-full
+                          border
+                          border-white/20
+                          bg-black/20
+                          text-white
+                          backdrop-blur-xl
+                        "
                       >
+                        <Expand className="size-4" />
+                      </span>
+                    )}
 
-                        {/* =================================================
-                            IMAGE
-                        ================================================== */}
+                    {/* Caption */}
 
-                        <img
-                          src={item.url}
-                          alt={item.alt}
-                          loading={
-                            currentIndex === 0
-                              ? "eager"
-                              : "lazy"
-                          }
+                    {isActive && (
+                      <div
+                        className="
+                          absolute
+                          inset-x-0
+                          bottom-0
+                          p-6
+                        "
+                      >
+                        <p
                           className="
-                            absolute
-                            inset-0
-                            h-full
-                            w-full
-                            object-cover
-
-                            transition-transform
-                            duration-[900ms]
-                            ease-[cubic-bezier(0.22,1,0.36,1)]
-
-                            group-hover:scale-[1.06]
+                            text-xs
+                            font-semibold
+                            leading-5
+                            text-white
                           "
-                        />
+                        >
+                          {item.alt}
+                        </p>
 
-                        {/* =================================================
-                            HOVER OVERLAY
-                        ================================================== */}
-
-                        <div
-                          aria-hidden
+                        <p
                           className="
-                            absolute
-                            inset-0
-                            bg-black/0
-
-                            transition-all
-                            duration-500
-
-                            group-hover:bg-black/30
-                          "
-                        />
-
-                        {/* Bottom gradient */}
-
-                        <div
-                          aria-hidden
-                          className="
-                            absolute
-                            inset-x-0
-                            bottom-0
-                            h-2/3
-
-                            bg-gradient-to-t
-                            from-black/80
-                            via-black/20
-                            to-transparent
-
-                            opacity-60
-
-                            transition-opacity
-                            duration-500
-
-                            group-hover:opacity-100
-                          "
-                        />
-
-                        {/* =================================================
-                            NUMBER
-                        ================================================== */}
-
-                        <span
-                          className="
-                            absolute
-                            left-5
-                            top-5
-
+                            mt-2
                             text-[9px]
                             font-bold
+                            uppercase
                             tracking-[0.28em]
-                            text-white/60
-
-                            transition-colors
-                            duration-300
-
-                            group-hover:text-white
+                            text-white/50
                           "
                         >
-                          {String(currentIndex + 1).padStart(2, "0")}
-                        </span>
-
-                        {/* =================================================
-                            ARROW
-                        ================================================== */}
-
-                        <span
-                          aria-hidden
-                          className="
-                            absolute
-                            right-5
-                            top-5
-
-                            flex
-                            size-11
-                            items-center
-                            justify-center
-
-                            rounded-full
-
-                            border
-                            border-white/20
-
-                            bg-black/20
-
-                            text-white
-
-                            opacity-0
-                            scale-75
-
-                            backdrop-blur-xl
-
-                            transition-all
-                            duration-500
-
-                            group-hover:scale-100
-                            group-hover:opacity-100
-                          "
-                        >
-                          <ArrowUpRight className="size-4" />
-                        </span>
-
-                        {/* =================================================
-                            CAPTION
-                        ================================================== */}
-
-                        <div
-                          className="
-                            absolute
-                            inset-x-0
-                            bottom-0
-                            p-5
-                            lg:p-6
-                          "
-                        >
-                          <p
-                            className="
-                              max-w-[90%]
-
-                              translate-y-3
-
-                              text-xs
-                              font-semibold
-                              leading-5
-                              text-white
-
-                              opacity-0
-
-                              transition-all
-                              duration-500
-
-                              group-hover:translate-y-0
-                              group-hover:opacity-100
-                            "
-                          >
-                            {item.alt}
-                          </p>
-                        </div>
-
-                        {/* =================================================
-                            BORDER
-                        ================================================== */}
-
-                        <span
-                          aria-hidden
-                          className="
-                            pointer-events-none
-                            absolute
-                            inset-0
-
-                            border
-                            border-white/0
-
-                            transition-colors
-                            duration-500
-
-                            group-hover:border-white/25
-                          "
-                        />
-
-                      </button>
-                    );
-                  })}
-                </div>
-              );
-            })}
-
+                          {String(
+                            index + 1,
+                          ).padStart(2, "0")}{" "}
+                          /{" "}
+                          {String(
+                            uniqueGallery.length,
+                          ).padStart(2, "0")}
+                        </p>
+                      </div>
+                    )}
+                  </button>
+                );
+              },
+            )}
           </div>
 
-          {/* Bottom rule */}
-          <div className="mx-auto max-w-[1500px] border-b border-border/60" />
-        </div>
+          {/* =================================================
+              CONTROLS
+          ================================================== */}
 
-        {/* =====================================================
-            SMALL FOOTER LABEL
-        ====================================================== */}
-
-        <div className="mx-auto mt-6 flex max-w-[1500px] items-center justify-between px-5 lg:px-8">
-
-          <span
+          <div
             className="
-              text-[9px]
-              font-bold
-              uppercase
-              tracking-[0.3em]
-              text-muted-foreground
+              absolute
+              bottom-2
+              left-1/2
+              z-40
+              flex
+              -translate-x-1/2
+              items-center
+              gap-3
             "
           >
-            Field execution
-          </span>
+            <button
+              type="button"
+              aria-label="Previous image"
+              onClick={previous}
+              className="
+                flex
+                size-12
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-foreground/20
+                bg-background/80
+                text-foreground
+                backdrop-blur-md
+                transition-all
+                duration-300
+                hover:-translate-x-0.5
+                hover:bg-background
+              "
+            >
+              <ChevronLeft className="size-4" />
+            </button>
 
-          <span
+            <button
+              type="button"
+              aria-label="Next image"
+              onClick={next}
+              className="
+                flex
+                size-12
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-foreground/20
+                bg-background/80
+                text-foreground
+                backdrop-blur-md
+                transition-all
+                duration-300
+                hover:translate-x-0.5
+                hover:bg-background
+              "
+            >
+              <ChevronRight className="size-4" />
+            </button>
+          </div>
+
+          {/* Progress */}
+
+          <div
             className="
-              text-[9px]
-              font-bold
-              uppercase
-              tracking-[0.3em]
-              text-muted-foreground
+              absolute
+              bottom-5
+              left-5
+              right-5
+              hidden
+              sm:block
             "
           >
-            India · MT · GT
-          </span>
-
+            <div
+              className="
+                h-px
+                w-full
+                bg-foreground/10
+              "
+            >
+              <div
+                className="
+                  h-px
+                  bg-coral
+                  transition-all
+                  duration-700
+                "
+                style={{
+                  width: `${
+                    ((activeIndex + 1) /
+                      uniqueGallery.length) *
+                    100
+                  }%`,
+                }}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* =======================================================
+      {/* =====================================================
           LIGHTBOX
-      ======================================================== */}
+      ====================================================== */}
 
-      {active && (
+      {lightboxOpen && activeImage && (
         <div
           className="
             fixed
             inset-0
             z-[100]
-
             flex
             items-center
             justify-center
-
-            bg-black/[0.97]
-
+            bg-black/[0.96]
             p-4
-
             backdrop-blur-2xl
-
             animate-in
             fade-in
             duration-300
           "
-          onClick={close}
+          onClick={() =>
+            setLightboxOpen(false)
+          }
           role="dialog"
           aria-modal="true"
           aria-label="Image viewer"
         >
-
-          {/* Close */}
-
           <button
             type="button"
             aria-label="Close image viewer"
-            onClick={close}
+            onClick={() =>
+              setLightboxOpen(false)
+            }
             className="
               absolute
               right-5
               top-5
               z-30
-
               flex
               size-11
               items-center
               justify-center
-
               rounded-full
-
               border
-              border-white/15
-
+              border-white/20
               bg-white/5
-
               text-white
-
               backdrop-blur-xl
-
               transition-all
-              duration-300
-
               hover:scale-105
               hover:bg-white/10
             "
           >
-            <X className="size-5" />
+            ×
           </button>
-
-          {/* Previous */}
 
           <button
             type="button"
             aria-label="Previous image"
             onClick={(event) => {
               event.stopPropagation();
-              prev();
+              previous();
             }}
             className="
               absolute
-              left-3
+              left-4
               top-1/2
               z-30
-
               flex
               size-12
               -translate-y-1/2
               items-center
               justify-center
-
               rounded-full
-
               border
-              border-white/15
-
+              border-white/20
               bg-black/30
-
               text-white
-
               backdrop-blur-xl
-
-              transition-all
-              duration-300
-
-              hover:scale-105
               hover:bg-white/10
-
               lg:left-8
             "
           >
             <ChevronLeft className="size-5" />
           </button>
-
-          {/* Next */}
 
           <button
             type="button"
@@ -672,77 +827,71 @@ export function Gallery({
             }}
             className="
               absolute
-              right-3
+              right-4
               top-1/2
               z-30
-
               flex
               size-12
               -translate-y-1/2
               items-center
               justify-center
-
               rounded-full
-
               border
-              border-white/15
-
+              border-white/20
               bg-black/30
-
               text-white
-
               backdrop-blur-xl
-
-              transition-all
-              duration-300
-
-              hover:scale-105
               hover:bg-white/10
-
               lg:right-8
             "
           >
             <ChevronRight className="size-5" />
           </button>
 
-          {/* Image */}
-
           <figure
-            key={active.url}
-            onClick={(event) => event.stopPropagation()}
+            onClick={(event) =>
+              event.stopPropagation()
+            }
             className="
               flex
               max-h-[90vh]
               max-w-[90vw]
               flex-col
               items-center
-
               animate-in
               fade-in
               zoom-in-95
               duration-500
             "
           >
-
             <img
-              src={active.url}
-              alt={active.alt}
+              src={activeImage.url}
+              alt={activeImage.alt}
               className="
                 max-h-[78vh]
                 max-w-[88vw]
-
-                rounded-xl
-
+                rounded-2xl
                 object-contain
-
                 shadow-2xl
               "
             />
 
-            <figcaption className="mt-5 max-w-2xl text-center">
-
-              <p className="text-sm font-medium leading-relaxed text-white">
-                {active.alt}
+            <figcaption
+              className="
+                mt-5
+                max-w-2xl
+                text-center
+              "
+            >
+              <p
+                className="
+                  text-sm
+                  font-medium
+                  leading-relaxed
+                  text-white
+                "
+              >
+                {activeImage.alt}
               </p>
 
               <p
@@ -755,11 +904,10 @@ export function Gallery({
                   text-white/40
                 "
               >
-                {(open ?? 0) + 1} / {uniqueGallery.length}
+                {activeIndex + 1} /{" "}
+                {uniqueGallery.length}
               </p>
-
             </figcaption>
-
           </figure>
         </div>
       )}
