@@ -16,9 +16,17 @@ export function Gallery({
   const [isPaused, setIsPaused] = useState(false);
   const [open, setOpen] = useState<number | null>(null);
 
+  /* ============================================================
+     CLOSE LIGHTBOX
+  ============================================================ */
+
   const close = useCallback(() => {
     setOpen(null);
   }, []);
+
+  /* ============================================================
+     NEXT IMAGE
+  ============================================================ */
 
   const next = useCallback(() => {
     setOpen((current) => {
@@ -30,22 +38,31 @@ export function Gallery({
     });
   }, []);
 
+  /* ============================================================
+     PREVIOUS IMAGE
+  ============================================================ */
+
   const previous = useCallback(() => {
     setOpen((current) => {
       if (current === null || gallery.length === 0) {
         return null;
       }
 
-      return (current - 1 + gallery.length) % gallery.length;
+      return (
+        (current - 1 + gallery.length) %
+        gallery.length
+      );
     });
   }, []);
 
-  /* ==========================================================
-     KEYBOARD CONTROLS FOR FULLSCREEN VIEWER
-  ========================================================== */
+  /* ============================================================
+     KEYBOARD CONTROLS
+  ============================================================ */
 
   useEffect(() => {
-    if (open === null) return;
+    if (open === null) {
+      return;
+    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -61,30 +78,50 @@ export function Gallery({
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener(
+      "keydown",
+      handleKeyDown,
+    );
 
-    const previousOverflow = document.body.style.overflow;
+    const previousOverflow =
+      document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [open, close, next, previous]);
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown,
+      );
 
-  const active = open === null ? null : gallery[open];
+      document.body.style.overflow =
+        previousOverflow;
+    };
+  }, [
+    open,
+    close,
+    next,
+    previous,
+  ]);
+
+  const active =
+    open === null
+      ? null
+      : gallery[open];
 
   return (
     <>
       {/* ========================================================
-          LOCAL GALLERY CSS
+          GALLERY LOCAL STYLES
 
-          No changes to styles.css required.
+          Everything required for the marquee is contained here.
+          No changes to styles.css are required.
       ========================================================= */}
 
       <style>{`
+
         /* ======================================================
-           GALLERY WINDOW
+           GALLERY VIEWPORT
         ====================================================== */
 
         .nm-gallery-window {
@@ -96,6 +133,8 @@ export function Gallery({
 
         /* ======================================================
            MOVING TRACK
+
+           52 seconds = deliberately slow / premium movement.
         ====================================================== */
 
         .nm-gallery-track {
@@ -104,7 +143,7 @@ export function Gallery({
           flex-shrink: 0;
 
           animation-name: nm-gallery-scroll;
-          animation-duration: 42s;
+          animation-duration: 52s;
           animation-timing-function: linear;
           animation-iteration-count: infinite;
           animation-fill-mode: both;
@@ -114,7 +153,7 @@ export function Gallery({
 
 
         /* ======================================================
-           PAUSE ON HOVER
+           PAUSE WHEN MOUSE IS OVER GALLERY
         ====================================================== */
 
         .nm-gallery-track.nm-gallery-paused {
@@ -129,25 +168,35 @@ export function Gallery({
         .nm-gallery-group {
           display: flex;
           flex-shrink: 0;
+
           gap: 24px;
+
           padding-right: 24px;
         }
 
 
         /* ======================================================
-           SEAMLESS LOOP
+           SEAMLESS INFINITE ANIMATION
 
-           The second image group is identical to the first.
-           The track moves exactly 50%.
+           The two image groups are identical.
+           Moving exactly 50% creates the seamless loop.
         ====================================================== */
 
         @keyframes nm-gallery-scroll {
           from {
-            transform: translate3d(0, 0, 0);
+            transform: translate3d(
+              0,
+              0,
+              0
+            );
           }
 
           to {
-            transform: translate3d(-50%, 0, 0);
+            transform: translate3d(
+              -50%,
+              0,
+              0
+            );
           }
         }
 
@@ -170,7 +219,13 @@ export function Gallery({
 
           background: #123b61;
 
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          border: 1px solid
+            rgba(
+              255,
+              255,
+              255,
+              0.12
+            );
 
           cursor: pointer;
 
@@ -186,6 +241,9 @@ export function Gallery({
 
         /* ======================================================
            IMAGE
+
+           object-fit: cover means every image fits the same
+           visual card regardless of original dimensions.
         ====================================================== */
 
         .nm-gallery-card-image {
@@ -201,10 +259,19 @@ export function Gallery({
           transform: scale(1);
 
           transition:
-            transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
-            filter 700ms ease;
+            transform 700ms
+              cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+              );
         }
 
+
+        /* ======================================================
+           HOVER IMAGE ZOOM
+        ====================================================== */
 
         .nm-gallery-card:hover
         .nm-gallery-card-image {
@@ -213,7 +280,10 @@ export function Gallery({
 
 
         /* ======================================================
-           DARK IMAGE GRADIENT
+           IMAGE OVERLAY
+
+           No text is displayed.
+           This only gives the images a subtle premium depth.
         ====================================================== */
 
         .nm-gallery-card-overlay {
@@ -226,12 +296,21 @@ export function Gallery({
           background:
             linear-gradient(
               to top,
-              rgba(0, 0, 0, 0.78) 0%,
-              rgba(0, 0, 0, 0.18) 43%,
-              rgba(0, 0, 0, 0) 72%
+              rgba(
+                0,
+                0,
+                0,
+                0.28
+              ),
+              rgba(
+                0,
+                0,
+                0,
+                0
+              ) 65%
             );
 
-          opacity: 0.68;
+          opacity: 0.55;
 
           transition:
             opacity 500ms ease;
@@ -240,175 +319,31 @@ export function Gallery({
 
         .nm-gallery-card:hover
         .nm-gallery-card-overlay {
-          opacity: 0.92;
+          opacity: 0.8;
         }
 
 
         /* ======================================================
-           NUMBER
-        ====================================================== */
-
-        .nm-gallery-number {
-          position: absolute;
-
-          left: 18px;
-          top: 18px;
-
-          padding: 7px 11px;
-
-          border-radius: 999px;
-
-          border: 1px solid rgba(255, 255, 255, 0.28);
-
-          background: rgba(0, 0, 0, 0.18);
-
-          color: rgba(255, 255, 255, 0.9);
-
-          font-size: 10px;
-
-          font-weight: 700;
-
-          letter-spacing: 0.18em;
-
-          backdrop-filter: blur(12px);
-        }
-
-
-        /* ======================================================
-           EXPAND ICON
-        ====================================================== */
-
-        .nm-gallery-expand {
-          position: absolute;
-
-          right: 18px;
-          top: 18px;
-
-          display: flex;
-
-          width: 40px;
-          height: 40px;
-
-          align-items: center;
-          justify-content: center;
-
-          border-radius: 999px;
-
-          border: 1px solid rgba(255, 255, 255, 0.28);
-
-          background: rgba(0, 0, 0, 0.18);
-
-          color: white;
-
-          backdrop-filter: blur(12px);
-
-          opacity: 0;
-
-          transform: scale(0.85);
-
-          transition:
-            opacity 400ms ease,
-            transform 400ms ease;
-        }
-
-
-        .nm-gallery-card:hover
-        .nm-gallery-expand {
-          opacity: 1;
-
-          transform: scale(1);
-        }
-
-
-        /* ======================================================
-           CAPTION
-        ====================================================== */
-
-        .nm-gallery-caption {
-          position: absolute;
-
-          left: 20px;
-          right: 20px;
-
-          bottom: 24px;
-
-          padding-right: 5px;
-
-          color: white;
-
-          font-size: 14px;
-
-          font-weight: 600;
-
-          line-height: 1.55;
-
-          opacity: 0;
-
-          transform: translateY(12px);
-
-          transition:
-            opacity 450ms ease,
-            transform 450ms ease;
-        }
-
-
-        .nm-gallery-card:hover
-        .nm-gallery-caption {
-          opacity: 1;
-
-          transform: translateY(0);
-        }
-
-
-        /* ======================================================
-           CORAL ACCENT
-        ====================================================== */
-
-        .nm-gallery-accent {
-          position: absolute;
-
-          left: 20px;
-
-          bottom: 18px;
-
-          width: 32px;
-
-          height: 2px;
-
-          background: #f04438;
-
-          transition:
-            width 450ms ease;
-        }
-
-
-        .nm-gallery-card:hover
-        .nm-gallery-accent {
-          width: 58px;
-        }
-
-
-        /* ======================================================
-           CARD HOVER
+           HOVER BORDER
         ====================================================== */
 
         .nm-gallery-card:hover {
-          border-color: rgba(255, 255, 255, 0.28);
+          border-color:
+            rgba(
+              255,
+              255,
+              255,
+              0.28
+            );
 
           box-shadow:
-            0 20px 50px rgba(7, 31, 54, 0.20);
-        }
-
-
-        /* ======================================================
-           FOCUS
-        ====================================================== */
-
-        .nm-gallery-card:focus-visible {
-          border-color: #f04438;
-
-          box-shadow:
-            0 0 0 3px rgba(240, 68, 56, 0.25);
+            0 20px 50px
+            rgba(
+              7,
+              31,
+              54,
+              0.18
+            );
         }
 
 
@@ -461,10 +396,29 @@ export function Gallery({
 
 
         /* ======================================================
+           FOCUS ACCESSIBILITY
+        ====================================================== */
+
+        .nm-gallery-card:focus-visible {
+          border-color: #f04438;
+
+          box-shadow:
+            0 0 0 3px
+            rgba(
+              240,
+              68,
+              56,
+              0.25
+            );
+        }
+
+
+        /* ======================================================
            TABLET
         ====================================================== */
 
         @media (max-width: 1024px) {
+
           .nm-gallery-card {
             width: 300px;
             height: 400px;
@@ -474,6 +428,7 @@ export function Gallery({
 
           .nm-gallery-group {
             gap: 18px;
+
             padding-right: 18px;
           }
 
@@ -489,8 +444,9 @@ export function Gallery({
         ====================================================== */
 
         @media (max-width: 640px) {
+
           .nm-gallery-track {
-            animation-duration: 34s;
+            animation-duration: 42s;
           }
 
           .nm-gallery-card {
@@ -502,6 +458,7 @@ export function Gallery({
 
           .nm-gallery-group {
             gap: 14px;
+
             padding-right: 14px;
           }
 
@@ -510,6 +467,7 @@ export function Gallery({
             width: 35px;
           }
         }
+
       `}</style>
 
 
@@ -588,6 +546,7 @@ export function Gallery({
 
               </div>
 
+
               <h2
                 className="
                   font-display
@@ -629,7 +588,13 @@ export function Gallery({
 
 
         {/* ======================================================
-            AUTO-SCROLLING GALLERY
+            AUTO-SCROLLING IMAGE GALLERY
+
+            Hover anywhere over this area:
+            PAUSE
+
+            Move mouse away:
+            RESUME
         ====================================================== */}
 
         <div
@@ -638,80 +603,113 @@ export function Gallery({
             mt-14
           "
 
-          /*
-           * IMPORTANT:
-           *
-           * Hovering anywhere over the gallery pauses
-           * the entire marquee.
-           *
-           * Moving outside resumes it.
-           */
+          onMouseEnter={() =>
+            setIsPaused(true)
+          }
 
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseLeave={() =>
+            setIsPaused(false)
+          }
         >
 
-          {/* LEFT FADE */}
+          {/* LEFT EDGE FADE */}
 
           <div
             aria-hidden="true"
-            className="nm-gallery-fade-left"
+            className="
+              nm-gallery-fade-left
+            "
           />
 
 
-          {/* RIGHT FADE */}
+          {/* RIGHT EDGE FADE */}
 
           <div
             aria-hidden="true"
-            className="nm-gallery-fade-right"
+            className="
+              nm-gallery-fade-right
+            "
           />
 
 
           {/* ====================================================
               TRACK
-
-              TWO IDENTICAL GROUPS = SEAMLESS LOOP
           ===================================================== */}
 
           <div
             className={`
               nm-gallery-track
 
-              ${isPaused ? "nm-gallery-paused" : ""}
+              ${
+                isPaused
+                  ? "nm-gallery-paused"
+                  : ""
+              }
             `}
           >
 
-            {/* FIRST GROUP */}
+            {/* ==================================================
+                FIRST IMAGE SET
+            ================================================== */}
 
-            <div className="nm-gallery-group">
+            <div
+              className="
+                nm-gallery-group
+              "
+            >
 
-              {gallery.map((image, index) => (
-                <GalleryCard
-                  key={`first-${image.url}-${index}`}
-                  image={image}
-                  index={index}
-                  onOpen={() => setOpen(index)}
-                />
-              ))}
+              {gallery.map(
+                (image, index) => (
+                  <GalleryCard
+                    key={
+                      `first-${image.url}-${index}`
+                    }
+
+                    image={image}
+
+                    index={index}
+
+                    onOpen={() =>
+                      setOpen(index)
+                    }
+                  />
+                ),
+              )}
 
             </div>
 
 
-            {/* SECOND GROUP */}
+            {/* ==================================================
+                SECOND IMAGE SET
+
+                Identical copy creates seamless looping.
+            ================================================== */}
 
             <div
-              className="nm-gallery-group"
+              className="
+                nm-gallery-group
+              "
+
               aria-hidden="true"
             >
 
-              {gallery.map((image, index) => (
-                <GalleryCard
-                  key={`second-${image.url}-${index}`}
-                  image={image}
-                  index={index}
-                  onOpen={() => setOpen(index)}
-                />
-              ))}
+              {gallery.map(
+                (image, index) => (
+                  <GalleryCard
+                    key={
+                      `second-${image.url}-${index}`
+                    }
+
+                    image={image}
+
+                    index={index}
+
+                    onOpen={() =>
+                      setOpen(index)
+                    }
+                  />
+                ),
+              )}
 
             </div>
 
@@ -719,76 +717,14 @@ export function Gallery({
 
         </div>
 
-
         {/* ======================================================
-            STATUS
+            NO TEXT / STATUS BAR HERE
+
+            Intentionally removed:
+            - Field execution in motion
+            - Hover to pause
+            - Click to explore
         ====================================================== */}
-
-        <div
-          className="
-            mx-auto
-            mt-8
-            flex
-            max-w-7xl
-            items-center
-            justify-between
-            px-6
-            lg:px-8
-          "
-        >
-
-          <div className="flex items-center gap-3">
-
-            <span
-              className={`
-                size-2
-                rounded-full
-                bg-coral
-
-                transition-opacity
-                duration-300
-
-                ${
-                  isPaused
-                    ? "opacity-30"
-                    : "animate-pulse"
-                }
-              `}
-            />
-
-            <span
-              className="
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.22em]
-                text-muted-foreground
-              "
-            >
-              {isPaused
-                ? "Gallery paused"
-                : "Field execution in motion"}
-            </span>
-
-          </div>
-
-
-          <span
-            className="
-              hidden
-              text-[10px]
-              font-bold
-              uppercase
-              tracking-[0.22em]
-              text-muted-foreground/50
-
-              sm:block
-            "
-          >
-            Hover to pause · Click to explore
-          </span>
-
-        </div>
 
       </section>
 
@@ -804,11 +740,15 @@ export function Gallery({
             fixed
             inset-0
             z-[100]
+
             flex
             items-center
             justify-center
+
             bg-[#071F36]/95
+
             p-5
+
             backdrop-blur-xl
           "
 
@@ -822,7 +762,7 @@ export function Gallery({
         >
 
           {/* ====================================================
-              CLOSE
+              CLOSE BUTTON
           ===================================================== */}
 
           <button
@@ -860,7 +800,9 @@ export function Gallery({
               hover:bg-white/10
             "
           >
+
             <X className="size-5" />
+
           </button>
 
 
@@ -875,6 +817,7 @@ export function Gallery({
 
             onClick={(event) => {
               event.stopPropagation();
+
               previous();
             }}
 
@@ -907,7 +850,9 @@ export function Gallery({
               lg:left-8
             "
           >
+
             <ChevronLeft className="size-5" />
+
           </button>
 
 
@@ -922,6 +867,7 @@ export function Gallery({
 
             onClick={(event) => {
               event.stopPropagation();
+
               next();
             }}
 
@@ -954,7 +900,9 @@ export function Gallery({
               lg:right-8
             "
           >
+
             <ChevronRight className="size-5" />
+
           </button>
 
 
@@ -992,42 +940,6 @@ export function Gallery({
               "
             />
 
-
-            <figcaption
-              className="
-                mt-5
-                text-center
-              "
-            >
-
-              <p
-                className="
-                  text-sm
-                  font-medium
-                  text-white
-                "
-              >
-                {active.alt}
-              </p>
-
-
-              <p
-                className="
-                  mt-2
-                  text-[10px]
-                  font-bold
-                  uppercase
-                  tracking-[0.25em]
-                  text-white/40
-                "
-              >
-                {open !== null
-                  ? `${open + 1} / ${gallery.length}`
-                  : ""}
-              </p>
-
-            </figcaption>
-
           </figure>
 
         </div>
@@ -1039,6 +951,12 @@ export function Gallery({
 
 /* ==============================================================
    GALLERY CARD
+
+   IMPORTANT:
+   There is NO text on the image.
+   No number.
+   No caption.
+   No "click to explore".
 ================================================================ */
 
 function GalleryCard({
@@ -1069,8 +987,6 @@ function GalleryCard({
       "
     >
 
-      {/* IMAGE */}
-
       <img
         src={image.url}
 
@@ -1090,60 +1006,15 @@ function GalleryCard({
       />
 
 
-      {/* DARK GRADIENT */}
+      {/* SUBTLE OVERLAY */}
 
       <span
         aria-hidden="true"
+
         className="
           nm-gallery-card-overlay
         "
       />
-
-
-      {/* NUMBER */}
-
-      <span
-        className="
-          nm-gallery-number
-        "
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-
-      {/* EXPAND */}
-
-      <span
-        aria-hidden="true"
-
-        className="
-          nm-gallery-expand
-        "
-      >
-        <ChevronRight className="size-4" />
-      </span>
-
-
-      {/* CORAL ACCENT */}
-
-      <span
-        aria-hidden="true"
-
-        className="
-          nm-gallery-accent
-        "
-      />
-
-
-      {/* CAPTION */}
-
-      <span
-        className="
-          nm-gallery-caption
-        "
-      >
-        {image.alt}
-      </span>
 
     </button>
   );
