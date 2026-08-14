@@ -1,10 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Expand,
-  X,
-} from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { gallery } from "@/lib/site-data";
 
 type GalleryProps = {
@@ -14,119 +9,60 @@ type GalleryProps = {
 };
 
 export function Gallery({
-  title = "On the floor, every day",
-  eyebrow = "Gallery",
-  intro = "Our teams inside modern trade and general trade stores across India: promoters, beauty advisors, merchandizers and activation crews at the last three feet.",
+  title = "Execution, where it matters.",
+  eyebrow = "In the field",
+  intro = "Our teams bring strategy to life at the last three feet, across stores, shelves, activations and shopper touchpoints.",
 }: GalleryProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [open, setOpen] = useState<number | null>(null);
 
   /*
-   * ------------------------------------------------------------
-   * REMOVE DUPLICATE IMAGES
-   * ------------------------------------------------------------
+   * One complete set of images.
+   *
+   * We render TWO identical groups side-by-side.
+   * CSS moves the entire track by exactly 50%.
+   * This creates a seamless infinite loop.
    */
+  const imageSet = gallery;
 
-  const uniqueGallery = useMemo(() => {
-    const seen = new Set<string>();
+  const close = useCallback(() => {
+    setOpen(null);
+  }, []);
 
-    return gallery.filter((item) => {
-      const normalizedUrl = item.url
-        .split("?")[0]
-        .toLowerCase()
-        .trim();
-
-      if (seen.has(normalizedUrl)) {
-        return false;
+  const next = useCallback(() => {
+    setOpen((current) => {
+      if (current === null || gallery.length === 0) {
+        return null;
       }
 
-      seen.add(normalizedUrl);
-      return true;
+      return (current + 1) % gallery.length;
+    });
+  }, []);
+
+  const previous = useCallback(() => {
+    setOpen((current) => {
+      if (current === null || gallery.length === 0) {
+        return null;
+      }
+
+      return (
+        (current - 1 + gallery.length) %
+        gallery.length
+      );
     });
   }, []);
 
   /*
-   * ------------------------------------------------------------
-   * KEEP ACTIVE INDEX VALID
-   * ------------------------------------------------------------
+   * Keyboard controls for image viewer.
    */
-
   useEffect(() => {
-    if (
-      uniqueGallery.length > 0 &&
-      activeIndex >= uniqueGallery.length
-    ) {
-      setActiveIndex(0);
-    }
-  }, [activeIndex, uniqueGallery.length]);
+    if (open === null) return;
 
-  /*
-   * ------------------------------------------------------------
-   * NEXT IMAGE
-   * ------------------------------------------------------------
-   */
-
-  const next = useCallback(() => {
-    if (uniqueGallery.length <= 1) return;
-
-    setActiveIndex((current) => {
-      return (current + 1) % uniqueGallery.length;
-    });
-  }, [uniqueGallery.length]);
-
-  /*
-   * ------------------------------------------------------------
-   * PREVIOUS IMAGE
-   * ------------------------------------------------------------
-   */
-
-  const previous = useCallback(() => {
-    if (uniqueGallery.length <= 1) return;
-
-    setActiveIndex((current) => {
-      return (
-        (current - 1 + uniqueGallery.length) %
-        uniqueGallery.length
-      );
-    });
-  }, [uniqueGallery.length]);
-
-  /*
-   * ------------------------------------------------------------
-   * AUTOMATIC SLIDESHOW
-   *
-   * Changes every 3.5 seconds.
-   * It does NOT pause on hover.
-   * ------------------------------------------------------------
-   */
-
-  useEffect(() => {
-    if (
-      lightboxOpen ||
-      uniqueGallery.length <= 1
-    ) {
-      return;
-    }
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => {
-        return (current + 1) % uniqueGallery.length;
-      });
-    }, 3500);
-
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [lightboxOpen, uniqueGallery.length]);
-
-  /*
-   * ------------------------------------------------------------
-   * KEYBOARD CONTROLS
-   * ------------------------------------------------------------
-   */
-
-  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        close();
+      }
+
       if (event.key === "ArrowRight") {
         next();
       }
@@ -134,36 +70,9 @@ export function Gallery({
       if (event.key === "ArrowLeft") {
         previous();
       }
-
-      if (
-        event.key === "Escape" &&
-        lightboxOpen
-      ) {
-        setLightboxOpen(false);
-      }
     };
 
-    window.addEventListener(
-      "keydown",
-      handleKeyDown,
-    );
-
-    return () => {
-      window.removeEventListener(
-        "keydown",
-        handleKeyDown,
-      );
-    };
-  }, [next, previous, lightboxOpen]);
-
-  /*
-   * ------------------------------------------------------------
-   * LOCK BODY SCROLL WHEN LIGHTBOX IS OPEN
-   * ------------------------------------------------------------
-   */
-
-  useEffect(() => {
-    if (!lightboxOpen) return;
+    window.addEventListener("keydown", handleKeyDown);
 
     const previousOverflow =
       document.body.style.overflow;
@@ -171,187 +80,18 @@ export function Gallery({
     document.body.style.overflow = "hidden";
 
     return () => {
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown,
+      );
+
       document.body.style.overflow =
         previousOverflow;
     };
-  }, [lightboxOpen]);
+  }, [open, close, next, previous]);
 
-  /*
-   * ------------------------------------------------------------
-   * GET RELATIVE POSITION
-   *
-   * 0  = active
-   * -1 = previous
-   * +1 = next
-   * -2 = far previous
-   * +2 = far next
-   * ------------------------------------------------------------
-   */
-
-  const getRelativePosition = (
-    index: number,
-  ) => {
-    const total = uniqueGallery.length;
-
-    if (!total) return 0;
-
-    let difference =
-      index - activeIndex;
-
-    if (difference > total / 2) {
-      difference -= total;
-    }
-
-    if (difference < -total / 2) {
-      difference += total;
-    }
-
-    return difference;
-  };
-
-  /*
-   * ------------------------------------------------------------
-   * CARD STYLE
-   * ------------------------------------------------------------
-   */
-
-  const getCardStyle = (
-    position: number,
-  ): React.CSSProperties => {
-    /*
-     * ACTIVE CENTER IMAGE
-     */
-
-    if (position === 0) {
-      return {
-        left: "50%",
-        top: "50%",
-        width:
-          "clamp(250px, 31vw, 420px)",
-        height:
-          "clamp(320px, 43vw, 520px)",
-        transform:
-          "translate(-50%, -50%) scale(1)",
-        opacity: 1,
-        zIndex: 40,
-      };
-    }
-
-    /*
-     * PREVIOUS IMAGE
-     */
-
-    if (position === -1) {
-      return {
-        left:
-          "calc(50% - clamp(200px, 25vw, 340px))",
-        top: "50%",
-        width:
-          "clamp(205px, 27vw, 350px)",
-        height:
-          "clamp(275px, 36vw, 425px)",
-        transform:
-          "translate(-50%, -50%) scale(0.88)",
-        opacity: 0.78,
-        zIndex: 30,
-      };
-    }
-
-    /*
-     * NEXT IMAGE
-     */
-
-    if (position === 1) {
-      return {
-        left:
-          "calc(50% + clamp(200px, 25vw, 340px))",
-        top: "50%",
-        width:
-          "clamp(205px, 27vw, 350px)",
-        height:
-          "clamp(275px, 36vw, 425px)",
-        transform:
-          "translate(-50%, -50%) scale(0.88)",
-        opacity: 0.78,
-        zIndex: 30,
-      };
-    }
-
-    /*
-     * FAR PREVIOUS
-     */
-
-    if (position === -2) {
-      return {
-        left:
-          "calc(50% - clamp(350px, 43vw, 570px))",
-        top: "50%",
-        width:
-          "clamp(170px, 21vw, 280px)",
-        height:
-          "clamp(225px, 29vw, 350px)",
-        transform:
-          "translate(-50%, -50%) scale(0.75)",
-        opacity: 0.38,
-        zIndex: 20,
-      };
-    }
-
-    /*
-     * FAR NEXT
-     */
-
-    if (position === 2) {
-      return {
-        left:
-          "calc(50% + clamp(350px, 43vw, 570px))",
-        top: "50%",
-        width:
-          "clamp(170px, 21vw, 280px)",
-        height:
-          "clamp(225px, 29vw, 350px)",
-        transform:
-          "translate(-50%, -50%) scale(0.75)",
-        opacity: 0.38,
-        zIndex: 20,
-      };
-    }
-
-    /*
-     * HIDDEN IMAGES
-     */
-
-    return {
-      left: "50%",
-      top: "50%",
-      width: "250px",
-      height: "320px",
-      transform:
-        "translate(-50%, -50%) scale(0.6)",
-      opacity: 0,
-      zIndex: 0,
-      pointerEvents: "none",
-    };
-  };
-
-  /*
-   * ------------------------------------------------------------
-   * EMPTY STATE
-   * ------------------------------------------------------------
-   */
-
-  if (!uniqueGallery.length) {
-    return null;
-  }
-
-  const activeImage =
-    uniqueGallery[activeIndex];
-
-  /*
-   * ------------------------------------------------------------
-   * RENDER
-   * ------------------------------------------------------------
-   */
+  const active =
+    open === null ? null : gallery[open];
 
   return (
     <>
@@ -368,7 +108,14 @@ export function Gallery({
             HEADER
         ====================================================== */}
 
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div
+          className="
+            mx-auto
+            max-w-7xl
+            px-6
+            lg:px-8
+          "
+        >
           <div
             className="
               flex
@@ -382,15 +129,29 @@ export function Gallery({
             {/* LEFT */}
 
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="h-px w-9 bg-coral" />
+              <div
+                className="
+                  mb-6
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  className="
+                    h-[2px]
+                    w-12
+                    bg-coral
+                  "
+                />
 
                 <p
                   className="
-                    text-[10px]
+                    text-[11px]
                     font-bold
                     uppercase
-                    tracking-[0.32em]
+                    tracking-[0.3em]
                     text-coral
                   "
                 >
@@ -400,12 +161,11 @@ export function Gallery({
 
               <h2
                 className="
-                  mt-5
                   font-display
                   text-4xl
                   font-extrabold
-                  leading-[0.95]
-                  tracking-[-0.035em]
+                  leading-[0.96]
+                  tracking-[-0.045em]
                   text-foreground
                   sm:text-5xl
                   lg:text-6xl
@@ -417,412 +177,192 @@ export function Gallery({
 
             {/* RIGHT */}
 
-            <div className="max-w-md">
-              <p
-                className="
-                  text-sm
-                  leading-7
-                  text-muted-foreground
-                "
-              >
-                {intro}
-              </p>
-
-              <div
-                className="
-                  mt-5
-                  flex
-                  items-center
-                  gap-3
-                "
-              >
-                <span
-                  className="
-                    text-2xl
-                    font-bold
-                    tracking-tight
-                    text-foreground
-                  "
-                >
-                  {String(
-                    uniqueGallery.length,
-                  ).padStart(2, "0")}
-                </span>
-
-                <span
-                  className="
-                    text-[9px]
-                    font-bold
-                    uppercase
-                    tracking-[0.28em]
-                    text-muted-foreground
-                  "
-                >
-                  Field moments
-                </span>
-              </div>
-            </div>
+            <p
+              className="
+                max-w-md
+                text-sm
+                leading-7
+                text-muted-foreground
+                lg:text-base
+              "
+            >
+              {intro}
+            </p>
           </div>
         </div>
 
         {/* =====================================================
-            CAROUSEL AREA
+            GALLERY MARQUEE
         ====================================================== */}
 
         <div
           className="
             relative
-            mx-auto
             mt-14
-            h-[520px]
             w-full
-            max-w-[1500px]
             overflow-hidden
-            sm:h-[570px]
-            lg:mt-20
-            lg:h-[630px]
           "
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Background glow */}
+          {/* LEFT FADE */}
 
           <div
-            aria-hidden
+            aria-hidden="true"
             className="
               pointer-events-none
               absolute
-              left-1/2
-              top-1/2
-              h-[450px]
-              w-[600px]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              opacity-[0.14]
-              blur-3xl
+              inset-y-0
+              left-0
+              z-20
+              w-10
+              bg-gradient-to-r
+              from-background
+              to-transparent
+              sm:w-20
+              lg:w-32
             "
-            style={{
-              background:
-                "radial-gradient(circle, color-mix(in oklab, var(--coral) 20%, transparent), transparent 70%)",
-            }}
           />
 
-          {/* Cards */}
-
-          <div className="absolute inset-0">
-            {uniqueGallery.map(
-              (item, index) => {
-                const position =
-                  getRelativePosition(index);
-
-                /*
-                 * Only render visible cards.
-                 */
-
-                if (Math.abs(position) > 2) {
-                  return null;
-                }
-
-                const isActive =
-                  position === 0;
-
-                return (
-                  <button
-                    key={`${item.url}-${index}`}
-                    type="button"
-                    onClick={() => {
-                      if (isActive) {
-                        setLightboxOpen(true);
-                      } else {
-                        setActiveIndex(index);
-                      }
-                    }}
-                    aria-label={
-                      isActive
-                        ? `Open image: ${item.alt}`
-                        : `Show image: ${item.alt}`
-                    }
-                    className="
-                      absolute
-                      overflow-hidden
-                      rounded-[24px]
-                      bg-brand-deep
-                      text-left
-                      outline-none
-                      shadow-[0_25px_70px_rgba(0,0,0,0.18)]
-                      transition-all
-                      duration-[900ms]
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
-                      focus-visible:ring-2
-                      focus-visible:ring-coral
-                      focus-visible:ring-offset-4
-                    "
-                    style={getCardStyle(
-                      position,
-                    )}
-                  >
-                    {/* IMAGE */}
-
-                    <img
-                      src={item.url}
-                      alt={item.alt}
-                      loading={
-                        isActive
-                          ? "eager"
-                          : "lazy"
-                      }
-                      className="
-                        absolute
-                        inset-0
-                        h-full
-                        w-full
-                        object-cover
-                        transition-transform
-                        duration-[900ms]
-                        ease-[cubic-bezier(0.22,1,0.36,1)]
-                      "
-                    />
-
-                    {/* OVERLAY */}
-
-                    <div
-                      aria-hidden
-                      className="
-                        absolute
-                        inset-0
-                        bg-gradient-to-t
-                        from-black/80
-                        via-black/10
-                        to-transparent
-                      "
-                    />
-
-                    {/* ACTIVE BORDER */}
-
-                    {isActive && (
-                      <div
-                        aria-hidden
-                        className="
-                          pointer-events-none
-                          absolute
-                          inset-0
-                          rounded-[24px]
-                          border
-                          border-white/20
-                        "
-                      />
-                    )}
-
-                    {/* EXPAND */}
-
-                    {isActive && (
-                      <span
-                        aria-hidden
-                        className="
-                          absolute
-                          right-5
-                          top-5
-                          flex
-                          size-10
-                          items-center
-                          justify-center
-                          rounded-full
-                          border
-                          border-white/20
-                          bg-black/20
-                          text-white
-                          backdrop-blur-xl
-                        "
-                      >
-                        <Expand className="size-4" />
-                      </span>
-                    )}
-
-                    {/* NUMBER */}
-
-                    <span
-                      className="
-                        absolute
-                        left-5
-                        top-5
-                        text-[9px]
-                        font-bold
-                        tracking-[0.28em]
-                        text-white/65
-                      "
-                    >
-                      {String(
-                        index + 1,
-                      ).padStart(2, "0")}
-                    </span>
-
-                    {/* ACTIVE CAPTION */}
-
-                    {isActive && (
-                      <div
-                        className="
-                          absolute
-                          inset-x-0
-                          bottom-0
-                          p-6
-                        "
-                      >
-                        <p
-                          className="
-                            max-w-[90%]
-                            text-xs
-                            font-semibold
-                            leading-5
-                            text-white
-                          "
-                        >
-                          {item.alt}
-                        </p>
-
-                        <p
-                          className="
-                            mt-2
-                            text-[9px]
-                            font-bold
-                            uppercase
-                            tracking-[0.28em]
-                            text-white/45
-                          "
-                        >
-                          {String(
-                            index + 1,
-                          ).padStart(2, "0")}{" "}
-                          /{" "}
-                          {String(
-                            uniqueGallery.length,
-                          ).padStart(2, "0")}
-                        </p>
-                      </div>
-                    )}
-                  </button>
-                );
-              },
-            )}
-          </div>
-
-          {/* =================================================
-              NAVIGATION BUTTONS
-          ================================================== */}
+          {/* RIGHT FADE */}
 
           <div
+            aria-hidden="true"
             className="
+              pointer-events-none
               absolute
-              bottom-1
-              left-1/2
-              z-[60]
-              flex
-              -translate-x-1/2
-              items-center
-              gap-6
+              inset-y-0
+              right-0
+              z-20
+              w-10
+              bg-gradient-to-l
+              from-background
+              to-transparent
+              sm:w-20
+              lg:w-32
             "
-          >
-            {/* PREVIOUS */}
+          />
 
-            <button
-              type="button"
-              aria-label="Previous image"
-              onClick={(event) => {
-                event.stopPropagation();
-                previous();
-              }}
-              className="
-                flex
-                size-12
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-foreground/20
-                bg-background
-                text-foreground
-                shadow-lg
-                transition-all
-                duration-300
-                hover:-translate-x-0.5
-                hover:scale-105
-                hover:bg-foreground
-                hover:text-background
-              "
-            >
-              <ChevronLeft className="size-4" />
-            </button>
+          {/* ===================================================
+              MOVING TRACK
 
-            {/* NEXT */}
-
-            <button
-              type="button"
-              aria-label="Next image"
-              onClick={(event) => {
-                event.stopPropagation();
-                next();
-              }}
-              className="
-                flex
-                size-12
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-foreground/20
-                bg-background
-                text-foreground
-                shadow-lg
-                transition-all
-                duration-300
-                hover:translate-x-0.5
-                hover:scale-105
-                hover:bg-foreground
-                hover:text-background
-              "
-            >
-              <ChevronRight className="size-4" />
-            </button>
-          </div>
-
-          {/* =================================================
-              PROGRESS
-          ================================================== */}
+              Two identical groups.
+              CSS moves the track exactly 50%.
+          ==================================================== */}
 
           <div
+            className={`
+              gallery-marquee-track
+              flex
+              w-max
+              ${isPaused ? "is-paused" : ""}
+            `}
+          >
+            {/* GROUP 1 */}
+
+            <div
+              className="
+                flex
+                shrink-0
+                gap-5
+                pr-5
+                lg:gap-6
+                lg:pr-6
+              "
+            >
+              {imageSet.map((image, index) => (
+                <GalleryCard
+                  key={`first-${image.url}-${index}`}
+                  image={image}
+                  index={index}
+                  onOpen={() => setOpen(index)}
+                />
+              ))}
+            </div>
+
+            {/* GROUP 2 */}
+
+            <div
+              className="
+                flex
+                shrink-0
+                gap-5
+                pr-5
+                lg:gap-6
+                lg:pr-6
+              "
+              aria-hidden="true"
+            >
+              {imageSet.map((image, index) => (
+                <GalleryCard
+                  key={`second-${image.url}-${index}`}
+                  image={image}
+                  index={index}
+                  onOpen={() => setOpen(index)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* =====================================================
+            STATUS
+        ====================================================== */}
+
+        <div
+          className="
+            mx-auto
+            mt-8
+            flex
+            max-w-7xl
+            items-center
+            justify-between
+            px-6
+            lg:px-8
+          "
+        >
+          <div className="flex items-center gap-3">
+            <span
+              className={`
+                size-2
+                rounded-full
+                bg-coral
+                ${
+                  isPaused
+                    ? "opacity-40"
+                    : "animate-pulse"
+                }
+              `}
+            />
+
+            <span
+              className="
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.22em]
+                text-muted-foreground
+              "
+            >
+              {isPaused
+                ? "Gallery paused"
+                : "Field execution in motion"}
+            </span>
+          </div>
+
+          <span
             className="
-              absolute
-              bottom-7
-              left-5
-              right-5
               hidden
+              text-[10px]
+              font-bold
+              uppercase
+              tracking-[0.22em]
+              text-muted-foreground/50
               sm:block
             "
           >
-            <div
-              className="
-                h-px
-                w-full
-                bg-foreground/10
-              "
-            >
-              <div
-                className="
-                  h-px
-                  bg-coral
-                  transition-all
-                  duration-700
-                "
-                style={{
-                  width: `${
-                    ((activeIndex + 1) /
-                      uniqueGallery.length) *
-                    100
-                  }%`,
-                }}
-              />
-            </div>
-          </div>
+            Hover to pause · Click to explore
+          </span>
         </div>
       </section>
 
@@ -830,7 +370,7 @@ export function Gallery({
           LIGHTBOX
       ======================================================== */}
 
-      {lightboxOpen && activeImage && (
+      {active && (
         <div
           className="
             fixed
@@ -839,35 +379,28 @@ export function Gallery({
             flex
             items-center
             justify-center
-            bg-black/[0.97]
-            p-4
-            backdrop-blur-2xl
-            animate-in
-            fade-in
-            duration-300
+            bg-[#071F36]/95
+            p-5
+            backdrop-blur-xl
           "
-          onClick={() =>
-            setLightboxOpen(false)
-          }
           role="dialog"
           aria-modal="true"
-          aria-label="Image viewer"
+          aria-label="Gallery image viewer"
+          onClick={close}
         >
           {/* CLOSE */}
 
           <button
             type="button"
             aria-label="Close image viewer"
-            onClick={() =>
-              setLightboxOpen(false)
-            }
+            onClick={close}
             className="
               absolute
               right-5
               top-5
               z-30
               flex
-              size-11
+              size-12
               items-center
               justify-center
               rounded-full
@@ -875,10 +408,9 @@ export function Gallery({
               border-white/20
               bg-white/5
               text-white
-              backdrop-blur-xl
+              backdrop-blur-md
               transition-all
               duration-300
-              hover:scale-105
               hover:bg-white/10
             "
           >
@@ -896,21 +428,20 @@ export function Gallery({
             }}
             className="
               absolute
-              left-4
-              top-1/2
+              left-3
               z-30
               flex
               size-12
-              -translate-y-1/2
               items-center
               justify-center
               rounded-full
               border
               border-white/20
-              bg-black/30
+              bg-white/5
               text-white
-              backdrop-blur-xl
+              backdrop-blur-md
               transition-all
+              duration-300
               hover:bg-white/10
               lg:left-8
             "
@@ -929,21 +460,20 @@ export function Gallery({
             }}
             className="
               absolute
-              right-4
-              top-1/2
+              right-3
               z-30
               flex
               size-12
-              -translate-y-1/2
               items-center
               justify-center
               rounded-full
               border
               border-white/20
-              bg-black/30
+              bg-white/5
               text-white
-              backdrop-blur-xl
+              backdrop-blur-md
               transition-all
+              duration-300
               hover:bg-white/10
               lg:right-8
             "
@@ -951,71 +481,239 @@ export function Gallery({
             <ChevronRight className="size-5" />
           </button>
 
-          {/* ACTIVE IMAGE */}
+          {/* IMAGE */}
 
           <figure
+            className="
+              relative
+              max-h-[90vh]
+              max-w-6xl
+            "
             onClick={(event) =>
               event.stopPropagation()
             }
-            className="
-              flex
-              max-h-[90vh]
-              max-w-[90vw]
-              flex-col
-              items-center
-              animate-in
-              fade-in
-              zoom-in-95
-              duration-500
-            "
           >
             <img
-              src={activeImage.url}
-              alt={activeImage.alt}
+              src={active.url}
+              alt={active.alt}
               className="
                 max-h-[78vh]
-                max-w-[88vw]
+                w-auto
+                max-w-full
                 rounded-2xl
                 object-contain
                 shadow-2xl
               "
             />
 
-            <figcaption
-              className="
-                mt-5
-                max-w-2xl
-                text-center
-              "
-            >
+            <figcaption className="mt-5 text-center">
               <p
                 className="
                   text-sm
                   font-medium
-                  leading-relaxed
                   text-white
                 "
               >
-                {activeImage.alt}
+                {active.alt}
               </p>
 
               <p
                 className="
                   mt-2
-                  text-[9px]
+                  text-[10px]
                   font-bold
                   uppercase
-                  tracking-[0.3em]
+                  tracking-[0.25em]
                   text-white/40
                 "
               >
-                {activeIndex + 1} /{" "}
-                {uniqueGallery.length}
+                {open !== null
+                  ? `${open + 1} / ${gallery.length}`
+                  : ""}
               </p>
             </figcaption>
           </figure>
         </div>
       )}
     </>
+  );
+}
+
+/* ============================================================
+   GALLERY CARD
+   ============================================================ */
+
+function GalleryCard({
+  image,
+  index,
+  onOpen,
+}: {
+  image: {
+    url: string;
+    alt: string;
+  };
+  index: number;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={`View image: ${image.alt}`}
+      className="
+        gallery-card
+        group
+        relative
+        block
+        h-[360px]
+        w-[270px]
+        shrink-0
+        overflow-hidden
+        rounded-[24px]
+        bg-brand-deep
+        text-left
+        outline-none
+        focus-visible:ring-2
+        focus-visible:ring-coral
+        focus-visible:ring-offset-4
+        focus-visible:ring-offset-background
+
+        sm:h-[400px]
+        sm:w-[300px]
+
+        lg:h-[460px]
+        lg:w-[345px]
+      "
+    >
+      {/* IMAGE */}
+
+      <img
+        src={image.url}
+        alt={image.alt}
+        loading={index < 5 ? "eager" : "lazy"}
+        draggable={false}
+        className="
+          absolute
+          inset-0
+          h-full
+          w-full
+          object-cover
+          transition-transform
+          duration-700
+          ease-[cubic-bezier(0.22,1,0.36,1)]
+          group-hover:scale-[1.06]
+        "
+      />
+
+      {/* DARK BOTTOM GRADIENT */}
+
+      <span
+        aria-hidden="true"
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-black/75
+          via-black/10
+          to-transparent
+          opacity-60
+          transition-opacity
+          duration-500
+          group-hover:opacity-90
+        "
+      />
+
+      {/* NUMBER */}
+
+      <span
+        className="
+          absolute
+          left-5
+          top-5
+          rounded-full
+          border
+          border-white/25
+          bg-black/20
+          px-3
+          py-1.5
+          text-[10px]
+          font-bold
+          tracking-[0.18em]
+          text-white/80
+          backdrop-blur-md
+        "
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      {/* VIEW INDICATOR */}
+
+      <span
+        aria-hidden="true"
+        className="
+          absolute
+          right-5
+          top-5
+          flex
+          size-10
+          scale-90
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-white/25
+          bg-black/20
+          text-white
+          opacity-0
+          backdrop-blur-md
+          transition-all
+          duration-500
+          group-hover:scale-100
+          group-hover:opacity-100
+        "
+      >
+        <ChevronRight className="size-4" />
+      </span>
+
+      {/* BOTTOM ACCENT */}
+
+      <span
+        aria-hidden="true"
+        className="
+          absolute
+          bottom-5
+          left-5
+          h-[2px]
+          w-8
+          bg-coral
+          transition-all
+          duration-500
+          group-hover:w-14
+        "
+      />
+
+      {/* CAPTION */}
+
+      <span
+        className="
+          absolute
+          inset-x-5
+          bottom-8
+          translate-y-3
+          pr-4
+          text-sm
+          font-semibold
+          leading-6
+          text-white
+          opacity-0
+          transition-all
+          duration-500
+          group-hover:translate-y-0
+          group-hover:opacity-100
+        "
+      >
+        {image.alt}
+      </span>
+    </button>
   );
 }
