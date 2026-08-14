@@ -50,18 +50,18 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
 
-  /* Brand colors */
+  /* Brand */
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-soft: var(--brand-soft);
   --color-brand-glow: var(--brand-glow);
 
-  /* Coral accent */
+  /* Coral */
   --color-coral: var(--coral);
   --color-coral-soft: var(--coral-soft);
   --color-coral-foreground: var(--coral-foreground);
 
-  /* Supporting colors */
+  /* Supporting */
   --color-ink: var(--ink);
   --color-sand: var(--sand);
 
@@ -83,6 +83,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+
 /* ============================================================
    LIGHT THEME
    ============================================================ */
@@ -90,35 +91,22 @@
 :root {
   --radius: 0.5rem;
 
-  /*
-   * BLUE-INDIGO BRAND PALETTE
-   *
-   * The previous palette was deep purple.
-   * This palette shifts it toward a sophisticated blue-indigo.
-   */
-
+  /* Blue-indigo brand palette */
   --brand: oklch(0.38 0.13 265);
   --brand-deep: oklch(0.32 0.11 260);
   --brand-soft: oklch(0.965 0.012 265);
   --brand-glow: oklch(0.58 0.16 255);
 
-  /*
-   * RETAIL CORAL
-   * Kept intentionally unchanged.
-   */
+  /* Coral */
   --coral: oklch(0.602 0.215 27.7);
   --coral-soft: oklch(0.958 0.017 21.8);
   --coral-foreground: oklch(0.99 0.005 27);
 
-  /*
-   * TEXT
-   */
+  /* Text */
   --ink: oklch(0.198 0.042 265);
   --sand: oklch(0.975 0.006 265);
 
-  /*
-   * BASE
-   */
+  /* Base */
   --background: oklch(1 0 0);
   --foreground: oklch(0.198 0.042 265);
 
@@ -128,59 +116,41 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.198 0.042 265);
 
-  /*
-   * PRIMARY
-   */
+  /* Primary */
   --primary: oklch(0.38 0.13 265);
   --primary-foreground: oklch(0.99 0.004 265);
 
-  /*
-   * SECONDARY
-   */
+  /* Secondary */
   --secondary: oklch(0.965 0.012 265);
   --secondary-foreground: oklch(0.38 0.13 265);
 
-  /*
-   * MUTED
-   */
+  /* Muted */
   --muted: oklch(0.968 0.008 265);
   --muted-foreground: oklch(0.495 0.03 265);
 
-  /*
-   * ACCENT
-   */
+  /* Accent */
   --accent: oklch(0.958 0.017 21.8);
   --accent-foreground: oklch(0.5 0.19 27.7);
 
-  /*
-   * DESTRUCTIVE
-   */
+  /* Destructive */
   --destructive: oklch(0.602 0.215 27.7);
   --destructive-foreground: oklch(0.99 0.004 265);
 
-  /*
-   * BORDERS
-   */
+  /* Borders */
   --border: oklch(0.918 0.012 265);
   --input: oklch(0.918 0.012 265);
 
-  /*
-   * FOCUS RING
-   */
+  /* Focus */
   --ring: oklch(0.46 0.15 260);
 
-  /*
-   * CHARTS
-   */
+  /* Charts */
   --chart-1: oklch(0.38 0.13 265);
   --chart-2: oklch(0.602 0.215 27.7);
   --chart-3: oklch(0.58 0.16 255);
   --chart-4: oklch(0.75 0.14 80);
   --chart-5: oklch(0.46 0.15 260);
 
-  /*
-   * SIDEBAR
-   */
+  /* Sidebar */
   --sidebar: oklch(0.985 0.005 265);
   --sidebar-foreground: oklch(0.198 0.042 265);
 
@@ -193,11 +163,7 @@
   --sidebar-border: oklch(0.918 0.012 265);
   --sidebar-ring: oklch(0.46 0.15 260);
 
-  /*
-   * GRADIENTS
-   *
-   * Automatically updated to use the new blue-indigo palette.
-   */
+  /* Brand gradients */
   --gradient-brand:
     linear-gradient(
       135deg,
@@ -214,9 +180,7 @@
       var(--brand-glow) 100%
     );
 
-  /*
-   * SHADOWS
-   */
+  /* Shadows */
   --shadow-soft:
     0 1px 2px oklch(0.32 0.11 260 / 0.06),
     0 12px 32px -18px oklch(0.32 0.11 260 / 0.3);
@@ -225,6 +189,7 @@
     0 2px 4px oklch(0.32 0.11 260 / 0.06),
     0 26px 60px -24px oklch(0.32 0.11 260 / 0.4);
 }
+
 
 /* ============================================================
    DARK THEME
@@ -240,44 +205,23 @@
   --popover: oklch(0.21 0.055 260);
   --popover-foreground: oklch(0.975 0.006 260);
 
-  /*
-   * BLUE-INDIGO PRIMARY
-   */
   --primary: oklch(0.68 0.16 260);
   --primary-foreground: oklch(0.16 0.045 260);
 
-  /*
-   * SECONDARY
-   */
   --secondary: oklch(0.26 0.06 260);
   --secondary-foreground: oklch(0.975 0.006 260);
 
-  /*
-   * MUTED
-   */
   --muted: oklch(0.26 0.06 260);
   --muted-foreground: oklch(0.72 0.03 260);
 
-  /*
-   * CORAL ACCENT
-   */
   --accent: oklch(0.3 0.08 27);
   --accent-foreground: oklch(0.95 0.03 27);
 
-  /*
-   * BORDERS
-   */
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
 
-  /*
-   * BLUE RING
-   */
   --ring: oklch(0.63 0.17 260);
 
-  /*
-   * DARK BRAND SUPPORT
-   */
   --brand: oklch(0.48 0.14 260);
   --brand-deep: oklch(0.30 0.09 260);
   --brand-soft: oklch(0.26 0.06 260);
@@ -290,6 +234,7 @@
   --sand: oklch(0.21 0.055 260);
 }
 
+
 /* ============================================================
    BASE
    ============================================================ */
@@ -299,7 +244,10 @@
     border-color: var(--color-border);
   }
 
+  html,
   body {
+    margin: 0;
+    padding: 0;
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -320,6 +268,89 @@
     color: var(--coral-foreground);
   }
 }
+
+
+/* ============================================================
+   GLOBAL DECORATIVE LINE CLEANUP
+   ============================================================ */
+
+/*
+ * IMPORTANT:
+ *
+ * We are NOT removing normal borders.
+ *
+ * We are targeting only decorative pseudo-elements
+ * that are commonly used to create page-wide line/grid
+ * patterns.
+ *
+ * brand-box is explicitly excluded.
+ */
+
+body > .grid-overlay,
+body > .grid-lines,
+body > .grid-background,
+body > .cross-grid,
+body > .cross-lines,
+body > [data-grid],
+body > [data-grid-overlay],
+main > .grid-overlay,
+main > .grid-lines,
+main > .grid-background,
+main > .cross-grid,
+main > .cross-lines,
+main > [data-grid],
+main > [data-grid-overlay] {
+  display: none !important;
+}
+
+
+/* Named decorative grid classes */
+
+.grid-overlay,
+.grid-lines,
+.grid-background,
+.cross-grid,
+.cross-lines,
+.decorative-grid,
+.decorative-grid-lines,
+.section-grid,
+.section-grid-lines,
+[data-grid],
+[data-grid-overlay] {
+  background-image: none !important;
+}
+
+
+/* Their pseudo-elements */
+
+.grid-overlay::before,
+.grid-overlay::after,
+.grid-lines::before,
+.grid-lines::after,
+.grid-background::before,
+.grid-background::after,
+.cross-grid::before,
+.cross-grid::after,
+.cross-lines::before,
+.cross-lines::after,
+.decorative-grid::before,
+.decorative-grid::after,
+.decorative-grid-lines::before,
+.decorative-grid-lines::after,
+.section-grid::before,
+.section-grid::after,
+.section-grid-lines::before,
+.section-grid-lines::after,
+[data-grid]::before,
+[data-grid]::after,
+[data-grid-overlay]::before,
+[data-grid-overlay]::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
 
 /* ============================================================
    ANIMATED BRAND BORDER
@@ -410,6 +441,7 @@
   }
 }
 
+
 /* ============================================================
    EDGE ANIMATION
    ============================================================ */
@@ -419,6 +451,7 @@
     --edge-angle: 360deg;
   }
 }
+
 
 /* ============================================================
    CORNER TICKS
@@ -446,6 +479,7 @@
   }
 }
 
+
 /* ============================================================
    MARQUEE
    ============================================================ */
@@ -466,6 +500,7 @@
   }
 }
 
+
 /* ============================================================
    REVEAL
    ============================================================ */
@@ -484,6 +519,7 @@
     transform: translateY(0);
   }
 }
+
 
 /* ============================================================
    DIKHTA / BIKTA HEADLINE CHOREOGRAPHY
@@ -536,6 +572,7 @@
   }
 }
 
+
 @keyframes db-restock {
   0%,
   20% {
@@ -568,6 +605,7 @@
   }
 }
 
+
 @keyframes db-source-out {
   0%,
   5% {
@@ -579,6 +617,7 @@
     opacity: 0;
   }
 }
+
 
 @keyframes db-land {
   0%,
@@ -609,6 +648,7 @@
   }
 }
 
+
 @keyframes db-sweep {
   0%,
   66% {
@@ -624,6 +664,7 @@
     transform: scaleX(0);
   }
 }
+
 
 @keyframes db-tag {
   0%,
@@ -650,6 +691,7 @@
   }
 }
 
+
 /* ============================================================
    REDUCED MOTION
    ============================================================ */
@@ -662,97 +704,4 @@
   .brand-box {
     transition: none;
   }
-}
-/* =========================================================
-   GLOBAL DECORATIVE GRID / CROSS-LINE REMOVAL
-   ========================================================= */
-
-/*
-  Remove decorative grid overlays that may be created
-  using pseudo-elements or background gradients.
-
-  IMPORTANT:
-  This does NOT remove:
-  - normal borders
-  - card borders
-  - button borders
-  - image borders
-  - focus rings
-  - brand-box borders
-*/
-
-/* Remove common page-wide grid overlays */
-[data-grid],
-[data-grid-overlay],
-.grid-overlay,
-.grid-lines,
-.grid-background,
-.cross-lines,
-.cross-grid {
-  display: none !important;
-}
-
-/* Remove decorative pseudo-element overlays from
-   elements explicitly marked as grid backgrounds */
-[data-grid]::before,
-[data-grid]::after,
-[data-grid-overlay]::before,
-[data-grid-overlay]::after,
-.grid-overlay::before,
-.grid-overlay::after,
-.grid-lines::before,
-.grid-lines::after,
-.grid-background::before,
-.grid-background::after,
-.cross-lines::before,
-.cross-lines::after,
-.cross-grid::before,
-.cross-grid::after {
-  display: none !important;
-  content: none !important;
-  background: none !important;
-}
-
-/* =========================================================
-   HERO / SECTION GRID OVERLAY SAFETY
-   ========================================================= */
-
-/*
-  If the grid was created with a dedicated decorative
-  pseudo-element, these classes can be applied to it.
-*/
-.decorative-grid,
-.decorative-grid-lines,
-.section-grid,
-.section-grid-lines {
-  display: none !important;
-  background-image: none !important;
-}
-
-.decorative-grid::before,
-.decorative-grid::after,
-.decorative-grid-lines::before,
-.decorative-grid-lines::after,
-.section-grid::before,
-.section-grid::after,
-.section-grid-lines::before,
-.section-grid-lines::after {
-  content: none !important;
-  display: none !important;
-  background-image: none !important;
-}
-
-/* =========================================================
-   CLEAN PAGE BACKGROUND
-   ========================================================= */
-
-html,
-body {
-  background-image: none;
-}
-
-/* Do not allow accidental page-level grid backgrounds */
-body::before,
-body::after {
-  background-image: none !important;
 }
