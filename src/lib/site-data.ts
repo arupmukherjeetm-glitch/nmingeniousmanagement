@@ -1,6 +1,5 @@
 // Media lives in /public/media so it ships with the build and works on any host
 // (Netlify, Vercel, Lovable) without depending on external asset infrastructure.
-const a1 = { url: "/media/a1.webp" };
 const a2 = { url: "/media/a2.webp" };
 const a3 = { url: "/media/a3.webp" };
 const a4 = { url: "/media/a4.webp" };
