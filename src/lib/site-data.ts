@@ -23,6 +23,17 @@ const a20 = { url: "/media/a20.webp" };
 const a21 = { url: "/media/a21.webp" };
 const a22 = { url: "/media/a22.webp" };
 const a23 = { url: "/media/a23.webp" };
+const b1 = { url: "/media/b1.webp" };
+const b2 = { url: "/media/b2.webp" };
+const b3 = { url: "/media/b3.webp" };
+const b4 = { url: "/media/b4.webp" };
+const b5 = { url: "/media/b5.webp" };
+const b6 = { url: "/media/b6.webp" };
+const b7 = { url: "/media/b7.webp" };
+const b8 = { url: "/media/b8.webp" };
+const b9 = { url: "/media/b9.webp" };
+const b10 = { url: "/media/b10.webp" };
+const b11 = { url: "/media/b11.webp" };
 
 
 export const logoUrl = "/media/logo.jpg";
@@ -483,6 +494,17 @@ export const testimonials = [
 
 
 export const gallery = [
+  { url: b1.url, alt: "Herbal Essences promotional display unit manned by a brand advisor" },
+  { url: b2.url, alt: "Beauty advisor at a hair colour and styling shelf in Thane" },
+  { url: b3.url, alt: "Promoter presenting a haircare pack in a Vasai-Virar general trade store" },
+  { url: b4.url, alt: "Brand hostess at a Herbal Essences exhibition stand" },
+  { url: b5.url, alt: "Anti-dandruff shampoo display and leaflet detailing in Kolkata" },
+  { url: b6.url, alt: "Premium chocolate gondola with an assisted-selling advisor in Mumbai" },
+  { url: b7.url, alt: "Snack range merchandised across multiple facings in Bhubaneswar" },
+  { url: b8.url, alt: "Branded gondola header installed over a snack aisle" },
+  { url: b9.url, alt: "Football-edition snack display built at a Barrackpore store" },
+  { url: b10.url, alt: "Edible oil sampling team engaging shoppers in a general trade outlet" },
+  { url: b11.url, alt: "Promoter carrying a product tray through a packed grocery aisle" },
   { url: a1.url, alt: "Beauty advisor guiding a shopper at the counter" },
   { url: a5.url, alt: "Merchandised FMCG facings in a modern trade aisle" },
   { url: a6.url, alt: "New-launch sampling activation booth" },
