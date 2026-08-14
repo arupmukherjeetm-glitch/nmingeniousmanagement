@@ -68,7 +68,7 @@ export function Header() {
           <img
             src={logoUrl}
             alt="NM Ingenious Management Services"
-            className="h-14 w-auto lg:h-16"
+            className="h-16 w-auto lg:h-[5.5rem]"
           />
           <span className="sr-only">NM Ingenious</span>
         </Link>
