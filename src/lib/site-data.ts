@@ -428,32 +428,59 @@ export const testimonials = [
   {
     brand: "P&G",
     label: "P&G Partnership",
+    author: "Senior Manager, Shopper Marketing",
+    company: "Procter & Gamble",
     quote:
       "I have had a great experience working with you and value the Ingenious team for being P&G's partner for so many years. I would hope for this partnership to continue and grow in future.",
-    spine: "oklch(0.5 0.13 242)",
+    spine: "oklch(0.352 0.126 295.3)",
   },
   {
     brand: "Axiom",
     label: "Axiom Gen Nxt India",
+    author: "Head of Events & Activation",
+    company: "Axiom Gen Nxt India",
     quote:
       "Always a pleasure working with the NM Ingenious teams! Reliable, responsive, and flexible in the ever-changing event environment.",
-    spine: "oklch(0.55 0.21 27)",
+    spine: "oklch(0.602 0.215 27.7)",
   },
   {
     brand: "National Retail",
     label: "National Retail Brand",
+    author: "National Retail Sales Head",
+    company: "Leading National Retail Brand",
     quote:
       "The team at NM Ingenious are an absolute pleasure to deal with. Their hiring and training ensured that we had the best people representing our brand in big stores across the country.",
-    spine: "oklch(0.62 0.12 232)",
+    spine: "oklch(0.434 0.155 295.3)",
   },
   {
     brand: "Marico",
     label: "Soap Opera (Marico)",
+    author: "Trade Marketing Manager",
+    company: "Soap Opera, Marico",
     quote:
       "Thank you for your ongoing help and assistance to Soap Opera for sourcing of promoters. We look forward to your continued support in future.",
-    spine: "oklch(0.38 0.1 245)",
+    spine: "oklch(0.279 0.098 295.9)",
+  },
+  {
+    brand: "Cipla Health",
+    label: "Cipla Health",
+    author: "Regional Field Force Lead",
+    company: "Cipla Health",
+    quote:
+      "Store coverage plans were delivered on time, month after month, and the reporting gave us a clear read on what was actually happening at the counter.",
+    spine: "oklch(0.551 0.151 295.8)",
+  },
+  {
+    brand: "Capital Foods",
+    label: "Capital Foods",
+    author: "Modern Trade Manager",
+    company: "Capital Foods",
+    quote:
+      "Merchandising discipline in modern trade improved visibly within a quarter. Facings held, planograms held, and the team flagged issues before we asked.",
+    spine: "oklch(0.602 0.215 27.7)",
   },
 ];
+
 
 export const gallery = [
   { url: a1.url, alt: "Beauty advisor guiding a shopper at the counter" },
