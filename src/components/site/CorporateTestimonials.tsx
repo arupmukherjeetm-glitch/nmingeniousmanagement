@@ -27,7 +27,7 @@ const testimonials = [
     name: "Kanu",
     company: "Senior Purchase Manager | Indian MNC",
     quote:
-      "I have had great experience working with you over last couple of years and value Ingenious team for being P&G's partner for so many years. I would hope for this partnership to continue and grow in future.",
+      "I have had great experience working with you over last couple of years and value the Ingenious team for being P&G's partner for so many years. I would hope for this partnership to continue and grow in future.",
     shortName: "Kanu",
   },
   {
@@ -72,7 +72,7 @@ export function CorporateTestimonials() {
 
   return (
     <section
-      className="relative overflow-hidden bg-white py-20 lg:py-24"
+      className="relative hidden overflow-hidden bg-white py-20 lg:py-24"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -101,7 +101,6 @@ export function CorporateTestimonials() {
             execution.
           </p>
         </div>
-
 
         {/* TESTIMONIAL */}
 
@@ -138,12 +137,12 @@ export function CorporateTestimonials() {
 
             </div>
 
-
             {/* AUTHOR */}
 
             <div className="relative z-10 mt-10 flex items-end justify-between gap-6 border-t border-neutral-200 pt-6">
 
               <div>
+
                 <p className="font-display text-base font-bold text-black">
                   {current.name}
                 </p>
@@ -151,6 +150,7 @@ export function CorporateTestimonials() {
                 <p className="mt-1 text-sm text-neutral-600">
                   {current.company}
                 </p>
+
               </div>
 
               <div
@@ -168,7 +168,6 @@ export function CorporateTestimonials() {
 
           </div>
 
-
           {/* CLIENT SELECTOR */}
 
           <div className="border-t border-neutral-200 bg-neutral-50 p-3 lg:border-l lg:border-t-0">
@@ -176,6 +175,7 @@ export function CorporateTestimonials() {
             <div className="flex h-full flex-row gap-2 overflow-x-auto lg:flex-col lg:justify-center lg:overflow-visible">
 
               {testimonials.map((testimonial, index) => {
+
                 const isActive = index === active;
 
                 return (
@@ -245,10 +245,10 @@ export function CorporateTestimonials() {
               })}
 
             </div>
+
           </div>
 
         </div>
-
 
         {/* CONTROLS */}
 
@@ -277,7 +277,6 @@ export function CorporateTestimonials() {
             ))}
 
           </div>
-
 
           {/* Arrows */}
 
