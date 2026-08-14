@@ -3,6 +3,26 @@ import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import { gallery } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
+/**
+ * Edge-to-edge mosaic gallery. Every tile is a fixed-ratio cell in a dense
+ * 12-column grid with a 2px hairline gutter, so there are no white gaps or
+ * ragged rows regardless of the source image aspect ratio.
+ */
+const SPANS = [
+  "col-span-6 row-span-2 lg:col-span-4",
+  "col-span-6 lg:col-span-2",
+  "col-span-6 lg:col-span-2",
+  "col-span-6 row-span-2 lg:col-span-4",
+  "col-span-6 lg:col-span-2",
+  "col-span-6 lg:col-span-2",
+  "col-span-6 lg:col-span-3",
+  "col-span-6 lg:col-span-3",
+  "col-span-6 row-span-2 lg:col-span-3",
+  "col-span-6 lg:col-span-3",
+  "col-span-6 lg:col-span-3",
+  "col-span-6 lg:col-span-3",
+];
+
 export function Gallery({
   title = "On the floor, every day",
   eyebrow = "Gallery",
@@ -54,48 +74,48 @@ export function Gallery({
           </div>
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground">{intro}</p>
         </div>
+      </div>
 
-        <div className="mt-14 grid auto-rows-[minmax(0,1fr)] grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-          {gallery.map((g, i) => (
-            <button
-              key={g.url + i}
-              type="button"
-              onClick={() => setOpen(i)}
-              aria-label={`Open image: ${g.alt}`}
-              className={cn(
-                "group relative aspect-[4/3] overflow-hidden rounded-xl bg-muted outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
-                i % 6 === 0 && "lg:col-span-2 lg:row-span-2 lg:aspect-auto",
-              )}
-            >
-              <img
-                src={g.url}
-                alt={g.alt}
-                loading="lazy"
-                className="size-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
-              />
-              <span
-                aria-hidden
-                className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "linear-gradient(to top, var(--brand-deep), transparent 60%)",
-                }}
-              />
-              <span
-                aria-hidden
-                className="absolute inset-2 rounded-lg border border-white/0 transition-all duration-500 group-hover:border-white/50"
-              />
-              <span
-                aria-hidden
-                className="absolute right-4 top-4 flex size-9 scale-90 items-center justify-center rounded-full bg-white/15 text-white opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:scale-100 group-hover:opacity-100"
+      <div className="mt-14 px-0 lg:px-8">
+        <div className="mx-auto max-w-[110rem] overflow-hidden rounded-none lg:rounded-2xl">
+          <div className="grid auto-rows-[minmax(9rem,1fr)] grid-cols-12 gap-[2px] bg-brand-deep sm:auto-rows-[minmax(11rem,1fr)] lg:auto-rows-[minmax(12.5rem,1fr)]">
+            {gallery.map((g, i) => (
+              <button
+                key={g.url + i}
+                type="button"
+                onClick={() => setOpen(i)}
+                aria-label={`Open image: ${g.alt}`}
+                className={cn(
+                  "group relative overflow-hidden bg-brand-deep outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-coral",
+                  SPANS[i % SPANS.length],
+                )}
               >
-                <Expand className="size-4" />
-              </span>
-              <span className="absolute inset-x-4 bottom-4 translate-y-3 text-left text-xs font-semibold leading-snug text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                {g.alt}
-              </span>
-            </button>
-          ))}
+                <img
+                  src={g.url}
+                  alt={g.alt}
+                  loading="lazy"
+                  className="absolute inset-0 size-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
+                />
+                <span
+                  aria-hidden
+                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "linear-gradient(to top, color-mix(in oklab, var(--brand-deep) 92%, transparent), transparent 65%)",
+                  }}
+                />
+                <span
+                  aria-hidden
+                  className="absolute right-3 top-3 flex size-9 scale-90 items-center justify-center rounded-full bg-white/15 text-white opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:scale-100 group-hover:opacity-100"
+                >
+                  <Expand className="size-4" />
+                </span>
+                <span className="absolute inset-x-4 bottom-4 translate-y-3 text-left text-xs font-semibold leading-snug text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  {g.alt}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -147,7 +167,7 @@ export function Gallery({
             <img
               src={active.url}
               alt={active.alt}
-              className="max-h-[72vh] w-auto rounded-xl object-contain shadow-2xl"
+              className="max-h-[72vh] w-auto rounded-xl object-contain"
             />
             <figcaption className="mx-auto mt-5 max-w-2xl text-center">
               <p className="text-sm font-medium leading-relaxed text-white">{active.alt}</p>

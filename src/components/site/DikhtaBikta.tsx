@@ -87,7 +87,6 @@ export function DikhtaBikta() {
               className="pointer-events-none absolute left-0 top-0 whitespace-nowrap"
               style={{
                 color: "var(--coral)",
-                textShadow: "0 18px 40px oklch(0.55 0.21 27 / 0.45)",
                 ...anim("db-depart"),
               }}
               aria-hidden
@@ -132,7 +131,6 @@ export function DikhtaBikta() {
               className="inline-block whitespace-nowrap"
               style={{
                 color: "var(--coral)",
-                textShadow: "0 18px 40px oklch(0.55 0.21 27 / 0.5)",
                 ...anim("db-land"),
                 opacity: play && ready ? undefined : 1,
               }}
