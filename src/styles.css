@@ -6,7 +6,8 @@
 
 /*
  * NM Ingenious design system.
- * Brand: deep imperial purple + retail coral. Corporate typography:
+ * Brand: blue-indigo + retail coral.
+ * Corporate typography:
  * Google Sans Flex (display / headings) + Roboto (body).
  */
 
@@ -28,36 +29,50 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
 
+  /* Brand colors */
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-soft: var(--brand-soft);
   --color-brand-glow: var(--brand-glow);
+
+  /* Coral accent */
   --color-coral: var(--coral);
   --color-coral-soft: var(--coral-soft);
   --color-coral-foreground: var(--coral-foreground);
+
+  /* Supporting colors */
   --color-ink: var(--ink);
   --color-sand: var(--sand);
 
+  /* Charts */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -68,82 +83,216 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ============================================================
+   LIGHT THEME
+   ============================================================ */
+
 :root {
   --radius: 0.5rem;
 
-  --brand: oklch(0.352 0.126 295.3);
-  --brand-deep: oklch(0.279 0.098 295.9);
-  --brand-soft: oklch(0.963 0.012 301.3);
-  --brand-glow: oklch(0.551 0.151 295.8);
+  /*
+   * BLUE-INDIGO BRAND PALETTE
+   *
+   * The previous palette was deep purple.
+   * This palette shifts it toward a sophisticated blue-indigo.
+   */
+
+  --brand: oklch(0.38 0.13 265);
+  --brand-deep: oklch(0.32 0.11 260);
+  --brand-soft: oklch(0.965 0.012 265);
+  --brand-glow: oklch(0.58 0.16 255);
+
+  /*
+   * RETAIL CORAL
+   * Kept intentionally unchanged.
+   */
   --coral: oklch(0.602 0.215 27.7);
   --coral-soft: oklch(0.958 0.017 21.8);
   --coral-foreground: oklch(0.99 0.005 27);
-  --ink: oklch(0.198 0.042 308.4);
-  --sand: oklch(0.975 0.006 300);
 
+  /*
+   * TEXT
+   */
+  --ink: oklch(0.198 0.042 265);
+  --sand: oklch(0.975 0.006 265);
+
+  /*
+   * BASE
+   */
   --background: oklch(1 0 0);
-  --foreground: oklch(0.198 0.042 308.4);
+  --foreground: oklch(0.198 0.042 265);
+
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.198 0.042 308.4);
+  --card-foreground: oklch(0.198 0.042 265);
+
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.198 0.042 308.4);
-  --primary: oklch(0.352 0.126 295.3);
-  --primary-foreground: oklch(0.99 0.004 300);
-  --secondary: oklch(0.963 0.012 301.3);
-  --secondary-foreground: oklch(0.352 0.126 295.3);
-  --muted: oklch(0.968 0.008 300);
-  --muted-foreground: oklch(0.495 0.03 297);
+  --popover-foreground: oklch(0.198 0.042 265);
+
+  /*
+   * PRIMARY
+   */
+  --primary: oklch(0.38 0.13 265);
+  --primary-foreground: oklch(0.99 0.004 265);
+
+  /*
+   * SECONDARY
+   */
+  --secondary: oklch(0.965 0.012 265);
+  --secondary-foreground: oklch(0.38 0.13 265);
+
+  /*
+   * MUTED
+   */
+  --muted: oklch(0.968 0.008 265);
+  --muted-foreground: oklch(0.495 0.03 265);
+
+  /*
+   * ACCENT
+   */
   --accent: oklch(0.958 0.017 21.8);
   --accent-foreground: oklch(0.5 0.19 27.7);
+
+  /*
+   * DESTRUCTIVE
+   */
   --destructive: oklch(0.602 0.215 27.7);
-  --destructive-foreground: oklch(0.99 0.004 300);
-  --border: oklch(0.918 0.012 300);
-  --input: oklch(0.918 0.012 300);
-  --ring: oklch(0.434 0.155 295.3);
+  --destructive-foreground: oklch(0.99 0.004 265);
 
-  --chart-1: oklch(0.352 0.126 295.3);
+  /*
+   * BORDERS
+   */
+  --border: oklch(0.918 0.012 265);
+  --input: oklch(0.918 0.012 265);
+
+  /*
+   * FOCUS RING
+   */
+  --ring: oklch(0.46 0.15 260);
+
+  /*
+   * CHARTS
+   */
+  --chart-1: oklch(0.38 0.13 265);
   --chart-2: oklch(0.602 0.215 27.7);
-  --chart-3: oklch(0.551 0.151 295.8);
+  --chart-3: oklch(0.58 0.16 255);
   --chart-4: oklch(0.75 0.14 80);
-  --chart-5: oklch(0.434 0.155 295.3);
+  --chart-5: oklch(0.46 0.15 260);
 
-  --sidebar: oklch(0.985 0.005 300);
-  --sidebar-foreground: oklch(0.198 0.042 308.4);
-  --sidebar-primary: oklch(0.352 0.126 295.3);
-  --sidebar-primary-foreground: oklch(0.99 0.004 300);
-  --sidebar-accent: oklch(0.963 0.012 301.3);
-  --sidebar-accent-foreground: oklch(0.352 0.126 295.3);
-  --sidebar-border: oklch(0.918 0.012 300);
-  --sidebar-ring: oklch(0.434 0.155 295.3);
+  /*
+   * SIDEBAR
+   */
+  --sidebar: oklch(0.985 0.005 265);
+  --sidebar-foreground: oklch(0.198 0.042 265);
 
-  --gradient-brand: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand) 45%, var(--brand-glow) 100%);
-  --gradient-edge: linear-gradient(90deg, var(--brand) 0%, var(--coral) 50%, var(--brand-glow) 100%);
-  --shadow-soft: 0 1px 2px oklch(0.279 0.098 295.9 / 0.06), 0 12px 32px -18px oklch(0.279 0.098 295.9 / 0.3);
-  --shadow-lift: 0 2px 4px oklch(0.279 0.098 295.9 / 0.06), 0 26px 60px -24px oklch(0.279 0.098 295.9 / 0.4);
+  --sidebar-primary: oklch(0.38 0.13 265);
+  --sidebar-primary-foreground: oklch(0.99 0.004 265);
+
+  --sidebar-accent: oklch(0.965 0.012 265);
+  --sidebar-accent-foreground: oklch(0.38 0.13 265);
+
+  --sidebar-border: oklch(0.918 0.012 265);
+  --sidebar-ring: oklch(0.46 0.15 260);
+
+  /*
+   * GRADIENTS
+   *
+   * Automatically updated to use the new blue-indigo palette.
+   */
+  --gradient-brand:
+    linear-gradient(
+      135deg,
+      var(--brand-deep) 0%,
+      var(--brand) 45%,
+      var(--brand-glow) 100%
+    );
+
+  --gradient-edge:
+    linear-gradient(
+      90deg,
+      var(--brand) 0%,
+      var(--coral) 50%,
+      var(--brand-glow) 100%
+    );
+
+  /*
+   * SHADOWS
+   */
+  --shadow-soft:
+    0 1px 2px oklch(0.32 0.11 260 / 0.06),
+    0 12px 32px -18px oklch(0.32 0.11 260 / 0.3);
+
+  --shadow-lift:
+    0 2px 4px oklch(0.32 0.11 260 / 0.06),
+    0 26px 60px -24px oklch(0.32 0.11 260 / 0.4);
 }
 
+/* ============================================================
+   DARK THEME
+   ============================================================ */
 
 .dark {
-  --background: oklch(0.16 0.045 300);
-  --foreground: oklch(0.975 0.006 300);
-  --card: oklch(0.21 0.055 300);
-  --card-foreground: oklch(0.975 0.006 300);
-  --popover: oklch(0.21 0.055 300);
-  --popover-foreground: oklch(0.975 0.006 300);
-  --primary: oklch(0.65 0.16 296);
-  --primary-foreground: oklch(0.16 0.045 300);
-  --secondary: oklch(0.26 0.06 300);
-  --secondary-foreground: oklch(0.975 0.006 300);
-  --muted: oklch(0.26 0.06 300);
-  --muted-foreground: oklch(0.72 0.03 300);
+  --background: oklch(0.16 0.045 260);
+  --foreground: oklch(0.975 0.006 260);
+
+  --card: oklch(0.21 0.055 260);
+  --card-foreground: oklch(0.975 0.006 260);
+
+  --popover: oklch(0.21 0.055 260);
+  --popover-foreground: oklch(0.975 0.006 260);
+
+  /*
+   * BLUE-INDIGO PRIMARY
+   */
+  --primary: oklch(0.68 0.16 260);
+  --primary-foreground: oklch(0.16 0.045 260);
+
+  /*
+   * SECONDARY
+   */
+  --secondary: oklch(0.26 0.06 260);
+  --secondary-foreground: oklch(0.975 0.006 260);
+
+  /*
+   * MUTED
+   */
+  --muted: oklch(0.26 0.06 260);
+  --muted-foreground: oklch(0.72 0.03 260);
+
+  /*
+   * CORAL ACCENT
+   */
   --accent: oklch(0.3 0.08 27);
   --accent-foreground: oklch(0.95 0.03 27);
+
+  /*
+   * BORDERS
+   */
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.6 0.17 296);
-  --brand-soft: oklch(0.26 0.06 300);
-  --sand: oklch(0.21 0.055 300);
+
+  /*
+   * BLUE RING
+   */
+  --ring: oklch(0.63 0.17 260);
+
+  /*
+   * DARK BRAND SUPPORT
+   */
+  --brand: oklch(0.48 0.14 260);
+  --brand-deep: oklch(0.30 0.09 260);
+  --brand-soft: oklch(0.26 0.06 260);
+  --brand-glow: oklch(0.62 0.17 250);
+
+  --coral: oklch(0.602 0.215 27.7);
+  --coral-soft: oklch(0.3 0.08 27);
+  --coral-foreground: oklch(0.95 0.03 27);
+
+  --sand: oklch(0.21 0.055 260);
 }
+
+/* ============================================================
+   BASE
+   ============================================================ */
 
 @layer base {
   * {
@@ -172,7 +321,9 @@
   }
 }
 
-/* ---------- Animated brand border for boxes ---------- */
+/* ============================================================
+   ANIMATED BRAND BORDER
+   ============================================================ */
 
 @property --edge-angle {
   syntax: "<angle>";
@@ -185,6 +336,7 @@
   isolation: isolate;
   background: var(--card);
   border-radius: var(--radius-xl);
+
   transition:
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -195,6 +347,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
+
     background: conic-gradient(
       from var(--edge-angle),
       transparent 0deg,
@@ -204,16 +357,23 @@
       var(--brand) 348deg,
       transparent 360deg
     );
+
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
+
     -webkit-mask-composite: xor;
+
     mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
+
     mask-composite: exclude;
+
     opacity: 0;
+
     transition: opacity 0.4s ease;
+
     z-index: 1;
     pointer-events: none;
   }
@@ -224,8 +384,10 @@
     inset: 0;
     border-radius: inherit;
     border: 1px solid var(--border);
+
     z-index: 1;
     pointer-events: none;
+
     transition: border-color 0.4s ease;
   }
 
@@ -240,9 +402,17 @@
   }
 
   &:hover::after {
-    border-color: color-mix(in oklab, var(--brand) 18%, transparent);
+    border-color: color-mix(
+      in oklab,
+      var(--brand) 18%,
+      transparent
+    );
   }
 }
+
+/* ============================================================
+   EDGE ANIMATION
+   ============================================================ */
 
 @keyframes edge-spin {
   to {
@@ -250,7 +420,10 @@
   }
 }
 
-/* corner ticks that draw in on hover */
+/* ============================================================
+   CORNER TICKS
+   ============================================================ */
+
 @utility tick-box {
   position: relative;
 
@@ -259,7 +432,9 @@
     width: 14px;
     height: 14px;
     border-color: var(--coral);
+
     opacity: 0;
+
     transition:
       opacity 0.35s ease,
       transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -271,6 +446,10 @@
   }
 }
 
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+
 @utility marquee-track {
   display: flex;
   width: max-content;
@@ -281,14 +460,21 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
 }
 
+/* ============================================================
+   REVEAL
+   ============================================================ */
+
 @utility reveal-up {
   opacity: 0;
+
   transform: translateY(24px);
+
   transition:
     opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
@@ -299,30 +485,54 @@
   }
 }
 
-/* ---------- Dikhta / Bikta headline choreography ---------- */
+/* ============================================================
+   DIKHTA / BIKTA HEADLINE CHOREOGRAPHY
+   ============================================================ */
 
 @keyframes db-depart {
   0%,
   6% {
     opacity: 1;
-    transform: translate(0, 0) rotate(0deg) scale(1);
+    transform:
+      translate(0, 0)
+      rotate(0deg)
+      scale(1);
   }
+
   18% {
     opacity: 1;
-    transform: translate(0, -14px) rotate(-4deg) scale(1.04);
+    transform:
+      translate(0, -14px)
+      rotate(-4deg)
+      scale(1.04);
   }
+
   46% {
     opacity: 1;
-    transform: translate(calc(var(--db-dx) * 0.5), -78px) rotate(6deg) scale(0.92);
+    transform:
+      translate(
+        calc(var(--db-dx) * 0.5),
+        -78px
+      )
+      rotate(6deg)
+      scale(0.92);
   }
+
   68% {
     opacity: 1;
-    transform: translate(var(--db-dx), 0) rotate(0deg) scale(1);
+    transform:
+      translate(var(--db-dx), 0)
+      rotate(0deg)
+      scale(1);
   }
+
   76%,
   100% {
     opacity: 0;
-    transform: translate(var(--db-dx), 0) rotate(0deg) scale(1);
+    transform:
+      translate(var(--db-dx), 0)
+      rotate(0deg)
+      scale(1);
   }
 }
 
@@ -330,20 +540,31 @@
   0%,
   20% {
     opacity: 0;
-    transform: translateY(70%) scale(0.9);
+    transform:
+      translateY(70%)
+      scale(0.9);
   }
+
   46% {
     opacity: 0;
-    transform: translateY(70%) scale(0.9);
+    transform:
+      translateY(70%)
+      scale(0.9);
   }
+
   64% {
     opacity: 1;
-    transform: translateY(-6%) scale(1.01);
+    transform:
+      translateY(-6%)
+      scale(1.01);
   }
+
   72%,
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform:
+      translateY(0)
+      scale(1);
   }
 }
 
@@ -352,6 +573,7 @@
   5% {
     opacity: 1;
   }
+
   8%,
   100% {
     opacity: 0;
@@ -365,18 +587,22 @@
     transform: scale(0.86);
     filter: blur(6px);
   }
+
   70% {
     opacity: 1;
     transform: scale(1.09);
     filter: blur(0);
   }
+
   76% {
     transform: scale(1);
   }
+
   92% {
     opacity: 1;
     transform: scale(1);
   }
+
   100% {
     opacity: 0;
     transform: scale(1);
@@ -388,10 +614,12 @@
   66% {
     transform: scaleX(0);
   }
+
   78%,
   92% {
     transform: scaleX(1);
   }
+
   100% {
     transform: scaleX(0);
   }
@@ -401,21 +629,37 @@
   0%,
   70% {
     opacity: 0;
-    transform: translateY(6px) rotate(-6deg);
+    transform:
+      translateY(6px)
+      rotate(-6deg);
   }
+
   78%,
   92% {
     opacity: 1;
-    transform: translateY(0) rotate(-6deg);
+    transform:
+      translateY(0)
+      rotate(-6deg);
   }
+
   100% {
     opacity: 0;
-    transform: translateY(0) rotate(-6deg);
+    transform:
+      translateY(0)
+      rotate(-6deg);
   }
 }
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
+  }
+
+  .brand-box {
+    transition: none;
   }
 }
