@@ -78,16 +78,16 @@ export function ShelfTestimonials() {
         <div className="max-w-2xl">
 
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
-            Off the shelf, in their words
+            Client voices
           </p>
 
           <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
-            Pick a brand off the shelf. Read what they said.
+            A word from the
+            people we work with.
           </h2>
 
           <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-            Every pack on this shelf is a client we still work with.
-            Select one to take it down.
+             Strong partnerships are built through consistency, responsiveness and dependable execution.
           </p>
 
         </div>
