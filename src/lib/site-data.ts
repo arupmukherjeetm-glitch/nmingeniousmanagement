@@ -482,18 +482,6 @@ export const testimonials = [
 
 
 export const gallery = [
-  { url: b1.url, alt: "Herbal Essences promotional display unit manned by a brand advisor" },
-  { url: b2.url, alt: "Beauty advisor at a hair colour and styling shelf in Thane" },
-  { url: b3.url, alt: "Promoter presenting a haircare pack in a Vasai-Virar general trade store" },
-  { url: b4.url, alt: "Brand hostess at a Herbal Essences exhibition stand" },
-  { url: b5.url, alt: "Anti-dandruff shampoo display and leaflet detailing in Kolkata" },
-  { url: b6.url, alt: "Premium chocolate gondola with an assisted-selling advisor in Mumbai" },
-  { url: b7.url, alt: "Snack range merchandised across multiple facings in Bhubaneswar" },
-  { url: b8.url, alt: "Branded gondola header installed over a snack aisle" },
-  { url: b9.url, alt: "Football-edition snack display built at a Barrackpore store" },
-  { url: b10.url, alt: "Edible oil sampling team engaging shoppers in a general trade outlet" },
-  { url: b11.url, alt: "Promoter carrying a product tray through a packed grocery aisle" },
-  { url: a1.url, alt: "Beauty advisor guiding a shopper at the counter" },
   { url: a5.url, alt: "Merchandised FMCG facings in a modern trade aisle" },
   { url: a6.url, alt: "New-launch sampling activation booth" },
   { url: a3.url, alt: "Promoter presenting a product to a shopper at the shelf" },
@@ -514,7 +502,7 @@ export const gallery = [
   { url: a19.url, alt: "Sampling promoter carrying an edible oil display tray through a store aisle" },
   { url: a20.url, alt: "Assisted-selling team demonstrating a bulk oil pack in modern trade" },
   { url: a21.url, alt: "Premium chocolate display manned by a brand advisor in Mumbai" },
-  { url: a22.url, alt: "Haircare advisor detailing a shampoo range at a branded display in Kolkata" },
+  { url: a22.url, alt: "Haircare advisor detailing a shampoo range in Kolkata" },
   { url: a23.url, alt: "Exhibition hostess at a branded haircare counter" },
 ];
 
