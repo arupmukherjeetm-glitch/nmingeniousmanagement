@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Quote,
+} from "lucide-react";
 
 const testimonials = [
   {
@@ -7,35 +11,30 @@ const testimonials = [
     company: "Director at Axiom Gen Nxt India Pvt Ltd",
     quote:
       "Always a pleasure working with the NM Ingenious teams! Reliable, responsive, and flexible in the ever-changing event environment.",
-    client: "Axiom",
   },
   {
     name: "Saurabh Desai",
     company: "HR Professional",
     quote:
       "The team at NM Ingenious teams are an absolute pleasure to deal with. Their hiring and training ensured that we had the best people representing our brand in bigstores across the country.",
-    client: "Corporate Partner",
   },
   {
     name: "Tejas Goenka",
     company: "MSME Honours",
     quote:
       "Businesses like you are driven by innovation & inspire the rest of us. It was amazing to hear your story & we are glad that you gave us a chance to share it with the world.",
-    client: "MSME Honours",
   },
   {
     name: "Kanu",
     company: "Senior Purchase Manager | Indian MNC",
     quote:
       "I have had great experience working with you over last couple of years and value Ingenious team for being P&G's partner for so many years. I would hope for this partnership to continue and grow in future.",
-    client: "Indian MNC",
   },
   {
     name: "Rishabh Mariwala",
     company: "Marico",
     quote:
       "I wanted to thank you for your ongoing help and a assistance to Soap Opera for sourcing of promoters. We look forward to your continued support in future.",
-    client: "Marico",
   },
 ];
 
@@ -53,25 +52,29 @@ export function CorporateTestimonials() {
     if (paused) return;
 
     const timer = window.setInterval(() => {
-      setActive((value) => (value + 1) % testimonials.length);
+      setActive((value) => {
+        return (value + 1) % testimonials.length;
+      });
     }, 6500);
 
-    return () => window.clearInterval(timer);
+    return () => {
+      window.clearInterval(timer);
+    };
   }, [paused]);
 
   const previous = () => {
-    setActive(
-      (value) =>
+    setActive((value) => {
+      return (
         (value - 1 + testimonials.length) %
-        testimonials.length,
-    );
+        testimonials.length
+      );
+    });
   };
 
   const next = () => {
-    setActive(
-      (value) =>
-        (value + 1) % testimonials.length,
-    );
+    setActive((value) => {
+      return (value + 1) % testimonials.length;
+    });
   };
 
   return (
@@ -82,13 +85,109 @@ export function CorporateTestimonials() {
            SECTION
         ===================================================== */
 
-        .nm-client-testimonials {
+        .nm-ultra-testimonials {
           position: relative;
+
           overflow: hidden;
 
-          background: #ffffff;
+          padding: 95px 0;
 
-          padding: 90px 0;
+          background:
+            #071a31;
+
+          color: white;
+        }
+
+
+        /* =====================================================
+           BACKGROUND GRID
+        ===================================================== */
+
+        .nm-ultra-testimonials::before {
+          content: "";
+
+          position: absolute;
+
+          inset: 0;
+
+          pointer-events: none;
+
+          opacity: 0.18;
+
+          background-image:
+            linear-gradient(
+              rgba(255,255,255,0.045) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255,255,255,0.045) 1px,
+              transparent 1px
+            );
+
+          background-size:
+            80px 80px;
+
+          mask-image:
+            linear-gradient(
+              to bottom,
+              transparent,
+              black 20%,
+              black 80%,
+              transparent
+            );
+        }
+
+
+        /* =====================================================
+           BLUE GLOW
+        ===================================================== */
+
+        .nm-ultra-glow-one {
+          position: absolute;
+
+          width: 620px;
+          height: 620px;
+
+          left: -280px;
+          top: -280px;
+
+          border-radius: 50%;
+
+          background:
+            radial-gradient(
+              circle,
+              rgba(38,101,180,0.26),
+              transparent 68%
+            );
+
+          filter: blur(20px);
+
+          pointer-events: none;
+        }
+
+
+        .nm-ultra-glow-two {
+          position: absolute;
+
+          width: 520px;
+          height: 520px;
+
+          right: -260px;
+          bottom: -260px;
+
+          border-radius: 50%;
+
+          background:
+            radial-gradient(
+              circle,
+              rgba(239,62,53,0.11),
+              transparent 68%
+            );
+
+          filter: blur(25px);
+
+          pointer-events: none;
         }
 
 
@@ -96,46 +195,39 @@ export function CorporateTestimonials() {
            CONTAINER
         ===================================================== */
 
-        .nm-client-testimonials-inner {
+        .nm-ultra-container {
           position: relative;
+
           z-index: 2;
 
-          width: min(
-            1180px,
-            calc(100% - 48px)
-          );
+          width:
+            min(
+              1180px,
+              calc(100% - 48px)
+            );
 
           margin: 0 auto;
         }
 
 
         /* =====================================================
-           MAIN GRID
+           TOP HEADER
         ===================================================== */
 
-        .nm-client-testimonials-grid {
-          display: grid;
+        .nm-ultra-header {
+          display: flex;
 
-          grid-template-columns:
-            minmax(0, 0.82fr)
-            minmax(0, 1.18fr);
+          align-items: flex-end;
 
-          align-items: center;
+          justify-content: space-between;
 
-          gap: 90px;
+          gap: 40px;
+
+          margin-bottom: 48px;
         }
 
 
-        /* =====================================================
-           LEFT SIDE
-        ===================================================== */
-
-        .nm-client-testimonials-left {
-          max-width: 470px;
-        }
-
-
-        .nm-client-testimonials-eyebrow {
+        .nm-ultra-eyebrow {
           display: flex;
 
           align-items: center;
@@ -144,117 +236,102 @@ export function CorporateTestimonials() {
 
           margin-bottom: 18px;
 
-          color: #ef3e35;
+          color: #f04a40;
 
           font-size: 10px;
 
           font-weight: 800;
 
-          letter-spacing: 0.28em;
+          letter-spacing: 0.30em;
 
           text-transform: uppercase;
         }
 
 
-        .nm-client-testimonials-eyebrow-line {
-          width: 36px;
+        .nm-ultra-eyebrow-line {
+          width: 34px;
 
           height: 2px;
 
-          background: #ef3e35;
+          background: #f04a40;
         }
 
 
-        .nm-client-testimonials-title {
+        .nm-ultra-title {
+          max-width: 700px;
+
           margin: 0;
 
-          color: #0b1730;
-
-          font-size: clamp(
-            38px,
-            4.5vw,
-            58px
-          );
+          font-size:
+            clamp(
+              38px,
+              5vw,
+              64px
+            );
 
           font-weight: 800;
 
-          line-height: 1.02;
+          line-height: 0.98;
 
           letter-spacing: -0.055em;
+
+          color: #ffffff;
         }
 
 
-        .nm-client-testimonials-title em {
-          color: #244b86;
-
-          font-style: normal;
+        .nm-ultra-title span {
+          color: #7da6d8;
         }
 
 
-        .nm-client-testimonials-description {
-          max-width: 430px;
+        .nm-ultra-intro {
+          max-width: 320px;
 
-          margin: 25px 0 0;
+          margin: 0;
 
-          color: #68778d;
+          color:
+            rgba(
+              255,
+              255,
+              255,
+              0.48
+            );
 
-          font-size: 14px;
+          font-size: 13px;
 
           line-height: 1.75;
         }
 
 
         /* =====================================================
-           SMALL TRUST LINE
+           MAIN TESTIMONIAL STAGE
         ===================================================== */
 
-        .nm-client-trust-line {
-          display: flex;
+        .nm-ultra-stage {
+          position: relative;
 
-          align-items: center;
+          min-height: 390px;
 
-          gap: 10px;
+          display: grid;
 
-          margin-top: 28px;
+          grid-template-columns:
+            1fr
+            240px;
 
-          color: #8b96a6;
-
-          font-size: 10px;
-
-          font-weight: 700;
-
-          letter-spacing: 0.16em;
-
-          text-transform: uppercase;
-        }
-
-
-        .nm-client-trust-dot {
-          width: 6px;
-
-          height: 6px;
-
-          border-radius: 50%;
-
-          background: #ef3e35;
+          gap: 18px;
         }
 
 
         /* =====================================================
-           RIGHT TESTIMONIAL
+           FEATURED CARD
         ===================================================== */
 
-        .nm-client-quote-area {
+        .nm-ultra-card {
           position: relative;
 
           min-width: 0;
-        }
 
-
-        .nm-client-quote-card {
-          position: relative;
-
-          min-height: 340px;
+          overflow: hidden;
 
           display: flex;
 
@@ -262,88 +339,98 @@ export function CorporateTestimonials() {
 
           justify-content: space-between;
 
-          overflow: hidden;
+          min-height: 390px;
 
-          padding: 38px 42px;
+          padding: 42px 46px;
 
-          border-radius: 24px;
+          border-radius: 28px;
+
+          border:
+            1px solid
+            rgba(
+              255,
+              255,
+              255,
+              0.12
+            );
 
           background:
             linear-gradient(
               135deg,
-              #123d74 0%,
-              #183f76 55%,
-              #0d2f5c 100%
+              rgba(255,255,255,0.085),
+              rgba(255,255,255,0.025)
             );
 
           box-shadow:
-            0 24px 55px
+            0 35px 80px
             rgba(
-              12,
-              43,
-              82,
-              0.16
+              0,
+              0,
+              0,
+              0.25
+            );
+
+          backdrop-filter:
+            blur(18px);
+        }
+
+
+        /* =====================================================
+           CARD TOP ACCENT
+        ===================================================== */
+
+        .nm-ultra-card-accent {
+          position: absolute;
+
+          top: 0;
+          left: 40px;
+
+          width: 70px;
+
+          height: 3px;
+
+          background: #f0443b;
+
+          box-shadow:
+            0 0 20px
+            rgba(
+              240,
+              68,
+              59,
+              0.5
             );
         }
 
 
         /* =====================================================
-           SUBTLE DECORATION
+           LARGE QUOTE MARK
         ===================================================== */
 
-        .nm-client-quote-card::after {
-          content: "";
-
+        .nm-ultra-quote-mark {
           position: absolute;
 
-          right: -120px;
-
-          bottom: -150px;
-
-          width: 360px;
-
-          height: 360px;
-
-          border-radius: 50%;
-
-          background:
-            radial-gradient(
-              circle,
-              rgba(
-                255,
-                255,
-                255,
-                0.09
-              ),
-              transparent 68%
-            );
-
-          pointer-events: none;
-        }
-
-
-        .nm-client-quote-mark {
-          position: absolute;
-
-          right: 30px;
-
-          top: 0;
+          right: 22px;
+          top: -35px;
 
           color:
             rgba(
               255,
               255,
               255,
-              0.07
+              0.045
             );
 
-          font-family: Georgia, serif;
+          font-family:
+            Georgia,
+            serif;
 
-          font-size: 190px;
+          font-size: 230px;
 
-          line-height: 0.8;
+          line-height: 1;
 
           pointer-events: none;
+
+          user-select: none;
         }
 
 
@@ -351,42 +438,43 @@ export function CorporateTestimonials() {
            QUOTE
         ===================================================== */
 
-        .nm-client-quote-top {
+        .nm-ultra-quote-area {
           position: relative;
 
           z-index: 2;
+
+          max-width: 800px;
         }
 
 
-        .nm-client-quote-icon {
-          width: 30px;
+        .nm-ultra-quote-icon {
+          width: 29px;
 
-          height: 30px;
+          height: 29px;
 
-          margin-bottom: 22px;
+          margin-bottom: 20px;
 
-          color: #f04a40;
+          color: #f0443b;
         }
 
 
-        .nm-client-quote {
-          max-width: 700px;
-
+        .nm-ultra-quote {
           margin: 0;
 
           color: #ffffff;
 
-          font-size: clamp(
-            19px,
-            2vw,
-            25px
-          );
+          font-size:
+            clamp(
+              20px,
+              2.3vw,
+              29px
+            );
 
           font-weight: 500;
 
-          line-height: 1.55;
+          line-height: 1.5;
 
-          letter-spacing: -0.015em;
+          letter-spacing: -0.018em;
         }
 
 
@@ -394,7 +482,7 @@ export function CorporateTestimonials() {
            AUTHOR
         ===================================================== */
 
-        .nm-client-author {
+        .nm-ultra-author {
           position: relative;
 
           z-index: 2;
@@ -407,12 +495,211 @@ export function CorporateTestimonials() {
 
           gap: 20px;
 
-          margin-top: 30px;
+          margin-top: 32px;
 
-          padding-top: 20px;
+          padding-top: 22px;
 
           border-top:
             1px solid
+            rgba(
+              255,
+              255,
+              255,
+              0.10
+            );
+        }
+
+
+        .nm-ultra-author-name {
+          margin: 0;
+
+          color: #ffffff;
+
+          font-size: 15px;
+
+          font-weight: 800;
+        }
+
+
+        .nm-ultra-author-company {
+          margin: 5px 0 0;
+
+          color:
+            rgba(
+              255,
+              255,
+              255,
+              0.48
+            );
+
+          font-size: 11px;
+
+          line-height: 1.5;
+        }
+
+
+        .nm-ultra-author-mark {
+          width: 42px;
+
+          height: 42px;
+
+          display: flex;
+
+          align-items: center;
+
+          justify-content: center;
+
+          border-radius: 50%;
+
+          border:
+            1px solid
+            rgba(
+              255,
+              255,
+              255,
+              0.12
+            );
+
+          color:
+            rgba(
+              255,
+              255,
+              255,
+              0.45
+            );
+
+          font-size: 10px;
+
+          font-weight: 800;
+
+          letter-spacing: 0.04em;
+
+          text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           CLIENT RAIL
+        ===================================================== */
+
+        .nm-ultra-rail {
+          display: flex;
+
+          flex-direction: column;
+
+          gap: 7px;
+        }
+
+
+        .nm-ultra-client {
+          position: relative;
+
+          flex: 1;
+
+          display: flex;
+
+          align-items: center;
+
+          padding: 0 18px;
+
+          border:
+            1px solid
+            rgba(
+              255,
+              255,
+              255,
+              0.07
+            );
+
+          border-radius: 15px;
+
+          background:
+            rgba(
+              255,
+              255,
+              255,
+              0.025
+            );
+
+          color:
+            rgba(
+              255,
+              255,
+              255,
+              0.40
+            );
+
+          text-align: left;
+
+          cursor: pointer;
+
+          overflow: hidden;
+
+          transition:
+            all 350ms ease;
+        }
+
+
+        .nm-ultra-client::before {
+          content: "";
+
+          position: absolute;
+
+          left: 0;
+
+          top: 14px;
+          bottom: 14px;
+
+          width: 2px;
+
+          background:
+            transparent;
+
+          transition:
+            background 300ms ease,
+            box-shadow 300ms ease;
+        }
+
+
+        .nm-ultra-client:hover {
+          color:
+            rgba(
+              255,
+              255,
+              255,
+              0.78
+            );
+
+          background:
+            rgba(
+              255,
+              255,
+              255,
+              0.055
+            );
+
+          border-color:
+            rgba(
+              255,
+              255,
+              255,
+              0.13
+            );
+        }
+
+
+        .nm-ultra-client.active {
+          color: #ffffff;
+
+          background:
+            rgba(
+              255,
+              255,
+              255,
+              0.085
+            );
+
+          border-color:
             rgba(
               255,
               255,
@@ -422,52 +709,26 @@ export function CorporateTestimonials() {
         }
 
 
-        .nm-client-author-name {
-          margin: 0;
+        .nm-ultra-client.active::before {
+          background: #f0443b;
 
-          color: #ffffff;
-
-          font-size: 16px;
-
-          font-weight: 800;
+          box-shadow:
+            0 0 14px
+            rgba(
+              240,
+              68,
+              59,
+              0.7
+            );
         }
 
 
-        .nm-client-author-company {
-          margin: 5px 0 0;
-
-          color:
-            rgba(
-              255,
-              255,
-              255,
-              0.57
-            );
-
+        .nm-ultra-client-name {
           font-size: 11px;
 
-          line-height: 1.5;
-        }
+          font-weight: 700;
 
-
-        .nm-client-author-client {
-          color:
-            rgba(
-              255,
-              255,
-              255,
-              0.48
-            );
-
-          font-size: 9px;
-
-          font-weight: 800;
-
-          letter-spacing: 0.18em;
-
-          text-transform: uppercase;
-
-          white-space: nowrap;
+          letter-spacing: 0.01em;
         }
 
 
@@ -475,7 +736,7 @@ export function CorporateTestimonials() {
            NAVIGATION
         ===================================================== */
 
-        .nm-client-navigation {
+        .nm-ultra-navigation {
           display: flex;
 
           align-items: center;
@@ -483,135 +744,100 @@ export function CorporateTestimonials() {
           justify-content: space-between;
 
           margin-top: 18px;
-
-          padding: 0 3px;
         }
 
 
-        /* =====================================================
-           CLIENT SELECTOR
-        ===================================================== */
-
-        .nm-client-selector {
+        .nm-ultra-progress {
           display: flex;
 
           align-items: center;
 
-          gap: 7px;
-
-          min-width: 0;
-
-          overflow-x: auto;
-
-          scrollbar-width: none;
+          gap: 6px;
         }
 
 
-        .nm-client-selector::-webkit-scrollbar {
-          display: none;
-        }
+        .nm-ultra-progress-dot {
+          width: 5px;
 
+          height: 5px;
 
-        .nm-client-selector-button {
-          flex-shrink: 0;
+          border-radius: 50%;
 
-          padding: 9px 13px;
-
-          border: 1px solid
+          background:
             rgba(
-              16,
-              39,
-              73,
-              0.10
+              255,
+              255,
+              255,
+              0.20
             );
-
-          border-radius: 999px;
-
-          background: #f5f7fa;
-
-          color: #78859a;
-
-          font-size: 10px;
-
-          font-weight: 700;
-
-          cursor: pointer;
 
           transition:
-            background 250ms ease,
-            color 250ms ease,
-            border-color 250ms ease,
-            transform 250ms ease;
+            all 300ms ease;
         }
 
 
-        .nm-client-selector-button:hover {
-          transform: translateY(-1px);
+        .nm-ultra-progress-dot.active {
+          width: 25px;
 
-          border-color:
+          border-radius: 99px;
+
+          background: #f0443b;
+
+          box-shadow:
+            0 0 12px
             rgba(
-              35,
-              73,
-              134,
-              0.18
+              240,
+              68,
+              59,
+              0.55
             );
-
-          color: #234986;
-
-          background: #ffffff;
         }
 
 
-        .nm-client-selector-button.active {
-          border-color: #ef3e35;
-
-          background: #ef3e35;
-
-          color: #ffffff;
-        }
-
-
-        /* =====================================================
-           ARROWS
-        ===================================================== */
-
-        .nm-client-arrows {
+        .nm-ultra-arrows {
           display: flex;
 
-          flex-shrink: 0;
-
           gap: 7px;
-
-          margin-left: 18px;
         }
 
 
-        .nm-client-arrow {
+        .nm-ultra-arrow {
+          width: 40px;
+
+          height: 40px;
+
           display: flex;
 
           align-items: center;
 
           justify-content: center;
 
-          width: 38px;
-
-          height: 38px;
-
-          padding: 0;
-
-          border: 1px solid
+          border:
+            1px solid
             rgba(
-              16,
-              39,
-              73,
-              0.12
+              255,
+              255,
+              255,
+              0.13
             );
 
           border-radius: 50%;
 
-          background: #ffffff;
+          background:
+            rgba(
+              255,
+              255,
+              255,
+              0.035
+            );
 
-          color: #173b6d;
+          color:
+            rgba(
+              255,
+              255,
+              255,
+              0.75
+            );
 
           cursor: pointer;
 
@@ -620,25 +846,26 @@ export function CorporateTestimonials() {
         }
 
 
-        .nm-client-arrow:hover {
-          border-color: #ef3e35;
+        .nm-ultra-arrow:hover {
+          background: #f0443b;
 
-          background: #ef3e35;
+          border-color: #f0443b;
 
           color: #ffffff;
 
-          transform: translateY(-2px);
+          transform:
+            translateY(-2px);
         }
 
 
         /* =====================================================
-           ANIMATION
+           CARD TRANSITION
         ===================================================== */
 
-        .nm-client-quote-content {
+        .nm-ultra-card-content {
           animation:
-            nmClientFade
-            500ms
+            nmUltraEnter
+            550ms
             cubic-bezier(
               0.22,
               1,
@@ -648,117 +875,133 @@ export function CorporateTestimonials() {
         }
 
 
-        @keyframes nmClientFade {
+        @keyframes nmUltraEnter {
 
           from {
             opacity: 0;
 
             transform:
-              translateY(8px);
+              translateY(12px)
+              scale(0.99);
           }
 
           to {
             opacity: 1;
 
             transform:
-              translateY(0);
+              translateY(0)
+              scale(1);
           }
 
         }
 
 
         /* =====================================================
-           RESPONSIVE
+           MOBILE
         ===================================================== */
 
-        @media (max-width: 950px) {
+        @media (max-width: 850px) {
 
-          .nm-client-testimonials {
+          .nm-ultra-testimonials {
             padding: 75px 0;
           }
 
-          .nm-client-testimonials-grid {
+          .nm-ultra-header {
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            margin-bottom: 35px;
+          }
+
+          .nm-ultra-stage {
             grid-template-columns: 1fr;
-
-            gap: 42px;
           }
 
-          .nm-client-testimonials-left {
-            max-width: 650px;
+          .nm-ultra-rail {
+            display: flex;
+
+            flex-direction: row;
+
+            overflow-x: auto;
+
+            scrollbar-width: none;
           }
 
-          .nm-client-testimonials-description {
-            max-width: 600px;
+          .nm-ultra-rail::-webkit-scrollbar {
+            display: none;
+          }
+
+          .nm-ultra-client {
+            flex: 0 0 auto;
+
+            min-height: 48px;
+
+            padding: 0 17px;
+          }
+
+          .nm-ultra-client::before {
+            left: 12px;
+            right: 12px;
+
+            top: auto;
+            bottom: 0;
+
+            width: auto;
+
+            height: 2px;
+          }
+
+          .nm-ultra-card {
+            min-height: 380px;
+
+            padding: 35px;
           }
 
         }
 
 
-        @media (max-width: 600px) {
+        @media (max-width: 560px) {
 
-          .nm-client-testimonials {
-            padding: 65px 0;
-          }
-
-          .nm-client-testimonials-inner {
+          .nm-ultra-container {
             width:
               calc(100% - 32px);
           }
 
-          .nm-client-testimonials-title {
-            font-size: 39px;
+          .nm-ultra-testimonials {
+            padding: 65px 0;
           }
 
-          .nm-client-testimonials-description {
-            margin-top: 18px;
-
-            font-size: 13px;
+          .nm-ultra-title {
+            font-size: 41px;
           }
 
-          .nm-client-trust-line {
-            margin-top: 20px;
+          .nm-ultra-intro {
+            font-size: 12px;
           }
 
-          .nm-client-quote-card {
-            min-height: 390px;
+          .nm-ultra-card {
+            min-height: 440px;
 
-            padding: 30px 26px;
+            padding: 28px;
 
-            border-radius: 21px;
+            border-radius: 22px;
           }
 
-          .nm-client-quote {
+          .nm-ultra-quote {
             font-size: 19px;
 
-            line-height: 1.55;
+            line-height: 1.58;
           }
 
-          .nm-client-author {
+          .nm-ultra-author {
             align-items: flex-start;
 
             flex-direction: column;
-
-            gap: 12px;
           }
 
-          .nm-client-author-client {
+          .nm-ultra-author-mark {
             display: none;
-          }
-
-          .nm-client-navigation {
-            align-items: flex-start;
-
-            flex-direction: column;
-
-            gap: 14px;
-          }
-
-          .nm-client-selector {
-            width: 100%;
-          }
-
-          .nm-client-arrows {
-            margin-left: 0;
           }
 
         }
@@ -767,78 +1010,201 @@ export function CorporateTestimonials() {
 
 
       <section
-        className="nm-client-testimonials"
+        className="nm-ultra-testimonials"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
 
-        <div className="nm-client-testimonials-inner">
+        {/* BACKGROUND LIGHT */}
+
+        <div
+          aria-hidden="true"
+          className="
+            nm-ultra-glow-one
+          "
+        />
+
+        <div
+          aria-hidden="true"
+          className="
+            nm-ultra-glow-two
+          "
+        />
+
+
+        <div
+          className="
+            nm-ultra-container
+          "
+        >
 
           {/* ==================================================
-              MAIN LAYOUT
+              HEADER
           ================================================== */}
 
-          <div className="nm-client-testimonials-grid">
+          <header
+            className="
+              nm-ultra-header
+            "
+          >
 
-            {/* =================================================
-                LEFT
-            ================================================= */}
-
-            <div className="nm-client-testimonials-left">
+            <div>
 
               <div
                 className="
-                  nm-client-testimonials-eyebrow
+                  nm-ultra-eyebrow
                 "
               >
 
                 <span
-                  aria-hidden="true"
                   className="
-                    nm-client-testimonials-eyebrow-line
+                    nm-ultra-eyebrow-line
                   "
                 />
 
-                Client references
+                Client voices
 
               </div>
 
 
               <h2
                 className="
-                  nm-client-testimonials-title
+                  nm-ultra-title
                 "
               >
-                Trusted by
+                Trusted by the
                 <br />
-                <em>teams that deliver.</em>
+
+                <span>
+                  people behind the brands.
+                </span>
               </h2>
 
+            </div>
 
-              <p
+
+            <p
+              className="
+                nm-ultra-intro
+              "
+            >
+              Partnerships built through
+              consistency, responsiveness and
+              execution at the point where brands
+              meet shoppers.
+            </p>
+
+          </header>
+
+
+          {/* ==================================================
+              TESTIMONIAL STAGE
+          ================================================== */}
+
+          <div
+            className="
+              nm-ultra-stage
+            "
+          >
+
+            {/* =================================================
+                FEATURED QUOTE
+            ================================================= */}
+
+            <div
+              className="
+                nm-ultra-card
+              "
+            >
+
+              <span
+                aria-hidden="true"
                 className="
-                  nm-client-testimonials-description
+                  nm-ultra-card-accent
+                "
+              />
+
+
+              <span
+                aria-hidden="true"
+                className="
+                  nm-ultra-quote-mark
                 "
               >
-                Strong partnerships are built through
-                consistency, responsiveness and execution
-                that delivers where it matters most.
-              </p>
+                “
+              </span>
 
 
               <div
+                key={active}
                 className="
-                  nm-client-trust-line
+                  nm-ultra-card-content
                 "
               >
 
-                <span
+                <div
                   className="
-                    nm-client-trust-dot
+                    nm-ultra-quote-area
                   "
-                />
+                >
 
-                Long-term client relationships
+                  <Quote
+                    className="
+                      nm-ultra-quote-icon
+                    "
+                    strokeWidth={1.5}
+                  />
+
+
+                  <blockquote
+                    className="
+                      nm-ultra-quote
+                    "
+                  >
+                    “{current.quote}”
+                  </blockquote>
+
+                </div>
+
+
+                <div
+                  className="
+                    nm-ultra-author
+                  "
+                >
+
+                  <div>
+
+                    <p
+                      className="
+                        nm-ultra-author-name
+                      "
+                    >
+                      {current.name}
+                    </p>
+
+
+                    <p
+                      className="
+                        nm-ultra-author-company
+                      "
+                    >
+                      {current.company}
+                    </p>
+
+                  </div>
+
+
+                  <span
+                    className="
+                      nm-ultra-author-mark
+                    "
+                    aria-hidden="true"
+                  >
+                    NM
+                  </span>
+
+                </div>
 
               </div>
 
@@ -846,186 +1212,125 @@ export function CorporateTestimonials() {
 
 
             {/* =================================================
-                RIGHT
-            ================================================= */}
+                CLIENT RAIL
+            ================================================== */}
 
-            <div className="nm-client-quote-area">
+            <div
+              className="
+                nm-ultra-rail
+              "
+            >
 
-              <div
-                className="
-                  nm-client-quote-card
-                "
-              >
+              {testimonials.map(
+                (testimonial, index) => (
+                  <button
+                    key={testimonial.name}
+                    type="button"
+                    aria-label={`View testimonial from ${testimonial.name}`}
+                    aria-pressed={
+                      active === index
+                    }
+                    onClick={() =>
+                      setActive(index)
+                    }
+                    className={`
+                      nm-ultra-client
 
-                <span
-                  aria-hidden="true"
-                  className="
-                    nm-client-quote-mark
-                  "
-                >
-                  “
-                </span>
-
-
-                <div
-                  key={active}
-                  className="
-                    nm-client-quote-content
-                  "
-                >
-
-                  <div
-                    className="
-                      nm-client-quote-top
-                    "
+                      ${
+                        active === index
+                          ? "active"
+                          : ""
+                      }
+                    `}
                   >
-
-                    <Quote
-                      className="
-                        nm-client-quote-icon
-                      "
-                      strokeWidth={1.5}
-                    />
-
-
-                    <blockquote
-                      className="
-                        nm-client-quote
-                      "
-                    >
-                      “{current.quote}”
-                    </blockquote>
-
-                  </div>
-
-
-                  <div
-                    className="
-                      nm-client-author
-                    "
-                  >
-
-                    <div>
-
-                      <p
-                        className="
-                          nm-client-author-name
-                        "
-                      >
-                        {current.name}
-                      </p>
-
-
-                      <p
-                        className="
-                          nm-client-author-company
-                        "
-                      >
-                        {current.company}
-                      </p>
-
-                    </div>
-
 
                     <span
                       className="
-                        nm-client-author-client
+                        nm-ultra-client-name
                       "
                     >
-                      {current.client}
+                      {testimonial.name}
                     </span>
 
-                  </div>
+                  </button>
+                ),
+              )}
 
-                </div>
+            </div>
 
-              </div>
+          </div>
 
 
-              {/* =================================================
-                  CLIENT SELECTOR + CONTROLS
-              ================================================= */}
+          {/* ==================================================
+              CONTROLS
+          ================================================== */}
 
-              <div
+          <div
+            className="
+              nm-ultra-navigation
+            "
+          >
+
+            <div
+              className="
+                nm-ultra-progress
+              "
+            >
+
+              {testimonials.map(
+                (testimonial, index) => (
+                  <span
+                    key={testimonial.name}
+                    className={`
+                      nm-ultra-progress-dot
+
+                      ${
+                        active === index
+                          ? "active"
+                          : ""
+                      }
+                    `}
+                  />
+                ),
+              )}
+
+            </div>
+
+
+            <div
+              className="
+                nm-ultra-arrows
+              "
+            >
+
+              <button
+                type="button"
+                aria-label="Previous testimonial"
+                onClick={previous}
                 className="
-                  nm-client-navigation
+                  nm-ultra-arrow
                 "
               >
-
-                <div
-                  className="
-                    nm-client-selector
-                  "
-                >
-
-                  {testimonials.map(
-                    (testimonial, index) => (
-                      <button
-                        key={testimonial.name}
-                        type="button"
-                        onClick={() =>
-                          setActive(index)
-                        }
-                        aria-label={`Show testimonial from ${testimonial.name}`}
-                        aria-pressed={
-                          active === index
-                        }
-                        className={`
-                          nm-client-selector-button
-
-                          ${
-                            active === index
-                              ? "active"
-                              : ""
-                          }
-                        `}
-                      >
-                        {testimonial.name}
-                      </button>
-                    ),
-                  )}
-
-                </div>
+                <ArrowLeft
+                  size={15}
+                  strokeWidth={1.7}
+                />
+              </button>
 
 
-                <div
-                  className="
-                    nm-client-arrows
-                  "
-                >
-
-                  <button
-                    type="button"
-                    aria-label="Previous testimonial"
-                    onClick={previous}
-                    className="
-                      nm-client-arrow
-                    "
-                  >
-                    <ArrowLeft
-                      size={15}
-                      strokeWidth={1.8}
-                    />
-                  </button>
-
-
-                  <button
-                    type="button"
-                    aria-label="Next testimonial"
-                    onClick={next}
-                    className="
-                      nm-client-arrow
-                    "
-                  >
-                    <ArrowRight
-                      size={15}
-                      strokeWidth={1.8}
-                    />
-                  </button>
-
-                </div>
-
-              </div>
+              <button
+                type="button"
+                aria-label="Next testimonial"
+                onClick={next}
+                className="
+                  nm-ultra-arrow
+                "
+              >
+                <ArrowRight
+                  size={15}
+                  strokeWidth={1.7}
+                />
+              </button>
 
             </div>
 
