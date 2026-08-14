@@ -63,12 +63,12 @@ export function Header() {
         </div>
       </div>
 
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-5 lg:px-8">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-6 px-5 lg:px-8">
         <Link to="/" className="flex shrink-0 items-center gap-3" onClick={() => setOpen(false)}>
           <img
             src={logoUrl}
             alt="NM Ingenious Management Services"
-            className="h-16 w-auto lg:h-[5.5rem]"
+            className="h-14 w-auto lg:h-[4.5rem]"
           />
           <span className="sr-only">NM Ingenious</span>
         </Link>
@@ -164,7 +164,7 @@ export function Header() {
       {/* Mobile drawer */}
       <div
         className={cn(
-          "fixed inset-x-0 top-[7.5rem] z-40 h-[calc(100dvh-7.5rem)] overflow-y-auto border-t border-border bg-background transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-[8.5rem] z-40 h-[calc(100dvh-8.5rem)] overflow-y-auto border-t border-border bg-background transition-all duration-300 lg:hidden",
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0",
         )}
       >
