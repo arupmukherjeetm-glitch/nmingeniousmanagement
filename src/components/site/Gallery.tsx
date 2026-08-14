@@ -6,37 +6,30 @@ import {
   X,
 } from "lucide-react";
 import { gallery } from "@/lib/site-data";
-import { cn } from "@/lib/utils";
-
-type GalleryProps = {
-  title?: string;
-  eyebrow?: string;
-  intro?: string;
-};
 
 export function Gallery({
   title = "On the floor, every day",
   eyebrow = "Gallery",
   intro = "Our teams inside modern trade and general trade stores across India: promoters, beauty advisors, merchandizers and activation crews at the last three feet.",
-}: GalleryProps) {
+}: {
+  title?: string;
+  eyebrow?: string;
+  intro?: string;
+}) {
   const [open, setOpen] = useState<number | null>(null);
 
   /*
    * Remove duplicate image URLs automatically.
-   * This protects the gallery even if the same image is accidentally
-   * added more than once in site-data.ts.
    */
   const uniqueGallery = useMemo(() => {
     const seen = new Set<string>();
 
     return gallery.filter((item) => {
-      const normalizedUrl = item.url.split("?")[0].toLowerCase();
+      const url = item.url.split("?")[0].toLowerCase();
 
-      if (seen.has(normalizedUrl)) {
-        return false;
-      }
+      if (seen.has(url)) return false;
 
-      seen.add(normalizedUrl);
+      seen.add(url);
       return true;
     });
   }, []);
@@ -72,17 +65,9 @@ export function Gallery({
     if (open === null) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        close();
-      }
-
-      if (event.key === "ArrowRight") {
-        next();
-      }
-
-      if (event.key === "ArrowLeft") {
-        prev();
-      }
+      if (event.key === "Escape") close();
+      if (event.key === "ArrowRight") next();
+      if (event.key === "ArrowLeft") prev();
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -99,179 +84,164 @@ export function Gallery({
   const active =
     open === null ? null : uniqueGallery[open] ?? null;
 
-  /*
-   * Controlled editorial sizing.
-   *
-   * The actual source image dimensions do not control the visual height.
-   * This prevents very tall portrait images from becoming enormous.
-   */
-  const getCardClass = (index: number) => {
-    const patterns = [
-      "md:col-span-7 md:row-span-2",
-      "md:col-span-5 md:row-span-1",
-      "md:col-span-5 md:row-span-1",
-      "md:col-span-4 md:row-span-2",
-      "md:col-span-4 md:row-span-1",
-      "md:col-span-4 md:row-span-1",
-      "md:col-span-8 md:row-span-2",
-      "md:col-span-4 md:row-span-2",
-      "md:col-span-4 md:row-span-1",
-      "md:col-span-4 md:row-span-1",
-      "md:col-span-6 md:row-span-2",
-      "md:col-span-6 md:row-span-1",
-    ];
-
-    return patterns[index % patterns.length];
-  };
-
   return (
-    <>
-      <section className="relative overflow-hidden bg-background py-24 lg:py-32">
-        {/* Ambient background */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-20 blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, color-mix(in oklab, var(--coral) 18%, transparent), transparent 68%)",
-          }}
-        />
+    <section className="relative overflow-hidden bg-background py-24 lg:py-32">
+      {/* Very subtle ambient background */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[700px] -translate-x-1/2 rounded-full opacity-20 blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--coral) 14%, transparent), transparent 68%)",
+        }}
+      />
 
-        {/* Header */}
-        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-4xl">
-              <div className="flex items-center gap-3">
-                <span className="h-px w-8 bg-coral" />
+      {/* =========================
+          HEADER
+      ========================== */}
+      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-coral" />
 
-                <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-coral">
-                  {eyebrow}
-                </p>
-              </div>
-
-              <h2 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[0.95] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-7xl">
-                {title}
-              </h2>
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-coral">
+                {eyebrow}
+              </p>
             </div>
 
-            <div className="flex max-w-md flex-col gap-5 lg:pb-1">
-              <p className="text-sm leading-7 text-muted-foreground">
-                {intro}
-              </p>
+            <h2 className="mt-5 font-display text-4xl font-extrabold leading-[0.95] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              {title}
+            </h2>
+          </div>
 
-              <div className="flex items-center gap-3">
-                <span className="text-3xl font-bold tracking-tight text-foreground">
-                  {String(uniqueGallery.length).padStart(2, "0")}
-                </span>
+          <div className="max-w-md">
+            <p className="text-sm leading-7 text-muted-foreground">
+              {intro}
+            </p>
 
-                <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-muted-foreground">
-                  Moments from<br />
-                  the field
-                </span>
-              </div>
+            <div className="mt-6 flex items-center gap-3">
+              <span className="text-2xl font-bold tracking-tight text-foreground">
+                {String(uniqueGallery.length).padStart(2, "0")}
+              </span>
+
+              <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
+                Field moments
+              </span>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Gallery */}
-        <div className="relative mx-auto mt-16 max-w-[1400px] px-3 sm:px-5 lg:mt-20 lg:px-8">
-          <div
-            className="
-              grid
-              grid-cols-1
-              gap-3
-              md:grid-cols-12
-              md:auto-rows-[170px]
-              lg:auto-rows-[185px]
-              xl:auto-rows-[200px]
-            "
-          >
-            {uniqueGallery.map((item, index) => (
-              <button
-                key={`${item.url}-${index}`}
-                type="button"
-                onClick={() => setOpen(index)}
-                aria-label={`Open image: ${item.alt}`}
-                className={cn(
-                  "group relative min-h-[280px] overflow-hidden rounded-[1.25rem] bg-brand-deep text-left outline-none",
-                  "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                  "hover:z-10 hover:-translate-y-1.5 hover:shadow-2xl",
-                  "focus-visible:z-20 focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-4",
-                  getCardClass(index),
-                )}
+      {/* =========================
+          GALLERY
+      ========================== */}
+      <div className="relative mx-auto mt-16 max-w-7xl px-5 lg:mt-20 lg:px-8">
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-4
+            sm:grid-cols-2
+            lg:grid-cols-3
+          "
+        >
+          {uniqueGallery.map((item, index) => (
+            <button
+              key={`${item.url}-${index}`}
+              type="button"
+              onClick={() => setOpen(index)}
+              aria-label={`Open image: ${item.alt}`}
+              className="
+                group
+                relative
+                overflow-hidden
+                rounded-2xl
+                bg-brand-deep
+                text-left
+                outline-none
+                transition-all
+                duration-500
+                ease-[cubic-bezier(0.22,1,0.36,1)]
+                hover:-translate-y-1
+                hover:shadow-2xl
+                focus-visible:ring-2
+                focus-visible:ring-coral
+                focus-visible:ring-offset-4
+              "
+            >
+              {/* IMAGE FRAME
+                  Fixed height means portrait images
+                  cannot become excessively tall.
+              */}
+              <div
+                className="
+                  relative
+                  h-[260px]
+                  overflow-hidden
+                  sm:h-[280px]
+                  lg:h-[300px]
+                  xl:h-[320px]
+                "
               >
-                {/* Image */}
                 <img
                   src={item.url}
                   alt={item.alt}
                   loading={index === 0 ? "eager" : "lazy"}
                   className="
-                    absolute inset-0
+                    absolute
+                    inset-0
                     h-full
                     w-full
                     object-cover
                     transition-transform
-                    duration-[1000ms]
-                    ease-[cubic-bezier(0.16,1,0.3,1)]
-                    group-hover:scale-[1.065]
+                    duration-[900ms]
+                    ease-[cubic-bezier(0.22,1,0.36,1)]
+                    group-hover:scale-[1.07]
                   "
                 />
 
-                {/* Soft cinematic overlay */}
+                {/* Dark gradient */}
                 <div
                   aria-hidden
                   className="
-                    absolute inset-0
+                    absolute
+                    inset-0
                     bg-gradient-to-t
                     from-black/75
-                    via-black/5
+                    via-black/10
                     to-transparent
                     opacity-70
-                    transition-all
-                    duration-700
-                    group-hover:from-black/90
-                    group-hover:via-black/15
+                    transition-opacity
+                    duration-500
                     group-hover:opacity-100
                   "
                 />
 
-                {/* Subtle image sheen */}
-                <div
-                  aria-hidden
-                  className="
-                    pointer-events-none
-                    absolute inset-0
-                    bg-white/0
-                    transition-all
-                    duration-700
-                    group-hover:bg-white/[0.025]
-                  "
-                />
-
-                {/* Number */}
+                {/* Top left number */}
                 <span
                   className="
-                    absolute left-5 top-5
+                    absolute
+                    left-4
+                    top-4
                     text-[9px]
                     font-bold
                     tracking-[0.25em]
                     text-white/70
-                    transition-all
-                    duration-500
-                    group-hover:text-white
                   "
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                {/* Open button */}
+                {/* Open icon */}
                 <span
                   aria-hidden
                   className="
-                    absolute right-5 top-5
-                    flex size-10
-                    translate-y-2
-                    scale-75
+                    absolute
+                    right-4
+                    top-4
+                    flex
+                    size-10
                     items-center
                     justify-center
                     rounded-full
@@ -280,10 +250,9 @@ export function Gallery({
                     bg-black/20
                     text-white
                     opacity-0
-                    backdrop-blur-xl
+                    backdrop-blur-md
                     transition-all
                     duration-500
-                    group-hover:translate-y-0
                     group-hover:scale-100
                     group-hover:opacity-100
                   "
@@ -294,77 +263,81 @@ export function Gallery({
                 {/* Caption */}
                 <div
                   className="
-                    absolute inset-x-0 bottom-0
+                    absolute
+                    inset-x-0
+                    bottom-0
                     p-5
-                    sm:p-6
                   "
                 >
-                  <div
+                  <p
                     className="
-                      translate-y-3
-                      transition-transform
-                      duration-600
+                      max-w-[90%]
+                      translate-y-2
+                      text-xs
+                      font-semibold
+                      leading-5
+                      text-white
+                      opacity-0
+                      transition-all
+                      duration-500
                       group-hover:translate-y-0
+                      group-hover:opacity-100
                     "
                   >
-                    <p
-                      className="
-                        max-w-[90%]
-                        text-xs
-                        font-semibold
-                        leading-5
-                        text-white
-                        opacity-0
-                        transition-opacity
-                        duration-500
-                        group-hover:opacity-100
-                      "
-                    >
-                      {item.alt}
-                    </p>
-                  </div>
+                    {item.alt}
+                  </p>
                 </div>
+              </div>
 
-                {/* Premium border */}
-                <span
-                  aria-hidden
+              {/* Clean card footer */}
+              <div
+                className="
+                  flex
+                  items-center
+                  justify-between
+                  border-t
+                  border-white/10
+                  bg-brand-deep
+                  px-5
+                  py-4
+                "
+              >
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
+                  Field execution
+                </span>
+
+                <ArrowUpRight
                   className="
-                    pointer-events-none
-                    absolute inset-0
-                    rounded-[1.25rem]
-                    border border-white/0
-                    transition-colors duration-500
-                    group-hover:border-white/20
+                    size-4
+                    text-white/40
+                    transition-all
+                    duration-300
+                    group-hover:-translate-y-0.5
+                    group-hover:translate-x-0.5
+                    group-hover:text-white
                   "
                 />
-              </button>
-            ))}
-          </div>
+              </div>
+            </button>
+          ))}
         </div>
+      </div>
 
-        {/* Bottom label */}
-        <div className="relative mx-auto mt-8 max-w-[1400px] px-5 lg:px-8">
-          <div className="flex items-center justify-between border-t border-border/60 pt-5">
-            <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-muted-foreground">
-              Field execution
-            </span>
-
-            <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-muted-foreground">
-              India · MT · GT
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Lightbox */}
+      {/* =========================
+          LIGHTBOX
+      ========================== */}
       {active && (
         <div
           className="
-            fixed inset-0 z-[100]
-            flex items-center justify-center
-            bg-black/[0.96]
+            fixed
+            inset-0
+            z-[100]
+            flex
+            items-center
+            justify-center
+            bg-black/95
             p-4
-            backdrop-blur-2xl
+            backdrop-blur-xl
             animate-in
             fade-in
             duration-300
@@ -380,14 +353,20 @@ export function Gallery({
             aria-label="Close image viewer"
             onClick={close}
             className="
-              absolute right-5 top-5 z-20
-              flex size-11
-              items-center justify-center
+              absolute
+              right-5
+              top-5
+              z-20
+              flex
+              size-11
+              items-center
+              justify-center
               rounded-full
-              border border-white/15
+              border
+              border-white/20
               bg-white/5
               text-white
-              backdrop-blur-xl
+              backdrop-blur-md
               transition-all
               duration-300
               hover:scale-105
@@ -406,18 +385,22 @@ export function Gallery({
               prev();
             }}
             className="
-              absolute left-3 top-1/2 z-20
-              flex size-12
+              absolute
+              left-3
+              top-1/2
+              z-20
+              flex
+              size-12
               -translate-y-1/2
-              items-center justify-center
+              items-center
+              justify-center
               rounded-full
-              border border-white/15
+              border
+              border-white/20
               bg-black/30
               text-white
-              backdrop-blur-xl
+              backdrop-blur-md
               transition-all
-              duration-300
-              hover:scale-105
               hover:bg-white/10
               lg:left-8
             "
@@ -434,18 +417,22 @@ export function Gallery({
               next();
             }}
             className="
-              absolute right-3 top-1/2 z-20
-              flex size-12
+              absolute
+              right-3
+              top-1/2
+              z-20
+              flex
+              size-12
               -translate-y-1/2
-              items-center justify-center
+              items-center
+              justify-center
               rounded-full
-              border border-white/15
+              border
+              border-white/20
               bg-black/30
               text-white
-              backdrop-blur-xl
+              backdrop-blur-md
               transition-all
-              duration-300
-              hover:scale-105
               hover:bg-white/10
               lg:right-8
             "
@@ -469,18 +456,17 @@ export function Gallery({
               duration-500
             "
           >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img
-                src={active.url}
-                alt={active.alt}
-                className="
-                  max-h-[76vh]
-                  max-w-[88vw]
-                  object-contain
-                  shadow-2xl
-                "
-              />
-            </div>
+            <img
+              src={active.url}
+              alt={active.alt}
+              className="
+                max-h-[78vh]
+                max-w-[88vw]
+                rounded-2xl
+                object-contain
+                shadow-2xl
+              "
+            />
 
             <figcaption className="mt-5 max-w-2xl text-center">
               <p className="text-sm font-medium leading-relaxed text-white">
@@ -494,6 +480,6 @@ export function Gallery({
           </figure>
         </div>
       )}
-    </>
+    </section>
   );
 }
