@@ -4,26 +4,68 @@ import { testimonials } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 /**
- * Person names mapped to the testimonial brand.
+ * Person attribution mapped to the testimonial brand.
  *
- * Add the remaining names here when their brand mapping is confirmed.
+ * These names/designations are based on the client testimonials
+ * provided for the website.
  */
-const testimonialNames: Record<string, string> = {
-  "P&G": "Kanu",
-  "Axiom": "Samuel Thomas",
-  "Marico": "Rishabh Mariwala",
+const testimonialPeople: Record<
+  string,
+  {
+    name: string;
+    designation: string;
+  }
+> = {
+  "P&G": {
+    name: "Kanu",
+    designation: "Senior Purchase Manager | Indian MNC",
+  },
+
+  "Axiom": {
+    name: "Samuel Thomas",
+    designation: "Director | Axiom Gen Nxt India Pvt Ltd",
+  },
+
+  "Marico": {
+    name: "Rishabh Mariwala",
+    designation: "Marico",
+  },
+
+  "Cipla Health": {
+    name: "Saurabh Desai",
+    designation: "HR Professional",
+  },
+
+  "National Retail": {
+    name: "Tejas Goenka",
+    designation: "MSME Honours",
+  },
 };
 
+/**
+ * Testimonials as a retail shelf.
+ *
+ * Each client quote is represented as a product pack on a shelf.
+ * Selecting or hovering over a pack opens the corresponding
+ * testimonial on the right.
+ */
 export function ShelfTestimonials() {
   const [active, setActive] = useState(0);
 
-  const activeTestimonial = testimonials[active]!;
+  const activeTestimonial = testimonials[active];
 
-  // Get the person's name from the local mapping.
-  // Falls back to the existing label if a brand has not been mapped yet.
+  if (!activeTestimonial) return null;
+
+  const activePerson =
+    testimonialPeople[activeTestimonial.brand];
+
   const activeName =
-    testimonialNames[activeTestimonial.brand] ??
+    activePerson?.name ??
     activeTestimonial.label;
+
+  const activeDesignation =
+    activePerson?.designation ??
+    "";
 
   return (
     <section className="relative overflow-hidden bg-sand py-24 lg:py-32">
@@ -131,7 +173,7 @@ export function ShelfTestimonials() {
                       </span>
 
 
-                      {/* Bottom label */}
+                      {/* Bottom highlight */}
 
                       <span
                         aria-hidden
@@ -187,7 +229,7 @@ export function ShelfTestimonials() {
 
 
           {/* ===================================================
-              OPENED PACK / TESTIMONIAL
+              OPENED TESTIMONIAL
           =================================================== */}
 
           <div className="lg:col-span-7">
@@ -214,7 +256,7 @@ export function ShelfTestimonials() {
               />
 
 
-              {/* Quote */}
+              {/* Testimonial quote */}
 
               <blockquote
                 key={active}
@@ -225,12 +267,12 @@ export function ShelfTestimonials() {
 
 
               {/* =================================================
-                  PERSON / COMPANY
+                  PERSON ATTRIBUTION
               ================================================= */}
 
               <figcaption className="mt-8 flex items-center gap-4 border-t border-border pt-6">
 
-                {/* Initials */}
+                {/* Initials circle */}
 
                 <span
                   className="flex size-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold text-white"
@@ -248,20 +290,19 @@ export function ShelfTestimonials() {
                 </span>
 
 
-                <div>
+                {/* Name + Designation */}
 
-                  {/* PERSON NAME */}
+                <div className="min-w-0">
 
                   <p className="font-display text-sm font-bold text-foreground">
                     {activeName}
                   </p>
 
-
-                  {/* COMPANY / ROLE */}
-
-                  <p className="text-xs text-muted-foreground">
-                    {activeTestimonial.label}
-                  </p>
+                  {activeDesignation && (
+                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                      {activeDesignation}
+                    </p>
+                  )}
 
                 </div>
 
