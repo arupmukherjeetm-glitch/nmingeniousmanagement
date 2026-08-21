@@ -527,7 +527,7 @@ main > [data-grid-overlay] {
 
 @keyframes db-depart {
   0%,
-  6% {
+  5% {
     opacity: 1;
     transform:
       translate(0, 0)
@@ -535,7 +535,7 @@ main > [data-grid-overlay] {
       scale(1);
   }
 
-  18% {
+  15% {
     opacity: 1;
     transform:
       translate(0, -14px)
@@ -543,7 +543,7 @@ main > [data-grid-overlay] {
       scale(1.04);
   }
 
-  46% {
+  38% {
     opacity: 1;
     transform:
       translate(
@@ -554,7 +554,7 @@ main > [data-grid-overlay] {
       scale(0.92);
   }
 
-  68% {
+  57% {
     opacity: 1;
     transform:
       translate(var(--db-dx), 0)
@@ -562,7 +562,7 @@ main > [data-grid-overlay] {
       scale(1);
   }
 
-  76%,
+  65%,
   100% {
     opacity: 0;
     transform:
@@ -575,28 +575,28 @@ main > [data-grid-overlay] {
 
 @keyframes db-restock {
   0%,
-  20% {
+  17% {
     opacity: 0;
     transform:
       translateY(70%)
       scale(0.9);
   }
 
-  46% {
+  38% {
     opacity: 0;
     transform:
       translateY(70%)
       scale(0.9);
   }
 
-  64% {
+  54% {
     opacity: 1;
     transform:
       translateY(-6%)
       scale(1.01);
   }
 
-  72%,
+  62%,
   100% {
     opacity: 1;
     transform:
@@ -608,11 +608,11 @@ main > [data-grid-overlay] {
 
 @keyframes db-source-out {
   0%,
-  5% {
+  4% {
     opacity: 1;
   }
 
-  8%,
+  7%,
   100% {
     opacity: 0;
   }
@@ -621,23 +621,23 @@ main > [data-grid-overlay] {
 
 @keyframes db-land {
   0%,
-  64% {
+  54% {
     opacity: 0;
     transform: scale(0.86);
     filter: blur(6px);
   }
 
-  70% {
+  60% {
     opacity: 1;
     transform: scale(1.09);
     filter: blur(0);
   }
 
-  76% {
+  66% {
     transform: scale(1);
   }
 
-  92% {
+  86% {
     opacity: 1;
     transform: scale(1);
   }
@@ -651,12 +651,12 @@ main > [data-grid-overlay] {
 
 @keyframes db-sweep {
   0%,
-  66% {
+  56% {
     transform: scaleX(0);
   }
 
-  78%,
-  92% {
+  68%,
+  86% {
     transform: scaleX(1);
   }
 
@@ -668,15 +668,15 @@ main > [data-grid-overlay] {
 
 @keyframes db-tag {
   0%,
-  70% {
+  60% {
     opacity: 0;
     transform:
       translateY(6px)
       rotate(-6deg);
   }
 
-  78%,
-  92% {
+  68%,
+  86% {
     opacity: 1;
     transform:
       translateY(0)
@@ -700,6 +700,11 @@ main > [data-grid-overlay] {
   .marquee-track {
     animation: none;
   }
+
+  .brand-box {
+    transition: none;
+  }
+}
 
   .brand-box {
     transition: none;
