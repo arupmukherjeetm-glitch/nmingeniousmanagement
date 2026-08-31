@@ -509,6 +509,13 @@ export const gallery = [
   { url: a21.url, alt: "Premium chocolate display manned by a brand advisor in Mumbai" },
   { url: a22.url, alt: "Haircare advisor detailing a shampoo range in Kolkata" },
   { url: a23.url, alt: "Exhibition hostess at a branded haircare counter" },
+  { url: a24.url, alt: "" },
+  { url: a25.url, alt: "" },
+  { url: a26.url, alt: "" },
+  { url: a27.url, alt: "" },
+  { url: a28.url, alt: "" },
+  { url: a29.url, alt: "" },
+  { url: a30.url, alt: "" },
 ];
 
 
