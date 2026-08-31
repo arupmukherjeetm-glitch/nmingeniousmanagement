@@ -261,6 +261,8 @@ export const stats = [
   { value: 31, suffix: "", label: "States & UTs" },
 ];
 
+<Stats stats={[ { value: 1650, suffix: "+", label: "People are part of our family" }, { value: 185, suffix: "+", label: "Cities and towns reached" }, { value: 500, suffix: "+", label: "Clients have trusted in us" }, { value: 1600, suffix: "+", label: "Outlets with our operations" }, ]} />
+
 export const problemSignals = [
   { n: "01", title: "Listed, but not moving", body: "Your product is in stores, but offtake is below expectation." },
   { n: "02", title: "Visible, but not chosen", body: "Your brand is seen, but shoppers still pick competition." },
@@ -420,6 +422,8 @@ export const reports = [
     ],
   },
 ];
+
+//Testimonial//
 
 export const testimonials = [
   {
