@@ -1,5 +1,3 @@
-// Media lives in /public/media so it ships with the build and works on any host
-// (Netlify, Vercel, Lovable) without depending on external asset infrastructure.
 const a1 = { url: "/media/a1.webp" };
 const a2 = { url: "/media/a2.webp" };
 const a3 = { url: "/media/a3.webp" };
@@ -23,6 +21,13 @@ const a20 = { url: "/media/a20.webp" };
 const a21 = { url: "/media/a21.webp" };
 const a22 = { url: "/media/a22.webp" };
 const a23 = { url: "/media/a23.webp" };
+const a24 = { url: "/media/a24.webp" };
+const a25 = { url: "/media/a25.webp" };
+const a26 = { url: "/media/a26.webp" };
+const a27 = { url: "/media/a27.webp" };
+const a28 = { url: "/media/a28.webp" };
+const a29 = { url: "/media/a29.webp" };
+const a30 = { url: "/media/a30.webp" };
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero.mp4";
