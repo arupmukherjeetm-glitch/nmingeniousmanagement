@@ -1,4 +1,4 @@
-@import "tailwindcss/style.css" source(none);
+@import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
 
@@ -82,7 +82,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
-
 
 /* ============================================================
    LIGHT THEME
@@ -190,7 +189,6 @@
     0 26px 60px -24px oklch(0.32 0.11 260 / 0.4);
 }
 
-
 /* ============================================================
    DARK THEME
    ============================================================ */
@@ -234,7 +232,6 @@
   --sand: oklch(0.21 0.055 260);
 }
 
-
 /* ============================================================
    BASE
    ============================================================ */
@@ -269,7 +266,6 @@
   }
 }
 
-
 /* ============================================================
    GLOBAL DECORATIVE LINE CLEANUP
    ============================================================ */
@@ -303,7 +299,6 @@ main > [data-grid-overlay] {
   display: none !important;
 }
 
-
 /* Named decorative grid classes */
 
 .grid-overlay,
@@ -319,7 +314,6 @@ main > [data-grid-overlay] {
 [data-grid-overlay] {
   background-image: none !important;
 }
-
 
 /* Their pseudo-elements */
 
@@ -350,7 +344,6 @@ main > [data-grid-overlay] {
   background: none !important;
   background-image: none !important;
 }
-
 
 /* ============================================================
    ANIMATED BRAND BORDER
@@ -441,7 +434,6 @@ main > [data-grid-overlay] {
   }
 }
 
-
 /* ============================================================
    EDGE ANIMATION
    ============================================================ */
@@ -451,7 +443,6 @@ main > [data-grid-overlay] {
     --edge-angle: 360deg;
   }
 }
-
 
 /* ============================================================
    CORNER TICKS
@@ -479,7 +470,6 @@ main > [data-grid-overlay] {
   }
 }
 
-
 /* ============================================================
    MARQUEE
    ============================================================ */
@@ -500,7 +490,6 @@ main > [data-grid-overlay] {
   }
 }
 
-
 /* ============================================================
    REVEAL
    ============================================================ */
@@ -519,7 +508,6 @@ main > [data-grid-overlay] {
     transform: translateY(0);
   }
 }
-
 
 /* ============================================================
    DIKHTA / BIKTA HEADLINE CHOREOGRAPHY
@@ -572,7 +560,6 @@ main > [data-grid-overlay] {
   }
 }
 
-
 @keyframes db-restock {
   0%,
   17% {
@@ -605,7 +592,6 @@ main > [data-grid-overlay] {
   }
 }
 
-
 @keyframes db-source-out {
   0%,
   4% {
@@ -617,7 +603,6 @@ main > [data-grid-overlay] {
     opacity: 0;
   }
 }
-
 
 @keyframes db-land {
   0%,
@@ -648,7 +633,6 @@ main > [data-grid-overlay] {
   }
 }
 
-
 @keyframes db-sweep {
   0%,
   56% {
@@ -664,7 +648,6 @@ main > [data-grid-overlay] {
     transform: scaleX(0);
   }
 }
-
 
 @keyframes db-tag {
   0%,
@@ -691,7 +674,6 @@ main > [data-grid-overlay] {
   }
 }
 
-
 /* ============================================================
    REDUCED MOTION
    ============================================================ */
@@ -700,11 +682,6 @@ main > [data-grid-overlay] {
   .marquee-track {
     animation: none;
   }
-
-  .brand-box {
-    transition: none;
-  }
-}
 
   .brand-box {
     transition: none;
