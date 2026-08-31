@@ -254,14 +254,13 @@ export const services: Service[] = [
   },
 ];
 
+//STATISTICS//
 export const stats = [
   { value: 18, suffix: "+", label: "Years of retail execution" },
   { value: 2150, suffix: "+", label: "Trained personnel" },
   { value: 2000, suffix: "+", label: "MT & GT outlets" },
   { value: 31, suffix: "", label: "States & UTs" },
 ];
-
-<Stats stats={[ { value: 1650, suffix: "+", label: "People are part of our family" }, { value: 185, suffix: "+", label: "Cities and towns reached" }, { value: 500, suffix: "+", label: "Clients have trusted in us" }, { value: 1600, suffix: "+", label: "Outlets with our operations" }, ]} />
 
 export const problemSignals = [
   { n: "01", title: "Listed, but not moving", body: "Your product is in stores, but offtake is below expectation." },
@@ -424,7 +423,6 @@ export const reports = [
 ];
 
 //Testimonial//
-
 export const testimonials = [
   {
     brand: "P&G",
