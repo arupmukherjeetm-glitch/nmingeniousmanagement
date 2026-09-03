@@ -225,22 +225,22 @@ function About() {
       ============================================================ */}
 
            {/* Founder’s Gallery */}
-<section className="bg-background py-14 lg:py-16">
+<section className="bg-background py-12 sm:py-14 lg:py-16">
   <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
     {/* Heading */}
-    <div className="mb-7">
-      <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">
+    <div className="mb-6 sm:mb-7">
+      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
         Founder’s Gallery
       </p>
 
-      <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight tracking-tight text-black sm:text-4xl">
+      <h2 className="mt-2 max-w-3xl font-display text-3xl font-extrabold leading-[1.08] tracking-tight text-black sm:text-4xl lg:text-[42px]">
         The moments behind the journey.
       </h2>
     </div>
 
     {/* Photo Grid */}
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+    <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-4">
 
       {foundersGallery.map((item, index) => (
         <div
@@ -251,14 +251,51 @@ function About() {
             src={item.image}
             alt={item.alt}
             loading="lazy"
-            className="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+            className="
+              block
+              aspect-[4/3]
+              w-full
+              object-cover
+              object-center
+              transition-transform
+              duration-500
+              ease-out
+              group-hover:scale-[1.04]
+            "
           />
 
-          {/* Very subtle hover overlay */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          {/* Subtle hover */}
+          <div
+            className="
+              pointer-events-none
+              absolute inset-0
+              bg-gradient-to-t
+              from-black/25
+              via-transparent
+              to-transparent
+              opacity-0
+              transition-opacity
+              duration-300
+              group-hover:opacity-100
+            "
+          />
 
-          {/* Small index */}
-          <span className="absolute bottom-2 left-2 rounded-sm bg-black/75 px-1.5 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-white">
+          {/* Small number */}
+          <span
+            className="
+              absolute
+              bottom-2
+              left-2
+              rounded-sm
+              bg-black/70
+              px-1.5
+              py-0.5
+              text-[9px]
+              font-semibold
+              tracking-[0.1em]
+              text-white
+            "
+          >
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
