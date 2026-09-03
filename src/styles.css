@@ -510,12 +510,12 @@ main > [data-grid-overlay] {
 }
 
 /* ============================================================
-   DIKHTA / BIKTA HEADLINE CHOREOGRAPHY
+   DIKHTA / BIKTA HEADLINE CHOREOGRAPHY — FASTER
    ============================================================ */
 
 @keyframes db-depart {
   0%,
-  5% {
+  4% {
     opacity: 1;
     transform:
       translate(0, 0)
@@ -523,26 +523,26 @@ main > [data-grid-overlay] {
       scale(1);
   }
 
-  15% {
+  11% {
     opacity: 1;
     transform:
-      translate(0, -14px)
+      translate(0, -12px)
       rotate(-4deg)
       scale(1.04);
   }
 
-  38% {
+  27% {
     opacity: 1;
     transform:
       translate(
         calc(var(--db-dx) * 0.5),
-        -78px
+        -65px
       )
       rotate(6deg)
-      scale(0.92);
+      scale(0.93);
   }
 
-  57% {
+  42% {
     opacity: 1;
     transform:
       translate(var(--db-dx), 0)
@@ -550,7 +550,7 @@ main > [data-grid-overlay] {
       scale(1);
   }
 
-  65%,
+  48%,
   100% {
     opacity: 0;
     transform:
@@ -562,28 +562,28 @@ main > [data-grid-overlay] {
 
 @keyframes db-restock {
   0%,
-  17% {
+  12% {
     opacity: 0;
     transform:
-      translateY(70%)
+      translateY(65%)
       scale(0.9);
   }
 
-  38% {
+  27% {
     opacity: 0;
     transform:
-      translateY(70%)
+      translateY(65%)
       scale(0.9);
   }
 
-  54% {
+  41% {
     opacity: 1;
     transform:
-      translateY(-6%)
-      scale(1.01);
+      translateY(-7%)
+      scale(1.02);
   }
 
-  62%,
+  48%,
   100% {
     opacity: 1;
     transform:
@@ -594,11 +594,11 @@ main > [data-grid-overlay] {
 
 @keyframes db-source-out {
   0%,
-  4% {
+  3% {
     opacity: 1;
   }
 
-  7%,
+  6%,
   100% {
     opacity: 0;
   }
@@ -606,27 +606,28 @@ main > [data-grid-overlay] {
 
 @keyframes db-land {
   0%,
-  54% {
+  43% {
     opacity: 0;
-    transform: scale(0.86);
-    filter: blur(6px);
+    transform: scale(0.88);
+    filter: blur(5px);
   }
 
-  60% {
+  49% {
     opacity: 1;
-    transform: scale(1.09);
+    transform: scale(1.07);
     filter: blur(0);
   }
 
-  66% {
+  55% {
     transform: scale(1);
   }
 
-  86% {
+  72% {
     opacity: 1;
     transform: scale(1);
   }
 
+  82%,
   100% {
     opacity: 0;
     transform: scale(1);
@@ -635,15 +636,16 @@ main > [data-grid-overlay] {
 
 @keyframes db-sweep {
   0%,
-  56% {
+  45% {
     transform: scaleX(0);
   }
 
-  68%,
-  86% {
+  57%,
+  72% {
     transform: scaleX(1);
   }
 
+  82%,
   100% {
     transform: scaleX(0);
   }
@@ -651,21 +653,22 @@ main > [data-grid-overlay] {
 
 @keyframes db-tag {
   0%,
-  60% {
+  51% {
     opacity: 0;
     transform:
       translateY(6px)
       rotate(-6deg);
   }
 
-  68%,
-  86% {
+  57%,
+  72% {
     opacity: 1;
     transform:
       translateY(0)
       rotate(-6deg);
   }
 
+  82%,
   100% {
     opacity: 0;
     transform:
