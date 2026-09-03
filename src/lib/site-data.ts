@@ -624,20 +624,20 @@ export const strengths = [
     group: "Excellence in Project Execution",
     points: [
       {
-        title: "Right Persons for the Right Job",
-        body: "Our selection process ensures the right person profile is selected for in-shop sales promotion and merchandizing.",
+        title: "Right person, right store",
+        body: "Selection built around fit for the specific counter, not just headcount.",
       },
       {
-        title: "Commit to Continuous Sales Training",
-        body: "Continuous sales training for promoters and merchandizers on what to say, demonstrate, attract, engage, educate, influence and convert into a sale.",
+        title: "Training that never stops",
+        body: "Promoters and merchandisers are coached on end-to-end selling, not just onboarded once.",
       },
       {
-        title: "Achieving Excellence in Sales Performance",
-        body: "In-store promoter and merchandizer teams consistently achieve key growth objectives as per client expectations.",
+        title: "Performance that matches client goals",
+        body: "Field teams consistently hit the growth numbers clients actually set.",
       },
       {
-        title: "Technology Based Sales Monitoring",
-        body: "A technology-enabled platform for real-time monitoring of sales, stock and campaign execution at the last mile.",
+        title: "Technology-based monitoring",
+        body: "Real-time tracking of sales, stock, and campaign execution at the last mile.",
       },
     ],
   },
@@ -645,66 +645,75 @@ export const strengths = [
     group: "Process Excellence",
     points: [
       {
-        title: "Maximize Sales using Efficient Processes",
-        body: "Process excellence to maximize the efficiency, effectiveness and productivity of in-shop promoters and merchandizers.",
+        title: "Efficient by design",
+        body: "Processes built to maximise output from every promoter and merchandiser, not just headcount.",
       },
       {
-        title: "Structured Reporting",
-        body: "Established criteria and classification based on client requirements for sales and stock reporting at retail outlets.",
+        title: "Structured reporting",
+        body: "Sales and stock reporting classified to what each client actually needs, not a generic template.",
       },
       {
-        title: "Performance Monitoring and Management",
-        body: "Tracking how processes, employees and mobile applications perform, to identify challenges in last-mile sales and meet client KPAs.",
+        title: "Performance tracked, end-to-end",
+        body: "Client and NM teams both see how people, processes and apps are performing, and where the next problem is.",
       },
       {
-        title: "Industry Benchmark HR Practices",
-        body: "Industry benchmark HR practices using both qualitative and quantitative feedback to ensure high standards of performance.",
-      },
-      {
-        title: "Dedicated Team for Each Client",
-        body: "A dedicated team model where the client retains full control of the project while our team provides the resources and skills to execute it.",
+        title: "HR practices benchmarked to industry standard",
+        body: "Backed by real qualitative and quantitative employee feedback, not box-ticking.",
       },
     ],
   },
   {
-    group: "Automated Systems",
+    group: "Strategic Regional Presence",
     points: [
       {
-        title: "Employee Centric HRMS Mobile Apps",
-        body: "An advanced, mobile-centric HRMS platform that automates the entire HR function from hire to retire, delivering actionable insights.",
+        title: "Where the real hiring intent is  ",
+        body: "Strong presence in Mumbai, Delhi/NCR and Bengaluru, the three cities with the deepest FMCG hiring intent, backed by regional offices in Delhi and Bengaluru.",
       },
       {
-        title: "Tailored Sales and Stock Tracking Apps",
-        body: "One of the fastest and most intuitive in-store tracking apps. Promoters and merchandizers master it in a day or two, and it can be tailored to client dashboards.",
-      },
-      {
-        title: "Government Compliance Assurance",
-        body: "Ensuring strict adherence to all government acts and norms.",
+        title: "One dedicated team per client",
+        body: "Not a shared pool split across accounts. Full client control over the project; NM supplies the people and the execution.",
       },
     ],
   },
   {
-    group: "Enhanced HR Process Transparency",
+    group: "Technology, Built-In",
     points: [
       {
-        title: "Culture of Transparency",
-        body: "Transparency between HR teams, managers, supervisors, promoters and merchandizers builds trust, improves engagement and promotes a more inclusive culture.",
+        title: "HRMS that runs hire-to-retire",
+        body: "Mobile-first HR platform automates the entire employee lifecycle.",
       },
       {
-        title: "Seamless Attendance Monitoring",
-        body: "Mobile-app attendance and HR processes create a unified system for managing performance reviews and payroll.",
+        title: "Tracking apps built for the field",
+        body: "Fast, intuitive, live in a day, and built to each client's dashboard needs.",
       },
       {
-        title: "Mobile Accessibility for Documents",
-        body: "All appointment letters and salary revision documents are accessible on mobile devices.",
+        title: "Compliance, by default",
+        body: "Every act and government norm, followed to the letter.",
+      },
+    ],
+  },
+{
+    group: "Transparency as Practice",
+    points: [
+      {
+        title: "Trust runs both ways",
+        body: "Open reporting between HR, supervisors, promoters and clients, not top-down only.",
       },
       {
-        title: "Effortless Financial Management",
-        body: "Salary slips, income tax statements and Form 16 are readily available for all staff members.",
+        title: "Attendance and HR, all on mobile",
+        body: "Fewer gaps, faster resolution, cleaner compliance.",
       },
       {
-        title: "Automated Expense Claims",
-        body: "Fully automated expense claims for staff members, ensuring efficiency and accuracy.",
+        title: "Every document, on your phone",
+        body: "Appointment letters, salary revisions, always accessible.",
+      },
+      {
+        title: "Payslips, tax statements, Form 16",
+        body: "Available to every staff member, always.",
+      },
+      {
+        title: "Expense claims, fully automated",
+        body: "No manual chasing, no delays.",
       },
     ],
   },
