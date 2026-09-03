@@ -224,12 +224,12 @@ function About() {
           FOUNDER'S GALLERY
       ============================================================ */}
 
-           {/* Founder’s Gallery */}
-<section className="bg-background py-12 sm:py-14 lg:py-16">
+          {/* Founder’s Gallery */}
+<section className="bg-background py-12 lg:py-16">
   <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
     {/* Heading */}
-    <div className="mb-6 sm:mb-7">
+    <div className="mb-6">
       <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
         Founder’s Gallery
       </p>
@@ -239,69 +239,93 @@ function About() {
       </h2>
     </div>
 
-    {/* Photo Grid */}
-    <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-4">
+    {/* Horizontal Gallery */}
+    <div className="overflow-x-auto overflow-y-hidden pb-2 scrollbar-none">
+      <div className="flex min-w-max items-end gap-2">
 
-      {foundersGallery.map((item, index) => (
-        <div
-          key={item.image}
-          className="group relative overflow-hidden rounded-md bg-muted"
-        >
-          <img
-            src={item.image}
-            alt={item.alt}
-            loading="lazy"
-            className="
-              block
-              aspect-[4/3]
-              w-full
-              object-cover
-              object-top
-              transition-transform
-              duration-500
-              ease-out
-              group-hover:scale-[1.04]
-            "
-          />
-
-          {/* Subtle hover */}
+        {foundersGallery.map((item, index) => (
           <div
-            className="
-              pointer-events-none
-              absolute inset-0
-              bg-gradient-to-t
-              from-black/25
-              via-transparent
-              to-transparent
-              opacity-0
-              transition-opacity
-              duration-300
-              group-hover:opacity-100
-            "
-          />
-
-          {/* Small number */}
-          <span
-            className="
-              absolute
-              bottom-2
-              left-2
-              rounded-sm
-              bg-black/70
-              px-1.5
-              py-0.5
-              text-[9px]
-              font-semibold
-              tracking-[0.1em]
-              text-white
-            "
+            key={item.image}
+            className={`
+              group
+              relative
+              shrink-0
+              overflow-hidden
+              rounded-lg
+              bg-muted
+              ${
+                index === 0
+                  ? "h-[320px] w-[240px]"
+                  : index === 1
+                    ? "h-[280px] w-[210px]"
+                    : index === 2
+                      ? "h-[300px] w-[225px]"
+                      : index === 3
+                        ? "h-[270px] w-[205px]"
+                        : index === 4
+                          ? "h-[310px] w-[230px]"
+                          : index === 5
+                            ? "h-[280px] w-[210px]"
+                            : "h-[300px] w-[225px]"
+              }
+            `}
           >
-            {String(index + 1).padStart(2, "0")}
-          </span>
-        </div>
-      ))}
+            <img
+              src={item.image}
+              alt={item.alt}
+              loading="lazy"
+              className="
+                h-full
+                w-full
+                object-cover
+                object-top
+                transition-transform
+                duration-700
+                ease-out
+                group-hover:scale-[1.04]
+              "
+            />
 
+            {/* Subtle hover */}
+            <div
+              className="
+                pointer-events-none
+                absolute inset-0
+                bg-gradient-to-t
+                from-black/30
+                via-transparent
+                to-transparent
+                opacity-0
+                transition-opacity
+                duration-300
+                group-hover:opacity-100
+              "
+            />
+
+            {/* Number */}
+            <span
+              className="
+                absolute
+                bottom-2
+                left-2
+                rounded-sm
+                bg-black/70
+                px-1.5
+                py-0.5
+                text-[9px]
+                font-semibold
+                tracking-[0.1em]
+                text-white
+              "
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+        ))}
+
+      </div>
     </div>
+
   </div>
 </section>
 
