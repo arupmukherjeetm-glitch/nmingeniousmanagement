@@ -578,36 +578,32 @@ export const clientLogos = [
 
 export const timeline = [
   {
-    date: "2008 February",
-    body: "Madhavi started Ingenious Management Services (IMS) with 5 employees.",
+    date: "2008",
+    body: "Started with 5 people, one idea: retail execution run with real discipline.",
   },
   {
-    date: "2011 August",
-    body: "Played a pivotal role in promoting major brands like Virgin Mobile, Gillette, Pampers, Whisper, Ariel, Saffola, Borges, Riso, Horlicks, Parachute and Dawaat.",
+    date: "2011",
+    body: "Running promotions for Gillette, Pampers, Whisper, Ariel, Saffola, Horlicks and Parachute.",
   },
   {
-    date: "2013 July",
-    body: "IMS received recognition of Excellence for its quality work from the MD of Marico Limited, Mr. Rishabh Mariwala.",
+    date: "2013",
+    body: "Marico's own MD recognised the work directly.",
   },
   {
-    date: "2016 January",
-    body: "Pioneered the first mobile application, IMS-Connect, for promoters, merchandizers, beauty advisors, product experts and last-mile sales agents.",
-  },
-  {
-    date: "2017 October",
-    body: "Started training services in the retail sector for promoters, merchandizers, beauty advisors and product counsellors.",
+    date: "2017",
+    body: "Training became its own function: formal programs for promoters, merchandisers, beauty advisors and product counsellors.",
   },
   {
     date: "2019 January",
-    body: "Ingenious Management Services graduated into a private limited company, renamed NM Ingenious Management Services Private Limited (NMIMSPL).",
+    body: "Incorporated as NM Ingenious Management Services Pvt. Ltd. Same company, same team, formally structured.",
   },
   {
     date: "2019 August",
-    body: "Established as a major player in workforce outsourcing, staffing services and payroll management. Expanded branch operations in New Delhi, Bangalore, Kolkata, Pune, Hyderabad, Chennai and Amritsar.",
-  },
+    body: "Opened offices in Delhi, Bengaluru, Kolkata, Pune, Hyderabad, Chennai and Amritsar.
+ },
   {
-    date: "2020 August",
-    body: "Mitigated COVID challenges and succeeded in FMCG and retail despite the downturn. Distributed free sanitizers to doctors, hospitals and clinics across Maharashtra, Gujarat, Andhra Pradesh, Karnataka, Telangana and Goa.",
+    date: "2020",
+    body: "Kept every field team working through COVID. Distributed free sanitizers to hospitals and clinics across six states.",
   },
   {
     date: "2023 January",
@@ -615,11 +611,11 @@ export const timeline = [
   },
   {
     date: "2023 June",
-    body: "NMIMSPL was voted an Amazing Workplace by its employees, ranked 10th among the top 40 SME organizations in a nationwide survey.",
+    body: "Voted into the top 40 SME workplaces in India by our own employees.",
   },
   {
     date: "Today",
-    body: "With more than 50 active client organizations and an extended family of 100+ brands, the NMIMSPL journey continues towards perfection, quality execution and pursuing excellence.",
+    body: "50+ active clients, 100+ brands, still the same people who started at one table.",
   },
 ];
 
