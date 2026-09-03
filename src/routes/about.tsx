@@ -295,24 +295,6 @@ function About() {
                 group-hover:opacity-100
               "
             />
-
-            <span
-              className="
-                absolute
-                bottom-2
-                left-2
-                rounded-sm
-                bg-black/70
-                px-1.5
-                py-0.5
-                text-[9px]
-                font-semibold
-                tracking-[0.1em]
-                text-white
-              "
-            >
-              {String(index + 1).padStart(2, "0")}
-            </span>
           </div>
         ))}
 
