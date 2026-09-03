@@ -172,13 +172,13 @@ export function Header() {
             CERTIFICATION BADGE
         ========================================================== */}
 
-        <div className="ml-5 hidden h-[82px] w-[120px] shrink-0 items-center justify-center lg:flex">
-          <img
-            src="/media/awards/amazing-workplaces-certified.png"
-            alt="Amazing Workplaces Certified"
-            className="h-[112px] w-auto object-contain drop-shadow-sm"
-          />
-        </div>
+        <div className="ml-5 hidden h-[82px] w-[105px] shrink-0 items-center justify-center lg:flex">
+  <img
+    src="/media/awards/amazing-workplaces-certified.png"
+    alt="Amazing Workplaces Certified"
+   className="h-[62px] w-auto object-contain lg:h-[68px]"
+  />
+</div>
 
         {/* ==========================================================
             MOBILE MENU BUTTON
