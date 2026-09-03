@@ -230,90 +230,71 @@ function About() {
           NO MASONRY
       ============================================================ */}
 
-      <section
-        id="founders-gallery"
-        className="relative overflow-hidden bg-background py-24 lg:py-32"
-      >
-        {/* Decorative background glow */}
+      <section className="border-y border-black/10 bg-white py-16 md:py-20">
+  <div className="container-corp">
+    {/* Section heading */}
+    <div className="max-w-3xl">
+      <p className="text-xs font-bold uppercase tracking-[0.18em] text-black/50">
+        Founder’s Gallery
+      </p>
 
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-40 top-10 h-80 w-80 rounded-full bg-orange-200/20 blur-3xl"
-        />
+      <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-black md:text-5xl">
+        The moments behind the journey.
+      </h2>
 
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-blue-200/15 blur-3xl"
-        />
+      <p className="mt-4 max-w-2xl text-sm leading-6 text-black/60 md:text-base">
+        A few moments that shaped the people, culture and ambition behind
+        NM Ingenious.
+      </p>
+    </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-          {/* Gallery heading */}
+    {/* Gallery */}
+    <div className="mt-10 columns-1 gap-2 sm:columns-2 lg:columns-3">
+      {foundersGallery.map((item, index) => (
+        <figure
+          key={item.image}
+          className="group relative mb-2 break-inside-avoid overflow-hidden rounded-[10px] border border-black/10 bg-white"
+        >
+          <img
+            src={item.image}
+            alt={item.alt}
+            loading={index < 3 ? "eager" : "lazy"}
+            className="
+              block
+              h-auto
+              w-full
+              origin-center
+              transition-transform
+              duration-500
+              ease-out
+              group-hover:scale-[1.06]
+            "
+          />
 
-          <Reveal>
-            <div className="max-w-3xl">
-              <Eyebrow>Founder's Gallery</Eyebrow>
-
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
-                The moments behind the journey.
-              </h2>
-
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground lg:text-lg">
-                Beyond the milestones and numbers are the people, experiences
-                and moments that have shaped NM Ingenious over the years.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* ============================================================
-              FIXED IMAGE BLOCKS
-          ============================================================ */}
-
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {foundersGallery.map((item, index) => (
-              <Reveal
-                key={item.image}
-                delay={index * 60}
-                className="w-full"
-              >
-                <figure className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-sm">
-                  {/* Image */}
-
-                  <img
-                    src={item.image}
-                    alt={item.alt}
-                    loading={index < 3 ? "eager" : "lazy"}
-                    className="absolute inset-0 h-full w-full object-contain object-center p-2 transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                  />
-
-                  {/* Very subtle hover overlay */}
-
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                  {/* Image number */}
-
-                  <span className="absolute bottom-4 left-4 flex size-8 items-center justify-center rounded-full border border-white/40 bg-black/30 text-xs font-bold text-white backdrop-blur-sm">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Bottom statement */}
-
-          <Reveal delay={300}>
-            <div className="mt-12 flex items-center justify-center gap-4 lg:mt-16">
-              <span className="h-px w-10 bg-border sm:w-16" />
-
-              <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                People · Purpose · Progress
-              </p>
-
-              <span className="h-px w-10 bg-border sm:w-16" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
+          {/* Image number */}
+          <span
+            className="
+              absolute
+              bottom-2.5
+              left-2.5
+              rounded-full
+              bg-black/80
+              px-2.5
+              py-1
+              text-[9px]
+              font-bold
+              tracking-[0.16em]
+              text-white
+              backdrop-blur-sm
+            "
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ============================================================
           OUR STRENGTHS
