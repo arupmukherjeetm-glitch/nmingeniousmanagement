@@ -49,6 +49,7 @@ function Home() {
     <>
       <Hero />
       <TickerBar />
+      <WhoWeAreSection />
       <LadderSection />
       <StatsSection />
       <ProblemSection />
@@ -184,7 +185,118 @@ function TickerBar() {
     </div>
   );
 }
+{/* ========================================================
+    WHO WE ARE — HOMEPAGE
+======================================================== */}
+function WhoWeAreSection() {
+  return (
+    <section className="relative overflow-hidden bg-[#F5F7FB] py-20 lg:py-24">
+      {/* Subtle background detail */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-brand/5 blur-3xl"
+      />
 
+      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+          {/* ==================================================
+              LEFT — BRAND MESSAGE
+          ================================================== */}
+          <Reveal>
+            <div className="max-w-xl">
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-coral">
+                Who We Are
+              </p>
+
+              <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-[3.8rem]">
+                We make
+                <br />
+                <span className="text-brand">strategy happen.</span>
+              </h2>
+
+              <div className="mt-7 h-px w-16 bg-coral" />
+
+              <p className="mt-7 max-w-md text-lg leading-8 text-muted-foreground">
+                NM Ingenious Management Services helps brands turn
+                retail strategy into consistent execution across the
+                last mile.
+              </p>
+
+              <Link
+                to="/about"
+                className="group mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-brand transition-colors hover:text-brand-deep"
+              >
+                Discover our story
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </Reveal>
+
+          {/* ==================================================
+              RIGHT — COMPANY STORY
+          ================================================== */}
+          <Reveal delay={100}>
+            <div>
+              <div className="border-l-2 border-brand/15 pl-7 lg:pl-10">
+                <p className="text-xl leading-9 text-foreground/90 sm:text-2xl sm:leading-10">
+                  Since <strong>2008</strong>, we have built our work
+                  around one simple idea:
+                  <strong>
+                    {" "}
+                    great strategy only creates value when it is
+                    executed well.
+                  </strong>
+                </p>
+
+                <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground">
+                  From field execution and workforce capability to
+                  structured processes and data-led visibility, we
+                  help businesses build stronger market presence and
+                  better retail performance.
+                </p>
+              </div>
+
+              {/* ==================================================
+                  PROOF POINTS
+              ================================================== */}
+              <div className="mt-10 grid overflow-hidden rounded-xl border border-border bg-background sm:grid-cols-3">
+                <div className="border-b border-border px-6 py-6 sm:border-b-0 sm:border-r">
+                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
+                    2008
+                  </p>
+
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    Established
+                  </p>
+                </div>
+
+                <div className="border-b border-border px-6 py-6 sm:border-b-0 sm:border-r">
+                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
+                    31+
+                  </p>
+
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    States &amp; UTs
+                  </p>
+                </div>
+
+                <div className="px-6 py-6">
+                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
+                    2,150+
+                  </p>
+
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    People Trained
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
 const ladder = ["Listed", "Visible", "Considered", "Explained", "Tried", "Chosen", "Sold"];
 
 function LadderSection() {
