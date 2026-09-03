@@ -171,54 +171,263 @@ function About() {
         </div>
       </section>
 
-      {/* ============================================================
-          LEADERSHIP
-          "THE PEOPLE WHO SET THE STANDARD."
-      ============================================================ */}
+     {/* ============================================================
+    LEADERSHIP
+    "THE PEOPLE WHO SET THE STANDARD."
+============================================================ */}
 
-      <section className="bg-brand-deep py-24 text-white lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
-              Leadership
+<section className="bg-brand-deep py-24 text-white lg:py-32">
+  <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+    {/* Section Heading */}
+    <div className="max-w-3xl">
+      <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
+        Leadership
+      </p>
+
+      <h2 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px]">
+        The people who set
+        <br />
+        the standard.
+      </h2>
+    </div>
+
+
+    {/* ========================================================
+        LEADERS
+    ======================================================== */}
+
+    <div className="mt-16 divide-y divide-white/10 border-y border-white/10">
+
+      {leadership.map((p, index) => (
+        <article
+          key={p.name}
+          className="group grid lg:grid-cols-12"
+        >
+
+          {/* ==================================================
+              IMAGE
+          ================================================== */}
+
+          <div
+            className={`
+              relative
+              h-[360px]
+              overflow-hidden
+              sm:h-[430px]
+              lg:col-span-5
+              lg:h-[500px]
+              ${index % 2 === 1 ? "lg:order-2" : ""}
+            `}
+          >
+            <img
+              src={p.image}
+              alt={p.name}
+              loading="lazy"
+              className="
+                absolute inset-0
+                h-full w-full
+                object-cover object-top
+                grayscale
+                transition-all duration-700 ease-out
+                group-hover:scale-[1.04]
+                group-hover:grayscale-0
+              "
+            />
+
+            {/* Image gradient */}
+            <div
+              className="
+                absolute inset-0
+                bg-gradient-to-t
+                from-black/50
+                via-transparent
+                to-transparent
+                opacity-70
+              "
+            />
+          </div>
+
+
+          {/* ==================================================
+              CONTENT
+          ================================================== */}
+
+          <div
+            className={`
+              flex
+              flex-col
+              justify-center
+              px-0
+              py-10
+              sm:py-12
+              lg:col-span-7
+              lg:px-14
+              lg:py-16
+              ${index % 2 === 1 ? "lg:order-1" : ""}
+            `}
+          >
+
+            {/* Number */}
+            <p className="text-[11px] font-bold tracking-[0.22em] text-white/30">
+              0{index + 1}
             </p>
 
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight lg:text-5xl">
-              The people who set the standard.
-            </h2>
-          </div>
+            {/* Role */}
+            <p className="mt-5 text-xs font-bold uppercase tracking-[0.22em] text-coral">
+              {p.role}
+            </p>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            {leadership.map((p) => (
-              <article
-                key={p.name}
-                className="group flex flex-col gap-6 rounded-xl border border-white/12 bg-white/[0.04] p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-coral sm:flex-row"
+            {/* Name */}
+            <h3 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-[52px]">
+              {p.name}
+            </h3>
+
+            {/* Accent line */}
+            <div className="mt-7 h-px w-14 bg-coral" />
+
+            {/* Bio */}
+            <p className="mt-7 max-w-2xl text-[15px] leading-7 text-white/65 lg:text-base lg:leading-8">
+              {p.body}
+            </p>
+
+
+            {/* ==================================================
+                LINKEDIN
+            ================================================== */}
+
+            {p.name === "Madhavi Pundalik" && (
+              <a
+                href="https://www.linkedin.com/in/madhavi-pundalik-9256135/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Connect with Madhavi Pundalik on LinkedIn"
+                className="
+                  mt-9
+                  inline-flex
+                  w-fit
+                  items-center
+                  gap-3
+                  border
+                  border-white/20
+                  px-4
+                  py-2.5
+                  text-sm
+                  font-semibold
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:border-[#0A66C2]
+                  hover:bg-[#0A66C2]
+                "
               >
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  loading="lazy"
-                  className="size-28 shrink-0 rounded-lg object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
-                />
+                {/* LinkedIn icon */}
+                <span
+                  className="
+                    flex
+                    h-6
+                    w-6
+                    items-center
+                    justify-center
+                    rounded-sm
+                    bg-[#0A66C2]
+                    text-[12px]
+                    font-black
+                    text-white
+                  "
+                >
+                  in
+                </span>
 
-                <div>
-                  <h3 className="font-display text-xl font-extrabold">
-                    {p.name}
-                  </h3>
+                <span>LinkedIn</span>
 
-                  <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-coral">
-                    {p.role}
-                  </p>
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5 15L15 5M7 5h8v8"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            )}
 
-                  <p className="mt-4 text-sm leading-relaxed text-white/65">
-                    {p.body}
-                  </p>
-                </div>
-              </article>
-            ))}
+            {p.name === "Viru Mhatre" && (
+              <a
+                href="https://www.linkedin.com/in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Connect with Viru Mhatre on LinkedIn"
+                className="
+                  mt-9
+                  inline-flex
+                  w-fit
+                  items-center
+                  gap-3
+                  border
+                  border-white/20
+                  px-4
+                  py-2.5
+                  text-sm
+                  font-semibold
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:border-[#0A66C2]
+                  hover:bg-[#0A66C2]
+                "
+              >
+                {/* LinkedIn icon */}
+                <span
+                  className="
+                    flex
+                    h-6
+                    w-6
+                    items-center
+                    justify-center
+                    rounded-sm
+                    bg-[#0A66C2]
+                    text-[12px]
+                    font-black
+                    text-white
+                  "
+                >
+                  in
+                </span>
+
+                <span>LinkedIn</span>
+
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5 15L15 5M7 5h8v8"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            )}
+
           </div>
-        </div>
-      </section>
+
+        </article>
+      ))}
+
+    </div>
+  </div>
+</section>
 
       {/* ============================================================
           FOUNDER'S GALLERY
