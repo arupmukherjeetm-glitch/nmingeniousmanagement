@@ -228,130 +228,41 @@ function About() {
 <section className="bg-background py-14 lg:py-16">
   <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-    {/* Compact heading */}
-    <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <p className="text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">
-          Founder’s Gallery
-        </p>
-
-        <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight tracking-tight text-black sm:text-4xl lg:text-5xl">
-          The moments behind the journey.
-        </h2>
-      </div>
-
-      <p className="max-w-sm text-sm leading-5 text-muted-foreground">
-        A few moments that shaped the people, culture and ambition behind NM Ingenious.
+    {/* Heading */}
+    <div className="mb-7">
+      <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">
+        Founder’s Gallery
       </p>
+
+      <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight tracking-tight text-black sm:text-4xl">
+        The moments behind the journey.
+      </h2>
     </div>
 
-    {/* Compact photo wall */}
-    <div className="grid grid-cols-2 grid-rows-4 gap-[3px] overflow-hidden rounded-lg sm:grid-cols-4 sm:grid-rows-2">
+    {/* Photo Grid */}
+    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
 
-      {/* 01 — Large feature */}
-      <div className="group relative col-span-2 row-span-2 min-h-[280px] overflow-hidden bg-muted sm:min-h-0">
-        <img
-          src={foundersGallery[0].image}
-          alt={foundersGallery[0].alt}
-          className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-        />
+      {foundersGallery.map((item, index) => (
+        <div
+          key={item.image}
+          className="group relative overflow-hidden rounded-md bg-muted"
+        >
+          <img
+            src={item.image}
+            alt={item.alt}
+            loading="lazy"
+            className="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+          />
 
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          {/* Very subtle hover overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-        <span className="absolute bottom-3 left-3 rounded bg-black/80 px-2 py-1 text-[10px] font-bold tracking-[0.12em] text-white">
-          01
-        </span>
-      </div>
-
-      {/* 02 */}
-      <div className="group relative min-h-[135px] overflow-hidden bg-muted sm:min-h-0">
-        <img
-          src={foundersGallery[1].image}
-          alt={foundersGallery[1].alt}
-          className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-        />
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-        <span className="absolute bottom-2 left-2 rounded bg-black/80 px-1.5 py-0.5 text-[9px] font-bold tracking-[0.1em] text-white">
-          02
-        </span>
-      </div>
-
-      {/* 03 */}
-      <div className="group relative min-h-[135px] overflow-hidden bg-muted sm:min-h-0">
-        <img
-          src={foundersGallery[2].image}
-          alt={foundersGallery[2].alt}
-          className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-        />
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-        <span className="absolute bottom-2 left-2 rounded bg-black/80 px-1.5 py-0.5 text-[9px] font-bold tracking-[0.1em] text-white">
-          03
-        </span>
-      </div>
-
-      {/* 04 */}
-      <div className="group relative min-h-[135px] overflow-hidden bg-muted sm:min-h-0">
-        <img
-          src={foundersGallery[3].image}
-          alt={foundersGallery[3].alt}
-          className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-        />
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-        <span className="absolute bottom-2 left-2 rounded bg-black/80 px-1.5 py-0.5 text-[9px] font-bold tracking-[0.1em] text-white">
-          04
-        </span>
-      </div>
-
-      {/* 05 */}
-      <div className="group relative min-h-[135px] overflow-hidden bg-muted sm:min-h-0">
-        <img
-          src={foundersGallery[4].image}
-          alt={foundersGallery[4].alt}
-          className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-        />
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-        <span className="absolute bottom-2 left-2 rounded bg-black/80 px-1.5 py-0.5 text-[9px] font-bold tracking-[0.1em] text-white">
-          05
-        </span>
-      </div>
-
-      {/* 06 */}
-      <div className="group relative min-h-[135px] overflow-hidden bg-muted sm:min-h-0">
-        <img
-          src={foundersGallery[5].image}
-          alt={foundersGallery[5].alt}
-          className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-        />
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-        <span className="absolute bottom-2 left-2 rounded bg-black/80 px-1.5 py-0.5 text-[9px] font-bold tracking-[0.1em] text-white">
-          06
-        </span>
-      </div>
-
-      {/* 07 */}
-      <div className="group relative min-h-[135px] overflow-hidden bg-muted sm:min-h-0">
-        <img
-          src={foundersGallery[6].image}
-          alt={foundersGallery[6].alt}
-          className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-        />
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-        <span className="absolute bottom-2 left-2 rounded bg-black/80 px-1.5 py-0.5 text-[9px] font-bold tracking-[0.1em] text-white">
-          07
-        </span>
-      </div>
+          {/* Small index */}
+          <span className="absolute bottom-2 left-2 rounded-sm bg-black/75 px-1.5 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-white">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+      ))}
 
     </div>
   </div>
