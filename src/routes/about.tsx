@@ -75,19 +75,7 @@ function About() {
         accent="Established 2008 · Mumbai, India"
       />
 
-      {/* ============================================================
-          COMPANY STATS
-      ============================================================ */}
-
-      <section className="bg-background py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <Reveal>
-            <StatBoard items={stats} />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============================================================
+       {/* ============================================================
           WHO WE ARE
       ============================================================ */}
 
@@ -124,6 +112,18 @@ function About() {
               is the foundation the whole operation stands on.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          COMPANY STATS
+      ============================================================ */}
+
+      <section className="bg-background py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <Reveal>
+            <StatBoard items={stats} />
+          </Reveal>
         </div>
       </section>
 
