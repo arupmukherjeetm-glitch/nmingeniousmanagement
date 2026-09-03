@@ -176,256 +176,210 @@ function About() {
     "THE PEOPLE WHO SET THE STANDARD."
 ============================================================ */}
 
-<section className="bg-brand-deep py-24 text-white lg:py-32">
+<section className="bg-[#F4F2EE] py-20 lg:py-28">
   <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-    {/* Section Heading */}
+    {/* ==========================================================
+        HEADER
+    ========================================================== */}
+
     <div className="max-w-3xl">
-      <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
+      <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-coral">
         Leadership
       </p>
 
-      <h2 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px]">
+      <h2 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-[60px]">
         The people who set
-        <br />
+        <br className="hidden sm:block" />
         the standard.
       </h2>
     </div>
 
 
-    {/* ========================================================
+    {/* ==========================================================
         LEADERS
-    ======================================================== */}
+    ========================================================== */}
 
-    <div className="mt-16 divide-y divide-white/10 border-y border-white/10">
+    <div className="mt-16 lg:mt-20">
 
-      {leadership.map((p, index) => (
-        <article
-          key={p.name}
-          className="group grid lg:grid-cols-12"
-        >
+      {leadership.map((p, index) => {
+        const isMadhavi = p.name === "Madhavi Pundalik";
 
-          {/* ==================================================
-              IMAGE
-          ================================================== */}
-
-          <div
+        return (
+          <article
+            key={p.name}
             className={`
-              relative
-              h-[360px]
-              overflow-hidden
-              sm:h-[430px]
-              lg:col-span-5
-              lg:h-[500px]
-              ${index % 2 === 1 ? "lg:order-2" : ""}
+              group
+              grid
+              border-t
+              border-black/10
+              lg:grid-cols-12
+              ${index === leadership.length - 1 ? "border-b" : ""}
             `}
           >
-            <img
-              src={p.image}
-              alt={p.name}
-              loading="lazy"
-              className="
-                absolute inset-0
-                h-full w-full
-                object-cover object-top
-                grayscale
-                transition-all duration-700 ease-out
-                group-hover:scale-[1.04]
-                group-hover:grayscale-0
-              "
-            />
 
-            {/* Image gradient */}
+            {/* ==================================================
+                IMAGE
+            ================================================== */}
+
             <div
-              className="
-                absolute inset-0
-                bg-gradient-to-t
-                from-black/50
-                via-transparent
-                to-transparent
-                opacity-70
-              "
-            />
-          </div>
+              className={`
+                relative
+                h-[360px]
+                overflow-hidden
+                sm:h-[440px]
+                lg:col-span-5
+                lg:h-[500px]
+                ${index % 2 === 1 ? "lg:order-2" : "lg:order-1"}
+              `}
+            >
+              <img
+                src={p.image}
+                alt={p.name}
+                loading="lazy"
+                className="
+                  h-full
+                  w-full
+                  object-cover
+                  object-top
+                  grayscale-[15%]
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.04]
+                "
+              />
 
-
-          {/* ==================================================
-              CONTENT
-          ================================================== */}
-
-          <div
-            className={`
-              flex
-              flex-col
-              justify-center
-              px-0
-              py-10
-              sm:py-12
-              lg:col-span-7
-              lg:px-14
-              lg:py-16
-              ${index % 2 === 1 ? "lg:order-1" : ""}
-            `}
-          >
-
-            {/* Number */}
-            <p className="text-[11px] font-bold tracking-[0.22em] text-white/30">
-              0{index + 1}
-            </p>
-
-            {/* Role */}
-            <p className="mt-5 text-xs font-bold uppercase tracking-[0.22em] text-coral">
-              {p.role}
-            </p>
-
-            {/* Name */}
-            <h3 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-[52px]">
-              {p.name}
-            </h3>
-
-            {/* Accent line */}
-            <div className="mt-7 h-px w-14 bg-coral" />
-
-            {/* Bio */}
-            <p className="mt-7 max-w-2xl text-[15px] leading-7 text-white/65 lg:text-base lg:leading-8">
-              {p.body}
-            </p>
+              {/* Subtle image treatment */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            </div>
 
 
             {/* ==================================================
-                LINKEDIN
+                CONTENT
             ================================================== */}
 
-            {p.name === "Madhavi Pundalik" && (
-              <a
-                href="https://www.linkedin.com/in/madhavi-pundalik-9256135/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Connect with Madhavi Pundalik on LinkedIn"
-                className="
-                  mt-9
-                  inline-flex
-                  w-fit
-                  items-center
-                  gap-3
-                  border
-                  border-white/20
-                  px-4
-                  py-2.5
-                  text-sm
-                  font-semibold
-                  text-white
-                  transition-all
-                  duration-300
-                  hover:border-[#0A66C2]
-                  hover:bg-[#0A66C2]
-                "
-              >
-                {/* LinkedIn icon */}
-                <span
+            <div
+              className={`
+                flex
+                flex-col
+                justify-center
+                py-10
+                lg:col-span-7
+                lg:px-16
+                lg:py-16
+                ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"}
+              `}
+            >
+
+              {/* Small index */}
+              <span className="text-[11px] font-semibold tracking-[0.2em] text-black/30">
+                0{index + 1}
+              </span>
+
+
+              {/* Role */}
+              <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.22em] text-coral">
+                {p.role}
+              </p>
+
+
+              {/* Name */}
+              <h3 className="mt-3 max-w-xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-[52px]">
+                {p.name}
+              </h3>
+
+
+              {/* Accent */}
+              <div className="mt-7 h-[2px] w-10 bg-coral" />
+
+
+              {/* Bio */}
+              <p className="mt-7 max-w-2xl text-[15px] leading-7 text-black/60 lg:text-base lg:leading-8">
+                {p.body}
+              </p>
+
+
+              {/* ==================================================
+                  LINKEDIN — LOGO ONLY
+              ================================================== */}
+
+              {isMadhavi && (
+                <a
+                  href="https://www.linkedin.com/in/madhavi-pundalik-9256135/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${p.name} on LinkedIn`}
                   className="
+                    mt-8
                     flex
-                    h-6
-                    w-6
+                    h-10
+                    w-10
                     items-center
                     justify-center
-                    rounded-sm
+                    rounded-md
                     bg-[#0A66C2]
-                    text-[12px]
-                    font-black
                     text-white
+                    transition-all
+                    duration-300
+                    hover:-translate-y-0.5
+                    hover:bg-[#004182]
+                    hover:shadow-lg
                   "
                 >
-                  in
-                </span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  >
+                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.4a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.57V8.98H3.56v11.47ZM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44C23.2 24 24 23.2 24 22.22V1.78C24 .8 23.2 0 22.22 0Z" />
+                  </svg>
+                </a>
+              )}
 
-                <span>LinkedIn</span>
-
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M5 15L15 5M7 5h8v8"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            )}
-
-            {p.name === "Viru Mhatre" && (
-              <a
-                href="https://www.linkedin.com/in/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Connect with Viru Mhatre on LinkedIn"
-                className="
-                  mt-9
-                  inline-flex
-                  w-fit
-                  items-center
-                  gap-3
-                  border
-                  border-white/20
-                  px-4
-                  py-2.5
-                  text-sm
-                  font-semibold
-                  text-white
-                  transition-all
-                  duration-300
-                  hover:border-[#0A66C2]
-                  hover:bg-[#0A66C2]
-                "
-              >
-                {/* LinkedIn icon */}
-                <span
+              {p.name === "Viru Mhatre" && (
+                <a
+                  href="https://www.linkedin.com/in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${p.name} on LinkedIn`}
                   className="
+                    mt-8
                     flex
-                    h-6
-                    w-6
+                    h-10
+                    w-10
                     items-center
                     justify-center
-                    rounded-sm
+                    rounded-md
                     bg-[#0A66C2]
-                    text-[12px]
-                    font-black
                     text-white
+                    transition-all
+                    duration-300
+                    hover:-translate-y-0.5
+                    hover:bg-[#004182]
+                    hover:shadow-lg
                   "
                 >
-                  in
-                </span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  >
+                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.4a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.57V8.98H3.56v11.47ZM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 22.22 24Z" />
+                  </svg>
+                </a>
+              )}
 
-                <span>LinkedIn</span>
+            </div>
 
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M5 15L15 5M7 5h8v8"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            )}
-
-          </div>
-
-        </article>
-      ))}
+          </article>
+        );
+      })}
 
     </div>
+
   </div>
 </section>
 
