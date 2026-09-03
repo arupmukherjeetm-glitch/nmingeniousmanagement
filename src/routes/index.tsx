@@ -298,6 +298,52 @@ function WhoWeAreSection() {
   );
 }
 const ladder = ["Listed", "Visible", "Considered", "Explained", "Tried", "Chosen", "Sold"];
+function LadderSection() {
+  return (
+    <section className="bg-background py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <Reveal>
+          <div className="flex flex-wrap items-stretch gap-3">
+            {ladder.map((step, i) => {
+              const last = i === ladder.length - 1;
+              return (
+                <div
+                  key={step}
+                  className="group relative flex-1 basis-[calc(50%-0.5rem)] overflow-hidden rounded-lg border border-border p-5 transition-all duration-500 hover:-translate-y-1.5 sm:basis-[calc(25%-0.75rem)] lg:basis-0"
+                  style={
+                    last
+                      ? { background: "var(--gradient-brand)", borderColor: "transparent" }
+                      : undefined
+                  }
+                >
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+                    style={{ background: "var(--coral)" }}
+                  />
+                  <span
+                    className={`block text-xs font-bold ${last ? "text-white/50" : "text-muted-foreground"}`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className={`mt-3 block font-display text-lg font-extrabold ${last ? "text-white" : "text-foreground"}`}
+                  >
+                    {step}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </Reveal>
+        <p className="mt-10 font-display text-2xl font-bold leading-snug text-foreground lg:text-3xl">
+          Most brands stop at visibility.{" "}
+          <span className="text-coral">We take it all the way to sold.</span>
+        </p>
+      </div>
+    </section>
+  );
+}
 {/* ========================================================
     PAN-INDIA REACH
 ======================================================== */}
@@ -435,53 +481,6 @@ function PanIndiaReachSection() {
     </section>
   );
 }
-function LadderSection() {
-  return (
-    <section className="bg-background py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <Reveal>
-          <div className="flex flex-wrap items-stretch gap-3">
-            {ladder.map((step, i) => {
-              const last = i === ladder.length - 1;
-              return (
-                <div
-                  key={step}
-                  className="group relative flex-1 basis-[calc(50%-0.5rem)] overflow-hidden rounded-lg border border-border p-5 transition-all duration-500 hover:-translate-y-1.5 sm:basis-[calc(25%-0.75rem)] lg:basis-0"
-                  style={
-                    last
-                      ? { background: "var(--gradient-brand)", borderColor: "transparent" }
-                      : undefined
-                  }
-                >
-                  <span
-                    aria-hidden
-                    className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
-                    style={{ background: "var(--coral)" }}
-                  />
-                  <span
-                    className={`block text-xs font-bold ${last ? "text-white/50" : "text-muted-foreground"}`}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span
-                    className={`mt-3 block font-display text-lg font-extrabold ${last ? "text-white" : "text-foreground"}`}
-                  >
-                    {step}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </Reveal>
-        <p className="mt-10 font-display text-2xl font-bold leading-snug text-foreground lg:text-3xl">
-          Most brands stop at visibility.{" "}
-          <span className="text-coral">We take it all the way to sold.</span>
-        </p>
-      </div>
-    </section>
-  );
-}
-
 function StatsSection() {
   return (
     <section className="bg-background pb-24 lg:pb-32">
