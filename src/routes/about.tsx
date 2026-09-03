@@ -256,7 +256,7 @@ function About() {
               aspect-[4/3]
               w-full
               object-cover
-              object-center
+              object-top
               transition-transform
               duration-500
               ease-out
