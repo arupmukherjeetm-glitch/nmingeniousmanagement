@@ -206,8 +206,8 @@ function About() {
         const isMadhavi = p.name === "Madhavi Pundalik";
 
         const image = isMadhavi
-          ? "/media/founders/founders-01.webp"
-          : "/media/founders/founders-06.webp";
+          ? "public/media/madhavi.webp"
+          : "/media/founders-06.webp";
 
         const linkedin = isMadhavi
           ? "https://www.linkedin.com/in/madhavi-pundalik-9256135/"
