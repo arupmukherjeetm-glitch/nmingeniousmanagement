@@ -523,37 +523,37 @@ export const gallery = [
 // ---------------------------------------------------------------------------
 export const foundersGallery = [
   {
-    image: "/media/founders/founders-01.webp",
+    image: "/media/founders-01.webp",
     alt: "NM Ingenious leadership receiving recognition at MSME Honours",
     size: "large",
   },
   {
-    image: "/media/founders/founders-02.webp",
+    image: "/media/founders-02.webp",
     alt: "NM Ingenious founders together at a company event",
     size: "medium",
   },
   {
-    image: "/media/founders/founders-03.webp",
+    image: "/media/founders-03.webp",
     alt: "NM Ingenious leadership addressing an audience at a company event",
     size: "medium",
   },
   {
-    image: "/media/founders/founders-04.webp",
+    image: "/media/founders-04.webp",
     alt: "NM Ingenious leadership presenting a business growth plan",
     size: "large",
   },
   {
-    image: "/media/founders/founders-05.webp",
+    image: "/media/founders-05.webp",
     alt: "NM Ingenious leadership at an industry networking event",
     size: "medium",
   },
   {
-    image: "/media/founders/founders-06.webp",
+    image: "/media/founders-06.webp",
     alt: "Recognition moment from the Goldman Sachs 10,000 Women programme",
     size: "medium",
   },
   {
-    image: "/media/founders/founders-07.webp",
+    image: "/media/founders-07.webp",
     alt: "NM Ingenious leadership speaking at an industry event",
     size: "large",
   },
