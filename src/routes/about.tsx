@@ -176,19 +176,19 @@ function About() {
     "THE PEOPLE WHO SET THE STANDARD."
 ============================================================ */}
 
-<section className="bg-[#F4F2EE] py-20 lg:py-28">
+<section className="bg-background py-20 lg:py-28">
   <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
     {/* ==========================================================
         HEADER
     ========================================================== */}
 
-    <div className="max-w-3xl">
+    <div className="max-w-2xl">
       <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-coral">
         Leadership
       </p>
 
-      <h2 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-[60px]">
+      <h2 className="mt-4 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">
         The people who set
         <br className="hidden sm:block" />
         the standard.
@@ -197,180 +197,162 @@ function About() {
 
 
     {/* ==========================================================
-        LEADERS
+        FOUNDERS
     ========================================================== */}
 
-    <div className="mt-16 lg:mt-20">
+    <div className="mt-16 grid gap-12 lg:mt-20 lg:grid-cols-2 lg:gap-0">
 
       {leadership.map((p, index) => {
         const isMadhavi = p.name === "Madhavi Pundalik";
+
+        const image = isMadhavi
+          ? "/media/founders/founders-01.webp"
+          : "/media/founders/founders-06.webp";
+
+        const linkedin = isMadhavi
+          ? "https://www.linkedin.com/in/madhavi-pundalik-9256135/"
+          : "https://www.linkedin.com/in/";
 
         return (
           <article
             key={p.name}
             className={`
               group
-              grid
-              border-t
-              border-black/10
-              lg:grid-cols-12
-              ${index === leadership.length - 1 ? "border-b" : ""}
+              relative
+              flex
+              flex-col
+              items-center
+              text-center
+              px-5
+              sm:px-10
+              lg:px-14
+              ${
+                index === 0
+                  ? "lg:border-r lg:border-border"
+                  : ""
+              }
             `}
           >
 
             {/* ==================================================
-                IMAGE
+                PORTRAIT
             ================================================== */}
 
-            <div
-              className={`
-                relative
-                h-[360px]
-                overflow-hidden
-                sm:h-[440px]
-                lg:col-span-5
-                lg:h-[500px]
-                ${index % 2 === 1 ? "lg:order-2" : "lg:order-1"}
-              `}
-            >
-              <img
-                src={p.image}
-                alt={p.name}
-                loading="lazy"
+            <div className="relative">
+
+              {/* Outer accent ring */}
+              <div
                 className="
-                  h-full
-                  w-full
-                  object-cover
-                  object-top
-                  grayscale-[15%]
-                  transition-transform
-                  duration-700
-                  ease-out
-                  group-hover:scale-[1.04]
+                  absolute
+                  -inset-3
+                  rounded-full
+                  border
+                  border-coral/20
+                  transition-all
+                  duration-500
+                  group-hover:inset-[-8px]
+                  group-hover:border-coral/50
                 "
               />
 
-              {/* Subtle image treatment */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              {/* Portrait */}
+              <div
+                className="
+                  relative
+                  h-52
+                  w-52
+                  overflow-hidden
+                  rounded-full
+                  border-[6px]
+                  border-background
+                  bg-muted
+                  shadow-[0_12px_40px_rgba(0,0,0,0.12)]
+                  sm:h-60
+                  sm:w-60
+                  lg:h-64
+                  lg:w-64
+                "
+              >
+                <img
+                  src={image}
+                  alt={p.name}
+                  loading="lazy"
+                  className="
+                    h-full
+                    w-full
+                    object-cover
+                    object-top
+                    transition-transform
+                    duration-700
+                    ease-out
+                    group-hover:scale-[1.05]
+                  "
+                />
+              </div>
+
+              {/* LinkedIn */}
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${p.name} on LinkedIn`}
+                className="
+                  absolute
+                  bottom-1
+                  right-1
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-[#0A66C2]
+                  text-white
+                  shadow-lg
+                  ring-4
+                  ring-background
+                  transition-all
+                  duration-300
+                  hover:scale-110
+                  hover:bg-[#004182]
+                "
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-[18px] w-[18px]"
+                  aria-hidden="true"
+                >
+                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.4a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.57V8.98H3.56v11.47ZM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44C23.2 24 24 23.2 24 22.22V1.78C24 .8 23.2 0 22.22 0Z" />
+                </svg>
+              </a>
+
             </div>
 
 
             {/* ==================================================
-                CONTENT
+                INFORMATION
             ================================================== */}
 
-            <div
-              className={`
-                flex
-                flex-col
-                justify-center
-                py-10
-                lg:col-span-7
-                lg:px-16
-                lg:py-16
-                ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"}
-              `}
-            >
-
-              {/* Small index */}
-              <span className="text-[11px] font-semibold tracking-[0.2em] text-black/30">
-                0{index + 1}
-              </span>
-
+            <div className="mt-9 max-w-lg">
 
               {/* Role */}
-              <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.22em] text-coral">
+              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-coral">
                 {p.role}
               </p>
 
-
               {/* Name */}
-              <h3 className="mt-3 max-w-xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-[52px]">
+              <h3 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
                 {p.name}
               </h3>
 
-
               {/* Accent */}
-              <div className="mt-7 h-[2px] w-10 bg-coral" />
-
+              <div className="mx-auto mt-5 h-[2px] w-10 bg-coral transition-all duration-500 group-hover:w-16" />
 
               {/* Bio */}
-              <p className="mt-7 max-w-2xl text-[15px] leading-7 text-black/60 lg:text-base lg:leading-8">
+              <p className="mt-6 text-sm leading-7 text-muted-foreground sm:text-[15px] sm:leading-7">
                 {p.body}
               </p>
-
-
-              {/* ==================================================
-                  LINKEDIN — LOGO ONLY
-              ================================================== */}
-
-              {isMadhavi && (
-                <a
-                  href="https://www.linkedin.com/in/madhavi-pundalik-9256135/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View ${p.name} on LinkedIn`}
-                  className="
-                    mt-8
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-md
-                    bg-[#0A66C2]
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:-translate-y-0.5
-                    hover:bg-[#004182]
-                    hover:shadow-lg
-                  "
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="h-5 w-5"
-                    aria-hidden="true"
-                  >
-                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.4a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.57V8.98H3.56v11.47ZM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44C23.2 24 24 23.2 24 22.22V1.78C24 .8 23.2 0 22.22 0Z" />
-                  </svg>
-                </a>
-              )}
-
-              {p.name === "Viru Mhatre" && (
-                <a
-                  href="https://www.linkedin.com/in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View ${p.name} on LinkedIn`}
-                  className="
-                    mt-8
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-md
-                    bg-[#0A66C2]
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:-translate-y-0.5
-                    hover:bg-[#004182]
-                    hover:shadow-lg
-                  "
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="h-5 w-5"
-                    aria-hidden="true"
-                  >
-                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.4a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.57V8.98H3.56v11.47ZM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 22.22 24Z" />
-                  </svg>
-                </a>
-              )}
 
             </div>
 
