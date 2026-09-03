@@ -129,6 +129,7 @@ export function Header() {
           className="hidden items-center gap-1 lg:flex"
           aria-label="Main navigation"
         >
+          {/* HOME */}
           <NavItem to="/">
             Home
           </NavItem>
@@ -147,7 +148,9 @@ export function Header() {
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
-              <span>Services</span>
+              <span>
+                Services
+              </span>
 
               <ChevronDown
                 className={cn(
@@ -191,12 +194,15 @@ export function Header() {
                   ))}
                 </div>
 
+                {/* VIEW ALL SERVICES */}
                 <Link
                   to="/services"
                   onClick={() => setServicesOpen(false)}
                   className="flex items-center justify-between border-t border-border bg-brand-soft/60 px-6 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand-soft"
                 >
-                  <span>View all services</span>
+                  <span>
+                    View all services
+                  </span>
 
                   <span aria-hidden="true">
                     →
