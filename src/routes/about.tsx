@@ -361,7 +361,7 @@ function About() {
             "
           >
             <img
-              src="/media/founders-06.webp"
+              src="/media/founders-05.webp"
               alt="Viru Mhatre"
               loading="lazy"
               className="
