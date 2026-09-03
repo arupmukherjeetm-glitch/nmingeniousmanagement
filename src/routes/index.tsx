@@ -297,7 +297,143 @@ function WhoWeAreSection() {
   );
 }
 const ladder = ["Listed", "Visible", "Considered", "Explained", "Tried", "Chosen", "Sold"];
+{/* ========================================================
+    PAN-INDIA REACH
+======================================================== */}
+function PanIndiaReachSection() {
+  return (
+    <section className="relative overflow-hidden bg-[#F5F7FB] py-20 lg:py-28">
+      {/* Decorative network lines */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-10rem] top-1/2 h-[34rem] w-[34rem] -translate-y-1/2 rounded-full border border-brand/10"
+      />
 
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-5rem] top-1/2 h-[24rem] w-[24rem] -translate-y-1/2 rounded-full border border-brand/10"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[3rem] top-1/2 h-[14rem] w-[14rem] -translate-y-1/2 rounded-full border border-coral/10"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <Reveal>
+          <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+            {/* ==================================================
+                LEFT — SCALE
+            ================================================== */}
+            <div>
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-coral">
+                Pan-India Reach
+              </p>
+
+              <div className="flex items-end gap-4">
+                <span className="font-display text-[7rem] font-extrabold leading-[0.8] tracking-[-0.07em] text-brand sm:text-[9rem] lg:text-[10rem]">
+                  31
+                </span>
+
+                <div className="pb-2">
+                  <span className="block font-display text-3xl font-extrabold leading-none text-foreground sm:text-4xl">
+                    States
+                  </span>
+
+                  <span className="mt-1 block font-display text-3xl font-extrabold leading-none text-coral sm:text-4xl">
+                    &amp; UTs
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-8 h-px w-16 bg-coral" />
+
+              <p className="mt-7 max-w-md text-lg leading-8 text-muted-foreground">
+                One network. 31 states. Every aisle that matters.
+              </p>
+            </div>
+
+            {/* ==================================================
+                RIGHT — NETWORK MESSAGE
+            ================================================== */}
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-2xl border border-brand/10 bg-white p-7 shadow-[0_20px_60px_rgba(20,45,90,0.06)] sm:p-10 lg:p-12">
+                {/* Network visual */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 opacity-70"
+                >
+                  <div className="absolute right-10 top-10 h-2 w-2 rounded-full bg-coral" />
+                  <div className="absolute right-24 top-24 h-2 w-2 rounded-full bg-brand" />
+                  <div className="absolute right-16 top-40 h-1.5 w-1.5 rounded-full bg-brand/50" />
+                  <div className="absolute right-40 top-16 h-1.5 w-1.5 rounded-full bg-coral/60" />
+                  <div className="absolute bottom-16 right-20 h-2 w-2 rounded-full bg-brand" />
+                  <div className="absolute bottom-28 right-36 h-1.5 w-1.5 rounded-full bg-coral" />
+
+                  <div className="absolute right-12 top-11 h-px w-24 rotate-[32deg] bg-brand/10" />
+                  <div className="absolute right-24 top-25 h-px w-20 rotate-[120deg] bg-brand/10" />
+                  <div className="absolute bottom-20 right-20 h-px w-28 rotate-[-35deg] bg-brand/10" />
+                </div>
+
+                <div className="relative max-w-2xl">
+                  <p className="font-display text-2xl font-bold leading-tight tracking-[-0.02em] text-foreground sm:text-3xl lg:text-4xl">
+                    From Mumbai to the{" "}
+                    <span className="text-brand">
+                      smallest tier-2 store shelf,
+                    </span>{" "}
+                    the same discipline, the same reporting, the same
+                    accountability.
+                  </p>
+
+                  <div className="mt-10 grid grid-cols-3 border-t border-border pt-6">
+                    <div>
+                      <p className="font-display text-xl font-extrabold text-brand">
+                        Pan-India
+                      </p>
+                      <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                        Coverage
+                      </p>
+                    </div>
+
+                    <div className="border-l border-border pl-5">
+                      <p className="font-display text-xl font-extrabold text-brand">
+                        One
+                      </p>
+                      <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                        Standard
+                      </p>
+                    </div>
+
+                    <div className="border-l border-border pl-5">
+                      <p className="font-display text-xl font-extrabold text-coral">
+                        Every
+                      </p>
+                      <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                        Shelf
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Small floating location marker */}
+              <div className="absolute -bottom-5 left-6 flex items-center gap-3 rounded-full border border-border bg-background px-4 py-2.5 shadow-lg">
+                <span className="relative flex size-2.5">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-coral opacity-40" />
+                  <span className="relative inline-flex size-2.5 rounded-full bg-coral" />
+                </span>
+
+                <span className="text-xs font-bold uppercase tracking-[0.12em] text-foreground">
+                  One network. Everywhere.
+                </span>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 function LadderSection() {
   return (
     <section className="bg-background py-24 lg:py-32">
