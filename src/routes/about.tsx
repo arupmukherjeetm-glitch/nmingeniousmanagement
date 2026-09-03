@@ -222,79 +222,222 @@ function About() {
 
       {/* ============================================================
           FOUNDER'S GALLERY
-          DIRECTLY BELOW:
-          "THE PEOPLE WHO SET THE STANDARD."
-          
-          FIXED BLOCK LAYOUT
-          NO CROPPING
-          NO MASONRY
       ============================================================ */}
 
-      <section className="border-y border-black/10 bg-white py-16 md:py-20">
-  <div className="container-corp">
-    {/* Section heading */}
-    <div className="max-w-3xl">
-      <p className="text-xs font-bold uppercase tracking-[0.18em] text-black/50">
-        Founder’s Gallery
-      </p>
+            {/* Founder’s Gallery */}
+      <section className="bg-white py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-      <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-black md:text-5xl">
-        The moments behind the journey.
-      </h2>
+          {/* Section Header */}
+          <div className="flex flex-col gap-5 border-b border-black/10 pb-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-black/50">
+                Founder’s Gallery
+              </p>
 
-      <p className="mt-4 max-w-2xl text-sm leading-6 text-black/60 md:text-base">
-        A few moments that shaped the people, culture and ambition behind
-        NM Ingenious.
-      </p>
-    </div>
+              <h2 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-black sm:text-4xl lg:text-5xl">
+                The moments behind the journey.
+              </h2>
+            </div>
 
-    {/* Gallery */}
-    <div className="mt-10 columns-1 gap-2 sm:columns-2 lg:columns-3">
-      {foundersGallery.map((item, index) => (
-        <figure
-          key={item.image}
-          className="group relative mb-2 break-inside-avoid overflow-hidden rounded-[10px] border border-black/10 bg-white"
-        >
-          <img
-            src={item.image}
-            alt={item.alt}
-            loading={index < 3 ? "eager" : "lazy"}
-            className="
-              block
-              h-auto
-              w-full
-              origin-center
-              transition-transform
-              duration-500
-              ease-out
-              group-hover:scale-[1.06]
-            "
-          />
+            <p className="max-w-md text-sm leading-6 text-black/55 lg:pb-1">
+              A few moments that shaped the people, culture and ambition
+              behind NM Ingenious.
+            </p>
+          </div>
 
-          {/* Image number */}
-          <span
-            className="
-              absolute
-              bottom-2.5
-              left-2.5
-              rounded-full
-              bg-black/80
-              px-2.5
-              py-1
-              text-[9px]
-              font-bold
-              tracking-[0.16em]
-              text-white
-              backdrop-blur-sm
-            "
-          >
-            {String(index + 1).padStart(2, "0")}
-          </span>
-        </figure>
-      ))}
-    </div>
-  </div>
-</section>
+          {/* Gallery */}
+          <div className="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-12">
+
+            {/* Image 01 — Large */}
+            <figure className="group relative overflow-hidden rounded-lg bg-black sm:col-span-1 lg:col-span-5">
+              <img
+                src={foundersGallery[0].image}
+                alt={foundersGallery[0].alt}
+                loading="lazy"
+                className="
+                  block
+                  h-[300px]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.06]
+                  sm:h-[360px]
+                  lg:h-[430px]
+                "
+              />
+
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              <span className="absolute bottom-3 left-3 rounded-md bg-black/85 px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-white">
+                01
+              </span>
+            </figure>
+
+            {/* Images 02 + 03 */}
+            <div className="grid gap-2 sm:col-span-1 sm:grid-rows-2 lg:col-span-7">
+              <figure className="group relative min-h-0 overflow-hidden rounded-lg bg-black">
+                <img
+                  src={foundersGallery[1].image}
+                  alt={foundersGallery[1].alt}
+                  loading="lazy"
+                  className="
+                    block
+                    h-[260px]
+                    w-full
+                    object-cover
+                    transition-transform
+                    duration-700
+                    ease-out
+                    group-hover:scale-[1.06]
+                    sm:h-full
+                    sm:min-h-[205px]
+                  "
+                />
+
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                <span className="absolute bottom-3 left-3 rounded-md bg-black/85 px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-white">
+                  02
+                </span>
+              </figure>
+
+              <figure className="group relative min-h-0 overflow-hidden rounded-lg bg-black">
+                <img
+                  src={foundersGallery[2].image}
+                  alt={foundersGallery[2].alt}
+                  loading="lazy"
+                  className="
+                    block
+                    h-[260px]
+                    w-full
+                    object-cover
+                    transition-transform
+                    duration-700
+                    ease-out
+                    group-hover:scale-[1.06]
+                    sm:h-full
+                    sm:min-h-[205px]
+                  "
+                />
+
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                <span className="absolute bottom-3 left-3 rounded-md bg-black/85 px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-white">
+                  03
+                </span>
+              </figure>
+            </div>
+
+            {/* Image 04 — Wide */}
+            <figure className="group relative overflow-hidden rounded-lg bg-black sm:col-span-2 lg:col-span-7">
+              <img
+                src={foundersGallery[3].image}
+                alt={foundersGallery[3].alt}
+                loading="lazy"
+                className="
+                  block
+                  h-[280px]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.06]
+                  lg:h-[330px]
+                "
+              />
+
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              <span className="absolute bottom-3 left-3 rounded-md bg-black/85 px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-white">
+                04
+              </span>
+            </figure>
+
+            {/* Image 05 */}
+            <figure className="group relative overflow-hidden rounded-lg bg-black sm:col-span-1 lg:col-span-5">
+              <img
+                src={foundersGallery[4].image}
+                alt={foundersGallery[4].alt}
+                loading="lazy"
+                className="
+                  block
+                  h-[280px]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.06]
+                  lg:h-[330px]
+                "
+              />
+
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              <span className="absolute bottom-3 left-3 rounded-md bg-black/85 px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-white">
+                05
+              </span>
+            </figure>
+
+            {/* Image 06 */}
+            <figure className="group relative overflow-hidden rounded-lg bg-black sm:col-span-1 lg:col-span-5">
+              <img
+                src={foundersGallery[5].image}
+                alt={foundersGallery[5].alt}
+                loading="lazy"
+                className="
+                  block
+                  h-[280px]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.06]
+                  lg:h-[330px]
+                "
+              />
+
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              <span className="absolute bottom-3 left-3 rounded-md bg-black/85 px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-white">
+                06
+              </span>
+            </figure>
+
+            {/* Image 07 — Wide */}
+            <figure className="group relative overflow-hidden rounded-lg bg-black sm:col-span-2 lg:col-span-7">
+              <img
+                src={foundersGallery[6].image}
+                alt={foundersGallery[6].alt}
+                loading="lazy"
+                className="
+                  block
+                  h-[280px]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.06]
+                  lg:h-[330px]
+                "
+              />
+
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              <span className="absolute bottom-3 left-3 rounded-md bg-black/85 px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-white">
+                07
+              </span>
+            </figure>
+
+          </div>
+        </div>
+      </section>
 
       {/* ============================================================
           OUR STRENGTHS
