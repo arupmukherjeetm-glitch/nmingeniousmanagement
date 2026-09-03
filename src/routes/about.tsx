@@ -225,10 +225,9 @@ function About() {
       ============================================================ */}
 
           {/* Founder’s Gallery */}
-<section className="bg-background py-12 lg:py-16">
+<section className="bg-background py-12 lg:py-14">
   <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-    {/* Heading */}
     <div className="mb-6">
       <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
         Founder’s Gallery
@@ -239,34 +238,30 @@ function About() {
       </h2>
     </div>
 
-    {/* Horizontal Gallery */}
-    <div className="overflow-x-auto overflow-y-hidden pb-2 scrollbar-none">
-      <div className="flex min-w-max items-end gap-2">
+    {/* Desktop: all 7 visible | Mobile: horizontal scroll */}
+    <div className="overflow-x-auto pb-1 lg:overflow-visible">
+      <div className="flex min-w-max items-end gap-1.5 lg:min-w-0">
 
         {foundersGallery.map((item, index) => (
           <div
             key={item.image}
             className={`
-              group
-              relative
-              shrink-0
-              overflow-hidden
-              rounded-lg
-              bg-muted
+              group relative shrink-0 overflow-hidden rounded-md bg-muted
+              lg:min-w-0 lg:flex-1
               ${
                 index === 0
-                  ? "h-[320px] w-[240px]"
+                  ? "h-[280px] w-[190px] lg:h-[285px]"
                   : index === 1
-                    ? "h-[280px] w-[210px]"
+                    ? "h-[250px] w-[175px] lg:h-[255px]"
                     : index === 2
-                      ? "h-[300px] w-[225px]"
+                      ? "h-[270px] w-[185px] lg:h-[275px]"
                       : index === 3
-                        ? "h-[270px] w-[205px]"
+                        ? "h-[245px] w-[170px] lg:h-[250px]"
                         : index === 4
-                          ? "h-[310px] w-[230px]"
+                          ? "h-[275px] w-[185px] lg:h-[280px]"
                           : index === 5
-                            ? "h-[280px] w-[210px]"
-                            : "h-[300px] w-[225px]"
+                            ? "h-[250px] w-[175px] lg:h-[255px]"
+                            : "h-[265px] w-[180px] lg:h-[270px]"
               }
             `}
           >
@@ -280,13 +275,12 @@ function About() {
                 object-cover
                 object-top
                 transition-transform
-                duration-700
+                duration-500
                 ease-out
                 group-hover:scale-[1.04]
               "
             />
 
-            {/* Subtle hover */}
             <div
               className="
                 pointer-events-none
@@ -302,7 +296,6 @@ function About() {
               "
             />
 
-            {/* Number */}
             <span
               className="
                 absolute
@@ -325,7 +318,6 @@ function About() {
 
       </div>
     </div>
-
   </div>
 </section>
 
