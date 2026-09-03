@@ -213,7 +213,6 @@ function WhoWeAreSection() {
                 <br />
                 <span className="text-coral">strategy happen.</span>
               </h2>
-
               <div className="mt-7 h-px w-16 bg-coral" />
 
               <p className="mt-7 max-w-md text-lg leading-8 text-muted-foreground">
