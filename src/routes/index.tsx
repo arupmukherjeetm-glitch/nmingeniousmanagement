@@ -178,7 +178,7 @@ function TickerBar() {
           >
             {t}
             <span className="text-coral" aria-hidden>
-              ✦
+             ❋
             </span>
           </span>
         ))}
@@ -517,8 +517,7 @@ function ProblemSection() {
             Getting on the shelf was the hard part. Getting off it is harder.
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-            You fought to get listed. You paid for the slot, the stock, the visibility. Then the
-            product just sits there, waiting for a shopper who walks straight past it.
+            You got listed. You paid for the slot, the stock, the shelf space. But the product isn't moving.
           </p>
           <div className="mt-8 space-y-3 border-l-2 border-coral pl-6">
             <p className="font-display text-xl font-bold text-foreground">
