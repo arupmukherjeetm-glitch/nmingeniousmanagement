@@ -176,7 +176,7 @@ function About() {
     "THE PEOPLE WHO SET THE STANDARD."
 ============================================================ */}
 
-<section className="bg-background py-20 lg:py-24">
+<section className="bg-[#F5F7FB] py-20 lg:py-24">
   <div className="mx-auto max-w-6xl px-5 lg:px-8">
 
     {/* Section Heading */}
