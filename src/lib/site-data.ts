@@ -261,6 +261,7 @@ export const stats = [
   { value: 2000, suffix: "+", label: "MT & GT outlets" },
   { value: 31, suffix: "", label: "States & UTs" },
 ];
+export const aboutStats = stats;
 
 export const problemSignals = [
   { n: "01", title: "Listed, but not moving", body: "Your product is in stores, but offtake is below expectation." },
