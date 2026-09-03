@@ -51,6 +51,7 @@ function Home() {
       <TickerBar />
       <WhoWeAreSection />
       <LadderSection />
+      <PanIndiaReachSection />
       <StatsSection />
       <ProblemSection />
       <DikhtaBikta />
