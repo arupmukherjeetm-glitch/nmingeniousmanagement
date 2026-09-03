@@ -161,7 +161,7 @@ export function Header() {
 ======================================================== */}
 
 <Link
-  to="/contact"
+  to="/request-an-audit"
   className="ml-3 inline-flex h-11 items-center justify-center rounded-lg bg-coral px-6 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
 >
   Contact Us
