@@ -211,7 +211,7 @@ function WhoWeAreSection() {
               <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-[3.8rem]">
                 We make
                 <br />
-                <span className="text-brand">strategy happen.</span>
+                <span className="text-coral">strategy happen.</span>
               </h2>
 
               <div className="mt-7 h-px w-16 bg-coral" />
