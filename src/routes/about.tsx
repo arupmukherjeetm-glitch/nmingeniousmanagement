@@ -176,189 +176,266 @@ function About() {
     "THE PEOPLE WHO SET THE STANDARD."
 ============================================================ */}
 
-<section className="bg-background py-20 lg:py-28">
-  <div className="mx-auto max-w-7xl px-5 lg:px-8">
+<section className="bg-background py-20 lg:py-24">
+  <div className="mx-auto max-w-6xl px-5 lg:px-8">
 
-    {/* ==========================================================
-        HEADER
-    ========================================================== */}
-
-    <div className="max-w-2xl">
+    {/* Section Heading */}
+    <div className="mx-auto max-w-2xl text-center">
       <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-coral">
         Leadership
       </p>
 
-      <h2 className="mt-4 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">
-        The people who set
-        <br className="hidden sm:block" />
-        the standard.
+      <h2 className="mt-4 font-display text-3xl font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[46px]">
+        The people who set the standard.
       </h2>
     </div>
 
 
     {/* ==========================================================
-        FOUNDERS
+        LEADERS
     ========================================================== */}
 
-    <div className="mt-16 grid gap-12 lg:mt-20 lg:grid-cols-2 lg:gap-0">
+    <div className="mt-14 grid gap-16 lg:mt-18 lg:grid-cols-2 lg:gap-0">
 
-      {leadership.map((p, index) => {
-        const isMadhavi = p.name === "Madhavi Pundalik";
+      {/* ========================================================
+          MADHVI PUNDALIK
+      ======================================================== */}
 
-        const image = isMadhavi
-          ? "/media/madhavi.webp"
-          : "/media/founders-06.webp";
+      <article className="group flex flex-col items-center px-4 text-center lg:border-r lg:border-border lg:px-14">
 
-        const linkedin = isMadhavi
-          ? "https://www.linkedin.com/in/madhavi-pundalik-9256135/"
-          : "https://www.linkedin.com/in/";
+        {/* Portrait */}
+        <div className="relative">
 
-        return (
-          <article
-            key={p.name}
-            className={`
-              group
+          {/* Fine coral ring */}
+          <div
+            className="
+              absolute
+              -inset-3
+              rounded-full
+              border
+              border-coral/20
+              transition-all
+              duration-500
+              group-hover:-inset-4
+              group-hover:border-coral/45
+            "
+          />
+
+          {/* Image */}
+          <div
+            className="
               relative
-              flex
-              flex-col
-              items-center
-              text-center
-              px-5
-              sm:px-10
-              lg:px-14
-              ${
-                index === 0
-                  ? "lg:border-r lg:border-border"
-                  : ""
-              }
-            `}
+              h-52
+              w-52
+              overflow-hidden
+              rounded-full
+              border-[5px]
+              border-background
+              bg-muted
+              shadow-[0_10px_35px_rgba(0,0,0,0.10)]
+              sm:h-56
+              sm:w-56
+              lg:h-60
+              lg:w-60
+            "
           >
+            <img
+              src="/media/madhavi.webp"
+              alt="Madhvi Pundalik"
+              loading="lazy"
+              className="
+                h-full
+                w-full
+                object-cover
+                object-center
+                transition-transform
+                duration-700
+                ease-out
+                group-hover:scale-[1.05]
+              "
+            />
+          </div>
 
-            {/* ==================================================
-                PORTRAIT
-            ================================================== */}
+          {/* LinkedIn logo */}
+          <a
+            href="https://www.linkedin.com/in/madhavi-pundalik-9256135/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Madhvi Pundalik on LinkedIn"
+            className="
+              absolute
+              bottom-0
+              right-0
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              rounded-full
+              bg-[#0A66C2]
+              text-white
+              shadow-md
+              ring-4
+              ring-background
+              transition-all
+              duration-300
+              hover:scale-110
+              hover:bg-[#004182]
+            "
+          >
+            <span className="text-[19px] font-black leading-none tracking-[-0.08em]">
+              in
+            </span>
+          </a>
 
-            <div className="relative">
-
-              {/* Outer accent ring */}
-              <div
-                className="
-                  absolute
-                  -inset-3
-                  rounded-full
-                  border
-                  border-coral/20
-                  transition-all
-                  duration-500
-                  group-hover:inset-[-8px]
-                  group-hover:border-coral/50
-                "
-              />
-
-              {/* Portrait */}
-              <div
-                className="
-                  relative
-                  h-52
-                  w-52
-                  overflow-hidden
-                  rounded-full
-                  border-[6px]
-                  border-background
-                  bg-muted
-                  shadow-[0_12px_40px_rgba(0,0,0,0.12)]
-                  sm:h-60
-                  sm:w-60
-                  lg:h-64
-                  lg:w-64
-                "
-              >
-                <img
-                  src={image}
-                  alt={p.name}
-                  loading="lazy"
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    object-top
-                    transition-transform
-                    duration-700
-                    ease-out
-                    group-hover:scale-[1.05]
-                  "
-                />
-              </div>
-
-              {/* LinkedIn */}
-              <a
-                href={linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`View ${p.name} on LinkedIn`}
-                className="
-                  absolute
-                  bottom-1
-                  right-1
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#0A66C2]
-                  text-white
-                  shadow-lg
-                  ring-4
-                  ring-background
-                  transition-all
-                  duration-300
-                  hover:scale-110
-                  hover:bg-[#004182]
-                "
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-[18px] w-[18px]"
-                  aria-hidden="true"
-                >
-                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.34 7.4a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.57V8.98H3.56v11.47ZM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44C23.2 24 24 23.2 24 22.22V1.78C24 .8 23.2 0 22.22 0Z" />
-                </svg>
-              </a>
-
-            </div>
+        </div>
 
 
-            {/* ==================================================
-                INFORMATION
-            ================================================== */}
+        {/* Profile */}
+        <div className="mt-8 max-w-md">
 
-            <div className="mt-9 max-w-lg">
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
+            Founder & Director
+          </p>
 
-              {/* Role */}
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-coral">
-                {p.role}
-              </p>
+          <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-[34px]">
+            Madhvi Pundalik
+          </h3>
 
-              {/* Name */}
-              <h3 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-                {p.name}
-              </h3>
+          <div className="mx-auto mt-4 h-[2px] w-9 bg-coral transition-all duration-500 group-hover:w-14" />
 
-              {/* Accent */}
-              <div className="mx-auto mt-5 h-[2px] w-10 bg-coral transition-all duration-500 group-hover:w-16" />
+          <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-[15px]">
+            A 35+ year veteran in business development, sales, marketing,
+            product development and brand strategy in Indian markets, with
+            a proven track record in brand establishment, market
+            segmentation, networking, revenue growth and sales
+            optimization. IIM Ahmedabad Goldman Sachs 10,000 Women
+            programme graduate, MBA-educated and a boundless thinker.
+          </p>
 
-              {/* Bio */}
-              <p className="mt-6 text-sm leading-7 text-muted-foreground sm:text-[15px] sm:leading-7">
-                {p.body}
-              </p>
+        </div>
 
-            </div>
+      </article>
 
-          </article>
-        );
-      })}
+
+      {/* ========================================================
+          VIRU MHATRE
+      ======================================================== */}
+
+      <article className="group flex flex-col items-center px-4 text-center lg:px-14">
+
+        {/* Portrait */}
+        <div className="relative">
+
+          {/* Fine coral ring */}
+          <div
+            className="
+              absolute
+              -inset-3
+              rounded-full
+              border
+              border-coral/20
+              transition-all
+              duration-500
+              group-hover:-inset-4
+              group-hover:border-coral/45
+            "
+          />
+
+          {/* Image */}
+          <div
+            className="
+              relative
+              h-52
+              w-52
+              overflow-hidden
+              rounded-full
+              border-[5px]
+              border-background
+              bg-muted
+              shadow-[0_10px_35px_rgba(0,0,0,0.10)]
+              sm:h-56
+              sm:w-56
+              lg:h-60
+              lg:w-60
+            "
+          >
+            <img
+              src="/media/founders-06.webp"
+              alt="Viru Mhatre"
+              loading="lazy"
+              className="
+                h-full
+                w-full
+                object-cover
+                object-top
+                transition-transform
+                duration-700
+                ease-out
+                group-hover:scale-[1.05]
+              "
+            />
+          </div>
+
+          {/* LinkedIn logo */}
+          <a
+            href="https://www.linkedin.com/in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Viru Mhatre on LinkedIn"
+            className="
+              absolute
+              bottom-0
+              right-0
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              rounded-full
+              bg-[#0A66C2]
+              text-white
+              shadow-md
+              ring-4
+              ring-background
+              transition-all
+              duration-300
+              hover:scale-110
+              hover:bg-[#004182]
+            "
+          >
+            <span className="text-[19px] font-black leading-none tracking-[-0.08em]">
+              in
+            </span>
+          </a>
+
+        </div>
+
+
+        {/* Profile */}
+        <div className="mt-8 max-w-md">
+
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
+            Director
+          </p>
+
+          <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-[34px]">
+            Viru Mhatre
+          </h3>
+
+          <div className="mx-auto mt-4 h-[2px] w-9 bg-coral transition-all duration-500 group-hover:w-14" />
+
+          <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-[15px]">
+            With over 37 years of diverse experience in corporate planning
+            across EdTech, IT, BPO and telecom, Viru is a seasoned design
+            thinker and MBA. His leadership extends to driving strategic
+            roadmaps, contributing significantly to executive team planning
+            at NMIMSPL.
+          </p>
+
+        </div>
+
+      </article>
 
     </div>
 
