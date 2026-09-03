@@ -515,6 +515,50 @@ export const gallery = [
 ];
 
 
+
+// ---------------------------------------------------------------------------
+// Founder's Journey Gallery
+// Dedicated visual storytelling section for the About page.
+// Images should be uploaded to /public/media/founders/.
+// ---------------------------------------------------------------------------
+export const foundersGallery = [
+  {
+    image: "/media/founders/founders-01.webp",
+    alt: "NM Ingenious leadership receiving recognition at MSME Honours",
+    size: "large",
+  },
+  {
+    image: "/media/founders/founders-02.webp",
+    alt: "NM Ingenious founders together at a company event",
+    size: "medium",
+  },
+  {
+    image: "/media/founders/founders-03.webp",
+    alt: "NM Ingenious leadership addressing an audience at a company event",
+    size: "medium",
+  },
+  {
+    image: "/media/founders/founders-04.webp",
+    alt: "NM Ingenious leadership presenting a business growth plan",
+    size: "large",
+  },
+  {
+    image: "/media/founders/founders-05.webp",
+    alt: "NM Ingenious leadership at an industry networking event",
+    size: "medium",
+  },
+  {
+    image: "/media/founders/founders-06.webp",
+    alt: "Recognition moment from the Goldman Sachs 10,000 Women programme",
+    size: "medium",
+  },
+  {
+    image: "/media/founders/founders-07.webp",
+    alt: "NM Ingenious leadership speaking at an industry event",
+    size: "large",
+  },
+] as const;
+
 export const clientLogos = [
   { name: "Procter & Gamble", url: "https://nm-ingenious.vercel.app/media/logos/logo-pg.png" },
   { name: "Johnson & Johnson", url: "https://nm-ingenious.vercel.app/media/logos/image-42.png" },
