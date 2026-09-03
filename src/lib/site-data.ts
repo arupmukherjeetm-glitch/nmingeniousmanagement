@@ -599,7 +599,7 @@ export const timeline = [
   },
   {
     date: "2019 August",
-    body: "Opened offices in Delhi, Bengaluru, Kolkata, Pune, Hyderabad, Chennai and Amritsar.
+    body: "Opened offices in Delhi, Bengaluru, Kolkata, Pune, Hyderabad, Chennai and Amritsar.",
  },
   {
     date: "2020",
