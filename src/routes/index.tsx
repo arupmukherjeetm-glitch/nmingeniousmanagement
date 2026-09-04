@@ -187,164 +187,6 @@ function TickerBar() {
   );
 }
 {/* ========================================================
-    WHO WE ARE — HOMEPAGE
-======================================================== */}
-function WhoWeAreSection() {
-  return (
-    <section className="relative overflow-hidden bg-[#F5F7FB] py-20 lg:py-24">
-      {/* Subtle background detail */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-brand/5 blur-3xl"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-          {/* ==================================================
-              LEFT — BRAND MESSAGE
-          ================================================== */}
-          <Reveal>
-            <div className="max-w-xl">
-              <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-coral">
-                Who We Are
-              </p>
-
-              <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-[3.8rem]">
-                We make
-                <br />
-                <span className="text-coral">strategy happen.</span>
-              </h2>
-              <div className="mt-7 h-px w-16 bg-coral" />
-
-              <p className="mt-7 max-w-md text-lg leading-8 text-muted-foreground">
-                NM Ingenious Management Services helps brands turn
-                retail strategy into consistent execution across the
-                last mile.
-              </p>
-
-              <Link
-                to="/about"
-                className="group mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-brand transition-colors hover:text-brand-deep"
-              >
-                Discover our story
-                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </Reveal>
-
-          {/* ==================================================
-              RIGHT — COMPANY STORY
-          ================================================== */}
-          <Reveal delay={100}>
-            <div>
-              <div className="border-l-2 border-brand/15 pl-7 lg:pl-10">
-                <p className="text-xl leading-9 text-foreground/90 sm:text-2xl sm:leading-10">
-                  Since <strong>2008</strong>, we have built our work
-                  around one simple idea:
-                  <strong>
-                    {" "}
-                    great strategy only creates value when it is
-                    executed well.
-                  </strong>
-                </p>
-
-                <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground">
-                  From field execution and workforce capability to
-                  structured processes and data-led visibility, we
-                  help businesses build stronger market presence and
-                  better retail performance.
-                </p>
-              </div>
-
-              {/* ==================================================
-                  PROOF POINTS
-              ================================================== */}
-              <div className="mt-10 grid overflow-hidden rounded-xl border border-border bg-background sm:grid-cols-3">
-                <div className="border-b border-border px-6 py-6 sm:border-b-0 sm:border-r">
-                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
-                    2008
-                  </p>
-
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                    Established
-                  </p>
-                </div>
-
-                <div className="border-b border-border px-6 py-6 sm:border-b-0 sm:border-r">
-                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
-                    31+
-                  </p>
-
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                    States &amp; UTs
-                  </p>
-                </div>
-
-                <div className="px-6 py-6">
-                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
-                    2,150+
-                  </p>
-
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                    People Trained
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-const ladder = ["Listed", "Visible", "Considered", "Explained", "Tried", "Chosen", "Sold"];
-function LadderSection() {
-  return (
-    <section className="bg-background py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <Reveal>
-          <div className="flex flex-wrap items-stretch gap-3">
-            {ladder.map((step, i) => {
-              const last = i === ladder.length - 1;
-              return (
-                <div
-                  key={step}
-                  className="group relative flex-1 basis-[calc(50%-0.5rem)] overflow-hidden rounded-lg border border-border p-5 transition-all duration-500 hover:-translate-y-1.5 sm:basis-[calc(25%-0.75rem)] lg:basis-0"
-                  style={
-                    last
-                      ? { background: "var(--gradient-brand)", borderColor: "transparent" }
-                      : undefined
-                  }
-                >
-                  <span
-                    aria-hidden
-                    className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
-                    style={{ background: "var(--coral)" }}
-                  />
-                  <span
-                    className={`block text-xs font-bold ${last ? "text-white/50" : "text-muted-foreground"}`}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span
-                    className={`mt-3 block font-display text-lg font-extrabold ${last ? "text-white" : "text-foreground"}`}
-                  >
-                    {step}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </Reveal>
-        <p className="mt-10 font-display text-2xl font-bold leading-snug text-foreground lg:text-3xl">
-          Most brands stop at visibility.{" "}
-          <span className="text-coral">We take it all the way to sold.</span>
-        </p>
-      </div>
-    </section>
-  );
-}
-{/* ========================================================
     PAN-INDIA REACH
 ======================================================== */}
 function PanIndiaReachSection() {
@@ -481,6 +323,165 @@ function PanIndiaReachSection() {
     </section>
   );
 }
+/* ========================================================
+    WHO WE ARE — HOMEPAGE
+======================================================== 
+function WhoWeAreSection() {
+  return (
+    <section className="relative overflow-hidden bg-[#F5F7FB] py-20 lg:py-24">
+      {/* Subtle background detail */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-brand/5 blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+          {/* ==================================================
+              LEFT — BRAND MESSAGE
+          ================================================== */}
+          <Reveal>
+            <div className="max-w-xl">
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-coral">
+                Who We Are
+              </p>
+
+              <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-[3.8rem]">
+                We make
+                <br />
+                <span className="text-coral">strategy happen.</span>
+              </h2>
+              <div className="mt-7 h-px w-16 bg-coral" />
+
+              <p className="mt-7 max-w-md text-lg leading-8 text-muted-foreground">
+                NM Ingenious Management Services helps brands turn
+                retail strategy into consistent execution across the
+                last mile.
+              </p>
+
+              <Link
+                to="/about"
+                className="group mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-brand transition-colors hover:text-brand-deep"
+              >
+                Discover our story
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </Reveal>
+
+          {/* ==================================================
+              RIGHT — COMPANY STORY
+          ================================================== */}
+          <Reveal delay={100}>
+            <div>
+              <div className="border-l-2 border-brand/15 pl-7 lg:pl-10">
+                <p className="text-xl leading-9 text-foreground/90 sm:text-2xl sm:leading-10">
+                  Since <strong>2008</strong>, we have built our work
+                  around one simple idea:
+                  <strong>
+                    {" "}
+                    great strategy only creates value when it is
+                    executed well.
+                  </strong>
+                </p>
+
+                <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground">
+                  From field execution and workforce capability to
+                  structured processes and data-led visibility, we
+                  help businesses build stronger market presence and
+                  better retail performance.
+                </p>
+              </div>
+
+              {/* ==================================================
+                  PROOF POINTS
+              ================================================== */}
+              <div className="mt-10 grid overflow-hidden rounded-xl border border-border bg-background sm:grid-cols-3">
+                <div className="border-b border-border px-6 py-6 sm:border-b-0 sm:border-r">
+                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
+                    2008
+                  </p>
+
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    Established
+                  </p>
+                </div>
+
+                <div className="border-b border-border px-6 py-6 sm:border-b-0 sm:border-r">
+                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
+                    31+
+                  </p>
+
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    States &amp; UTs
+                  </p>
+                </div>
+
+                <div className="px-6 py-6">
+                  <p className="font-display text-2xl font-extrabold tracking-tight text-brand">
+                    2,150+
+                  </p>
+
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    People Trained
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+} */
+const ladder = ["Listed", "Visible", "Considered", "Explained", "Tried", "Chosen", "Sold"];
+function LadderSection() {
+  return (
+    <section className="bg-background py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <Reveal>
+          <div className="flex flex-wrap items-stretch gap-3">
+            {ladder.map((step, i) => {
+              const last = i === ladder.length - 1;
+              return (
+                <div
+                  key={step}
+                  className="group relative flex-1 basis-[calc(50%-0.5rem)] overflow-hidden rounded-lg border border-border p-5 transition-all duration-500 hover:-translate-y-1.5 sm:basis-[calc(25%-0.75rem)] lg:basis-0"
+                  style={
+                    last
+                      ? { background: "var(--gradient-brand)", borderColor: "transparent" }
+                      : undefined
+                  }
+                >
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+                    style={{ background: "var(--coral)" }}
+                  />
+                  <span
+                    className={`block text-xs font-bold ${last ? "text-white/50" : "text-muted-foreground"}`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className={`mt-3 block font-display text-lg font-extrabold ${last ? "text-white" : "text-foreground"}`}
+                  >
+                    {step}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </Reveal>
+        <p className="mt-10 font-display text-2xl font-bold leading-snug text-foreground lg:text-3xl">
+          Most brands stop at visibility.{" "}
+          <span className="text-coral">We take it all the way to sold.</span>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function StatsSection() {
   return (
     <section className="bg-background pb-24 lg:pb-32">
@@ -495,7 +496,6 @@ function StatsSection() {
     </section>
   );
 }
-
 const storeRealities = [
   "A shopper may not notice the product",
   "They may not understand the benefit",
