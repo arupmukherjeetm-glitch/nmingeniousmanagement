@@ -48,7 +48,7 @@ export function DikhtaBikta() {
 
   const anim = (name: string) =>
   play && ready
-    ? { animation: `${name} 2.7s cubic-bezier(0.65,0,0.35,1) infinite` }
+    ? { animation: `${name} 2.8s cubic-bezier(0.65,0,0.35,1) infinite` }
     : undefined;
 
   return (
