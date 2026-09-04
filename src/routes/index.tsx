@@ -49,9 +49,8 @@ function Home() {
     <>
       <Hero />
       <TickerBar />
-      <WhoWeAreSection />
-      <LadderSection />
       <PanIndiaReachSection />
+      <LadderSection />
       <StatsSection />
       <ProblemSection />
       <DikhtaBikta />
