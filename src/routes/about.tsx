@@ -379,7 +379,7 @@ function About() {
 
           {/* LinkedIn logo */}
           <a
-            href="https://www.linkedin.com/in/"
+            href="https://www.linkedin.com/in/virendrayeshwantmhatre/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Viru Mhatre on LinkedIn"
