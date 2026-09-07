@@ -667,6 +667,7 @@ function ReportsSection() {
       </div>
     </section>
   );
+}
 function WhoItsForSection() {
   return (
     <section className="bg-sand py-24 lg:py-32">
