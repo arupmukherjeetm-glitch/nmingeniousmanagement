@@ -83,7 +83,7 @@ export const services: Service[] = [
     ],
     outcome: "Higher shopper interaction, higher conversion, lower attrition at the shelf.",
     image: pdm.url,
-    secondImage: a4.url,
+    secondImage: pdm.url,
     caption: "Trained promoters at the shelf",
   },
   {
