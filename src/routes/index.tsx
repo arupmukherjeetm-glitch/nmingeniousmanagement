@@ -540,6 +540,8 @@ function ServicesSection() {
   return (
     <section className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+        {/* Header */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <Eyebrow>What we do</Eyebrow>
@@ -558,56 +560,95 @@ function ServicesSection() {
           </Link>
         </div>
 
-        <div className="mt-14 grid gap-4 md:grid-cols-2">
+        {/* Service Cards */}
+        <div className="mt-14 grid gap-5 md:grid-cols-2">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={i * 50}>
               <Link
                 to="/services/$slug"
                 params={{ slug: s.slug }}
-                className="brand-box group flex h-full flex-col overflow-hidden"
+                className="
+                  group
+                  flex
+                  min-h-[300px]
+                  overflow-hidden
+                  rounded-2xl
+                  border
+                  border-border
+                  bg-white
+                  transition-all
+                  duration-500
+                  hover:-translate-y-1
+                  hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]
+                "
               >
-                {/* IMAGE */}
-                <div className="relative h-[320px] overflow-hidden bg-slate-100">
-                  <img
-                    src={s.image}
-                    alt={s.caption}
-                    loading="lazy"
-                    className="absolute inset-0 m-auto max-h-full max-w-full object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                  />
 
-                  <span
+                {/* IMAGE PANEL */}
+                <div className="relative w-[42%] shrink-0 overflow-hidden bg-[#eef1f5]">
+
+                  {/* Image */}
+                  <div className="absolute inset-0 flex items-center justify-center p-4">
+                    <img
+                      src={s.image}
+                      alt={s.caption}
+                      loading="lazy"
+                      decoding="async"
+                      className="
+                        max-h-full
+                        max-w-full
+                        object-contain
+                        transition-transform
+                        duration-700
+                        ease-out
+                        group-hover:scale-[1.035]
+                      "
+                    />
+                  </div>
+
+                  {/* Bottom gradient */}
+                  <div
                     aria-hidden
                     className="absolute inset-x-0 bottom-0 h-28"
                     style={{
                       background:
-                        "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent)",
+                        "linear-gradient(to top, rgba(20,45,90,0.78), transparent)",
                     }}
                   />
 
-                  <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white">
+                  {/* Caption */}
+                  <span className="absolute bottom-4 left-4 right-3 z-10 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white">
                     {s.caption}
                   </span>
+
                 </div>
 
-                {/* CONTENT */}
-                <div className="flex flex-1 flex-col p-7">
-                  <h3 className="font-display text-xl font-extrabold text-foreground transition-colors group-hover:text-brand">
-                    {s.name}
-                  </h3>
+                {/* CONTENT PANEL */}
+                <div className="flex min-w-0 flex-1 flex-col justify-between p-6 lg:p-7">
 
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {s.summary}
-                  </p>
+                  <div>
+                    <div className="mb-5 h-1 w-8 rounded-full bg-coral transition-all duration-500 group-hover:w-12" />
 
-                  <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
+                    <h3 className="font-display text-lg font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand lg:text-xl">
+                      {s.name}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {s.summary}
+                    </p>
+                  </div>
+
+                  <span className="mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
                     Explore
                     <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
+
                 </div>
+
               </Link>
             </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   );
