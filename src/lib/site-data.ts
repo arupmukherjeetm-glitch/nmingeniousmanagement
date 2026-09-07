@@ -105,8 +105,8 @@ export const services: Service[] = [
       "Customer reassurance",
     ],
     outcome: "Premium SKUs justified, baskets built, repeat purchase earned.",
-    image: a1.url,
-    secondImage: a10.url,
+    image: beauty.url,
+    secondImage: beauty.url,
     caption: "Assisted beauty selling",
   },
   {
