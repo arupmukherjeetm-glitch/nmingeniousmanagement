@@ -82,8 +82,8 @@ export const services: Service[] = [
       "Performance review",
     ],
     outcome: "Higher shopper interaction, higher conversion, lower attrition at the shelf.",
-    image: pdm.url,
-    secondImage: pdm.url,
+    image: pdm.webp.url,
+    secondImage: pdm.webp.url,
     caption: "Trained promoters at the shelf",
   },
   {
