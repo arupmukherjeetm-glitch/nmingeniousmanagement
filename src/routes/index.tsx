@@ -535,7 +535,7 @@ function ModelColumn({
     </div>
   );
 }
-/* WHAT WE DO*/
+/* WHAT WE DO */
 function ServicesSection() {
   return (
     <section className="bg-background py-24 lg:py-32">
@@ -560,156 +560,64 @@ function ServicesSection() {
           </Link>
         </div>
 
-        {/* Service Cards */}
+        {/* Service grid */}
         <div className="mt-14 grid gap-5 md:grid-cols-2">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={i * 50}>
               <Link
                 to="/services/$slug"
                 params={{ slug: s.slug }}
-                className="brand-box group flex h-full flex-col overflow-hidden rounded-2xl bg-white"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(20,45,90,0.10)]"
               >
 
                 {/* IMAGE */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#e9edf3]">
+                <div className="relative h-[320px] overflow-hidden bg-[#eef1f5]">
 
-                  {/* Blurred image background */}
-                  <img
-                    src={s.image}
-                    alt=""
-                    aria-hidden="true"
-                    className="
-                      absolute
-                      inset-0
-                      size-full
-                      scale-110
-                      object-cover
-                      opacity-50
-                      blur-2xl
-                    "
-                  />
-
-                  {/* Soft white overlay */}
-                  <div
-                    aria-hidden="true"
-                    className="
-                      absolute
-                      inset-0
-                      bg-white/10
-                    "
-                  />
-
-                  {/* Actual image */}
-                  <div className="absolute inset-0 flex items-center justify-center px-12 py-6 lg:px-20">
+                  {/* Image */}
+                  <div className="absolute inset-0 flex items-center justify-center p-5 lg:p-8">
                     <img
                       src={s.image}
                       alt={s.caption}
                       loading="lazy"
                       decoding="async"
-                      className="
-                        max-h-full
-                        max-w-full
-                        object-contain
-                        drop-shadow-[0_10px_25px_rgba(0,0,0,0.20)]
-                        transition-transform
-                        duration-700
-                        ease-out
-                        group-hover:scale-[1.025]
-                      "
+                      className="max-h-full max-w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     />
                   </div>
 
-                  {/* Bottom gradient */}
+                  {/* Bottom fade */}
                   <div
-                    aria-hidden="true"
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-x-0
-                      bottom-0
-                      h-28
-                      bg-gradient-to-t
-                      from-black/65
-                      via-black/20
-                      to-transparent
-                    "
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(20,45,90,0.78), rgba(20,45,90,0))",
+                    }}
                   />
 
                   {/* Caption */}
-                  <span
-                    className="
-                      absolute
-                      bottom-5
-                      left-6
-                      z-10
-                      font-display
-                      text-[11px]
-                      font-bold
-                      uppercase
-                      tracking-[0.18em]
-                      text-white
-                    "
-                  >
+                  <span className="absolute bottom-5 left-6 z-10 font-display text-[11px] font-bold uppercase tracking-[0.18em] text-white">
                     {s.caption}
                   </span>
 
                 </div>
 
                 {/* CONTENT */}
-                <div className="flex flex-1 flex-col p-7">
+                <div className="flex flex-1 flex-col p-7 lg:p-8">
 
-                  <h3
-                    className="
-                      font-display
-                      text-xl
-                      font-extrabold
-                      leading-tight
-                      text-foreground
-                      transition-colors
-                      group-hover:text-brand
-                    "
-                  >
+                  <h3 className="font-display text-xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand lg:text-[22px]">
                     {s.name}
                   </h3>
 
-                  <p
-                    className="
-                      mt-3
-                      flex-1
-                      text-sm
-                      leading-relaxed
-                      text-muted-foreground
-                    "
-                  >
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {s.summary}
                   </p>
 
-                  <span
-                    className="
-                      mt-6
-                      inline-flex
-                      items-center
-                      gap-2
-                      font-display
-                      text-sm
-                      font-bold
-                      text-coral
-                    "
-                  >
+                  <span className="mt-7 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
                     Explore
-
-                    <ArrowRight
-                      className="
-                        size-4
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
-                    />
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
 
                 </div>
-
               </Link>
             </Reveal>
           ))}
