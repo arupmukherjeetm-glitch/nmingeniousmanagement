@@ -535,7 +535,7 @@ function ModelColumn({
     </div>
   );
 }
-
+/* WHAT WE DO*/
 function ServicesSection() {
   return (
     <section className="bg-background py-24 lg:py-32">
@@ -543,10 +543,12 @@ function ServicesSection() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <Eyebrow>What we do</Eyebrow>
+
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
               Eight services. One operating system for the shelf.
             </h2>
           </div>
+
           <Link
             to="/services"
             className="group inline-flex items-center gap-2 font-display text-sm font-bold text-brand"
@@ -564,32 +566,50 @@ function ServicesSection() {
                 params={{ slug: s.slug }}
                 className="brand-box group flex h-full flex-col overflow-hidden"
               >
-                <div className="relative aspect-[16/8] overflow-hidden">
+                {/* IMAGE */}
+                <div className="relative aspect-[16/8] overflow-hidden bg-muted">
                   <img
                     src={s.image}
                     alt={s.caption}
                     loading="lazy"
-                    className="size-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
+                    decoding="async"
+                    className="
+                      size-full
+                      object-contain
+                      object-center
+                      transition-transform
+                      duration-[900ms]
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:scale-[1.03]
+                    "
                   />
+
+                  {/* Overlay */}
                   <span
                     aria-hidden
-                    className="absolute inset-0"
+                    className="pointer-events-none absolute inset-0"
                     style={{
                       background:
                         "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent 55%)",
                     }}
                   />
+
+                  {/* Caption */}
                   <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/80">
                     {s.caption}
                   </span>
                 </div>
+
+                {/* CONTENT */}
                 <div className="flex flex-1 flex-col p-7">
                   <h3 className="font-display text-xl font-extrabold text-foreground transition-colors group-hover:text-brand">
                     {s.name}
                   </h3>
+
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {s.summary}
                   </p>
+
                   <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
                     Explore
                     <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
