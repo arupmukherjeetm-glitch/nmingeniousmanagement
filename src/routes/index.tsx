@@ -612,6 +612,61 @@ function ServicesSection() {
     </section>
   );
 }
+function ReportsSection() {
+  const [active, setActive] = useState(0);
+  return (
+    <section className="bg-brand-deep py-24 text-white lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
+            What lands in your inbox
+          </p>
+          <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight lg:text-5xl">
+            Reporting your activation manager can actually act on.
+          </h2>
+        </div>
+        <div className="mt-14 grid gap-8 lg:grid-cols-12">
+          <div className="space-y-1 lg:col-span-5">
+            {reports.map((r, i) => (
+              <button
+                key={r.title}
+                type="button"
+                onClick={() => setActive(i)}
+                className={`w-full rounded-lg border px-6 py-5 text-left transition-all duration-300 ${
+                  i === active
+                    ? "border-coral bg-white/[0.07]"
+                    : "border-white/10 hover:border-white/30"
+                }`}
+              >
+                <span className="font-display text-xs font-bold text-coral">
+                  R{String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="mt-2 block font-display text-base font-extrabold">{r.title}</span>
+              </button>
+            ))}
+          </div>
+          <div className="lg:col-span-7">
+            <div className="rounded-xl border border-white/12 bg-white/[0.04] p-8 lg:p-10">
+              <h3 className="font-display text-2xl font-extrabold">{reports[active]!.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-white/65">{reports[active]!.lead}</p>
+              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                {reports[active]!.items.map((it) => (
+                  <li key={it} className="flex items-start gap-3 text-sm text-white/85">
+                    <span
+                      aria-hidden
+                      className="mt-2 size-1.5 shrink-0 rounded-full"
+                      style={{ background: "var(--coral)" }}
+                    />
+                    {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 function WhoItsForSection() {
   return (
     <section className="bg-sand py-24 lg:py-32">
