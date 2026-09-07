@@ -29,6 +29,8 @@ const a28 = { url: "/media/a28.webp" };
 const a29 = { url: "/media/a29.webp" };
 const a30 = { url: "/media/a30.webp" };
 const pdm = { url: "/media/pdm.webp" };
+const beauty = { url: "/media/beauty.webp" };
+
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero.mp4";
