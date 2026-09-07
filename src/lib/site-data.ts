@@ -28,6 +28,7 @@ const a27 = { url: "/media/a27.webp" };
 const a28 = { url: "/media/a28.webp" };
 const a29 = { url: "/media/a29.webp" };
 const a30 = { url: "/media/a30.webp" };
+const pdm = { url: "/media/pdm.webp" };
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero.mp4";
@@ -57,6 +58,7 @@ export type Service = {
   caption: string;
 };
 
+/*Eight services*/
 export const services: Service[] = [
   {
     slug: "promoter-deployment",
@@ -64,7 +66,7 @@ export const services: Service[] = [
     navLabel: "Promoter Deployment & Management",
     tagline: "A trained sell-out unit, not bodies in uniform.",
     summary:
-      "Not bodies in uniform. A trained sell-out unit that engages the shopper, explains the product and helps close the sale.",
+      "A trained sell-out unit that engages the shopper, explains the product and helps close the sale.",
     body: [
       "Anyone can put a person in a store. Whether that person engaged the shopper, explained the product and helped close the sale is a different question, and the one we hold ourselves to.",
       "Every promoter is recruited against a defined profile, trained on your product story, groomed to your brand standard, supervised weekly and reviewed on conversion, not attendance.",
@@ -80,7 +82,7 @@ export const services: Service[] = [
       "Performance review",
     ],
     outcome: "Higher shopper interaction, higher conversion, lower attrition at the shelf.",
-    image: a3.url,
+    image: pdm.url,
     secondImage: a4.url,
     caption: "Trained promoters at the shelf",
   },
