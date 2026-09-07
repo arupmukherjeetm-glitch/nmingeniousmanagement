@@ -255,8 +255,8 @@ export const services: Service[] = [
       "Employee engagement and grievance handling",
     ],
     outcome: "An HR function that scales with headcount, not ahead of it.",
-    image: a2.url,
-    secondImage: a12.url,
+    image: fractional.url,
+    secondImage: fractional.url,
     caption: "HR shared services",
   },
 ];
