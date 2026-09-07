@@ -30,7 +30,9 @@ const a29 = { url: "/media/a29.webp" };
 const a30 = { url: "/media/a30.webp" };
 const pdm = { url: "/media/pdm.webp" };
 const beauty = { url: "/media/beauty.webp" };
-
+const MVE = { url: "/media/MVE.webp" };
+const btlsampling = { url: "/media/btlsampling.webp" };
+const RTT = { url: "/media/RTT.webp" };
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero.mp4";
@@ -132,8 +134,8 @@ export const services: Service[] = [
       "Stock visibility",
     ],
     outcome: "Seen, stocked, presented right, every week.",
-    image: a5.url,
-    secondImage: a9.url,
+    image: MVE.url,
+    secondImage: MVE.url,
     caption: "Seen, stocked, presented right",
   },
   {
@@ -155,8 +157,8 @@ export const services: Service[] = [
       "Post-campaign reporting",
     ],
     outcome: "Measured trial, measured cost per conversion, measured repeat.",
-    image: a6.url,
-    secondImage: a11.url,
+    image: btlsampling.url,
+    secondImage: btlsampling.url,
     caption: "Activation and sampling",
   },
   {
@@ -180,8 +182,8 @@ export const services: Service[] = [
       "Field performance monitoring",
     ],
     outcome: "Decisions in days, not quarters.",
-    image: a8.url,
-    secondImage: a3.url,
+    image: RTT.url,
+    secondImage: RTT.url,
     caption: "Field intelligence, live",
   },
   {
