@@ -540,8 +540,6 @@ function ServicesSection() {
   return (
     <section className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-
-        {/* Header */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <Eyebrow>What we do</Eyebrow>
@@ -560,51 +558,40 @@ function ServicesSection() {
           </Link>
         </div>
 
-        {/* Service grid */}
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+        <div className="mt-14 grid gap-4 md:grid-cols-2">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={i * 50}>
               <Link
                 to="/services/$slug"
                 params={{ slug: s.slug }}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(20,45,90,0.10)]"
+                className="brand-box group flex h-full flex-col overflow-hidden"
               >
-
                 {/* IMAGE */}
-                <div className="relative h-[320px] overflow-hidden bg-[#eef1f5]">
+                <div className="relative h-[320px] overflow-hidden bg-slate-100">
+                  <img
+                    src={s.image}
+                    alt={s.caption}
+                    loading="lazy"
+                    className="absolute inset-0 m-auto max-h-full max-w-full object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                  />
 
-                  {/* Image */}
-                  <div className="absolute inset-0 flex items-center justify-center p-5 lg:p-8">
-                    <img
-                      src={s.image}
-                      alt={s.caption}
-                      loading="lazy"
-                      decoding="async"
-                      className="max-h-full max-w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    />
-                  </div>
-
-                  {/* Bottom fade */}
-                  <div
+                  <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
+                    className="absolute inset-x-0 bottom-0 h-28"
                     style={{
                       background:
-                        "linear-gradient(to top, rgba(20,45,90,0.78), rgba(20,45,90,0))",
+                        "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent)",
                     }}
                   />
 
-                  {/* Caption */}
-                  <span className="absolute bottom-5 left-6 z-10 font-display text-[11px] font-bold uppercase tracking-[0.18em] text-white">
+                  <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white">
                     {s.caption}
                   </span>
-
                 </div>
 
                 {/* CONTENT */}
-                <div className="flex flex-1 flex-col p-7 lg:p-8">
-
-                  <h3 className="font-display text-xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand lg:text-[22px]">
+                <div className="flex flex-1 flex-col p-7">
+                  <h3 className="font-display text-xl font-extrabold text-foreground transition-colors group-hover:text-brand">
                     {s.name}
                   </h3>
 
@@ -612,22 +599,19 @@ function ServicesSection() {
                     {s.summary}
                   </p>
 
-                  <span className="mt-7 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
+                  <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
                     Explore
                     <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
-
                 </div>
               </Link>
             </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
-
 function WhoItsForSection() {
   return (
     <section className="bg-sand py-24 lg:py-32">
