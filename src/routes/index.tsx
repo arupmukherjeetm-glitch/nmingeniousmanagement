@@ -540,6 +540,8 @@ function ServicesSection() {
   return (
     <section className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+        {/* Header */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <Eyebrow>What we do</Eyebrow>
@@ -558,124 +560,161 @@ function ServicesSection() {
           </Link>
         </div>
 
-        <div className="mt-14 grid gap-4 md:grid-cols-2">
+        {/* Service Cards */}
+        <div className="mt-14 grid gap-5 md:grid-cols-2">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={i * 50}>
               <Link
                 to="/services/$slug"
                 params={{ slug: s.slug }}
-                className="brand-box group flex h-full flex-col overflow-hidden"
+                className="brand-box group flex h-full flex-col overflow-hidden rounded-2xl bg-white"
               >
+
                 {/* IMAGE */}
-                <div className="relative aspect-[16/8] overflow-hidden bg-muted">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#e9edf3]">
+
+                  {/* Blurred image background */}
                   <img
                     src={s.image}
-                    alt={s.caption}
-                    loading="lazy"
-                    decoding="async"
+                    alt=""
+                    aria-hidden="true"
                     className="
+                      absolute
+                      inset-0
                       size-full
-                      object-contain
-                      object-center
-                      transition-transform
-                      duration-[900ms]
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
-                      group-hover:scale-[1.03]
+                      scale-110
+                      object-cover
+                      opacity-50
+                      blur-2xl
                     "
                   />
 
-                  {/* Overlay */}
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent 55%)",
-                    }}
+                  {/* Soft white overlay */}
+                  <div
+                    aria-hidden="true"
+                    className="
+                      absolute
+                      inset-0
+                      bg-white/10
+                    "
+                  />
+
+                  {/* Actual image */}
+                  <div className="absolute inset-0 flex items-center justify-center px-12 py-6 lg:px-20">
+                    <img
+                      src={s.image}
+                      alt={s.caption}
+                      loading="lazy"
+                      decoding="async"
+                      className="
+                        max-h-full
+                        max-w-full
+                        object-contain
+                        drop-shadow-[0_10px_25px_rgba(0,0,0,0.20)]
+                        transition-transform
+                        duration-700
+                        ease-out
+                        group-hover:scale-[1.025]
+                      "
+                    />
+                  </div>
+
+                  {/* Bottom gradient */}
+                  <div
+                    aria-hidden="true"
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-x-0
+                      bottom-0
+                      h-28
+                      bg-gradient-to-t
+                      from-black/65
+                      via-black/20
+                      to-transparent
+                    "
                   />
 
                   {/* Caption */}
-                  <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/80">
+                  <span
+                    className="
+                      absolute
+                      bottom-5
+                      left-6
+                      z-10
+                      font-display
+                      text-[11px]
+                      font-bold
+                      uppercase
+                      tracking-[0.18em]
+                      text-white
+                    "
+                  >
                     {s.caption}
                   </span>
+
                 </div>
 
                 {/* CONTENT */}
                 <div className="flex flex-1 flex-col p-7">
-                  <h3 className="font-display text-xl font-extrabold text-foreground transition-colors group-hover:text-brand">
+
+                  <h3
+                    className="
+                      font-display
+                      text-xl
+                      font-extrabold
+                      leading-tight
+                      text-foreground
+                      transition-colors
+                      group-hover:text-brand
+                    "
+                  >
                     {s.name}
                   </h3>
 
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  <p
+                    className="
+                      mt-3
+                      flex-1
+                      text-sm
+                      leading-relaxed
+                      text-muted-foreground
+                    "
+                  >
                     {s.summary}
                   </p>
 
-                  <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
+                  <span
+                    className="
+                      mt-6
+                      inline-flex
+                      items-center
+                      gap-2
+                      font-display
+                      text-sm
+                      font-bold
+                      text-coral
+                    "
+                  >
                     Explore
-                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+
+                    <ArrowRight
+                      className="
+                        size-4
+                        transition-transform
+                        duration-300
+                        group-hover:translate-x-1
+                      "
+                    />
                   </span>
+
                 </div>
+
               </Link>
             </Reveal>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
 
-function ReportsSection() {
-  const [active, setActive] = useState(0);
-  return (
-    <section className="bg-brand-deep py-24 text-white lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
-            What lands in your inbox
-          </p>
-          <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight lg:text-5xl">
-            Reporting your activation manager can actually act on.
-          </h2>
-        </div>
-        <div className="mt-14 grid gap-8 lg:grid-cols-12">
-          <div className="space-y-1 lg:col-span-5">
-            {reports.map((r, i) => (
-              <button
-                key={r.title}
-                type="button"
-                onClick={() => setActive(i)}
-                className={`w-full rounded-lg border px-6 py-5 text-left transition-all duration-300 ${
-                  i === active
-                    ? "border-coral bg-white/[0.07]"
-                    : "border-white/10 hover:border-white/30"
-                }`}
-              >
-                <span className="font-display text-xs font-bold text-coral">
-                  R{String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="mt-2 block font-display text-base font-extrabold">{r.title}</span>
-              </button>
-            ))}
-          </div>
-          <div className="lg:col-span-7">
-            <div className="rounded-xl border border-white/12 bg-white/[0.04] p-8 lg:p-10">
-              <h3 className="font-display text-2xl font-extrabold">{reports[active]!.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/65">{reports[active]!.lead}</p>
-              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-                {reports[active]!.items.map((it) => (
-                  <li key={it} className="flex items-start gap-3 text-sm text-white/85">
-                    <span
-                      aria-hidden
-                      className="mt-2 size-1.5 shrink-0 rounded-full"
-                      style={{ background: "var(--coral)" }}
-                    />
-                    {it}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
