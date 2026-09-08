@@ -57,6 +57,7 @@ function Home() {
       <SignalGrid />
       <ShelfSellSection />
       <ServicesSection />
+      <ExecutionVideoSection />
       <ReportsSection />
       <WhoItsForSection />
       <ReachFrequency />
@@ -647,6 +648,104 @@ function ServicesSection() {
               </Link>
             </Reveal>
           ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+function ExecutionVideoSection() {
+  return (
+    <section className="bg-sand py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+
+          {/* VIDEO */}
+          <Reveal>
+            <div className="relative mx-auto w-full max-w-[620px] overflow-hidden rounded-3xl border border-border bg-[#101827] shadow-[0_25px_70px_rgba(20,45,90,0.16)]">
+
+              <video
+                className="block h-auto max-h-[720px] w-full object-contain"
+                src="/media/retail-execution.mp4"
+                controls
+                playsInline
+                preload="metadata"
+              />
+
+            </div>
+          </Reveal>
+
+          {/* CONTENT */}
+          <Reveal delay={100}>
+            <div className="max-w-xl">
+
+              <Eyebrow>See execution in action</Eyebrow>
+
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
+                Retail execution isn't a presentation.
+                <span className="text-brand">
+                  {" "}It's what happens inside the store.
+                </span>
+              </h2>
+
+              <p className="mt-6 text-base leading-8 text-muted-foreground">
+                From product demonstrations and sampling to shopper
+                conversations and assisted selling, our teams turn
+                brand strategy into visible action at the shelf.
+              </p>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+
+                <div className="border-l-2 border-coral pl-4">
+                  <p className="font-display text-sm font-extrabold text-foreground">
+                    Shopper engagement
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Creating conversations that move people towards purchase.
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-coral pl-4">
+                  <p className="font-display text-sm font-extrabold text-foreground">
+                    Product sampling
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Turning a walk-past into a first trial.
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-coral pl-4">
+                  <p className="font-display text-sm font-extrabold text-foreground">
+                    In-store visibility
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Making brands impossible to miss at the shelf.
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-coral pl-4">
+                  <p className="font-display text-sm font-extrabold text-foreground">
+                    Field execution
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Trained teams executing consistently, store by store.
+                  </p>
+                </div>
+
+              </div>
+
+              <Link
+                to="/services"
+                className="group mt-9 inline-flex items-center gap-2 font-display text-sm font-bold text-brand"
+              >
+                Explore our services
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+            </div>
+          </Reveal>
+
         </div>
 
       </div>
