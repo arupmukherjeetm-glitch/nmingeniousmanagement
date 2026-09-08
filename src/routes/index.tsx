@@ -77,7 +77,10 @@ function Hero() {
   return (
     <section className="relative isolate w-full overflow-hidden bg-[#F4F7FB]">
 
-      {/* VIDEO BACKGROUND */}
+      {/* =====================================================
+          VIDEO BACKGROUND
+      ====================================================== */}
+
       <div className="absolute inset-0 -z-10">
         <video
           src="/media/hero.mp4"
@@ -86,63 +89,79 @@ function Hero() {
           muted
           playsInline
           preload="metadata"
-          className="h-full w-full object-cover object-center"
+          className="
+            h-full
+            w-full
+            object-cover
+            object-center
+          "
         />
 
+        {/* Overall video overlay */}
         <div className="absolute inset-0 bg-[#082B61]/55" />
 
+        {/* Stronger overlay behind the text */}
         <div
           className="
             absolute
             inset-0
             bg-gradient-to-r
             from-[#082B61]/90
-            via-[#082B61]/50
+            via-[#082B61]/45
             to-transparent
           "
         />
       </div>
 
 
-      {/* HERO CONTENT */}
+      {/* =====================================================
+          HERO CONTENT
+      ====================================================== */}
+
       <div
         className="
+          relative
           mx-auto
           flex
           w-full
           max-w-[1440px]
           items-center
           px-5
-          py-8
+          py-7
           sm:px-8
           lg:h-[calc(100vh-140px)]
-          lg:min-h-[500px]
-          lg:max-h-[620px]
+          lg:min-h-[480px]
+          lg:max-h-[570px]
           lg:px-12
         "
       >
 
-        {/* CONTENT PANEL */}
+        {/* =================================================
+            CONTENT PANEL
+        ================================================== */}
+
         <div
           className="
             relative
             z-10
             w-full
-            max-w-[680px]
+            max-w-[590px]
             overflow-hidden
-            rounded-[24px]
-            bg-[#F4F7FB]
-            px-7
-            py-7
+            rounded-[22px]
+            border
+            border-white/50
+            bg-[#F4F7FB]/[0.98]
+            px-6
+            py-6
             shadow-[0_25px_60px_rgba(0,0,0,0.16)]
-            sm:px-9
-            sm:py-8
-            lg:px-10
-            lg:py-8
+            sm:px-7
+            sm:py-7
+            lg:px-8
+            lg:py-7
           "
         >
 
-          {/* RED EDGE */}
+          {/* Coral edge */}
           <span
             aria-hidden="true"
             className="
@@ -155,20 +174,23 @@ function Hero() {
           />
 
 
-          {/* HEADLINE */}
+          {/* =================================================
+              HEADLINE
+          ================================================== */}
+
           <h1
             className="
-              max-w-[630px]
+              max-w-[540px]
               font-display
-              text-[2.55rem]
+              text-[2.25rem]
               font-extrabold
-              leading-[0.92]
+              leading-[0.93]
               tracking-[-0.06em]
               text-brand-deep
-              sm:text-5xl
-              md:text-[3.7rem]
-              lg:text-[4.25rem]
-              xl:text-[4.6rem]
+              sm:text-[2.8rem]
+              md:text-[3.2rem]
+              lg:text-[3.65rem]
+              xl:text-[3.9rem]
             "
           >
             <span className="block">
@@ -185,15 +207,18 @@ function Hero() {
           </h1>
 
 
-          {/* DESCRIPTION */}
+          {/* =================================================
+              DESCRIPTION
+          ================================================== */}
+
           <p
             className="
-              mt-5
-              max-w-[520px]
-              text-sm
-              leading-6
+              mt-4
+              max-w-[480px]
+              text-[13px]
+              leading-5.5
               text-brand-deep/65
-              sm:text-[15px]
+              sm:text-sm
             "
           >
             NM Ingenious turns shelf presence into sell-out
@@ -202,9 +227,13 @@ function Hero() {
           </p>
 
 
-          {/* CTA */}
-          <div className="mt-6 flex flex-wrap items-center gap-5">
+          {/* =================================================
+              CTA
+          ================================================== */}
 
+          <div className="mt-5 flex flex-wrap items-center gap-4">
+
+            {/* Primary CTA */}
             <Link
               to="/contact"
               className="
@@ -241,6 +270,7 @@ function Hero() {
             </Link>
 
 
+            {/* Secondary CTA */}
             <Link
               to="/services"
               className="
@@ -277,10 +307,20 @@ function Hero() {
       </div>
 
 
-      {/* BOTTOM ACCENT */}
+      {/* =====================================================
+          BOTTOM ACCENT
+      ====================================================== */}
+
       <div
         aria-hidden="true"
-        className="absolute bottom-0 left-0 h-1 w-full bg-coral"
+        className="
+          absolute
+          bottom-0
+          left-0
+          h-1
+          w-full
+          bg-coral
+        "
       />
 
     </section>
