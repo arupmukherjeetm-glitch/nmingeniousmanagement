@@ -688,11 +688,8 @@ function ExecutionVideoSection() {
 
               <Eyebrow>See execution in action</Eyebrow>
 
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-[1.05] text-foreground lg:text-5xl">
-                Retail execution isn't a presentation.
-                <span className="text-brand">
-                  {" "}It's what happens inside the store.
-                </span>
+             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
+  Retail execution isn't a presentation. It's what happens inside the store.
               </h2>
 
               <p className="mt-6 text-base leading-8 text-muted-foreground">
