@@ -542,11 +542,6 @@ export const foundersGallery = [
     size: "large",
   },
   {
-    image: "/media/founders-05.webp",
-    alt: "NM Ingenious leadership at an industry networking event",
-    size: "medium",
-  },
-  {
     image: "/media/founders-06.webp",
     alt: "Recognition moment from the Goldman Sachs 10,000 Women programme",
     size: "medium",
