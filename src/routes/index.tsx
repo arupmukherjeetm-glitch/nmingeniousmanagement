@@ -83,16 +83,114 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#F4F7FB]">
 
-      {/* Very subtle background decoration */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[-180px] top-[-180px] h-[420px] w-[420px] rounded-full bg-brand/10 blur-3xl"
-      />
+      {/* =====================================================
+    RETAIL / SELL-OUT BACKGROUND MOTION
+====================================================== */}
+<div
+  aria-hidden="true"
+  className="pointer-events-none absolute inset-0 overflow-hidden"
+>
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-220px] left-[-160px] h-[420px] w-[420px] rounded-full bg-brand/5 blur-3xl"
+  {/* Soft brand atmosphere */}
+  <div className="absolute -right-40 -top-40 size-[32rem] rounded-full bg-brand/8 blur-3xl" />
+
+  <div className="absolute -bottom-48 -left-40 size-[30rem] rounded-full bg-coral/5 blur-3xl" />
+
+
+  {/* -----------------------------------------------------
+      PRODUCT BOXES — LEFT BACKGROUND
+  ------------------------------------------------------ */}
+
+  <div className="hero-retail-float absolute left-[3%] top-[18%] hidden lg:block">
+    <div className="flex h-14 w-11 items-end rounded-md border border-brand/10 bg-white/50 p-1 shadow-sm">
+      <div className="h-8 w-full rounded-sm bg-brand/10" />
+    </div>
+  </div>
+
+
+  <div
+    className="hero-retail-float-reverse absolute left-[10%] top-[31%] hidden lg:block"
+    style={{ animationDelay: "-3s" }}
+  >
+    <div className="flex h-10 w-8 items-end rounded border border-coral/10 bg-white/40 p-1">
+      <div className="h-6 w-full rounded-sm bg-coral/10" />
+    </div>
+  </div>
+
+
+  {/* -----------------------------------------------------
+      PRODUCT BOXES — TOP RIGHT
+  ------------------------------------------------------ */}
+
+  <div
+    className="hero-retail-float absolute right-[5%] top-[10%] hidden lg:block"
+    style={{ animationDelay: "-2s" }}
+  >
+    <div className="flex h-12 w-10 items-end rounded-md border border-brand/10 bg-white/50 p-1">
+      <div className="h-7 w-full rounded-sm bg-brand/10" />
+    </div>
+  </div>
+
+
+  {/* -----------------------------------------------------
+      RETAIL MOVEMENT LINES
+  ------------------------------------------------------ */}
+
+  <div className="absolute left-[4%] top-[45%] hidden w-28 lg:block">
+    <div className="relative h-px overflow-hidden bg-brand/10">
+      <span
+        className="hero-retail-slide absolute left-0 top-[-2px] h-[5px] w-5 rounded-full bg-coral/30"
       />
+    </div>
+
+    <div className="mt-2 h-px w-16 bg-brand/5" />
+  </div>
+
+
+  <div className="absolute right-[3%] top-[72%] hidden w-32 lg:block">
+    <div className="relative h-px overflow-hidden bg-brand/10">
+      <span
+        className="hero-retail-slide absolute left-0 top-[-2px] h-[5px] w-5 rounded-full bg-brand/25"
+        style={{ animationDelay: "-2s" }}
+      />
+    </div>
+  </div>
+
+
+  {/* -----------------------------------------------------
+      STORE / DATA NODES
+  ------------------------------------------------------ */}
+
+  <div className="absolute left-[16%] top-[17%] hidden lg:block">
+    <span className="hero-retail-pulse block size-2 rounded-full bg-coral/30" />
+  </div>
+
+  <div
+    className="absolute left-[7%] top-[67%] hidden lg:block"
+    style={{ animationDelay: "-1s" }}
+  >
+    <span className="hero-retail-pulse block size-1.5 rounded-full bg-brand/25" />
+  </div>
+
+  <div
+    className="absolute right-[14%] top-[27%] hidden lg:block"
+    style={{ animationDelay: "-2s" }}
+  >
+    <span className="hero-retail-pulse block size-2 rounded-full bg-brand/20" />
+  </div>
+
+
+  {/* -----------------------------------------------------
+      SUBTLE SHELF LINES
+  ------------------------------------------------------ */}
+
+  <div className="absolute left-0 top-[23%] h-px w-[18%] bg-brand/5" />
+  <div className="absolute left-0 top-[24%] h-px w-[11%] bg-brand/5" />
+
+  <div className="absolute bottom-[18%] right-0 h-px w-[15%] bg-brand/5" />
+  <div className="absolute bottom-[19%] right-0 h-px w-[8%] bg-brand/5" />
+
+</div>
 
       <div className="relative mx-auto max-w-7xl px-5 py-12 sm:py-14 lg:px-8 lg:py-16">
 
