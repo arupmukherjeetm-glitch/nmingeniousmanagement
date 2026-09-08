@@ -727,125 +727,135 @@ function ServicesSection() {
 
 
         {/* =====================================================
-            MORE SERVICES — LAST 4
-        ====================================================== */}
+    MORE SERVICES — CLEAN ONE-LINE LAYOUT
+===================================================== */}
 
-        <div className="mt-16 border-t border-border pt-10">
+<div className="mt-16">
 
-          {/* Heading */}
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+  {/* Header */}
+  <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 
-            <div>
-              <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-coral">
-                More services
-              </p>
+    <div>
+      <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-coral">
+        More services
+      </p>
 
-              <h3 className="mt-3 max-w-xl font-display text-2xl font-extrabold leading-tight text-foreground lg:text-3xl">
-                More ways we strengthen your retail execution.
-              </h3>
-            </div>
+      <h3 className="mt-3 max-w-xl font-display text-2xl font-extrabold leading-tight text-foreground lg:text-3xl">
+        More ways we strengthen your retail execution.
+      </h3>
+    </div>
 
-            <Link
-              to="/services"
-              className="group inline-flex items-center gap-2 font-display text-sm font-bold text-brand"
-            >
-              Explore all services
+    <Link
+      to="/services"
+      className="group inline-flex shrink-0 items-center gap-2 font-display text-sm font-bold text-brand"
+    >
+      Explore all services
 
-              <ArrowRight
-                className="
-                  size-4
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-              />
-            </Link>
+      <ArrowRight
+        className="
+          size-4
+          transition-transform
+          duration-300
+          group-hover:translate-x-1
+        "
+      />
+    </Link>
 
-          </div>
-
-
-          {/* Last 4 services */}
-          <div className="mt-8 grid border-y border-border md:grid-cols-2">
-
-            {services.slice(4, 8).map((s, i) => (
-
-              <Link
-                key={s.slug}
-                to="/services/$slug"
-                params={{ slug: s.slug }}
-                className={`
-                  group
-                  flex
-                  items-center
-                  gap-5
-                  px-2
-                  py-6
-                  transition-all
-                  duration-300
-                  hover:bg-muted/40
-                  md:px-5
-                  ${i < 2 ? "border-b" : ""}
-                  ${i % 2 === 0 ? "md:border-r" : ""}
-                `}
-              >
-
-                {/* Number */}
-                <span className="w-8 shrink-0 font-display text-xs font-bold tracking-[0.12em] text-brand/40">
-                  {String(i + 5).padStart(2, "0")}
-                </span>
+  </div>
 
 
-                {/* Coral vertical accent */}
-                <span
-                  className="
-                    h-9
-                    w-1
-                    shrink-0
-                    bg-coral/20
-                    transition-colors
-                    duration-300
-                    group-hover:bg-coral
-                  "
-                />
+  {/* =====================================================
+      FOUR SERVICES — ONE ROW
+  ====================================================== */}
+
+  <div className="mt-9 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
+    {services.slice(4, 8).map((s) => (
+
+      <Link
+        key={s.slug}
+        to="/services/$slug"
+        params={{ slug: s.slug }}
+        className="
+          group
+          relative
+          flex
+          min-h-[150px]
+          flex-col
+          border-l-2
+          border-brand/10
+          pl-5
+          transition-all
+          duration-300
+          hover:border-coral
+        "
+      >
+
+        {/* Service title */}
+        <h4
+          className="
+            max-w-[230px]
+            font-display
+            text-lg
+            font-extrabold
+            leading-tight
+            text-foreground
+            transition-colors
+            duration-300
+            group-hover:text-brand
+          "
+        >
+          {s.name}
+        </h4>
 
 
-                {/* Service information */}
-                <div className="min-w-0 flex-1">
+        {/* Description */}
+        <p
+          className="
+            mt-3
+            max-w-[240px]
+            text-sm
+            leading-relaxed
+            text-muted-foreground
+          "
+        >
+          {s.summary}
+        </p>
 
-                  <h4 className="font-display text-base font-extrabold text-foreground transition-colors group-hover:text-brand lg:text-lg">
-                    {s.name}
-                  </h4>
 
-                  <p className="mt-1 line-clamp-1 text-sm text-muted-foreground">
-                    {s.summary}
-                  </p>
+        {/* Explore */}
+        <span
+          className="
+            mt-auto
+            inline-flex
+            items-center
+            gap-2
+            pt-6
+            font-display
+            text-sm
+            font-bold
+            text-coral
+          "
+        >
+          Explore
 
-                </div>
+          <ArrowRight
+            className="
+              size-4
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+            "
+          />
+        </span>
 
+      </Link>
 
-                {/* Explore */}
-                <span className="inline-flex shrink-0 items-center gap-2 font-display text-sm font-bold text-coral">
+    ))}
 
-                  Explore
+  </div>
 
-                  <ArrowRight
-                    className="
-                      size-4
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-
-                </span>
-
-              </Link>
-
-            ))}
-
-          </div>
-
-        </div>
+</div>
 
       </div>
     </section>
