@@ -97,27 +97,19 @@ function Hero() {
           "
         />
 
-        {/* Dark cinematic overlay */}
-        <div
-          className="
-            absolute
-            inset-0
-            bg-[#082B61]/55
-          "
-        />
+        {/* Cinematic overlay */}
+        <div className="absolute inset-0 bg-[#082B61]/55" />
 
-        {/* Soft left-to-right fade */}
         <div
           className="
             absolute
             inset-0
             bg-gradient-to-r
-            from-[#082B61]/85
-            via-[#082B61]/45
+            from-[#082B61]/90
+            via-[#082B61]/50
             to-transparent
           "
         />
-
       </div>
 
 
@@ -130,19 +122,22 @@ function Hero() {
           relative
           mx-auto
           flex
-          min-h-[620px]
+          min-h-[500px]
           max-w-[1440px]
           items-center
           px-5
-          py-16
+          py-8
+          sm:min-h-[520px]
           sm:px-8
-          lg:min-h-[650px]
+          lg:min-h-[535px]
           lg:px-12
+          lg:py-8
+          xl:min-h-[550px]
         "
       >
 
         {/* =================================================
-            FOREGROUND COPY PANEL
+            CONTENT PANEL
         ================================================== */}
 
         <div
@@ -150,21 +145,21 @@ function Hero() {
             relative
             z-10
             w-full
-            max-w-[760px]
+            max-w-[700px]
             overflow-hidden
-            rounded-[28px]
+            rounded-[24px]
             bg-[#F4F7FB]
             px-7
-            py-9
-            shadow-[0_30px_80px_rgba(0,0,0,0.18)]
-            sm:px-10
-            sm:py-11
-            lg:px-14
-            lg:py-12
+            py-7
+            shadow-[0_25px_60px_rgba(0,0,0,0.16)]
+            sm:px-9
+            sm:py-8
+            lg:px-11
+            lg:py-9
           "
         >
 
-          {/* subtle panel edge */}
+          {/* Coral edge */}
           <div
             aria-hidden="true"
             className="
@@ -172,7 +167,7 @@ function Hero() {
               left-0
               top-0
               h-full
-              w-1.5
+              w-1
               bg-coral
             "
           />
@@ -184,23 +179,24 @@ function Hero() {
 
           <h1
             className="
-              max-w-[680px]
+              max-w-[650px]
               font-display
-              text-[3.25rem]
+              text-[2.75rem]
               font-extrabold
-              leading-[0.92]
+              leading-[0.93]
               tracking-[-0.06em]
               text-brand-deep
-              sm:text-6xl
-              lg:text-[5.4rem]
-              xl:text-[6rem]
+              sm:text-5xl
+              md:text-6xl
+              lg:text-[4.6rem]
+              xl:text-[5rem]
             "
           >
             <span className="block">
               You built the product.
             </span>
 
-            <span className="mt-2 block text-coral">
+            <span className="mt-1.5 block text-coral">
               We get it to the people
             </span>
 
@@ -216,12 +212,13 @@ function Hero() {
 
           <p
             className="
-              mt-7
-              max-w-[570px]
-              text-[15px]
-              leading-7
+              mt-5
+              max-w-[540px]
+              text-sm
+              leading-6
               text-brand-deep/65
-              sm:text-base
+              sm:text-[15px]
+              sm:leading-6
             "
           >
             NM Ingenious turns shelf presence into sell-out
@@ -234,7 +231,7 @@ function Hero() {
               CTA
           ================================================== */}
 
-          <div className="mt-8 flex flex-wrap items-center gap-5">
+          <div className="mt-6 flex flex-wrap items-center gap-5">
 
             <Link
               to="/contact"
@@ -245,8 +242,8 @@ function Hero() {
                 gap-3
                 rounded-full
                 bg-coral
-                px-7
-                py-3.5
+                px-6
+                py-3
                 font-display
                 text-sm
                 font-bold
@@ -307,7 +304,7 @@ function Hero() {
 
 
       {/* =====================================================
-          BOTTOM TRANSITION
+          BOTTOM ACCENT
       ====================================================== */}
 
       <div
