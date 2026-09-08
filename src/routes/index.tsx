@@ -72,6 +72,7 @@ function Home() {
 }
 
 /* HERO */
+/* HERO */
 function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(true);
@@ -83,64 +84,78 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-brand-deep text-white">
 
-      {/* Decorative background glow */}
+      {/* Subtle background glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-brand/30 blur-3xl"
+        className="pointer-events-none absolute -left-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-brand/20 blur-3xl"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-12rem] right-[-8rem] h-[32rem] w-[32rem] rounded-full bg-brand/20 blur-3xl"
+        className="pointer-events-none absolute -bottom-40 right-[-10rem] h-[30rem] w-[30rem] rounded-full bg-brand/15 blur-3xl"
       />
 
-      <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:py-20">
+      {/* HERO CONTENT */}
+      <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-12 px-5 py-14 sm:py-16 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:px-8 lg:py-20">
 
         {/* =====================================================
-            LEFT — MESSAGE
+            LEFT — BRAND MESSAGE
         ====================================================== */}
-        <div className="relative z-10 max-w-3xl">
+        <div className="relative z-10 max-w-2xl">
 
-          {/* Eyebrow */}
-          <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-white/60">
+          {/* Small accent */}
+          <div className="mb-7 flex items-center gap-3">
             <span
-              className="h-px w-10 bg-coral"
-              aria-hidden
+              aria-hidden="true"
+              className="h-[2px] w-10 bg-coral"
             />
-            Sell-Out Acceleration Partner
-          </p>
+
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/55">
+              Sell-Out Acceleration
+            </span>
+          </div>
 
 
-          {/* Main headline */}
-          <h1 className="mt-7 font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.035em] text-white sm:text-5xl lg:text-[4.6rem]">
+          {/* HEADLINE */}
+          <h1 className="font-display text-[2.8rem] font-extrabold leading-[0.98] tracking-[-0.045em] sm:text-5xl lg:text-[4.75rem]">
 
-            You built the product.
+            <span className="block">
+              You built the
+            </span>
 
-            <span className="mt-2 block text-white">
-              We get it to the people
+            <span className="block">
+              product.
+            </span>
+
+            <span className="mt-3 block text-coral">
+              We get it to the
             </span>
 
             <span className="block text-coral">
-              you built it for.
+              people you built
+            </span>
+
+            <span className="block text-coral">
+              it for.
             </span>
 
           </h1>
 
 
-          {/* Description */}
-          <p className="mt-7 max-w-xl text-base leading-7 text-white/70 lg:text-lg">
-            NM Ingenious turns shelf presence into sell-out, with trained
-            promoters, disciplined retail execution and real-time store
-            intelligence.
+          {/* DESCRIPTION */}
+          <p className="mt-8 max-w-xl text-base leading-7 text-white/65 lg:text-lg lg:leading-8">
+            NM Ingenious turns shelf presence into sell-out through
+            trained promoters, disciplined retail execution and
+            real-time store intelligence.
           </p>
 
 
-          {/* CTAs */}
+          {/* CTA */}
           <div className="mt-9 flex flex-wrap items-center gap-4">
 
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-coral px-7 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_20px_44px_-16px_oklch(0.55_0.21_27/0.75)]"
+              className="group inline-flex items-center gap-2 rounded-full bg-coral px-7 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_18px_40px_-15px_oklch(0.55_0.21_27/0.7)]"
             >
               Request a Sell-Out Acceleration Audit
 
@@ -150,9 +165,9 @@ function Hero() {
 
             <Link
               to="/services"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 font-display text-sm font-bold text-white transition-all duration-300 hover:bg-white/10"
+              className="group inline-flex items-center gap-2 px-2 py-3 font-display text-sm font-bold text-white/75 transition-colors hover:text-white"
             >
-              See how we win the shelf
+              Explore our services
 
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
@@ -160,53 +175,13 @@ function Hero() {
           </div>
 
 
-          {/* Proof strip */}
-          <div className="mt-12 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 border-t border-white/15 pt-7 sm:grid-cols-4">
-
-            <div>
-              <p className="font-display text-2xl font-extrabold text-white">
-                18+
-              </p>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
-                Years
-              </p>
-            </div>
-
-            <div>
-              <p className="font-display text-2xl font-extrabold text-white">
-                2,150+
-              </p>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
-                Personnel
-              </p>
-            </div>
-
-            <div>
-              <p className="font-display text-2xl font-extrabold text-white">
-                2,000+
-              </p>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
-                Outlets
-              </p>
-            </div>
-
-            <div>
-              <p className="font-display text-2xl font-extrabold text-coral">
-                31
-              </p>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
-                States & UTs
-              </p>
-            </div>
-
+          {/* Minimal brand statement */}
+          <div className="mt-12 max-w-md border-l border-white/20 pl-5">
+            <p className="text-sm leading-6 text-white/45">
+              The last three feet between your brand and the shopper
+              are where execution matters most.
+            </p>
           </div>
-
-
-          {/* Bottom statement */}
-          <p className="mt-8 max-w-md border-l-2 border-coral pl-4 text-sm leading-relaxed text-white/50">
-            You did the hard part. The last three feet to the shopper's hand
-            are ours.
-          </p>
 
         </div>
 
@@ -216,14 +191,16 @@ function Hero() {
         ====================================================== */}
         <div className="relative z-10">
 
-          {/* Video card */}
-          <div className="relative mx-auto w-full max-w-[560px]">
+          <div className="relative mx-auto w-full max-w-[620px]">
 
-            {/* Outer frame */}
-            <div className="absolute -inset-3 rounded-[2rem] border border-white/10 bg-white/[0.03]" />
+            {/* Soft frame */}
+            <div
+              aria-hidden="true"
+              className="absolute -inset-4 rounded-[2rem] border border-white/[0.08]"
+            />
 
-            {/* Video */}
-            <div className="relative overflow-hidden rounded-[1.6rem] border border-white/15 bg-black shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
+            {/* VIDEO */}
+            <div className="relative overflow-hidden rounded-[1.75rem] bg-black shadow-[0_35px_90px_rgba(0,0,0,0.4)]">
 
               <video
                 ref={videoRef}
@@ -233,54 +210,32 @@ function Hero() {
                 loop
                 muted={muted}
                 playsInline
-                aria-label="NM Ingenious promoters at work inside retail stores"
+                aria-label="NM Ingenious retail execution"
               />
 
-              {/* Video gradient */}
+              {/* Subtle cinematic gradient */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
               />
 
-              {/* Video label */}
-              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
-
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">
-                    Inside the store
-                  </p>
-
-                  <p className="mt-1 font-display text-sm font-bold text-white">
-                    Execution that moves the shopper.
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setMuted((m) => !m)}
-                  className="shrink-0 rounded-full border border-white/25 bg-black/25 px-4 py-2 text-[10px] font-bold text-white backdrop-blur-md transition-colors hover:bg-white/15"
-                >
-                  {muted ? "Sound on" : "Mute"}
-                </button>
-
-              </div>
-
-            </div>
-
-            {/* Floating proof card */}
-            <div className="absolute -bottom-6 -left-4 hidden rounded-xl border border-white/10 bg-white p-4 text-brand-deep shadow-[0_20px_45px_rgba(0,0,0,0.2)] sm:block lg:-left-10">
-
-              <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                The last three feet
-              </p>
-
-              <p className="mt-1 font-display text-sm font-extrabold">
-                From shelf presence
-              </p>
-
-              <p className="font-display text-sm font-extrabold text-brand">
-                to sell-out.
-              </p>
+              {/* Sound control only */}
+              <button
+                type="button"
+                onClick={() => setMuted((value) => !value)}
+                aria-label={muted ? "Turn sound on" : "Mute video"}
+                className="absolute bottom-5 right-5 flex size-10 items-center justify-center rounded-full border border-white/25 bg-black/25 text-white backdrop-blur-md transition-all duration-300 hover:bg-black/45"
+              >
+                {muted ? (
+                  <span className="text-[10px] font-bold">
+                    ON
+                  </span>
+                ) : (
+                  <span className="text-[10px] font-bold">
+                    OFF
+                  </span>
+                )}
+              </button>
 
             </div>
 
@@ -288,14 +243,6 @@ function Hero() {
 
         </div>
 
-      </div>
-
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-[9px] font-bold uppercase tracking-[0.25em] text-white/35 lg:flex">
-        <span className="h-px w-8 bg-white/20" />
-        Scroll to explore
-        <span className="h-px w-8 bg-white/20" />
       </div>
 
     </section>
