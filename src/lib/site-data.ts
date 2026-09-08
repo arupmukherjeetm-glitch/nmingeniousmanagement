@@ -497,7 +497,6 @@ export const testimonials = [
 
 
 export const gallery = [
-  { url: a6.url, alt: "New-launch sampling activation booth" },
   { url: a11.url, alt: "In-store engagement during a brand activation" },
   { url: a4.url, alt: "Promoter team on the store floor" },
   { url: a2.url, alt: "Product counsellor explaining benefits to a shopper" },
