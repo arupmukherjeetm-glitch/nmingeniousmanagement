@@ -445,7 +445,7 @@ export const testimonials = [
     author: "Senior Manager, Shopper Marketing",
     company: "Procter & Gamble",
     quote:
-      "I have had a great experience working with you and value the Ingenious team for being P&G's partner for so many years. I would hope for this partnership to continue and grow in future.",
+      "I have had great experience working with you over last couple of years and value Ingenious team for being P&G's partner for so many years. I would hope for this partnership to continue and grow in future.",
     spine: "oklch(0.352 0.126 295.3)",
   },
   {
@@ -463,7 +463,7 @@ export const testimonials = [
     author: "National Retail Sales Head",
     company: "Leading National Retail Brand",
     quote:
-      "The team at NM Ingenious are an absolute pleasure to deal with. Their hiring and training ensured that we had the best people representing our brand in big stores across the country.",
+      "Businesses like you are driven by innovation & inspire the rest of us. It was amazing to hear your story & we are glad that you gave us a chance to share it with the world.",
     spine: "oklch(0.434 0.155 295.3)",
   },
   {
@@ -475,7 +475,7 @@ export const testimonials = [
       "Thank you for your ongoing help and assistance to Soap Opera for sourcing of promoters. We look forward to your continued support in future.",
     spine: "oklch(0.279 0.098 295.9)",
   },
-  {
+  /*{
     brand: "Cipla Health",
     label: "Cipla Health",
     author: "Regional Field Force Lead",
@@ -483,14 +483,14 @@ export const testimonials = [
     quote:
       "Store coverage plans were delivered on time, month after month, and the reporting gave us a clear read on what was actually happening at the counter.",
     spine: "oklch(0.551 0.151 295.8)",
-  },
+  },*/
   {
     brand: "Capital Foods",
     label: "Capital Foods",
     author: "Modern Trade Manager",
     company: "Capital Foods",
     quote:
-      "Merchandising discipline in modern trade improved visibly within a quarter. Facings held, planograms held, and the team flagged issues before we asked.",
+      "The team at NM Ingenious teams are an absolute pleasure to deal with. Their hiring and training ensured that we had the best people representing our brand in bigstores across the country.",
     spine: "oklch(0.602 0.215 27.7)",
   },
 ];
