@@ -81,43 +81,104 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#F5F7FA] text-brand-deep">
+    <section className="relative overflow-hidden bg-[#F4F7FB] text-brand-deep">
 
       {/* =====================================================
-          SUBTLE BACKGROUND
+          BACKGROUND
       ====================================================== */}
+
+      {/* Oversized editorial typography */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-48 -top-48 size-[520px] rounded-full bg-brand/5 blur-3xl"
-      />
+        className="
+          pointer-events-none
+          absolute
+          -bottom-10
+          left-0
+          select-none
+          whitespace-nowrap
+          font-display
+          text-[18vw]
+          font-black
+          leading-none
+          tracking-[-0.09em]
+          text-brand-deep/[0.025]
+        "
+      >
+        SHELF
+      </div>
 
+      {/* Soft architectural glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-48 -left-48 size-[520px] rounded-full bg-coral/5 blur-3xl"
+        className="
+          pointer-events-none
+          absolute
+          -right-40
+          -top-40
+          h-[500px]
+          w-[500px]
+          rounded-full
+          bg-brand/[0.045]
+          blur-3xl
+        "
       />
-
 
       {/* =====================================================
-          MAIN HERO
+          MAIN
       ====================================================== */}
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
 
-        <div className="grid min-h-[570px] items-center gap-12 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:py-14">
+      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14">
+
+        <div
+          className="
+            grid
+            min-h-[570px]
+            items-center
+            gap-10
+            py-10
+            lg:grid-cols-[0.95fr_1.05fr]
+            lg:gap-14
+            lg:py-12
+          "
+        >
 
           {/* =================================================
-              LEFT — MESSAGE
-          ================================================== */}
-          <div className="relative z-10">
+              LEFT CONTENT
+          ================================================= */}
 
-            {/* Small accent only */}
-            <div
-              aria-hidden="true"
-              className="mb-7 h-1 w-12 rounded-full bg-coral"
-            />
+          <div className="relative z-20">
+
+            {/* Tiny brand marker */}
+            <div className="mb-7 flex items-center gap-3">
+
+              <span className="size-2 rounded-full bg-coral" />
+
+              <span className="font-display text-[10px] font-bold uppercase tracking-[0.25em] text-brand-deep/45">
+                Sell-out acceleration
+              </span>
+
+            </div>
 
 
-            {/* HEADLINE */}
-            <h1 className="max-w-[700px] font-display text-[3.2rem] font-extrabold leading-[0.94] tracking-[-0.055em] text-brand-deep sm:text-5xl lg:text-[4.6rem]">
+            {/* =================================================
+                HEADLINE
+            ================================================= */}
+
+            <h1
+              className="
+                max-w-[720px]
+                font-display
+                text-[3.3rem]
+                font-extrabold
+                leading-[0.91]
+                tracking-[-0.065em]
+                text-brand-deep
+                sm:text-6xl
+                lg:text-[5.2rem]
+                xl:text-[5.7rem]
+              "
+            >
 
               <span className="block">
                 You built the
@@ -128,46 +189,98 @@ function Hero() {
               </span>
 
               <span className="mt-3 block text-coral">
-                We get it to the
+                We get it to
               </span>
 
               <span className="block text-coral">
-                people you built it for.
+                the people
+              </span>
+
+              <span className="block">
+                you built it for.
               </span>
 
             </h1>
 
 
-            {/* DESCRIPTION */}
-            <p className="mt-7 max-w-[540px] text-[15px] leading-7 text-brand-deep/65 sm:text-base sm:leading-7">
-              NM Ingenious turns shelf presence into sell-out through
-              trained promoters, disciplined retail execution and
-              real-time store intelligence.
+            {/* =================================================
+                DESCRIPTION
+            ================================================= */}
+
+            <p className="mt-7 max-w-[510px] text-[15px] leading-7 text-brand-deep/60 sm:text-base">
+              NM Ingenious turns shelf presence into sell-out
+              through trained promoters, disciplined retail
+              execution and real-time store intelligence.
             </p>
 
 
             {/* =================================================
                 CTA
-            ================================================== */}
+            ================================================= */}
+
             <div className="mt-8 flex flex-wrap items-center gap-5">
 
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-3 rounded-full bg-coral px-7 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg"
+                className="
+                  group
+                  inline-flex
+                  items-center
+                  gap-3
+                  rounded-full
+                  bg-coral
+                  px-7
+                  py-3.5
+                  font-display
+                  text-sm
+                  font-bold
+                  text-white
+                  shadow-[0_14px_30px_-18px_rgba(7,35,82,0.55)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                  hover:bg-brand-deep
+                "
               >
                 Request an Audit
 
-                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight
+                  className="
+                    size-4
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                />
               </Link>
 
 
               <Link
                 to="/services"
-                className="group inline-flex items-center gap-2 font-display text-sm font-bold text-brand-deep transition-colors duration-300 hover:text-coral"
+                className="
+                  group
+                  inline-flex
+                  items-center
+                  gap-2
+                  font-display
+                  text-sm
+                  font-bold
+                  text-brand-deep
+                  transition-colors
+                  duration-300
+                  hover:text-coral
+                "
               >
                 Explore services
 
-                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight
+                  className="
+                    size-4
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                />
               </Link>
 
             </div>
@@ -176,49 +289,207 @@ function Hero() {
 
 
           {/* =================================================
-              RIGHT — VIDEO
-          ================================================== */}
-          <div className="relative">
+              RIGHT — THE SHELF WINDOW
+          ================================================= */}
 
-            {/* Decorative frame */}
+          <div className="relative flex items-center justify-center lg:h-[500px]">
+
+            {/* Large architectural frame */}
             <div
               aria-hidden="true"
-              className="absolute -right-3 -top-3 h-16 w-16 border-r border-t border-brand-deep/15"
+              className="
+                absolute
+                right-[-2%]
+                top-[7%]
+                h-[86%]
+                w-[78%]
+                rounded-[40px]
+                border
+                border-brand-deep/[0.08]
+              "
             />
 
+
+            {/* Vertical shelf line */}
             <div
               aria-hidden="true"
-              className="absolute -bottom-3 -left-3 h-16 w-16 border-b border-l border-coral/60"
+              className="
+                absolute
+                right-[7%]
+                top-[14%]
+                hidden
+                h-[72%]
+                w-px
+                bg-brand-deep/[0.08]
+                lg:block
+              "
             />
 
 
-            {/* VIDEO */}
-            <div className="group relative overflow-hidden bg-brand-deep shadow-[0_25px_70px_-30px_rgba(7,35,82,0.45)]">
+            {/* =================================================
+                VIDEO WINDOW
+            ================================================= */}
+
+            <div
+              className="
+                group
+                relative
+                z-10
+                w-full
+                max-w-[650px]
+                overflow-hidden
+                rounded-[32px]
+                shadow-[0_35px_80px_-35px_rgba(7,35,82,0.45)]
+              "
+            >
 
               <video
                 ref={videoRef}
-                className="block aspect-[16/10] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
                 src="/media/hero.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="metadata"
+                className="
+                  block
+                  aspect-[16/10]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-[1400ms]
+                  ease-out
+                  group-hover:scale-[1.025]
+                "
                 aria-label="NM Ingenious retail execution"
               />
 
-              {/* Very subtle cinematic overlay */}
+
+              {/* Cinematic gradient */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-deep/15 to-transparent"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-brand-deep/20
+                  via-transparent
+                  to-transparent
+                "
+              />
+
+
+              {/* =================================================
+                  MOVING SHELF SCAN
+              ================================================= */}
+
+              <div
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-0
+                  top-0
+                  h-px
+                  bg-white/40
+                  opacity-0
+                  transition-opacity
+                  duration-500
+                  group-hover:opacity-100
+                  motion-safe:animate-[heroScan_5s_linear_infinite]
+                "
               />
 
             </div>
+
+
+            {/* =================================================
+                RIGHT EDITORIAL TEXT
+            ================================================= */}
+
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                -right-1
+                bottom-[8%]
+                hidden
+                lg:block
+              "
+            >
+
+              <div className="flex items-center gap-3">
+
+                <span className="h-px w-10 bg-coral" />
+
+                <span
+                  className="
+                    font-display
+                    text-[9px]
+                    font-bold
+                    uppercase
+                    tracking-[0.28em]
+                    text-brand-deep/40
+                  "
+                >
+                  Retail in motion
+                </span>
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                CORNER ACCENTS
+            ================================================= */}
+
+            <span
+              aria-hidden="true"
+              className="
+                absolute
+                bottom-[5%]
+                left-[3%]
+                z-20
+                h-14
+                w-14
+                border-b
+                border-l
+                border-coral
+              "
+            />
+
+            <span
+              aria-hidden="true"
+              className="
+                absolute
+                right-[3%]
+                top-[5%]
+                z-20
+                h-14
+                w-14
+                border-r
+                border-t
+                border-brand-deep/15
+              "
+            />
 
           </div>
 
         </div>
 
       </div>
+
+
+      {/* =====================================================
+          BOTTOM ACCENT
+      ====================================================== */}
+
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 h-px w-full bg-brand-deep/[0.08]"
+      />
 
     </section>
   );
