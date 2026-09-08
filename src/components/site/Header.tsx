@@ -275,14 +275,6 @@ export function Header() {
               Services
             </p>
 
-            <Link
-              to="/services"
-              onClick={closeMenus}
-              className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-brand transition-colors hover:bg-brand-soft"
-            >
-              All services
-            </Link>
-
             {services.map((service) => (
               <Link
                 key={service.slug}
