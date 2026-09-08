@@ -90,6 +90,9 @@ export const services: Service[] = [
     outcome: "Higher shopper interaction, higher conversion, lower attrition at the shelf.",
     image: pdm.url,
     secondImage: pdm.url,
+      images: [
+    pdm.url,
+  ],
     caption: "Trained promoters at the shelf",
   },
   {
@@ -113,6 +116,9 @@ export const services: Service[] = [
     outcome: "Premium SKUs justified, baskets built, repeat purchase earned.",
     image: beauty.url,
     secondImage: beauty.url,
+      images: [
+    beauty.url,
+  ],
     caption: "Assisted beauty selling",
   },
   {
