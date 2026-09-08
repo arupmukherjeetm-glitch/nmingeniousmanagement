@@ -142,23 +142,21 @@ export function Header() {
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <Link
-              to="/services"
-              className="flex items-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-brand"
-              aria-haspopup="true"
-              aria-expanded={servicesOpen}
-            >
-              <span>
-                Services
-              </span>
+            <button
+  type="button"
+  className="flex items-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-brand"
+  aria-haspopup="true"
+  aria-expanded={servicesOpen}
+>
+  <span>Services</span>
 
-              <ChevronDown
-                className={cn(
-                  "size-4 transition-transform duration-300",
-                  servicesOpen && "rotate-180",
-                )}
-              />
-            </Link>
+  <ChevronDown
+    className={cn(
+      "size-4 transition-transform duration-300",
+      servicesOpen && "rotate-180",
+    )}
+  />
+</button>
 
             {/* ==================================================
                 SERVICES MEGA MENU
