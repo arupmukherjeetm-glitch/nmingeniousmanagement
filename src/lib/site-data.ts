@@ -1,17 +1,25 @@
 const a1 = { url: "/media/a1.webp" };
 const a2 = { url: "/media/a2.webp" };
+const a3 = { url: "/media/a3.webp" };
 const a4 = { url: "/media/a4.webp" };
+const a5 = { url: "/media/a5.webp" };
 const a6 = { url: "/media/a6.webp" };
 const a7 = { url: "/media/a7.webp" };
 const a8 = { url: "/media/a8.webp" };
+const a9 = { url: "/media/a9.webp" };
+const a10 = { url: "/media/a10.webp" };
 const a11 = { url: "/media/a11.webp" };
 const a12 = { url: "/media/a12.webp" };
 const a13 = { url: "/media/a13.webp" };
+const a14 = { url: "/media/a14.webp" };
 const a15 = { url: "/media/a15.webp" };
+const a16 = { url: "/media/a16.webp" };
 const a17 = { url: "/media/a17.webp" };
 const a18 = { url: "/media/a18.webp" };
 const a19 = { url: "/media/a19.webp" };
 const a20 = { url: "/media/a20.webp" };
+const a21 = { url: "/media/a21.webp" };
+const a22 = { url: "/media/a22.webp" };
 const a23 = { url: "/media/a23.webp" };
 const a24 = { url: "/media/a24.webp" };
 const a25 = { url: "/media/a25.webp" };
@@ -483,7 +491,6 @@ export const testimonials = [
 
 
 export const gallery = [
-  { url: a5.url, alt: "Merchandised FMCG facings in a modern trade aisle" },
   { url: a6.url, alt: "New-launch sampling activation booth" },
   { url: a3.url, alt: "Promoter presenting a product to a shopper at the shelf" },
   { url: a9.url, alt: "Shelf visibility execution in a modern trade store" },
