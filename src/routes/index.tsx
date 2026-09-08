@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
-  heroVideoUrl,
   industries,
   problemSignals,
   reports,
@@ -72,6 +71,7 @@ function Home() {
   );
 }
 
+/* HERO */
 function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(true);
@@ -81,78 +81,223 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative isolate min-h-[calc(100svh-5rem)] overflow-hidden">
-      <video
-        ref={videoRef}
-        className="absolute inset-0 -z-20 size-full object-cover"
-        src={heroVideoUrl}
-        autoPlay
-        loop
-        muted={muted}
-        playsInline
-        aria-label="NM Ingenious promoters at work inside retail stores"
-      />
+    <section className="relative overflow-hidden bg-brand-deep text-white">
+
+      {/* Decorative background glow */}
       <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "linear-gradient(100deg, oklch(0.34 0.09 245 / 0.92) 0%, oklch(0.34 0.09 245 / 0.78) 45%, oklch(0.34 0.09 245 / 0.3) 100%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 opacity-[0.09]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
-        }}
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-brand/30 blur-3xl"
       />
 
-      <div className="mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl items-center px-5 py-24 lg:px-8">
-        <div className="max-w-3xl">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-[-12rem] right-[-8rem] h-[32rem] w-[32rem] rounded-full bg-brand/20 blur-3xl"
+      />
+
+      <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:py-20">
+
+        {/* =====================================================
+            LEFT — MESSAGE
+        ====================================================== */}
+        <div className="relative z-10 max-w-3xl">
+
+          {/* Eyebrow */}
           <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-white/60">
-            <span className="h-px w-10 bg-coral" aria-hidden />
+            <span
+              className="h-px w-10 bg-coral"
+              aria-hidden
+            />
             Sell-Out Acceleration Partner
           </p>
-          <h1 className="mt-8 font-display text-4xl font-extrabold leading-[1.06] text-white sm:text-5xl lg:text-[4.2rem]">
-            You built the product.{" "}
-            <em className="not-italic text-coral">We get it to the people you built it for.</em>
+
+
+          {/* Main headline */}
+          <h1 className="mt-7 font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.035em] text-white sm:text-5xl lg:text-[4.6rem]">
+
+            You built the product.
+
+            <span className="mt-2 block text-white">
+              We get it to the people
+            </span>
+
+            <span className="block text-coral">
+              you built it for.
+            </span>
+
           </h1>
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-white/75 lg:text-lg">
-            NM Ingenious turns shelf presence into sell-out, with trained promoters, disciplined
-            retail execution and real-time store intelligence.
+
+
+          {/* Description */}
+          <p className="mt-7 max-w-xl text-base leading-7 text-white/70 lg:text-lg">
+            NM Ingenious turns shelf presence into sell-out, with trained
+            promoters, disciplined retail execution and real-time store
+            intelligence.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+
+
+          {/* CTAs */}
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-coral px-8 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:shadow-[0_20px_44px_-16px_oklch(0.55_0.21_27/0.75)] hover:brightness-110"
+              className="group inline-flex items-center gap-2 rounded-full bg-coral px-7 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_20px_44px_-16px_oklch(0.55_0.21_27/0.75)]"
             >
               Request a Sell-Out Acceleration Audit
+
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
+
+
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-display text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 font-display text-sm font-bold text-white transition-all duration-300 hover:bg-white/10"
             >
               See how we win the shelf
+
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
+
           </div>
-          <p className="mt-12 max-w-md border-l-2 border-coral pl-5 text-sm leading-relaxed text-white/60">
-            You did the hard part. The last three feet to the shopper's hand are ours.
+
+
+          {/* Proof strip */}
+          <div className="mt-12 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 border-t border-white/15 pt-7 sm:grid-cols-4">
+
+            <div>
+              <p className="font-display text-2xl font-extrabold text-white">
+                18+
+              </p>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
+                Years
+              </p>
+            </div>
+
+            <div>
+              <p className="font-display text-2xl font-extrabold text-white">
+                2,150+
+              </p>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
+                Personnel
+              </p>
+            </div>
+
+            <div>
+              <p className="font-display text-2xl font-extrabold text-white">
+                2,000+
+              </p>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
+                Outlets
+              </p>
+            </div>
+
+            <div>
+              <p className="font-display text-2xl font-extrabold text-coral">
+                31
+              </p>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
+                States & UTs
+              </p>
+            </div>
+
+          </div>
+
+
+          {/* Bottom statement */}
+          <p className="mt-8 max-w-md border-l-2 border-coral pl-4 text-sm leading-relaxed text-white/50">
+            You did the hard part. The last three feet to the shopper's hand
+            are ours.
           </p>
+
         </div>
+
+
+        {/* =====================================================
+            RIGHT — VIDEO
+        ====================================================== */}
+        <div className="relative z-10">
+
+          {/* Video card */}
+          <div className="relative mx-auto w-full max-w-[560px]">
+
+            {/* Outer frame */}
+            <div className="absolute -inset-3 rounded-[2rem] border border-white/10 bg-white/[0.03]" />
+
+            {/* Video */}
+            <div className="relative overflow-hidden rounded-[1.6rem] border border-white/15 bg-black shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
+
+              <video
+                ref={videoRef}
+                className="block aspect-[4/5] h-auto w-full object-cover"
+                src="/media/hero.mp4"
+                autoPlay
+                loop
+                muted={muted}
+                playsInline
+                aria-label="NM Ingenious promoters at work inside retail stores"
+              />
+
+              {/* Video gradient */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
+              />
+
+              {/* Video label */}
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
+
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">
+                    Inside the store
+                  </p>
+
+                  <p className="mt-1 font-display text-sm font-bold text-white">
+                    Execution that moves the shopper.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setMuted((m) => !m)}
+                  className="shrink-0 rounded-full border border-white/25 bg-black/25 px-4 py-2 text-[10px] font-bold text-white backdrop-blur-md transition-colors hover:bg-white/15"
+                >
+                  {muted ? "Sound on" : "Mute"}
+                </button>
+
+              </div>
+
+            </div>
+
+            {/* Floating proof card */}
+            <div className="absolute -bottom-6 -left-4 hidden rounded-xl border border-white/10 bg-white p-4 text-brand-deep shadow-[0_20px_45px_rgba(0,0,0,0.2)] sm:block lg:-left-10">
+
+              <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                The last three feet
+              </p>
+
+              <p className="mt-1 font-display text-sm font-extrabold">
+                From shelf presence
+              </p>
+
+              <p className="font-display text-sm font-extrabold text-brand">
+                to sell-out.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <button
-        type="button"
-        onClick={() => setMuted((m) => !m)}
-        className="absolute bottom-6 right-5 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/20 px-4 py-2 text-xs font-semibold text-white/80 backdrop-blur transition-colors hover:bg-white/15 lg:right-8"
-      >
-        <Play className="size-3.5" />
-        {muted ? "Unmute showreel" : "Mute showreel"}
-      </button>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-[9px] font-bold uppercase tracking-[0.25em] text-white/35 lg:flex">
+        <span className="h-px w-8 bg-white/20" />
+        Scroll to explore
+        <span className="h-px w-8 bg-white/20" />
+      </div>
+
     </section>
   );
 }
