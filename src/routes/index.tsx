@@ -72,7 +72,6 @@ function Home() {
 }
 
 /* HERO */
-/* HERO */
 function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(true);
@@ -82,129 +81,109 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-brand-deep text-white">
+    <section className="relative overflow-hidden bg-[#F4F7FB]">
 
-      {/* Subtle background glow */}
+      {/* Very subtle background decoration */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-brand/20 blur-3xl"
+        className="pointer-events-none absolute right-[-180px] top-[-180px] h-[420px] w-[420px] rounded-full bg-brand/10 blur-3xl"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-40 right-[-10rem] h-[30rem] w-[30rem] rounded-full bg-brand/15 blur-3xl"
+        className="pointer-events-none absolute bottom-[-220px] left-[-160px] h-[420px] w-[420px] rounded-full bg-brand/5 blur-3xl"
       />
 
-      {/* HERO CONTENT */}
-      <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-12 px-5 py-14 sm:py-16 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:px-8 lg:py-20">
+      <div className="relative mx-auto max-w-7xl px-5 py-12 sm:py-14 lg:px-8 lg:py-16">
 
-        {/* =====================================================
-            LEFT — BRAND MESSAGE
-        ====================================================== */}
-        <div className="relative z-10 max-w-2xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
 
-          {/* Small accent */}
-          <div className="mb-7 flex items-center gap-3">
-            <span
-              aria-hidden="true"
-              className="h-[2px] w-10 bg-coral"
-            />
+          {/* =====================================================
+              LEFT — HERO MESSAGE
+          ====================================================== */}
+          <div className="max-w-xl">
 
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/55">
-              Sell-Out Acceleration
-            </span>
-          </div>
+            {/* Eyebrow */}
+            <div className="mb-5 flex items-center gap-3">
+              <span
+                aria-hidden="true"
+                className="h-[2px] w-9 bg-coral"
+              />
 
-
-          {/* HEADLINE */}
-          <h1 className="font-display text-[2.8rem] font-extrabold leading-[0.98] tracking-[-0.045em] sm:text-5xl lg:text-[4.75rem]">
-
-            <span className="block">
-              You built the
-            </span>
-
-            <span className="block">
-              product.
-            </span>
-
-            <span className="mt-3 block text-coral">
-              We get it to the
-            </span>
-
-            <span className="block text-coral">
-              people you built
-            </span>
-
-            <span className="block text-coral">
-              it for.
-            </span>
-
-          </h1>
+              <span className="font-display text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
+                Sell-Out Acceleration Partner
+              </span>
+            </div>
 
 
-          {/* DESCRIPTION */}
-          <p className="mt-8 max-w-xl text-base leading-7 text-white/65 lg:text-lg lg:leading-8">
-            NM Ingenious turns shelf presence into sell-out through
-            trained promoters, disciplined retail execution and
-            real-time store intelligence.
-          </p>
+            {/* Headline */}
+            <h1 className="font-display text-[2.8rem] font-extrabold leading-[0.98] tracking-[-0.045em] text-brand-deep sm:text-5xl lg:text-[4.25rem]">
+
+              <span className="block">
+                You built the
+              </span>
+
+              <span className="block">
+                product.
+              </span>
+
+              <span className="mt-2 block text-coral">
+                We get it to the
+              </span>
+
+              <span className="block text-coral">
+                people you built it for.
+              </span>
+
+            </h1>
 
 
-          {/* CTA */}
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-coral px-7 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_18px_40px_-15px_oklch(0.55_0.21_27/0.7)]"
-            >
-              Request a Sell-Out Acceleration Audit
-
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-
-
-            <Link
-              to="/services"
-              className="group inline-flex items-center gap-2 px-2 py-3 font-display text-sm font-bold text-white/75 transition-colors hover:text-white"
-            >
-              Explore our services
-
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-
-          </div>
-
-
-          {/* Minimal brand statement */}
-          <div className="mt-12 max-w-md border-l border-white/20 pl-5">
-            <p className="text-sm leading-6 text-white/45">
-              The last three feet between your brand and the shopper
-              are where execution matters most.
+            {/* Description */}
+            <p className="mt-6 max-w-lg text-[15px] leading-7 text-muted-foreground sm:text-base">
+              NM Ingenious turns shelf presence into sell-out through
+              trained promoters, disciplined retail execution and
+              real-time store intelligence.
             </p>
+
+
+            {/* CTAs */}
+            <div className="mt-7 flex flex-wrap items-center gap-4">
+
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-coral px-6 py-3.5 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_14px_32px_-14px_oklch(0.55_0.21_27/0.65)]"
+              >
+                Request an Audit
+
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+
+              <Link
+                to="/services"
+                className="group inline-flex items-center gap-2 font-display text-sm font-bold text-brand-deep transition-colors duration-300 hover:text-coral"
+              >
+                Explore services
+
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+            </div>
+
           </div>
 
-        </div>
 
+          {/* =====================================================
+              RIGHT — VIDEO
+          ====================================================== */}
+          <div className="relative">
 
-        {/* =====================================================
-            RIGHT — VIDEO
-        ====================================================== */}
-        <div className="relative z-10">
-
-          <div className="relative mx-auto w-full max-w-[620px]">
-
-            {/* Soft frame */}
-            <div
-              aria-hidden="true"
-              className="absolute -inset-4 rounded-[2rem] border border-white/[0.08]"
-            />
-
-            {/* VIDEO */}
-            <div className="relative overflow-hidden rounded-[1.75rem] bg-black shadow-[0_35px_90px_rgba(0,0,0,0.4)]">
+            {/* Main video */}
+            <div className="relative overflow-hidden rounded-[1.5rem] bg-brand-deep shadow-[0_24px_65px_-25px_rgba(7,25,61,0.45)]">
 
               <video
                 ref={videoRef}
-                className="block aspect-[4/5] h-auto w-full object-cover"
+                className="block aspect-[16/10] w-full object-cover"
                 src="/media/hero.mp4"
                 autoPlay
                 loop
@@ -213,31 +192,30 @@ function Hero() {
                 aria-label="NM Ingenious retail execution"
               />
 
-              {/* Subtle cinematic gradient */}
+              {/* Very subtle cinematic overlay */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 to-transparent"
               />
 
-              {/* Sound control only */}
+              {/* Minimal sound control */}
               <button
                 type="button"
                 onClick={() => setMuted((value) => !value)}
                 aria-label={muted ? "Turn sound on" : "Mute video"}
-                className="absolute bottom-5 right-5 flex size-10 items-center justify-center rounded-full border border-white/25 bg-black/25 text-white backdrop-blur-md transition-all duration-300 hover:bg-black/45"
+                className="absolute bottom-4 right-4 flex size-9 items-center justify-center rounded-full border border-white/30 bg-black/25 text-[9px] font-bold text-white backdrop-blur-md transition-all duration-300 hover:bg-black/45"
               >
-                {muted ? (
-                  <span className="text-[10px] font-bold">
-                    ON
-                  </span>
-                ) : (
-                  <span className="text-[10px] font-bold">
-                    OFF
-                  </span>
-                )}
+                {muted ? "ON" : "OFF"}
               </button>
 
             </div>
+
+
+            {/* Decorative edge */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-[1.5rem] border border-brand/10"
+            />
 
           </div>
 
