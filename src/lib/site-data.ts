@@ -511,8 +511,6 @@ export const gallery = [
   { url: a26.url, alt: "" },
   { url: a27.url, alt: "" },
   { url: a28.url, alt: "" },
-  { url: a29.url, alt: "" },
-  { url: a30.url, alt: "" },
 ];
 
 
