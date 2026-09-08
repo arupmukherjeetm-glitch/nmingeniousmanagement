@@ -28,6 +28,20 @@ const a27 = { url: "/media/a27.webp" };
 const a28 = { url: "/media/a28.webp" };
 const a29 = { url: "/media/a29.webp" };
 const a30 = { url: "/media/a30.webp" };
+const a31 = { url: "/media/a31.webp" };
+const a32 = { url: "/media/a32.webp" };
+const a33 = { url: "/media/a33.webp" };
+const a34 = { url: "/media/a34.webp" };
+const a35 = { url: "/media/a35.webp" };
+const a36 = { url: "/media/a36.webp" };
+const a37 = { url: "/media/a37.webp" };
+const a38 = { url: "/media/a38.webp" };
+const a39 = { url: "/media/a39.webp" };
+const a40 = { url: "/media/a40.webp" };
+const a41 = { url: "/media/a41.webp" };
+const a42 = { url: "/media/a42.webp" };
+const a43 = { url: "/media/a43.webp" };
+const a44 = { url: "/media/a44.webp" };
 const pdm = { url: "/media/pdm.webp" };
 const beauty = { url: "/media/beauty.webp" };
 const MVE = { url: "/media/MVE.webp" };
@@ -510,9 +524,21 @@ export const gallery = [
   { url: a26.url, alt: "" },
   { url: a27.url, alt: "" },
   { url: a28.url, alt: "" },
+  { url: a31.url, alt: "" },
+  { url: a32.url, alt: "" },
+  { url: a33.url, alt: "" },
+  { url: a34.url, alt: "" },
+  { url: a35.url, alt: "" },
+  { url: a36.url, alt: "" },
+  { url: a37.url, alt: "" },
+  { url: a38.url, alt: "" },
+  { url: a39.url, alt: "" },
+  { url: a40.url, alt: "" },
+  { url: a41.url, alt: "" },
+  { url: a42.url, alt: "" },
+  { url: a43.url, alt: "" },
+  { url: a44.url, alt: "" },
 ];
-
-
 
 // ---------------------------------------------------------------------------
 // Founder's Journey Gallery
@@ -548,6 +574,16 @@ export const foundersGallery = [
   {
     image: "/media/founders-07.webp",
     alt: "NM Ingenious leadership speaking at an industry event",
+    size: "large",
+  },
+  {
+    image: "/media/a29.webp",
+    alt: "",
+    size: "large",
+  },
+  {
+    image: "/media/a30.webp",
+    alt: "",
     size: "large",
   },
 ] as const;
