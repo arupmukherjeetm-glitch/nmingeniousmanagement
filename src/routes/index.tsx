@@ -75,13 +75,10 @@ function Home() {
 /* HERO */
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#F4F7FB]">
+    <section className="relative isolate w-full overflow-hidden bg-[#F4F7FB]">
 
-      {/* =====================================================
-          VIDEO BACKGROUND
-      ====================================================== */}
-
-      <div className="absolute inset-0">
+      {/* VIDEO BACKGROUND */}
+      <div className="absolute inset-0 -z-10">
         <video
           src="/media/hero.mp4"
           autoPlay
@@ -100,89 +97,78 @@ function Hero() {
             inset-0
             bg-gradient-to-r
             from-[#082B61]/90
-            via-[#082B61]/45
+            via-[#082B61]/50
             to-transparent
           "
         />
       </div>
 
 
-      {/* =====================================================
-          HERO
-      ====================================================== */}
-
+      {/* HERO CONTENT */}
       <div
         className="
-          relative
           mx-auto
           flex
-          h-[calc(100vh-140px)]
-          min-h-[480px]
-          max-h-[600px]
+          w-full
           max-w-[1440px]
           items-center
           px-5
+          py-8
           sm:px-8
+          lg:h-[calc(100vh-140px)]
+          lg:min-h-[500px]
+          lg:max-h-[620px]
           lg:px-12
         "
       >
 
-        {/* =================================================
-            CONTENT PANEL
-        ================================================== */}
-
+        {/* CONTENT PANEL */}
         <div
           className="
             relative
             z-10
             w-full
-            max-w-[690px]
+            max-w-[680px]
+            overflow-hidden
             rounded-[24px]
-            border
-            border-white/50
-            bg-[#F4F7FB]/[0.97]
+            bg-[#F4F7FB]
             px-7
-            py-6
+            py-7
             shadow-[0_25px_60px_rgba(0,0,0,0.16)]
             sm:px-9
-            sm:py-7
+            sm:py-8
             lg:px-10
             lg:py-8
           "
         >
 
-          {/* Coral edge */}
-          <div
+          {/* RED EDGE */}
+          <span
             aria-hidden="true"
             className="
               absolute
+              inset-y-0
               left-0
-              top-0
-              h-full
               w-1
-              rounded-l-[24px]
               bg-coral
             "
           />
 
 
-          {/* =================================================
-              HEADLINE
-          ================================================== */}
-
+          {/* HEADLINE */}
           <h1
             className="
-              max-w-[650px]
+              max-w-[630px]
               font-display
-              text-[2.65rem]
+              text-[2.55rem]
               font-extrabold
-              leading-[0.91]
+              leading-[0.92]
               tracking-[-0.06em]
               text-brand-deep
               sm:text-5xl
-              md:text-[3.8rem]
-              lg:text-[4.35rem]
-              xl:text-[4.7rem]
+              md:text-[3.7rem]
+              lg:text-[4.25rem]
+              xl:text-[4.6rem]
             "
           >
             <span className="block">
@@ -199,14 +185,11 @@ function Hero() {
           </h1>
 
 
-          {/* =================================================
-              DESCRIPTION
-          ================================================== */}
-
+          {/* DESCRIPTION */}
           <p
             className="
               mt-5
-              max-w-[535px]
+              max-w-[520px]
               text-sm
               leading-6
               text-brand-deep/65
@@ -219,10 +202,7 @@ function Hero() {
           </p>
 
 
-          {/* =================================================
-              CTA
-          ================================================== */}
-
+          {/* CTA */}
           <div className="mt-6 flex flex-wrap items-center gap-5">
 
             <Link
@@ -230,6 +210,7 @@ function Hero() {
               className="
                 group
                 inline-flex
+                shrink-0
                 items-center
                 gap-3
                 rounded-full
@@ -265,6 +246,7 @@ function Hero() {
               className="
                 group
                 inline-flex
+                shrink-0
                 items-center
                 gap-2
                 font-display
@@ -295,20 +277,10 @@ function Hero() {
       </div>
 
 
-      {/* =====================================================
-          BOTTOM ACCENT
-      ====================================================== */}
-
+      {/* BOTTOM ACCENT */}
       <div
         aria-hidden="true"
-        className="
-          absolute
-          bottom-0
-          left-0
-          h-1
-          w-full
-          bg-coral
-        "
+        className="absolute bottom-0 left-0 h-1 w-full bg-coral"
       />
 
     </section>
