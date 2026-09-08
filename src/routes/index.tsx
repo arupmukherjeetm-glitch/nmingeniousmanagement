@@ -654,6 +654,8 @@ function ServicesSection() {
     </section>
   );
 }
+
+/* SERVICE VIDEO */
 function ExecutionVideoSection() {
   return (
     <section className="bg-sand py-24 lg:py-32">
@@ -663,7 +665,7 @@ function ExecutionVideoSection() {
 
           {/* VIDEO */}
           <Reveal>
-            <div className="mx-auto w-full max-w-[430px] overflow-hidden rounded-3xl bg-black shadow-[0_25px_70px_rgba(20,45,90,0.16)]">
+           <div className="mx-auto w-full max-w-[430px] overflow-hidden rounded-3xl">
 
               <video
                 className="block h-auto w-full"
@@ -675,9 +677,7 @@ function ExecutionVideoSection() {
                   src="/media/WhatsApp Video 2026-08-21 at 14.05.14 (1).mp4"
                   type="video/mp4"
                 />
-                Your browser does not support the video tag.
               </video>
-
             </div>
           </Reveal>
 
