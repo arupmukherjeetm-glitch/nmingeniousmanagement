@@ -198,7 +198,7 @@ function About() {
     <div className="mt-14 grid gap-16 lg:mt-18 lg:grid-cols-2 lg:gap-0">
 
       {/* ========================================================
-          MADHVI PUNDALIK
+          MADHVI MHATRE
       ======================================================== */}
 
       <article className="group flex flex-col items-center px-4 text-center lg:border-r lg:border-border lg:px-14">
@@ -299,7 +299,7 @@ function About() {
           </p>
 
           <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-[34px]">
-            Madhvi Pundalik
+            Madhvi Mhatre
           </h3>
 
           <div className="mx-auto mt-4 h-[2px] w-9 bg-coral transition-all duration-500 group-hover:w-14" />
