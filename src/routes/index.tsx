@@ -89,15 +89,9 @@ function Hero() {
           muted
           playsInline
           preload="metadata"
-          className="
-            h-full
-            w-full
-            object-cover
-            object-center
-          "
+          className="h-full w-full object-cover object-center"
         />
 
-        {/* Cinematic overlay */}
         <div className="absolute inset-0 bg-[#082B61]/55" />
 
         <div
@@ -106,7 +100,7 @@ function Hero() {
             inset-0
             bg-gradient-to-r
             from-[#082B61]/90
-            via-[#082B61]/50
+            via-[#082B61]/45
             to-transparent
           "
         />
@@ -114,7 +108,7 @@ function Hero() {
 
 
       {/* =====================================================
-          HERO CONTENT
+          HERO
       ====================================================== */}
 
       <div
@@ -122,17 +116,14 @@ function Hero() {
           relative
           mx-auto
           flex
-          min-h-[500px]
+          h-[calc(100vh-140px)]
+          min-h-[480px]
+          max-h-[600px]
           max-w-[1440px]
           items-center
           px-5
-          py-8
-          sm:min-h-[520px]
           sm:px-8
-          lg:min-h-[535px]
           lg:px-12
-          lg:py-8
-          xl:min-h-[550px]
         "
       >
 
@@ -145,17 +136,18 @@ function Hero() {
             relative
             z-10
             w-full
-            max-w-[700px]
-            overflow-hidden
+            max-w-[690px]
             rounded-[24px]
-            bg-[#F4F7FB]
+            border
+            border-white/50
+            bg-[#F4F7FB]/[0.97]
             px-7
-            py-7
+            py-6
             shadow-[0_25px_60px_rgba(0,0,0,0.16)]
             sm:px-9
-            sm:py-8
-            lg:px-11
-            lg:py-9
+            sm:py-7
+            lg:px-10
+            lg:py-8
           "
         >
 
@@ -168,6 +160,7 @@ function Hero() {
               top-0
               h-full
               w-1
+              rounded-l-[24px]
               bg-coral
             "
           />
@@ -181,22 +174,22 @@ function Hero() {
             className="
               max-w-[650px]
               font-display
-              text-[2.75rem]
+              text-[2.65rem]
               font-extrabold
-              leading-[0.93]
+              leading-[0.91]
               tracking-[-0.06em]
               text-brand-deep
               sm:text-5xl
-              md:text-6xl
-              lg:text-[4.6rem]
-              xl:text-[5rem]
+              md:text-[3.8rem]
+              lg:text-[4.35rem]
+              xl:text-[4.7rem]
             "
           >
             <span className="block">
               You built the product.
             </span>
 
-            <span className="mt-1.5 block text-coral">
+            <span className="mt-1 block text-coral">
               We get it to the people
             </span>
 
@@ -213,12 +206,11 @@ function Hero() {
           <p
             className="
               mt-5
-              max-w-[540px]
+              max-w-[535px]
               text-sm
               leading-6
               text-brand-deep/65
               sm:text-[15px]
-              sm:leading-6
             "
           >
             NM Ingenious turns shelf presence into sell-out
