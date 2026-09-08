@@ -193,19 +193,7 @@ export function Header() {
                 </div>
 
                 {/* VIEW ALL SERVICES */}
-                <Link
-                  to="/services"
-                  onClick={() => setServicesOpen(false)}
-                  className="flex items-center justify-between border-t border-border bg-brand-soft/60 px-6 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand-soft"
-                >
-                  <span>
-                    View all services
-                  </span>
-
-                  <span aria-hidden="true">
-                    →
-                  </span>
-                </Link>
+              
               </div>
             </div>
           </div>
