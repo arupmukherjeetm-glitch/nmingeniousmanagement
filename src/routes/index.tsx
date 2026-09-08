@@ -606,16 +606,20 @@ function ModelColumn({
 /* WHAT WE DO */
 function ServicesSection() {
   return (
-    <section className="bg-background py-24 lg:py-32">
+    <section className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        {/* Header */}
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        {/* Section Header */}
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <Eyebrow>What we do</Eyebrow>
 
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
-              Eight services. One operating system for the shelf.
+            <h2 className="mt-4 font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-foreground lg:text-5xl">
+              Eight services. One
+              <br />
+              operating system for
+              <br />
+              the shelf.
             </h2>
           </div>
 
@@ -628,95 +632,216 @@ function ServicesSection() {
           </Link>
         </div>
 
-        {/* Service Cards */}
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
-          {services.map((s, i) => (
-            <Reveal key={s.slug} delay={i * 50}>
-              <Link
-                to="/services/$slug"
-                params={{ slug: s.slug }}
-                className="
-                  group
-                  flex
-                  min-h-[300px]
-                  overflow-hidden
-                  rounded-2xl
-                  border
-                  border-border
-                  bg-white
-                  transition-all
-                  duration-500
-                  hover:-translate-y-1
-                  hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]
-                "
-              >
+        {/* SERVICES GRID */}
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
 
-                {/* IMAGE PANEL */}
-                <div className="relative w-[42%] shrink-0 overflow-hidden bg-[#eef1f5]">
+          {services.map((s, i) => {
+            const hasImage = i < 4;
 
-                  {/* Image */}
-                  <div className="absolute inset-0 flex items-center justify-center p-4">
-                    <img
-                      src={s.image}
-                      alt={s.caption}
-                      loading="lazy"
-                      decoding="async"
-                      className="
-                        max-h-full
-                        max-w-full
-                        object-contain
-                        transition-transform
-                        duration-700
-                        ease-out
-                        group-hover:scale-[1.035]
-                      "
-                    />
-                  </div>
+            return (
+              <Reveal key={s.slug} delay={i * 50}>
+                <Link
+                  to="/services/$slug"
+                  params={{ slug: s.slug }}
+                  className={`
+                    group relative block h-full overflow-hidden rounded-2xl
+                    border border-border bg-white
+                    transition-all duration-500
+                    hover:-translate-y-1 hover:shadow-xl
+                    ${hasImage ? "min-h-[300px]" : "min-h-[250px]"}
+                  `}
+                >
 
-                  {/* Bottom gradient */}
-                  <div
-                    aria-hidden
-                    className="absolute inset-x-0 bottom-0 h-28"
-                    style={{
-                      background:
-                        "linear-gradient(to top, rgba(20,45,90,0.78), transparent)",
-                    }}
-                  />
+                  {/* ========================= */}
+                  {/* FIRST 4 — WITH IMAGE */}
+                  {/* ========================= */}
 
-                  {/* Caption */}
-                  <span className="absolute bottom-4 left-4 right-3 z-10 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white">
-                    {s.caption}
-                  </span>
+                  {hasImage ? (
+                    <div className="flex h-full flex-col">
 
-                </div>
+                      {/* Image */}
+                      <div className="relative h-[190px] overflow-hidden bg-muted">
 
-                {/* CONTENT PANEL */}
-                <div className="flex min-w-0 flex-1 flex-col justify-between p-6 lg:p-7">
+                        <img
+                          src={s.image}
+                          alt={s.caption}
+                          loading="lazy"
+                          className="
+                            h-full w-full
+                            object-cover
+                            transition-transform
+                            duration-700
+                            ease-[cubic-bezier(0.22,1,0.36,1)]
+                            group-hover:scale-[1.04]
+                          "
+                        />
 
-                  <div>
-                    <div className="mb-5 h-1 w-8 rounded-full bg-coral transition-all duration-500 group-hover:w-12" />
+                        {/* Bottom gradient */}
+                        <div
+                          className="absolute inset-x-0 bottom-0 h-24"
+                          style={{
+                            background:
+                              "linear-gradient(to top, rgba(15,45,95,0.9), transparent)",
+                          }}
+                        />
 
-                    <h3 className="font-display text-lg font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand lg:text-xl">
-                      {s.name}
-                    </h3>
+                        {/* Caption */}
+                        <span className="absolute bottom-4 left-5 max-w-[75%] font-display text-[10px] font-bold uppercase tracking-[0.18em] text-white">
+                          {s.caption}
+                        </span>
+                      </div>
 
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {s.summary}
-                    </p>
-                  </div>
+                      {/* Content */}
+                      <div className="flex flex-1 flex-col p-6">
 
-                  <span className="mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
-                    Explore
-                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
+                        <div className="mb-4 h-1 w-7 rounded-full bg-coral" />
 
-                </div>
+                        <h3 className="font-display text-lg font-extrabold leading-tight text-foreground transition-colors group-hover:text-brand lg:text-xl">
+                          {s.name}
+                        </h3>
 
-              </Link>
-            </Reveal>
-          ))}
+                        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                          {s.summary}
+                        </p>
+
+                        <span className="mt-5 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
+                          Explore
+                          <ArrowRight
+                            className="
+                              size-4
+                              transition-transform
+                              duration-300
+                              group-hover:translate-x-1
+                            "
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+
+                    /* ========================= */
+                    /* LAST 4 — NO IMAGE */
+                    /* ========================= */
+
+                    <div className="relative flex h-full flex-col justify-between overflow-hidden p-7 lg:p-8">
+
+                      {/* Large background number */}
+                      <span
+                        aria-hidden
+                        className="
+                          absolute
+                          -right-3
+                          -top-8
+                          select-none
+                          font-display
+                          text-[150px]
+                          font-black
+                          leading-none
+                          text-brand/[0.045]
+                        "
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+
+                      {/* Subtle background glow */}
+                      <span
+                        aria-hidden
+                        className="
+                          pointer-events-none
+                          absolute
+                          -right-20
+                          -top-20
+                          size-48
+                          rounded-full
+                          bg-brand/[0.06]
+                          blur-3xl
+                          transition-all
+                          duration-700
+                          group-hover:bg-coral/[0.10]
+                        "
+                      />
+
+                      <div className="relative z-10">
+
+                        {/* Number + accent */}
+                        <div className="flex items-center gap-3">
+                          <span className="font-display text-xs font-extrabold tracking-[0.18em] text-brand">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+
+                          <span className="h-px w-10 bg-coral transition-all duration-500 group-hover:w-16" />
+                        </div>
+
+                        {/* Title */}
+                        <h3
+                          className="
+                            mt-8
+                            max-w-md
+                            font-display
+                            text-xl
+                            font-extrabold
+                            leading-tight
+                            text-foreground
+                            transition-colors
+                            duration-300
+                            group-hover:text-brand
+                            lg:text-2xl
+                          "
+                        >
+                          {s.name}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+                          {s.summary}
+                        </p>
+                      </div>
+
+                      {/* Bottom */}
+                      <div className="relative z-10 mt-8 flex items-center justify-between">
+
+                        <span className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                          {s.caption}
+                        </span>
+
+                        <span className="inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
+                          Explore
+                          <ArrowRight
+                            className="
+                              size-4
+                              transition-transform
+                              duration-300
+                              group-hover:translate-x-1
+                            "
+                          />
+                        </span>
+
+                      </div>
+
+                      {/* Bottom accent */}
+                      <span
+                        aria-hidden
+                        className="
+                          absolute
+                          bottom-0
+                          left-0
+                          h-1
+                          w-0
+                          bg-coral
+                          transition-all
+                          duration-500
+                          group-hover:w-full
+                        "
+                      />
+                    </div>
+                  )}
+
+                </Link>
+              </Reveal>
+            );
+          })}
+
         </div>
-
       </div>
     </section>
   );
