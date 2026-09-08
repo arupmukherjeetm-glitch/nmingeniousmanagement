@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
+  heroVideoUrl,
   industries,
   problemSignals,
   reports,
