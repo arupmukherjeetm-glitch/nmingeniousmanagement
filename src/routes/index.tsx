@@ -632,216 +632,221 @@ function ServicesSection() {
           </Link>
         </div>
 
-        {/* SERVICES GRID */}
+
+        {/* =====================================================
+            FIRST 4 SERVICES — EXISTING IMAGE CARD DESIGN
+        ====================================================== */}
+
         <div className="mt-12 grid gap-4 md:grid-cols-2">
 
-          {services.map((s, i) => {
-            const hasImage = i < 4;
+          {services.slice(0, 4).map((s, i) => (
+            <Reveal key={s.slug} delay={i * 50}>
 
-            return (
-              <Reveal key={s.slug} delay={i * 50}>
-                <Link
-                  to="/services/$slug"
-                  params={{ slug: s.slug }}
-                  className={`
-                    group relative block h-full overflow-hidden rounded-2xl
-                    border border-border bg-white
-                    transition-all duration-500
-                    hover:-translate-y-1 hover:shadow-xl
-                    ${hasImage ? "min-h-[300px]" : "min-h-[250px]"}
-                  `}
-                >
+              <Link
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                className="
+                  brand-box
+                  group
+                  flex
+                  h-full
+                  flex-col
+                  overflow-hidden
+                "
+              >
 
-                  {/* ========================= */}
-                  {/* FIRST 4 — WITH IMAGE */}
-                  {/* ========================= */}
+                {/* Image */}
+                <div className="relative aspect-[16/8] overflow-hidden">
 
-                  {hasImage ? (
-                    <div className="flex h-full flex-col">
+                  <img
+                    src={s.image}
+                    alt={s.caption}
+                    loading="lazy"
+                    className="
+                      size-full
+                      object-cover
+                      transition-transform
+                      duration-[900ms]
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:scale-[1.07]
+                    "
+                  />
 
-                      {/* Image */}
-                      <div className="relative h-[190px] overflow-hidden bg-muted">
+                  {/* Image gradient */}
+                  <span
+                    aria-hidden
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent 55%)",
+                    }}
+                  />
 
-                        <img
-                          src={s.image}
-                          alt={s.caption}
-                          loading="lazy"
-                          className="
-                            h-full w-full
-                            object-cover
-                            transition-transform
-                            duration-700
-                            ease-[cubic-bezier(0.22,1,0.36,1)]
-                            group-hover:scale-[1.04]
-                          "
-                        />
+                  {/* Caption */}
+                  <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/80">
+                    {s.caption}
+                  </span>
 
-                        {/* Bottom gradient */}
-                        <div
-                          className="absolute inset-x-0 bottom-0 h-24"
-                          style={{
-                            background:
-                              "linear-gradient(to top, rgba(15,45,95,0.9), transparent)",
-                          }}
-                        />
+                </div>
 
-                        {/* Caption */}
-                        <span className="absolute bottom-4 left-5 max-w-[75%] font-display text-[10px] font-bold uppercase tracking-[0.18em] text-white">
-                          {s.caption}
-                        </span>
-                      </div>
 
-                      {/* Content */}
-                      <div className="flex flex-1 flex-col p-6">
+                {/* Content */}
+                <div className="flex flex-1 flex-col p-7">
 
-                        <div className="mb-4 h-1 w-7 rounded-full bg-coral" />
+                  <h3 className="font-display text-xl font-extrabold text-foreground transition-colors group-hover:text-brand">
+                    {s.name}
+                  </h3>
 
-                        <h3 className="font-display text-lg font-extrabold leading-tight text-foreground transition-colors group-hover:text-brand lg:text-xl">
-                          {s.name}
-                        </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {s.summary}
+                  </p>
 
-                        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                          {s.summary}
-                        </p>
+                  <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
 
-                        <span className="mt-5 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
-                          Explore
-                          <ArrowRight
-                            className="
-                              size-4
-                              transition-transform
-                              duration-300
-                              group-hover:translate-x-1
-                            "
-                          />
-                        </span>
-                      </div>
-                    </div>
-                  ) : (
+                    Explore
 
-                    /* ========================= */
-                    /* LAST 4 — NO IMAGE */
-                    /* ========================= */
+                    <ArrowRight
+                      className="
+                        size-4
+                        transition-transform
+                        duration-300
+                        group-hover:translate-x-1
+                      "
+                    />
 
-                    <div className="relative flex h-full flex-col justify-between overflow-hidden p-7 lg:p-8">
+                  </span>
 
-                      {/* Large background number */}
-                      <span
-                        aria-hidden
-                        className="
-                          absolute
-                          -right-3
-                          -top-8
-                          select-none
-                          font-display
-                          text-[150px]
-                          font-black
-                          leading-none
-                          text-brand/[0.045]
-                        "
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
+                </div>
 
-                      {/* Subtle background glow */}
-                      <span
-                        aria-hidden
-                        className="
-                          pointer-events-none
-                          absolute
-                          -right-20
-                          -top-20
-                          size-48
-                          rounded-full
-                          bg-brand/[0.06]
-                          blur-3xl
-                          transition-all
-                          duration-700
-                          group-hover:bg-coral/[0.10]
-                        "
-                      />
+              </Link>
 
-                      <div className="relative z-10">
-
-                        {/* Number + accent */}
-                        <div className="flex items-center gap-3">
-                          <span className="font-display text-xs font-extrabold tracking-[0.18em] text-brand">
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-
-                          <span className="h-px w-10 bg-coral transition-all duration-500 group-hover:w-16" />
-                        </div>
-
-                        {/* Title */}
-                        <h3
-                          className="
-                            mt-8
-                            max-w-md
-                            font-display
-                            text-xl
-                            font-extrabold
-                            leading-tight
-                            text-foreground
-                            transition-colors
-                            duration-300
-                            group-hover:text-brand
-                            lg:text-2xl
-                          "
-                        >
-                          {s.name}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-                          {s.summary}
-                        </p>
-                      </div>
-
-                      {/* Bottom */}
-                      <div className="relative z-10 mt-8 flex items-center justify-between">
-
-                        <span className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                          {s.caption}
-                        </span>
-
-                        <span className="inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
-                          Explore
-                          <ArrowRight
-                            className="
-                              size-4
-                              transition-transform
-                              duration-300
-                              group-hover:translate-x-1
-                            "
-                          />
-                        </span>
-
-                      </div>
-
-                      {/* Bottom accent */}
-                      <span
-                        aria-hidden
-                        className="
-                          absolute
-                          bottom-0
-                          left-0
-                          h-1
-                          w-0
-                          bg-coral
-                          transition-all
-                          duration-500
-                          group-hover:w-full
-                        "
-                      />
-                    </div>
-                  )}
-
-                </Link>
-              </Reveal>
-            );
-          })}
+            </Reveal>
+          ))}
 
         </div>
+
+
+        {/* =====================================================
+            MORE SERVICES — LAST 4
+        ====================================================== */}
+
+        <div className="mt-16 border-t border-border pt-10">
+
+          {/* Heading */}
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+
+            <div>
+              <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-coral">
+                More services
+              </p>
+
+              <h3 className="mt-3 max-w-xl font-display text-2xl font-extrabold leading-tight text-foreground lg:text-3xl">
+                More ways we strengthen your retail execution.
+              </h3>
+            </div>
+
+            <Link
+              to="/services"
+              className="group inline-flex items-center gap-2 font-display text-sm font-bold text-brand"
+            >
+              Explore all services
+
+              <ArrowRight
+                className="
+                  size-4
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
+            </Link>
+
+          </div>
+
+
+          {/* Last 4 services */}
+          <div className="mt-8 grid border-y border-border md:grid-cols-2">
+
+            {services.slice(4, 8).map((s, i) => (
+
+              <Link
+                key={s.slug}
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                className={`
+                  group
+                  flex
+                  items-center
+                  gap-5
+                  px-2
+                  py-6
+                  transition-all
+                  duration-300
+                  hover:bg-muted/40
+                  md:px-5
+                  ${i < 2 ? "border-b" : ""}
+                  ${i % 2 === 0 ? "md:border-r" : ""}
+                `}
+              >
+
+                {/* Number */}
+                <span className="w-8 shrink-0 font-display text-xs font-bold tracking-[0.12em] text-brand/40">
+                  {String(i + 5).padStart(2, "0")}
+                </span>
+
+
+                {/* Coral vertical accent */}
+                <span
+                  className="
+                    h-9
+                    w-1
+                    shrink-0
+                    bg-coral/20
+                    transition-colors
+                    duration-300
+                    group-hover:bg-coral
+                  "
+                />
+
+
+                {/* Service information */}
+                <div className="min-w-0 flex-1">
+
+                  <h4 className="font-display text-base font-extrabold text-foreground transition-colors group-hover:text-brand lg:text-lg">
+                    {s.name}
+                  </h4>
+
+                  <p className="mt-1 line-clamp-1 text-sm text-muted-foreground">
+                    {s.summary}
+                  </p>
+
+                </div>
+
+
+                {/* Explore */}
+                <span className="inline-flex shrink-0 items-center gap-2 font-display text-sm font-bold text-coral">
+
+                  Explore
+
+                  <ArrowRight
+                    className="
+                      size-4
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  />
+
+                </span>
+
+              </Link>
+
+            ))}
+
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
