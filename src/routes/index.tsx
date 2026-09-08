@@ -82,132 +82,235 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative isolate overflow-hidden bg-brand-deep">
-      {/* =========================================================
-          BACKGROUND VIDEO
-      ========================================================= */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
-        src={heroVideoUrl}
-        autoPlay
-        loop
-        muted={muted}
-        playsInline
-        aria-label="NM Ingenious retail execution inside retail stores"
-      />
+    <section className="relative overflow-hidden bg-[#F5F7FA] text-brand-deep">
 
-      {/* =========================================================
-          MAIN READABILITY OVERLAY
-          Darker on the left where the typography sits.
-      ========================================================= */}
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
+
+      {/* Giant editorial background word */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(7,35,82,0.97) 0%, rgba(7,35,82,0.91) 30%, rgba(7,35,82,0.70) 52%, rgba(7,35,82,0.28) 78%, rgba(7,35,82,0.12) 100%)",
-        }}
-      />
-
-      {/* =========================================================
-          TOP / BOTTOM SOFTENING
-      ========================================================= */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(7,35,82,0.30) 0%, transparent 30%, rgba(7,35,82,0.38) 100%)",
-        }}
-      />
-
-      {/* =========================================================
-          VERY SUBTLE RETAIL GRID
-      ========================================================= */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.055]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
-        }}
-      />
-
-      {/* =========================================================
-          HERO CONTENT
-      ========================================================= */}
-      <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 py-20 lg:min-h-[680px] lg:px-8 lg:py-24">
-        <div className="max-w-4xl">
-
-          {/* Small accent line — NOT a badge/label */}
-          <div
-            aria-hidden="true"
-            className="mb-7 h-1 w-14 rounded-full bg-coral"
-          />
-
-          {/* =====================================================
-              HEADLINE
-          ===================================================== */}
-          <h1 className="max-w-4xl font-display text-4xl font-extrabold leading-[0.98] tracking-[-0.045em] text-white sm:text-5xl md:text-6xl lg:text-[5rem]">
-            <span className="block">
-              You built the product.
-            </span>
-
-            <span className="mt-2 block text-coral">
-              We get it to the people
-            </span>
-
-            <span className="block text-coral">
-              you built it for.
-            </span>
-          </h1>
-
-          {/* =====================================================
-              DESCRIPTION
-          ===================================================== */}
-          <p className="mt-8 max-w-2xl text-base leading-7 text-white/80 sm:text-lg sm:leading-8">
-            NM Ingenious turns shelf presence into sell-out, with trained
-            promoters, disciplined retail execution and real-time store
-            intelligence.
-          </p>
-
-          {/* =====================================================
-              CTA
-          ===================================================== */}
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-coral px-7 py-3.5 font-display text-sm font-bold text-coral-foreground shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_18px_40px_-14px_oklch(0.55_0.21_27/0.75)]"
-            >
-              Request an Audit
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-
-            <Link
-              to="/services"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/[0.04] px-7 py-3.5 font-display text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:bg-white/10"
-            >
-              Explore services
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </div>
+        className="pointer-events-none absolute -bottom-8 left-[-1%] select-none whitespace-nowrap font-display text-[12vw] font-extrabold leading-none tracking-[-0.08em] text-brand-deep/[0.025]"
+      >
+        SELL-OUT
       </div>
 
-      {/* =========================================================
-          VIDEO CONTROL
-      ========================================================= */}
-      <button
-        type="button"
-        onClick={() => setMuted((m) => !m)}
-        aria-label={muted ? "Unmute showreel" : "Mute showreel"}
-        className="absolute bottom-6 right-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/30 px-4 py-2 text-xs font-semibold text-white/85 backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/45 lg:bottom-8 lg:right-8"
-      >
-        <Play className="size-3.5" />
-        {muted ? "Unmute" : "Mute"}
-      </button>
+      {/* Fine vertical structure */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-[7%] hidden w-px bg-brand-deep/[0.06] lg:block"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-[7%] hidden w-px bg-brand-deep/[0.06] lg:block"
+      />
+
+
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
+
+      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14">
+
+        {/* ===================================================
+            TOP LINE
+        ==================================================== */}
+
+        <div className="flex items-center justify-between border-b border-brand-deep/10 py-4">
+
+          <div className="flex items-center gap-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+
+            <span className="font-display text-[9px] font-bold uppercase tracking-[0.28em] text-brand-deep/55">
+              NM Ingenious
+            </span>
+          </div>
+
+          <div className="hidden items-center gap-8 font-display text-[9px] font-bold uppercase tracking-[0.22em] text-brand-deep/35 md:flex">
+            <span>Retail Execution</span>
+            <span>Sell-Out Acceleration</span>
+            <span>01 / 03</span>
+          </div>
+
+        </div>
+
+
+        {/* ===================================================
+            HERO
+        ==================================================== */}
+
+        <div className="relative grid min-h-[590px] items-center lg:grid-cols-[0.9fr_1.1fr]">
+
+          {/* =================================================
+              LEFT CONTENT
+          ================================================== */}
+
+          <div className="relative z-20 py-14 lg:py-16">
+
+            {/* Micro headline */}
+            <div className="mb-7 flex items-center gap-4">
+
+              <span className="font-display text-[10px] font-bold uppercase tracking-[0.3em] text-brand-deep/45">
+                The last three feet
+              </span>
+
+              <span className="h-px w-12 bg-coral" />
+
+            </div>
+
+
+            {/* MAIN HEADLINE */}
+            <h1 className="max-w-[760px] font-display text-[3.4rem] font-extrabold leading-[0.91] tracking-[-0.065em] sm:text-6xl lg:text-[5.35rem] xl:text-[5.8rem]">
+
+              <span className="block text-brand-deep">
+                You built the
+              </span>
+
+              <span className="block text-brand-deep">
+                product.
+              </span>
+
+              <span className="mt-4 block text-coral">
+                We get it to
+              </span>
+
+              <span className="block text-coral">
+                the people
+              </span>
+
+              <span className="block text-coral">
+                you built it for.
+              </span>
+
+            </h1>
+
+
+            {/* Description */}
+            <p className="mt-8 max-w-[510px] text-[15px] leading-7 text-brand-deep/60 sm:text-base">
+              We turn shelf presence into sell-out through trained
+              promoters, disciplined retail execution and real-time
+              store intelligence.
+            </p>
+
+
+            {/* CTA */}
+            <div className="mt-8 flex flex-wrap items-center gap-5">
+
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-3 bg-brand-deep px-6 py-3.5 font-display text-xs font-bold uppercase tracking-[0.04em] text-white transition-all duration-300 hover:bg-coral"
+              >
+                Request an Audit
+
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+              <Link
+                to="/services"
+                className="group inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-brand-deep"
+              >
+                Explore services
+
+                <span className="flex size-7 items-center justify-center border border-brand-deep/20 transition-all duration-300 group-hover:border-coral group-hover:bg-coral group-hover:text-white">
+                  <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                </span>
+              </Link>
+
+            </div>
+
+          </div>
+
+
+          {/* =================================================
+              RIGHT VIDEO
+          ================================================== */}
+
+          <div className="relative lg:-mr-14">
+
+            {/* Vertical index */}
+            <div className="absolute -left-9 top-1/2 z-20 hidden -translate-y-1/2 -rotate-90 lg:block">
+              <span className="font-display text-[9px] font-bold uppercase tracking-[0.3em] text-brand-deep/35">
+                Store / Shopper / Sell-Out
+              </span>
+            </div>
+
+
+            {/* VIDEO */}
+            <div className="group relative overflow-hidden bg-brand-deep">
+
+              <video
+                ref={videoRef}
+                className="block aspect-[16/10] w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.025]"
+                src={heroVideoUrl}
+                autoPlay
+                loop
+                muted={muted}
+                playsInline
+                aria-label="NM Ingenious retail execution"
+              />
+
+              {/* Cinematic overlay */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-deep/25 via-transparent to-transparent"
+              />
+
+              {/* Minimal sound */}
+              <button
+                type="button"
+                onClick={() => setMuted((value) => !value)}
+                aria-label={muted ? "Unmute video" : "Mute video"}
+                className="absolute bottom-5 right-5 z-20 flex size-10 items-center justify-center border border-white/40 bg-black/20 text-[9px] font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/50"
+              >
+                {muted ? "ON" : "OFF"}
+              </button>
+
+            </div>
+
+
+            {/* =================================================
+                CORAL ACCENT FRAME
+            ================================================== */}
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-3 -left-3 h-20 w-20 border-b border-l border-coral"
+            />
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-3 -top-3 h-20 w-20 border-r border-t border-brand-deep/20"
+            />
+
+          </div>
+
+        </div>
+
+
+        {/* ===================================================
+            BOTTOM MESSAGE BAR
+        ==================================================== */}
+
+        <div className="relative flex flex-col gap-3 border-t border-brand-deep/10 py-4 sm:flex-row sm:items-center sm:justify-between">
+
+          <p className="font-display text-[9px] font-bold uppercase tracking-[0.24em] text-brand-deep/35">
+            Shelf presence → Shopper engagement → Sell-out
+          </p>
+
+          <div className="flex items-center gap-2">
+            <span className="h-px w-10 bg-coral" />
+
+            <span className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-brand-deep/35">
+              India-wide execution
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
   );
 }
