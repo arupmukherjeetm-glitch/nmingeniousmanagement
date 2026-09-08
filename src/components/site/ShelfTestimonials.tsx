@@ -18,7 +18,7 @@ const testimonialPeople: Record<
 > = {
   "P&G": {
     name: "Kanu",
-    designation: "Senior Purchase Manager | Indian MNC",
+    designation: "Senior Purchase Manager | P&G",
   },
 
   "Axiom": {
@@ -31,14 +31,14 @@ const testimonialPeople: Record<
     designation: "Marico",
   },
 
-  "Cipla Health": {
+  "Capital Foods": {
     name: "Saurabh Desai",
     designation: "HR Professional",
   },
 
   "National Retail": {
     name: "Tejas Goenka",
-    designation: "MSME Honours",
+    designation: "MSME",
   },
 };
 
