@@ -76,7 +76,6 @@ export type Service = {
   outcome: string;
   image: string;
   secondImage: string;
-  images: string[];
   caption: string;
 };
 
@@ -106,7 +105,9 @@ export const services: Service[] = [
     outcome: "Higher shopper interaction, higher conversion, lower attrition at the shelf.",
     image: pdm_final.url,
     secondImage: pdm_final.url,
-    images: [pdm_final.url, a3.url, a4.url, a5.url, a6.url],
+      images: [
+      /media/pdm.url,
+  ],
     caption: "Trained promoters at the shelf",
   },
   {
@@ -130,7 +131,9 @@ export const services: Service[] = [
     outcome: "Premium SKUs justified, baskets built, repeat purchase earned.",
     image: beauty.url,
     secondImage: beauty.url,
-    images: [beauty.url, a7.url, a8.url, a9.url, a10.url],
+      images: [
+    beauty.url,
+  ],
     caption: "Assisted beauty selling",
   },
   {
@@ -156,7 +159,6 @@ export const services: Service[] = [
     outcome: "Seen, stocked, presented right, every week.",
     image: MVE.url,
     secondImage: MVE.url,
-    images: [MVE.url, a11.url, a12.url, a13.url, a14.url],
     caption: "Seen, stocked, presented right",
   },
   {
@@ -180,7 +182,6 @@ export const services: Service[] = [
     outcome: "Measured trial, measured cost per conversion, measured repeat.",
     image: btlsampling.url,
     secondImage: btlsampling.url,
-    images: [btlsampling.url, a15.url, a16.url, a17.url, a18.url],
     caption: "Activation and sampling",
   },
   {
@@ -206,7 +207,6 @@ export const services: Service[] = [
     outcome: "Decisions in days, not quarters.",
     image: RTT.url,
     secondImage: RTT.url,
-    images: [RTT.url, a19.url, a20.url, a21.url, a22.url],
     caption: "Field intelligence, live",
   },
   {
@@ -231,7 +231,6 @@ export const services: Service[] = [
     outcome: "Zero compliance exposure, full audit trail.",
     image: compliance.url,
     secondImage: compliance.url,
-    images: [compliance.url, a23.url, a24.url, a25.url, a26.url],
     caption: "Trained, compliant field teams",
   },
   {
@@ -256,7 +255,6 @@ export const services: Service[] = [
     outcome: "Payroll closed on time, every cycle, with zero statutory leakage.",
     image: a12.url,
     secondImage: a8.url,
-    images: [a12.url, a8.url, a27.url, a28.url, a29.url],
     caption: "Payroll on an automated HRMS",
   },
   {
@@ -281,7 +279,6 @@ export const services: Service[] = [
     outcome: "An HR function that scales with headcount, not ahead of it.",
     image: fractionalhr.url,
     secondImage: fractionalhr.url,
-    images: [fractionalhr.url, a30.url, a31.url, a32.url, a33.url],
     caption: "HR shared services",
   },
 ];
