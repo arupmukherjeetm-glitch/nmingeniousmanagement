@@ -751,38 +751,37 @@ function ServicesSection() {
               >
 
                 {/* Image */}
-                <div className="relative aspect-video overflow-hidden">
+<div className="relative aspect-[16/8] overflow-hidden bg-muted">
+  <img
+    src={s.image}
+    alt={s.caption}
+    loading="lazy"
+    className="
+      h-full
+      w-full
+      object-contain
+      transition-transform
+      duration-[900ms]
+      ease-[cubic-bezier(0.22,1,0.36,1)]
+      group-hover:scale-[1.03]
+    "
+  />
 
-                  <img
-                    src={s.image}
-                    alt={s.caption}
-                    loading="lazy"
-                    className="
-                      size-full
-                      object-cover
-                      transition-transform
-                      duration-[900ms]
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
-                      group-hover:scale-[1.04]
-                    "
-                  />
+  {/* Image gradient */}
+  <span
+    aria-hidden
+    className="absolute inset-0 pointer-events-none"
+    style={{
+      background:
+        "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent 55%)",
+    }}
+  />
 
-                  {/* Image gradient */}
-                  <span
-                    aria-hidden
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent 55%)",
-                    }}
-                  />
-
-                  {/* Caption */}
-                  <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/80">
-                    {s.caption}
-                  </span>
-
-                </div>
+  {/* Caption */}
+  <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white">
+    {s.caption}
+  </span>
+</div>
 
 
                 {/* Content */}
