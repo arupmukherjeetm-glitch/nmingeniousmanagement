@@ -840,76 +840,52 @@ function ServicesSection() {
         </div>
 
         {/* =====================================================
-    MORE SERVICES — CLEAN ONE-LINE LAYOUT
-===================================================== */}
+    LAST 4 SERVICES — CONTINUATION
+====================================================== */}
 
-<div className="mt-16">
+<div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 
-  {/* Header */}
-  <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-
-    <div>
-      <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-coral">
-        More services
-      </p>
-
-      <h3 className="mt-3 max-w-xl font-display text-2xl font-extrabold leading-tight text-foreground lg:text-3xl">
-        More ways we strengthen your retail execution.
-      </h3>
-    </div>
-
-    <Link
-      to="/services"
-      className="group inline-flex shrink-0 items-center gap-2 font-display text-sm font-bold text-brand"
-    >
-      Explore all services
-
-      <ArrowRight
-        className="
-          size-4
-          transition-transform
-          duration-300
-          group-hover:translate-x-1
-        "
-      />
-    </Link>
-
-  </div>
-
-
-  {/* =====================================================
-      FOUR SERVICES — ONE ROW
-  ====================================================== */}
-
-  <div className="mt-9 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-
-    {services.slice(4, 8).map((s) => (
+  {services.slice(4).map((s, i) => (
+    <Reveal key={s.slug} delay={i * 50}>
 
       <Link
-        key={s.slug}
         to="/services/$slug"
         params={{ slug: s.slug }}
         className="
+          brand-box
           group
-          relative
           flex
-          min-h-[150px]
+          h-full
+          min-h-[230px]
           flex-col
-          border-l-2
-          border-brand/10
-          pl-5
+          p-7
           transition-all
           duration-300
-          hover:border-coral
+          hover:-translate-y-1
         "
       >
 
-        {/* Service title */}
-        <h4
+        {/* Accent */}
+        <span
+          aria-hidden
           className="
-            max-w-[230px]
+            mb-5
+            block
+            h-1
+            w-8
+            rounded-full
+            bg-coral
+            transition-all
+            duration-300
+            group-hover:w-12
+          "
+        />
+
+        {/* Service Name */}
+        <h3
+          className="
             font-display
-            text-lg
+            text-xl
             font-extrabold
             leading-tight
             text-foreground
@@ -919,14 +895,13 @@ function ServicesSection() {
           "
         >
           {s.name}
-        </h4>
-
+        </h3>
 
         {/* Description */}
         <p
           className="
             mt-3
-            max-w-[240px]
+            flex-1
             text-sm
             leading-relaxed
             text-muted-foreground
@@ -935,15 +910,13 @@ function ServicesSection() {
           {s.summary}
         </p>
 
-
         {/* Explore */}
         <span
           className="
-            mt-auto
+            mt-6
             inline-flex
             items-center
             gap-2
-            pt-6
             font-display
             text-sm
             font-bold
@@ -964,9 +937,10 @@ function ServicesSection() {
 
       </Link>
 
-    ))}
+    </Reveal>
+  ))}
 
-  </div>
+</div>
 
 </div>
 
