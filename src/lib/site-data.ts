@@ -161,6 +161,12 @@ export const services: Service[] = [
     outcome: "Seen, stocked, presented right, every week.",
     image: MVE.url,
     secondImage: MVE.url,
+images: [
+    pdm_final.url,
+        a1.url,
+        a2.url,
+  ],
+    
     caption: "Seen, stocked, presented right",
   },
   {
@@ -184,6 +190,12 @@ export const services: Service[] = [
     outcome: "Measured trial, measured cost per conversion, measured repeat.",
     image: btlsampling.url,
     secondImage: btlsampling.url,
+images: [
+    pdm_final.url,
+        a1.url,
+        a2.url,
+  ],
+    
     caption: "Activation and sampling",
   },
   {
@@ -209,6 +221,11 @@ export const services: Service[] = [
     outcome: "Decisions in days, not quarters.",
     image: RTT.url,
     secondImage: RTT.url,
+    images: [
+    pdm_final.url,
+        a1.url,
+        a2.url,
+  ],
     caption: "Field intelligence, live",
   },
   {
@@ -233,6 +250,11 @@ export const services: Service[] = [
     outcome: "Zero compliance exposure, full audit trail.",
     image: compliance.url,
     secondImage: compliance.url,
+    images: [
+    pdm_final.url,
+        a1.url,
+        a2.url,
+  ],
     caption: "Trained, compliant field teams",
   },
   {
@@ -257,6 +279,12 @@ export const services: Service[] = [
     outcome: "Payroll closed on time, every cycle, with zero statutory leakage.",
     image: a12.url,
     secondImage: a8.url,
+images: [
+    pdm_final.url,
+        a1.url,
+        a2.url,
+  ],
+    
     caption: "Payroll on an automated HRMS",
   },
   {
@@ -281,6 +309,12 @@ export const services: Service[] = [
     outcome: "An HR function that scales with headcount, not ahead of it.",
     image: fractionalhr.url,
     secondImage: fractionalhr.url,
+images: [
+    pdm_final.url,
+        a1.url,
+        a2.url,
+  ],
+    
     caption: "HR shared services",
   },
 ];
