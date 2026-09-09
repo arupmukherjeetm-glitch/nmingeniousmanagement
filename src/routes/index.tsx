@@ -727,16 +727,13 @@ function ServicesSection() {
           </div>
         </div>
 
-
         {/* =====================================================
             FIRST 4 SERVICES — IMAGE CARD DESIGN
         ====================================================== */}
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
-
           {services.slice(0, 4).map((s, i) => (
             <Reveal key={s.slug} delay={i * 50}>
-
               <Link
                 to="/services/$slug"
                 params={{ slug: s.slug }}
@@ -749,64 +746,60 @@ function ServicesSection() {
                   overflow-hidden
                 "
               >
-
                 {/* Image */}
-<div className="relative aspect-[16/8] overflow-hidden bg-[#E9EEF5]">
+                <div className="relative aspect-[16/8] overflow-hidden bg-[#E9EEF5]">
 
-  {/* Blurred background using the same image */}
-  <div
-    aria-hidden
-    className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl"
-    style={{
-      backgroundImage: `url(${s.image})`,
-    }}
-  />
+                  {/* Blurred background using the same image */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl"
+                    style={{
+                      backgroundImage: `url(${s.image})`,
+                    }}
+                  />
 
-  {/* Soft overlay to keep background subtle */}
-  <div
-    aria-hidden
-    className="absolute inset-0 bg-brand-deep/25"
-  />
+                  {/* Soft overlay */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-brand-deep/25"
+                  />
 
-  {/* Full original image — NO CROPPING */}
-  <img
-    src={s.image}
-    alt={s.caption}
-    loading="lazy"
-    className="
-      relative
-      z-10
-      h-full
-      w-full
-      object-contain
-      transition-transform
-      duration-[900ms]
-      ease-[cubic-bezier(0.22,1,0.36,1)]
-      group-hover:scale-[1.02]
-    "
-  />
+                  {/* Full original image — NO CROPPING */}
+                  <img
+                    src={s.image}
+                    alt={s.caption}
+                    loading="lazy"
+                    className="
+                      relative
+                      z-10
+                      h-full
+                      w-full
+                      object-contain
+                      transition-transform
+                      duration-[900ms]
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:scale-[1.02]
+                    "
+                  />
 
-  {/* Bottom gradient */}
-  <span
-    aria-hidden
-    className="pointer-events-none absolute inset-0 z-20"
-    style={{
-      background:
-        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent 55%)",
-    }}
-  />
+                  {/* Bottom gradient */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-20"
+                    style={{
+                      background:
+                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent 55%)",
+                    }}
+                  />
 
-  {/* Caption */}
-  <span className="absolute bottom-4 left-5 z-30 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/90">
-    {s.caption}
-  </span>
-
-</div>
-
+                  {/* Caption */}
+                  <span className="absolute bottom-4 left-5 z-30 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/90">
+                    {s.caption}
+                  </span>
+                </div>
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col p-7">
-
                   <h3 className="font-display text-xl font-extrabold text-foreground transition-colors group-hover:text-brand">
                     {s.name}
                   </h3>
@@ -816,7 +809,6 @@ function ServicesSection() {
                   </p>
 
                   <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
-
                     Explore
 
                     <ArrowRight
@@ -827,120 +819,109 @@ function ServicesSection() {
                         group-hover:translate-x-1
                       "
                     />
-
                   </span>
-
                 </div>
-
               </Link>
-
             </Reveal>
           ))}
-
         </div>
 
         {/* =====================================================
-    LAST 4 SERVICES — CONTINUATION
-====================================================== */}
+            LAST 4 SERVICES — CONTINUATION
+        ====================================================== */}
 
-<div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {services.slice(4).map((s, i) => (
+            <Reveal key={s.slug} delay={i * 50}>
+              <Link
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                className="
+                  brand-box
+                  group
+                  flex
+                  h-full
+                  min-h-[230px]
+                  flex-col
+                  p-7
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                "
+              >
+                {/* Accent */}
+                <span
+                  aria-hidden
+                  className="
+                    mb-5
+                    block
+                    h-1
+                    w-8
+                    rounded-full
+                    bg-coral
+                    transition-all
+                    duration-300
+                    group-hover:w-12
+                  "
+                />
 
-  {services.slice(4).map((s, i) => (
-    <Reveal key={s.slug} delay={i * 50}>
+                {/* Service Name */}
+                <h3
+                  className="
+                    font-display
+                    text-xl
+                    font-extrabold
+                    leading-tight
+                    text-foreground
+                    transition-colors
+                    duration-300
+                    group-hover:text-brand
+                  "
+                >
+                  {s.name}
+                </h3>
 
-      <Link
-        to="/services/$slug"
-        params={{ slug: s.slug }}
-        className="
-          brand-box
-          group
-          flex
-          h-full
-          min-h-[230px]
-          flex-col
-          p-7
-          transition-all
-          duration-300
-          hover:-translate-y-1
-        "
-      >
+                {/* Description */}
+                <p
+                  className="
+                    mt-3
+                    flex-1
+                    text-sm
+                    leading-relaxed
+                    text-muted-foreground
+                  "
+                >
+                  {s.summary}
+                </p>
 
-        {/* Accent */}
-        <span
-          aria-hidden
-          className="
-            mb-5
-            block
-            h-1
-            w-8
-            rounded-full
-            bg-coral
-            transition-all
-            duration-300
-            group-hover:w-12
-          "
-        />
+                {/* Explore */}
+                <span
+                  className="
+                    mt-6
+                    inline-flex
+                    items-center
+                    gap-2
+                    font-display
+                    text-sm
+                    font-bold
+                    text-coral
+                  "
+                >
+                  Explore
 
-        {/* Service Name */}
-        <h3
-          className="
-            font-display
-            text-xl
-            font-extrabold
-            leading-tight
-            text-foreground
-            transition-colors
-            duration-300
-            group-hover:text-brand
-          "
-        >
-          {s.name}
-        </h3>
-
-        {/* Description */}
-        <p
-          className="
-            mt-3
-            flex-1
-            text-sm
-            leading-relaxed
-            text-muted-foreground
-          "
-        >
-          {s.summary}
-        </p>
-
-        {/* Explore */}
-        <span
-          className="
-            mt-6
-            inline-flex
-            items-center
-            gap-2
-            font-display
-            text-sm
-            font-bold
-            text-coral
-          "
-        >
-          Explore
-
-          <ArrowRight
-            className="
-              size-4
-              transition-transform
-              duration-300
-              group-hover:translate-x-1
-            "
-          />
-        </span>
-
-      </Link>
-
-    </Reveal>
-  ))}
-
-</div>
+                  <ArrowRight
+                    className="
+                      size-4
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  />
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
 
       </div>
     </section>
