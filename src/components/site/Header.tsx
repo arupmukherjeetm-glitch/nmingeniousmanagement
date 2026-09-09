@@ -64,40 +64,36 @@ export function Header() {
       )}
     >
       {/* ========================================================
-          UTILITY BAR
-      ======================================================== */}
-      <div
-        className="text-white"
-        style={{ background: "var(--gradient-brand)" }}
+    UTILITY BAR
+======================================================== */}
+<div
+  className="text-white"
+  style={{ background: "var(--gradient-brand)" }}
+>
+  <div className="mx-auto flex h-10 max-w-7xl items-center justify-end gap-4 px-5 lg:px-8">
+    <div className="flex w-full items-center justify-between gap-5 sm:w-auto sm:justify-end">
+      <a
+        href={`mailto:${contactDetails.email}`}
+        className="flex items-center gap-2 text-xs font-medium text-white transition-colors hover:text-white"
       >
-        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
-          <p className="hidden text-xs font-medium tracking-wide text-white/70 sm:block">
-            Sell-out acceleration across 31 states &amp; UTs
-          </p>
+        <Mail className="size-3.5 text-white" />
 
-          <div className="flex w-full items-center justify-between gap-5 sm:w-auto sm:justify-end">
-            <a
-              href={`mailto:${contactDetails.email}`}
-              className="flex items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-white"
-            >
-              <Mail className="size-3.5 text-coral" />
+        <span className="truncate">
+          {contactDetails.email}
+        </span>
+      </a>
 
-              <span className="truncate">
-                {contactDetails.email}
-              </span>
-            </a>
+      <a
+        href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}
+        className="flex items-center gap-2 text-xs font-semibold text-white transition-colors hover:text-white"
+      >
+        <Phone className="size-3.5 text-white" />
 
-            <a
-              href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}
-              className="flex items-center gap-2 text-xs font-semibold text-white/85 transition-colors hover:text-white"
-            >
-              <Phone className="size-3.5 text-coral" />
-
-              <span>{contactDetails.phone}</span>
-            </a>
-          </div>
-        </div>
-      </div>
+        <span>{contactDetails.phone}</span>
+      </a>
+    </div>
+  </div>
+</div>
 
       {/* ========================================================
           MAIN HEADER
