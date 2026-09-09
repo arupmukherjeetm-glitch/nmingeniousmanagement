@@ -807,110 +807,106 @@ function ServicesSection() {
 
 
                 {/* =================================================
-                    RIGHT — SERVICE CONTENT
-                ================================================== */}
+    RIGHT — SERVICE CONTENT
+================================================= */}
 
-                <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
+<div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
 
-                  {/* Service title + arrow */}
-                  <div className="flex items-start justify-between gap-3">
+  {/* Service name + arrow */}
+  <div className="flex items-start justify-between gap-3">
 
-                    <h3
-                      className="
-                        max-w-[270px]
-                        font-display
-                        text-lg
-                        font-extrabold
-                        leading-[1.12]
-                        text-foreground
-                        transition-colors
-                        duration-300
-                        group-hover:text-brand
-                        sm:text-xl
-                      "
-                    >
-                      {s.name}
-                    </h3>
+    <h3
+      className="
+        max-w-[300px]
+        font-display
+        text-lg
+        font-extrabold
+        leading-[1.08]
+        text-foreground
+        transition-colors
+        duration-300
+        group-hover:text-brand
+        sm:text-xl
+      "
+    >
+      {s.name}
+    </h3>
 
-                    <span
-                      className="
-                        flex
-                        size-8
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-border
-                        text-brand
-                        transition-all
-                        duration-300
-                        group-hover:border-coral
-                        group-hover:bg-coral
-                        group-hover:text-white
-                      "
-                    >
-                      <ArrowRight
-                        className="
-                          size-3.5
-                          transition-transform
-                          duration-300
-                          group-hover:translate-x-0.5
-                        "
-                      />
-                    </span>
+    <span
+      className="
+        flex
+        size-8
+        shrink-0
+        items-center
+        justify-center
+        rounded-full
+        border
+        border-border
+        text-brand
+        transition-all
+        duration-300
+        group-hover:border-coral
+        group-hover:bg-coral
+        group-hover:text-white
+      "
+    >
+      <ArrowRight
+        className="
+          size-3.5
+          transition-transform
+          duration-300
+          group-hover:translate-x-0.5
+        "
+      />
+    </span>
 
-                  </div>
-
-
-                  {/* Description */}
-                  <p
-                    className="
-                      mt-3
-                      max-w-[330px]
-                      text-xs
-                      leading-[1.55]
-                      text-muted-foreground
-                      sm:text-sm
-                    "
-                  >
-                    {s.summary}
-                  </p>
+  </div>
 
 
-                  {/* Explore */}
-                  <span
-                    className="
-                      mt-7
-                      inline-flex
-                      items-center
-                      gap-1.5
-                      font-display
-                      text-xs
-                      font-bold
-                      uppercase
-                      tracking-[0.08em]
-                      text-coral
-                    "
-                  >
-                    Explore
+  {/* Description */}
+  <p
+    className="
+      mt-3
+      max-w-[340px]
+      text-xs
+      leading-[1.55]
+      text-muted-foreground
+      sm:text-sm
+    "
+  >
+    {s.summary}
+  </p>
 
-                    <ArrowRight
-                      className="
-                        size-3.5
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
-                    />
-                  </span>
 
-                </div>
+  {/* Explore */}
+  <span
+    className="
+      mt-6
+      inline-flex
+      w-fit
+      items-center
+      gap-1.5
+      font-display
+      text-xs
+      font-bold
+      uppercase
+      tracking-[0.08em]
+      text-coral
+    "
+  >
+    Explore
 
-              </Link>
-            </Reveal>
-          ))}
-        </div>
+    <ArrowRight
+      className="
+        size-3.5
+        transition-transform
+        duration-300
+        group-hover:translate-x-1
+      "
+    />
+  </span>
+
+</div>
 
 
         {/* =====================================================
