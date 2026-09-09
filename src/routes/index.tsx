@@ -727,182 +727,189 @@ function ServicesSection() {
           </div>
         </div>
 
-       {/* =====================================================
-    FIRST 4 SERVICES — HORIZONTAL IMAGE CARDS
-===================================================== */}
 
-<div className="mt-12 grid gap-5 md:grid-cols-2">
-  {services.slice(0, 4).map((s, i) => (
-    <Reveal key={s.slug} delay={i * 50}>
-      <Link
-        to="/services/$slug"
-        params={{ slug: s.slug }}
-        className="
-          group
-          flex
-          min-h-[235px]
-          overflow-hidden
-          rounded-2xl
-          border
-          border-border
-          bg-white
-          transition-all
-          duration-500
-          hover:-translate-y-1
-          hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]
-        "
-      >
+        {/* =====================================================
+            FIRST 4 SERVICES — HORIZONTAL IMAGE CARDS
+        ====================================================== */}
 
-        {/* =================================================
-            LEFT — IMAGE
-        ================================================== */}
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {services.slice(0, 4).map((s, i) => (
+            <Reveal key={s.slug} delay={i * 50}>
+              <Link
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                className="
+                  group
+                  flex
+                  min-h-[235px]
+                  overflow-hidden
+                  rounded-2xl
+                  border
+                  border-border
+                  bg-white
+                  transition-all
+                  duration-500
+                  hover:-translate-y-1
+                  hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]
+                "
+              >
 
-        <div className="relative w-[42%] shrink-0 overflow-hidden bg-[#E9EEF5]">
+                {/* =================================================
+                    LEFT — IMAGE
+                ================================================== */}
 
-          <img
-            src={s.image}
-            alt={s.caption}
-            loading="lazy"
-            className="
-              h-full
-              w-full
-              object-cover
-              transition-transform
-              duration-[900ms]
-              ease-[cubic-bezier(0.22,1,0.36,1)]
-              group-hover:scale-[1.04]
-            "
-          />
+                <div className="relative w-[42%] shrink-0 overflow-hidden bg-[#E9EEF5]">
 
-          {/* Image overlay */}
-          <span
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent 55%)",
-            }}
-          />
+                  <img
+                    src={s.image}
+                    alt={s.caption}
+                    loading="lazy"
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                      transition-transform
+                      duration-[900ms]
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:scale-[1.04]
+                    "
+                  />
 
-          {/* Service caption */}
-          <span
-            className="
-              absolute
-              bottom-4
-              left-4
-              right-3
-              font-display
-              text-[9px]
-              font-bold
-              uppercase
-              leading-tight
-              tracking-[0.16em]
-              text-white/90
-            "
-          >
-            {s.caption}
-          </span>
+                  {/* Image overlay */}
+                  <span
+                    aria-hidden
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent 55%)",
+                    }}
+                  />
 
+                  {/* Service caption */}
+                  <span
+                    className="
+                      absolute
+                      bottom-4
+                      left-4
+                      right-3
+                      font-display
+                      text-[9px]
+                      font-bold
+                      uppercase
+                      leading-tight
+                      tracking-[0.16em]
+                      text-white/90
+                    "
+                  >
+                    {s.caption}
+                  </span>
+
+                </div>
+
+
+                {/* =================================================
+                    RIGHT — SERVICE CONTENT
+                ================================================== */}
+
+                <div className="flex min-w-0 flex-1 flex-col justify-between p-5 sm:p-6">
+
+                  {/* Service name + arrow */}
+                  <div>
+                    <div className="flex items-start justify-between gap-3">
+
+                      <h3
+                        className="
+                          font-display
+                          text-lg
+                          font-extrabold
+                          leading-[1.12]
+                          text-foreground
+                          transition-colors
+                          duration-300
+                          group-hover:text-brand
+                          sm:text-xl
+                        "
+                      >
+                        {s.name}
+                      </h3>
+
+                      <span
+                        className="
+                          flex
+                          size-8
+                          shrink-0
+                          items-center
+                          justify-center
+                          rounded-full
+                          border
+                          border-border
+                          text-brand
+                          transition-all
+                          duration-300
+                          group-hover:border-coral
+                          group-hover:bg-coral
+                          group-hover:text-white
+                        "
+                      >
+                        <ArrowRight
+                          className="
+                            size-3.5
+                            transition-transform
+                            duration-300
+                            group-hover:translate-x-0.5
+                          "
+                        />
+                      </span>
+
+                    </div>
+
+                    {/* Description */}
+                    <p
+                      className="
+                        mt-3
+                        text-xs
+                        leading-relaxed
+                        text-muted-foreground
+                        sm:text-sm
+                      "
+                    >
+                      {s.summary}
+                    </p>
+                  </div>
+
+
+                  {/* Explore */}
+                  <span
+                    className="
+                      mt-5
+                      inline-flex
+                      items-center
+                      gap-1.5
+                      font-display
+                      text-xs
+                      font-bold
+                      text-coral
+                    "
+                  >
+                    Explore
+
+                    <ArrowRight
+                      className="
+                        size-3.5
+                        transition-transform
+                        duration-300
+                        group-hover:translate-x-1
+                      "
+                    />
+                  </span>
+
+                </div>
+
+              </Link>
+            </Reveal>
+          ))}
         </div>
 
-
-        {/* =================================================
-    RIGHT — SERVICE CONTENT
-================================================= */}
-
-<div className="flex min-w-0 flex-1 flex-col justify-between p-5 sm:p-6">
-
-  {/* Service name + arrow */}
-  <div>
-    <div className="flex items-start justify-between gap-3">
-
-      <h3
-        className="
-          font-display
-          text-lg
-          font-extrabold
-          leading-[1.12]
-          text-foreground
-          transition-colors
-          duration-300
-          group-hover:text-brand
-          sm:text-xl
-        "
-      >
-        {s.name}
-      </h3>
-
-      <span
-        className="
-          flex
-          size-8
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          border
-          border-border
-          text-brand
-          transition-all
-          duration-300
-          group-hover:border-coral
-          group-hover:bg-coral
-          group-hover:text-white
-        "
-      >
-        <ArrowRight
-          className="
-            size-3.5
-            transition-transform
-            duration-300
-            group-hover:translate-x-0.5
-          "
-        />
-      </span>
-
-    </div>
-
-    {/* Description */}
-    <p
-      className="
-        mt-3
-        text-xs
-        leading-relaxed
-        text-muted-foreground
-        sm:text-sm
-      "
-    >
-      {s.summary}
-    </p>
-  </div>
-
-
-  {/* Explore */}
-  <span
-    className="
-      mt-5
-      inline-flex
-      items-center
-      gap-1.5
-      font-display
-      text-xs
-      font-bold
-      text-coral
-    "
-  >
-    Explore
-
-    <ArrowRight
-      className="
-        size-3.5
-        transition-transform
-        duration-300
-        group-hover:translate-x-1
-      "
-    />
-  </span>
-
-</div>
 
         {/* =====================================================
             LAST 4 SERVICES — CONTINUATION
@@ -927,6 +934,7 @@ function ServicesSection() {
                   hover:-translate-y-1
                 "
               >
+
                 {/* Accent */}
                 <span
                   aria-hidden
@@ -996,6 +1004,7 @@ function ServicesSection() {
                     "
                   />
                 </span>
+
               </Link>
             </Reveal>
           ))}
