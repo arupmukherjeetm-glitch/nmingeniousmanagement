@@ -50,6 +50,8 @@ const RTT = { url: "/media/RTT.webp" };
 const compliance = { url: "/media/compliance.webp" };
 const fractionalhr = { url: "/media/fractionalhr.webp" };
 const pdm_final = { url: "/media/pdm_final.webp" };
+const pdm3 = { url: "/media/pdm3.png" };
+const pdm4 = { url: "/media/pdm4.png" };
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero.mp4";
@@ -107,8 +109,9 @@ export const services: Service[] = [
     secondImage: pdm_final.url,
       images: [
     pdm_final.url,
-        a1.url,
-        a2.url,
+       pdm.url,
+        pdm3.url,
+        pdm4.url,
   ],
     caption: "Trained promoters at the shelf",
   },
