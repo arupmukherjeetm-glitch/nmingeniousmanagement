@@ -751,36 +751,56 @@ function ServicesSection() {
               >
 
                 {/* Image */}
-<div className="relative aspect-[16/8] overflow-hidden bg-muted">
+<div className="relative aspect-[16/8] overflow-hidden bg-[#E9EEF5]">
+
+  {/* Blurred background using the same image */}
+  <div
+    aria-hidden
+    className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl"
+    style={{
+      backgroundImage: `url(${s.image})`,
+    }}
+  />
+
+  {/* Soft overlay to keep background subtle */}
+  <div
+    aria-hidden
+    className="absolute inset-0 bg-brand-deep/25"
+  />
+
+  {/* Full original image — NO CROPPING */}
   <img
     src={s.image}
     alt={s.caption}
     loading="lazy"
     className="
+      relative
+      z-10
       h-full
       w-full
       object-contain
       transition-transform
       duration-[900ms]
       ease-[cubic-bezier(0.22,1,0.36,1)]
-      group-hover:scale-[1.03]
+      group-hover:scale-[1.02]
     "
   />
 
-  {/* Image gradient */}
+  {/* Bottom gradient */}
   <span
     aria-hidden
-    className="absolute inset-0 pointer-events-none"
+    className="pointer-events-none absolute inset-0 z-20"
     style={{
       background:
-        "linear-gradient(to top, oklch(0.34 0.09 245 / 0.75), transparent 55%)",
+        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent 55%)",
     }}
   />
 
   {/* Caption */}
-  <span className="absolute bottom-4 left-5 font-display text-xs font-bold uppercase tracking-[0.2em] text-white">
+  <span className="absolute bottom-4 left-5 z-30 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/90">
     {s.caption}
   </span>
+
 </div>
 
 
