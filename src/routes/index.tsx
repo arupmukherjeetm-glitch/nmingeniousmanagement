@@ -728,103 +728,252 @@ function ServicesSection() {
         </div>
 
         {/* =====================================================
-            FIRST 4 SERVICES — IMAGE CARD DESIGN
-        ====================================================== */}
+    FIRST 4 SERVICES — HORIZONTAL SERVICE CARDS
+===================================================== */}
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
-          {services.slice(0, 4).map((s, i) => (
-            <Reveal key={s.slug} delay={i * 50}>
-              <Link
-                to="/services/$slug"
-                params={{ slug: s.slug }}
+<div className="mt-12 grid gap-5 md:grid-cols-2">
+  {services.slice(0, 4).map((s, i) => (
+    <Reveal key={s.slug} delay={i * 50}>
+      <Link
+        to="/services/$slug"
+        params={{ slug: s.slug }}
+        className="
+          group
+          relative
+          flex
+          min-h-[245px]
+          overflow-hidden
+          rounded-2xl
+          border
+          border-border
+          bg-white
+          transition-all
+          duration-500
+          hover:-translate-y-1
+          hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]
+        "
+      >
+
+        {/* =================================================
+            LEFT — SERVICE IDENTITY PANEL
+        ================================================== */}
+
+        <div
+          className="
+            relative
+            flex
+            w-[38%]
+            shrink-0
+            flex-col
+            justify-between
+            overflow-hidden
+            p-6
+            sm:p-7
+          "
+          style={{
+            background:
+              i % 2 === 0
+                ? "var(--gradient-brand)"
+                : "var(--brand-deep)",
+          }}
+        >
+          {/* Decorative circle */}
+          <span
+            aria-hidden
+            className="
+              absolute
+              -right-16
+              -top-16
+              size-40
+              rounded-full
+              border
+              border-white/10
+              transition-transform
+              duration-700
+              group-hover:scale-125
+            "
+          />
+
+          {/* Smaller inner circle */}
+          <span
+            aria-hidden
+            className="
+              absolute
+              -bottom-12
+              -left-12
+              size-28
+              rounded-full
+              bg-coral/10
+              blur-xl
+            "
+          />
+
+          {/* Service number */}
+          <span
+            className="
+              relative
+              z-10
+              font-display
+              text-xs
+              font-bold
+              uppercase
+              tracking-[0.2em]
+              text-white/55
+            "
+          >
+            Service {String(i + 1).padStart(2, "0")}
+          </span>
+
+          {/* Large typography */}
+          <div className="relative z-10">
+            <span
+              aria-hidden
+              className="
+                block
+                font-display
+                text-[4.5rem]
+                font-black
+                leading-[0.8]
+                tracking-[-0.08em]
+                text-white/[0.12]
+                transition-all
+                duration-500
+                group-hover:text-coral/25
+              "
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+
+            <span className="mt-3 block max-w-[150px] font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white/70">
+              {s.caption}
+            </span>
+          </div>
+
+          {/* Bottom accent */}
+          <span
+            aria-hidden
+            className="
+              absolute
+              bottom-0
+              left-0
+              h-1
+              w-0
+              bg-coral
+              transition-all
+              duration-500
+              group-hover:w-full
+            "
+          />
+        </div>
+
+
+        {/* =================================================
+            RIGHT — SERVICE INFORMATION
+        ================================================== */}
+
+        <div className="flex min-w-0 flex-1 flex-col justify-between p-6 sm:p-7">
+
+          {/* Top */}
+          <div>
+            <div className="flex items-start justify-between gap-4">
+              <h3
                 className="
-                  brand-box
-                  group
-                  flex
-                  h-full
-                  flex-col
-                  overflow-hidden
+                  max-w-[300px]
+                  font-display
+                  text-lg
+                  font-extrabold
+                  leading-[1.12]
+                  text-foreground
+                  transition-colors
+                  duration-300
+                  group-hover:text-brand
+                  sm:text-xl
                 "
               >
-                {/* Image */}
-                <div className="relative aspect-[16/8] overflow-hidden bg-[#E9EEF5]">
+                {s.name}
+              </h3>
 
-                  {/* Blurred background using the same image */}
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl"
-                    style={{
-                      backgroundImage: `url(${s.image})`,
-                    }}
-                  />
+              {/* Arrow */}
+              <span
+                className="
+                  flex
+                  size-9
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-border
+                  text-brand
+                  transition-all
+                  duration-300
+                  group-hover:border-coral
+                  group-hover:bg-coral
+                  group-hover:text-white
+                "
+              >
+                <ArrowRight
+                  className="
+                    size-4
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-0.5
+                  "
+                />
+              </span>
+            </div>
 
-                  {/* Soft overlay */}
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-brand-deep/25"
-                  />
+            <p
+              className="
+                mt-3
+                max-w-[330px]
+                text-sm
+                leading-relaxed
+                text-muted-foreground
+              "
+            >
+              {s.summary}
+            </p>
+          </div>
 
-                  {/* Full original image — NO CROPPING */}
-                  <img
-                    src={s.image}
-                    alt={s.caption}
-                    loading="lazy"
-                    className="
-                      relative
-                      z-10
-                      h-full
-                      w-full
-                      object-contain
-                      transition-transform
-                      duration-[900ms]
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
-                      group-hover:scale-[1.02]
-                    "
-                  />
 
-                  {/* Bottom gradient */}
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 z-20"
-                    style={{
-                      background:
-                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent 55%)",
-                    }}
-                  />
+          {/* Bottom information */}
+          <div className="mt-6 flex items-end justify-between gap-4">
 
-                  {/* Caption */}
-                  <span className="absolute bottom-4 left-5 z-30 font-display text-xs font-bold uppercase tracking-[0.2em] text-white/90">
-                    {s.caption}
-                  </span>
-                </div>
+            <div>
+              <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                Retail execution
+              </span>
 
-                {/* Content */}
-                <div className="flex flex-1 flex-col p-7">
-                  <h3 className="font-display text-xl font-extrabold text-foreground transition-colors group-hover:text-brand">
-                    {s.name}
-                  </h3>
+              <span className="mt-1 block font-display text-sm font-bold text-brand">
+                Built for the shelf
+              </span>
+            </div>
 
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {s.summary}
-                  </p>
+            <span
+              className="
+                inline-flex
+                shrink-0
+                items-center
+                gap-2
+                font-display
+                text-xs
+                font-bold
+                uppercase
+                tracking-[0.12em]
+                text-coral
+              "
+            >
+              Explore
+            </span>
 
-                  <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold text-coral">
-                    Explore
+          </div>
 
-                    <ArrowRight
-                      className="
-                        size-4
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
-                    />
-                  </span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
         </div>
+      </Link>
+    </Reveal>
+  ))}
+</div>
 
         {/* =====================================================
             LAST 4 SERVICES — CONTINUATION
