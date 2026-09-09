@@ -106,7 +106,7 @@ export const services: Service[] = [
     image: pdm_final.url,
     secondImage: pdm_final.url,
       images: [
-      /media/pdm.url,
+    pdm.url,
   ],
     caption: "Trained promoters at the shelf",
   },
