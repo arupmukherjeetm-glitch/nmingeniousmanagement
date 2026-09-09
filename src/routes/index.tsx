@@ -725,19 +725,11 @@ function ServicesSection() {
               the shelf.
             </h2>
           </div>
-
-          <Link
-            to="/services"
-            className="group inline-flex items-center gap-2 font-display text-sm font-bold text-brand"
-          >
-            View all services
-            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
         </div>
 
 
         {/* =====================================================
-            FIRST 4 SERVICES — EXISTING IMAGE CARD DESIGN
+            FIRST 4 SERVICES — IMAGE CARD DESIGN
         ====================================================== */}
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
@@ -759,7 +751,7 @@ function ServicesSection() {
               >
 
                 {/* Image */}
-                <div className="relative aspect-[16/8] overflow-hidden">
+                <div className="relative aspect-video overflow-hidden">
 
                   <img
                     src={s.image}
@@ -771,7 +763,7 @@ function ServicesSection() {
                       transition-transform
                       duration-[900ms]
                       ease-[cubic-bezier(0.22,1,0.36,1)]
-                      group-hover:scale-[1.07]
+                      group-hover:scale-[1.04]
                     "
                   />
 
@@ -827,7 +819,6 @@ function ServicesSection() {
           ))}
 
         </div>
-
 
         {/* =====================================================
     MORE SERVICES — CLEAN ONE-LINE LAYOUT
