@@ -730,19 +730,21 @@ function ServicesSection() {
 
 
         {/* =====================================================
-            FIRST 4 SERVICES — COMPACT HORIZONTAL CARDS
+            FIRST 4 SERVICES
         ====================================================== */}
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">
+
           {services.slice(0, 4).map((s, i) => (
             <Reveal key={s.slug} delay={i * 50}>
+
               <Link
                 to="/services/$slug"
                 params={{ slug: s.slug }}
                 className="
                   group
                   flex
-                  h-[220px]
+                  h-[230px]
                   w-full
                   overflow-hidden
                   rounded-2xl
@@ -750,19 +752,28 @@ function ServicesSection() {
                   border-border
                   bg-white
                   transition-all
-                  duration-500
+                  duration-300
                   hover:-translate-y-1
-                  hover:shadow-[0_16px_38px_rgba(20,45,90,0.10)]
+                  hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
                 "
               >
 
                 {/* =================================================
-                    LEFT — IMAGE
+                    IMAGE
                 ================================================== */}
 
-                <div className="relative h-full w-[38%] shrink-0 overflow-hidden bg-[#E9EEF5]">
+                <div
+                  className="
+                    relative
+                    h-full
+                    w-[34%]
+                    shrink-0
+                    overflow-hidden
+                    bg-[#E9EEF5]
+                  "
+                >
 
-                  {/* Soft image background */}
+                  {/* Blurred background */}
                   <div
                     aria-hidden
                     className="
@@ -772,14 +783,24 @@ function ServicesSection() {
                       bg-cover
                       bg-center
                       blur-xl
-                      opacity-40
+                      opacity-45
                     "
                     style={{
                       backgroundImage: `url(${s.image})`,
                     }}
                   />
 
-                  {/* Image */}
+                  {/* Soft background overlay */}
+                  <div
+                    aria-hidden
+                    className="
+                      absolute
+                      inset-0
+                      bg-[#082B61]/10
+                    "
+                  />
+
+                  {/* Complete image — no cropping */}
                   <img
                     src={s.image}
                     alt={s.caption}
@@ -787,6 +808,7 @@ function ServicesSection() {
                     className="
                       relative
                       z-10
+                      block
                       h-full
                       w-full
                       object-contain
@@ -797,18 +819,20 @@ function ServicesSection() {
                     "
                   />
 
-                  {/* Subtle overlay */}
+                  {/* Bottom gradient */}
                   <span
                     aria-hidden
                     className="
                       pointer-events-none
                       absolute
-                      inset-0
+                      inset-x-0
+                      bottom-0
                       z-20
+                      h-20
                     "
                     style={{
                       background:
-                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.62), transparent 55%)",
+                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent)",
                     }}
                   />
 
@@ -817,7 +841,7 @@ function ServicesSection() {
                     className="
                       absolute
                       bottom-3
-                      left-4
+                      left-3
                       right-3
                       z-30
                       font-display
@@ -825,8 +849,8 @@ function ServicesSection() {
                       font-bold
                       uppercase
                       leading-tight
-                      tracking-[0.15em]
-                      text-white/90
+                      tracking-[0.14em]
+                      text-white
                     "
                   >
                     {s.caption}
@@ -836,90 +860,68 @@ function ServicesSection() {
 
 
                 {/* =================================================
-                    RIGHT — SERVICE CONTENT
+                    CONTENT
                 ================================================== */}
 
-                <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
+                <div
+                  className="
+                    flex
+                    min-w-0
+                    flex-1
+                    flex-col
+                    px-5
+                    py-5
+                    sm:px-6
+                  "
+                >
 
-                  {/* Title + arrow */}
-                  <div className="flex items-start justify-between gap-3">
-
-                    <h3
-                      className="
-                        max-w-[280px]
-                        font-display
-                        text-base
-                        font-extrabold
-                        leading-[1.1]
-                        text-foreground
-                        transition-colors
-                        duration-300
-                        group-hover:text-brand
-                        sm:text-lg
-                      "
-                    >
-                      {s.name}
-                    </h3>
-
-                    {/* Arrow */}
-                    <span
-                      className="
-                        flex
-                        size-8
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-border
-                        text-brand
-                        transition-all
-                        duration-300
-                        group-hover:border-coral
-                        group-hover:bg-coral
-                        group-hover:text-white
-                      "
-                    >
-                      <ArrowRight
-                        className="
-                          size-3.5
-                          transition-transform
-                          duration-300
-                          group-hover:translate-x-0.5
-                        "
-                      />
-                    </span>
-
-                  </div>
+                  {/* Service name */}
+                  <h3
+                    className="
+                      max-w-[310px]
+                      font-display
+                      text-[17px]
+                      font-extrabold
+                      leading-[1.1]
+                      text-foreground
+                      transition-colors
+                      duration-300
+                      group-hover:text-brand
+                      sm:text-lg
+                    "
+                  >
+                    {s.name}
+                  </h3>
 
 
                   {/* Description */}
                   <p
                     className="
                       mt-3
-                      max-w-[320px]
+                      max-w-[340px]
                       text-xs
                       leading-[1.5]
                       text-muted-foreground
+                      sm:text-[13px]
                     "
                   >
                     {s.summary}
                   </p>
 
 
-                  {/* Explore */}
+                  {/* Explore — immediately after content */}
                   <span
                     className="
                       mt-5
                       inline-flex
                       w-fit
                       items-center
-                      gap-1.5
+                      gap-2
                       font-display
-                      text-[11px]
+                      text-[10px]
                       font-bold
                       uppercase
-                      tracking-[0.08em]
+                      tracking-[0.12em]
                       text-coral
                     "
                   >
@@ -938,18 +940,22 @@ function ServicesSection() {
                 </div>
 
               </Link>
+
             </Reveal>
           ))}
+
         </div>
 
 
         {/* =====================================================
-            LAST 4 SERVICES — CONTINUATION
+            LAST 4 SERVICES
         ====================================================== */}
 
         <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+
           {services.slice(4).map((s, i) => (
             <Reveal key={s.slug} delay={i * 50}>
+
               <Link
                 to="/services/$slug"
                 params={{ slug: s.slug }}
@@ -983,6 +989,7 @@ function ServicesSection() {
                   "
                 />
 
+
                 {/* Service Name */}
                 <h3
                   className="
@@ -999,6 +1006,7 @@ function ServicesSection() {
                   {s.name}
                 </h3>
 
+
                 {/* Description */}
                 <p
                   className="
@@ -1011,6 +1019,7 @@ function ServicesSection() {
                 >
                   {s.summary}
                 </p>
+
 
                 {/* Explore */}
                 <span
@@ -1038,15 +1047,16 @@ function ServicesSection() {
                 </span>
 
               </Link>
+
             </Reveal>
           ))}
+
         </div>
 
       </div>
     </section>
   );
 }
-
 /* SERVICE VIDEO */
 function ExecutionVideoSection() {
   return (
