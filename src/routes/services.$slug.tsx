@@ -1,10 +1,13 @@
+import React from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
+
 import {
   serviceDetails,
   services,
   type ServiceDetail as ServiceDetailData,
 } from "@/lib/site-data";
+
 import {
   CtaBand,
   Eyebrow,
@@ -30,8 +33,13 @@ export const Route = createFileRoute("/services/$slug")({
     if (!loaderData) {
       return {
         meta: [
-          { title: "Service not found | NM Ingenious" },
-          { name: "robots", content: "noindex" },
+          {
+            title: "Service not found | NM Ingenious",
+          },
+          {
+            name: "robots",
+            content: "noindex",
+          },
         ],
       };
     }
@@ -41,7 +49,9 @@ export const Route = createFileRoute("/services/$slug")({
 
     return {
       meta: [
-        { title },
+        {
+          title,
+        },
         {
           name: "description",
           content: service.summary,
@@ -61,9 +71,9 @@ export const Route = createFileRoute("/services/$slug")({
   component: ServiceDetail,
 });
 
-/* -------------------------------------------------------------------------- */
-/* Service Media                                                              */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   SERVICE IMAGE GALLERY
+   ========================================================================== */
 
 function ServiceMedia({
   service,
@@ -78,82 +88,180 @@ function ServiceMedia({
     Boolean,
   ) as string[];
 
+  const [activeImage, setActiveImage] = React.useState(0);
+
   if (images.length === 0) {
     return null;
   }
 
-  /* ---------------------------------------------------------------------- */
-  /* Single image                                                            */
-  /* ---------------------------------------------------------------------- */
-
-  if (images.length === 1) {
-    return (
-      <div className="relative mt-10 overflow-hidden rounded-2xl border border-border bg-[#EEF2F7]">
-        <div className="flex min-h-[360px] items-center justify-center p-5 sm:min-h-[430px] sm:p-7 lg:min-h-[500px] lg:p-8">
-          <img
-            src={images[0]}
-            alt={service.caption ?? "Service image"}
-            loading="lazy"
-            decoding="async"
-            className="block max-h-[500px] max-w-full object-contain"
-          />
-        </div>
-
-        {service.caption && (
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#082B61]/80 via-[#082B61]/30 to-transparent px-6 pb-5 pt-20">
-            <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-white">
-              {service.caption}
-            </p>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  /* ---------------------------------------------------------------------- */
-  /* Multiple images                                                         */
-  /* ---------------------------------------------------------------------- */
+  const nextImage =
+    images.length > 1 ? (activeImage + 1) % images.length : activeImage;
 
   return (
-    <div className="relative mt-10 overflow-hidden rounded-2xl border border-border bg-[#EEF2F7]">
-      <div className="service-image-marquee flex w-max">
-        {[...images, ...images].map((src, index) => (
-          <div
-            key={`${src}-${index}`}
-            className="flex h-[360px] w-[420px] shrink-0 items-center justify-center p-5 sm:h-[430px] sm:w-[500px] sm:p-7 lg:h-[500px] lg:w-[600px] lg:p-8"
+    <div className="mt-10 w-full">
+      {/* ================================================================
+          MAIN GALLERY
+          ================================================================ */}
+
+      <div
+        className={
+          images.length > 1
+            ? "grid gap-3 sm:grid-cols-[minmax(0,1.7fr)_minmax(180px,0.8fr)]"
+            : "block"
+        }
+      >
+        {/* --------------------------------------------------------------
+            MAIN IMAGE
+            -------------------------------------------------------------- */}
+
+        <button
+          type="button"
+          onClick={() => {
+            if (images.length > 1) {
+              setActiveImage(nextImage);
+            }
+          }}
+          className="group relative flex min-h-[420px] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#EEF2F7] focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 sm:min-h-[500px] lg:min-h-[560px]"
+          aria-label="View service image"
+        >
+          <img
+            src={images[activeImage]}
+            alt={
+              service.caption
+                ? `${service.caption} ${activeImage + 1}`
+                : `Service image ${activeImage + 1}`
+            }
+            loading="lazy"
+            decoding="async"
+            className="block h-full max-h-[560px] w-full object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+          />
+
+          {/* Image counter */}
+          {images.length > 1 && (
+            <span className="absolute bottom-4 right-4 rounded-full bg-brand-deep/85 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+              {activeImage + 1} / {images.length}
+            </span>
+          )}
+        </button>
+
+        {/* --------------------------------------------------------------
+            SECONDARY IMAGE
+            -------------------------------------------------------------- */}
+
+        {images.length > 1 && (
+          <button
+            type="button"
+            onClick={() => setActiveImage(nextImage)}
+            className="group relative hidden min-h-[240px] overflow-hidden rounded-2xl bg-[#EEF2F7] focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 sm:flex sm:items-center sm:justify-center"
+            aria-label="View next service image"
           >
             <img
-              src={src}
+              src={images[nextImage]}
               alt={
                 service.caption
-                  ? `${service.caption} ${index + 1}`
-                  : `Service image ${index + 1}`
+                  ? `${service.caption} preview`
+                  : "Next service image"
               }
               loading="lazy"
               decoding="async"
-              className="block max-h-full max-w-full object-contain drop-shadow-[0_12px_25px_rgba(8,43,97,0.10)]"
+              className="block h-full max-h-[560px] w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
             />
-          </div>
-        ))}
+
+            <span className="absolute bottom-4 right-4 rounded-full bg-white/90 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-brand-deep shadow-sm backdrop-blur-sm">
+              Next
+            </span>
+          </button>
+        )}
       </div>
 
-      {/* Soft edge fades */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-14 bg-gradient-to-r from-[#EEF2F7] to-transparent sm:w-20"
-      />
+      {/* ================================================================
+          MOBILE SECOND IMAGE
+          ================================================================ */}
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-14 bg-gradient-to-l from-[#EEF2F7] to-transparent sm:w-20"
-      />
+      {images.length > 1 && (
+        <button
+          type="button"
+          onClick={() => setActiveImage(nextImage)}
+          className="group relative mt-3 flex min-h-[180px] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#EEF2F7] sm:hidden"
+          aria-label="View next service image"
+        >
+          <img
+            src={images[nextImage]}
+            alt={
+              service.caption
+                ? `${service.caption} preview`
+                : "Next service image"
+            }
+            loading="lazy"
+            decoding="async"
+            className="block h-full max-h-[360px] w-full object-contain"
+          />
+
+          <span className="absolute bottom-3 right-3 rounded-full bg-white/90 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-brand-deep shadow-sm">
+            Next
+          </span>
+        </button>
+      )}
+
+      {/* ================================================================
+          THUMBNAILS
+          ================================================================ */}
+
+      {images.length > 1 && (
+        <div className="mt-3 grid grid-cols-2 gap-3">
+          {images.map((src, index) => {
+            const isActive = index === activeImage;
+
+            return (
+              <button
+                key={`${src}-${index}`}
+                type="button"
+                onClick={() => setActiveImage(index)}
+                aria-label={`View service image ${index + 1}`}
+                aria-pressed={isActive}
+                className={`group relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-[#EEF2F7] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 ${
+                  isActive
+                    ? "ring-2 ring-brand ring-offset-2"
+                    : "opacity-70 hover:opacity-100"
+                }`}
+              >
+                <img
+                  src={src}
+                  alt={
+                    service.caption
+                      ? `${service.caption} thumbnail ${index + 1}`
+                      : `Service image thumbnail ${index + 1}`
+                  }
+                  loading="lazy"
+                  decoding="async"
+                  className="block h-full w-full object-contain p-2 transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+
+                {/* Active indicator */}
+                {isActive && (
+                  <span className="absolute bottom-2 left-2 rounded-full bg-brand px-2.5 py-1 font-display text-[9px] font-bold uppercase tracking-[0.14em] text-white">
+                    Viewing
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Caption */}
+      {service.caption && (
+        <p className="mt-4 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+          {service.caption}
+        </p>
+      )}
     </div>
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Main Service Detail Page                                                  */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   SERVICE DETAIL PAGE
+   ========================================================================== */
 
 function ServiceDetail() {
   const { service, detail: rawDetail } = Route.useLoaderData();
@@ -166,9 +274,9 @@ function ServiceDetail() {
 
   return (
     <>
-      {/* ------------------------------------------------------------------ */}
-      {/* Hero                                                                */}
-      {/* ------------------------------------------------------------------ */}
+      {/* ==================================================================
+          PAGE HERO
+          ================================================================== */}
 
       <PageHero
         eyebrow="Service"
@@ -177,13 +285,16 @@ function ServiceDetail() {
         accent={service.caption}
       />
 
-      {/* ------------------------------------------------------------------ */}
-      {/* The Work + What's Included                                         */}
-      {/* ------------------------------------------------------------------ */}
+      {/* ==================================================================
+          THE WORK + WHAT'S INCLUDED
+          ================================================================== */}
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-12 lg:px-8">
-          {/* Left column */}
+          {/* ==============================================================
+              LEFT — THE WORK
+              ============================================================== */}
+
           <div className="lg:col-span-7">
             <Eyebrow>The work</Eyebrow>
 
@@ -193,10 +304,13 @@ function ServiceDetail() {
               ))}
             </div>
 
-            {/* Service image / gallery */}
+            {/* Image Gallery */}
             <ServiceMedia service={service} />
 
-            {/* Outcome */}
+            {/* ============================================================
+                OUTCOME
+                ============================================================ */}
+
             <div
               className="mt-10 rounded-2xl p-8 lg:p-10"
               style={{
@@ -213,7 +327,10 @@ function ServiceDetail() {
             </div>
           </div>
 
-          {/* Right column */}
+          {/* ==============================================================
+              RIGHT — WHAT'S INCLUDED
+              ============================================================== */}
+
           <aside className="lg:col-span-5">
             <div className="brand-box sticky top-28 p-8 lg:p-10">
               <h2 className="font-display text-lg font-extrabold text-foreground">
@@ -251,15 +368,15 @@ function ServiceDetail() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* Additional Service Detail                                          */}
-      {/* ------------------------------------------------------------------ */}
+      {/* ==================================================================
+          ADDITIONAL SERVICE DETAIL
+          ================================================================== */}
 
       {detail && (
         <>
-          {/* ================================================================ */}
-          {/* The Challenge                                                    */}
-          {/* ================================================================ */}
+          {/* ================================================================
+              THE CHALLENGE
+              ================================================================ */}
 
           <section className="bg-sand py-24 lg:py-32">
             <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
@@ -296,9 +413,9 @@ function ServiceDetail() {
             </div>
           </section>
 
-          {/* ================================================================ */}
-          {/* The Method                                                       */}
-          {/* ================================================================ */}
+          {/* ================================================================
+              THE METHOD
+              ================================================================ */}
 
           <section className="bg-background py-24 lg:py-32">
             <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -329,9 +446,9 @@ function ServiceDetail() {
             </div>
           </section>
 
-          {/* ================================================================ */}
-          {/* Best For + FAQs                                                  */}
-          {/* ================================================================ */}
+          {/* ================================================================
+              BEST FOR + FAQ
+              ================================================================ */}
 
           <section className="bg-background pb-24 lg:pb-32">
             <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
@@ -365,7 +482,7 @@ function ServiceDetail() {
                 </div>
               </div>
 
-              {/* FAQs */}
+              {/* FAQ */}
               <div className="lg:col-span-7">
                 <Eyebrow>Questions we get asked</Eyebrow>
 
@@ -391,17 +508,15 @@ function ServiceDetail() {
         </>
       )}
 
-      {/* ------------------------------------------------------------------ */}
-      {/* Related Services                                                    */}
-      {/* ------------------------------------------------------------------ */}
+      {/* ==================================================================
+          RELATED SERVICES
+          ================================================================== */}
 
       <section className="bg-sand py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div>
-            <h2 className="font-display text-2xl font-extrabold text-foreground lg:text-4xl">
-              Often deployed together with
-            </h2>
-          </div>
+          <h2 className="font-display text-2xl font-extrabold text-foreground lg:text-4xl">
+            Often deployed together with
+          </h2>
 
           <div className="mt-12 grid gap-4 lg:grid-cols-3">
             {others.map((s, i) => (
@@ -411,7 +526,9 @@ function ServiceDetail() {
               >
                 <Link
                   to="/services/$slug"
-                  params={{ slug: s.slug }}
+                  params={{
+                    slug: s.slug,
+                  }}
                   className="brand-box group flex h-full flex-col p-7"
                 >
                   <h3 className="font-display text-lg font-extrabold text-foreground transition-colors group-hover:text-brand">
@@ -434,9 +551,9 @@ function ServiceDetail() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* CTA                                                                 */}
-      {/* ------------------------------------------------------------------ */}
+      {/* ==================================================================
+          CTA
+          ================================================================== */}
 
       <CtaBand />
     </>
