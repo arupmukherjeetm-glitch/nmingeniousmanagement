@@ -83,7 +83,7 @@ function Hero() {
 
       <div className="absolute inset-0 -z-10">
         <video
-          src="/media/hero.mp4"
+          src="media/hero_final (1).mp4"
           autoPlay
           loop
           muted
