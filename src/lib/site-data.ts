@@ -49,6 +49,7 @@ const btlsampling = { url: "/media/btlsampling.webp" };
 const RTT = { url: "/media/RTT.webp" };
 const compliance = { url: "/media/compliance.webp" };
 const fractionalhr = { url: "/media/fractionalhr.webp" };
+const pdm_final = { url: "/media/pdm_final.webp" };
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero.mp4";
