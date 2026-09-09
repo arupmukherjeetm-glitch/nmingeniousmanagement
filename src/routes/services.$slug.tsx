@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 
@@ -79,136 +79,32 @@ function ServiceMedia({
   service,
 }: {
   service: {
-    image: string;
-    secondImage?: string;
+    images: string[];
     caption?: string;
   };
 }) {
-  const images = [service.image, service.secondImage].filter(
-    Boolean,
-  ) as string[];
+  const images = service.images.filter(Boolean);
 
-  const [activeImage, setActiveImage] = React.useState(0);
+  const [activeImage, setActiveImage] = useState(0);
 
   if (images.length === 0) {
     return null;
   }
 
-  const nextImage =
-    images.length > 1 ? (activeImage + 1) % images.length : activeImage;
+  const currentImage = images[activeImage];
 
   return (
     <div className="mt-10 w-full">
-      {/* ================================================================
-          MAIN GALLERY
-          ================================================================ */}
+      {/* ==================================================================
+          DESKTOP GALLERY
+          ================================================================== */}
 
-      <div
-        className={
-          images.length > 1
-            ? "grid gap-3 sm:grid-cols-[minmax(0,1.7fr)_minmax(180px,0.8fr)]"
-            : "block"
-        }
-      >
-        {/* --------------------------------------------------------------
-            MAIN IMAGE
-            -------------------------------------------------------------- */}
+      <div className="hidden gap-4 sm:grid sm:grid-cols-[92px_minmax(0,1fr)]">
+        {/* ----------------------------------------------------------------
+            THUMBNAIL RAIL
+            ---------------------------------------------------------------- */}
 
-        <button
-          type="button"
-          onClick={() => {
-            if (images.length > 1) {
-              setActiveImage(nextImage);
-            }
-          }}
-          className="group relative flex min-h-[420px] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#EEF2F7] focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 sm:min-h-[500px] lg:min-h-[560px]"
-          aria-label="View service image"
-        >
-          <img
-            src={images[activeImage]}
-            alt={
-              service.caption
-                ? `${service.caption} ${activeImage + 1}`
-                : `Service image ${activeImage + 1}`
-            }
-            loading="lazy"
-            decoding="async"
-            className="block h-full max-h-[560px] w-full object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-          />
-
-          {/* Image counter */}
-          {images.length > 1 && (
-            <span className="absolute bottom-4 right-4 rounded-full bg-brand-deep/85 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-              {activeImage + 1} / {images.length}
-            </span>
-          )}
-        </button>
-
-        {/* --------------------------------------------------------------
-            SECONDARY IMAGE
-            -------------------------------------------------------------- */}
-
-        {images.length > 1 && (
-          <button
-            type="button"
-            onClick={() => setActiveImage(nextImage)}
-            className="group relative hidden min-h-[240px] overflow-hidden rounded-2xl bg-[#EEF2F7] focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 sm:flex sm:items-center sm:justify-center"
-            aria-label="View next service image"
-          >
-            <img
-              src={images[nextImage]}
-              alt={
-                service.caption
-                  ? `${service.caption} preview`
-                  : "Next service image"
-              }
-              loading="lazy"
-              decoding="async"
-              className="block h-full max-h-[560px] w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-            />
-
-            <span className="absolute bottom-4 right-4 rounded-full bg-white/90 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-brand-deep shadow-sm backdrop-blur-sm">
-              Next
-            </span>
-          </button>
-        )}
-      </div>
-
-      {/* ================================================================
-          MOBILE SECOND IMAGE
-          ================================================================ */}
-
-      {images.length > 1 && (
-        <button
-          type="button"
-          onClick={() => setActiveImage(nextImage)}
-          className="group relative mt-3 flex min-h-[180px] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#EEF2F7] sm:hidden"
-          aria-label="View next service image"
-        >
-          <img
-            src={images[nextImage]}
-            alt={
-              service.caption
-                ? `${service.caption} preview`
-                : "Next service image"
-            }
-            loading="lazy"
-            decoding="async"
-            className="block h-full max-h-[360px] w-full object-contain"
-          />
-
-          <span className="absolute bottom-3 right-3 rounded-full bg-white/90 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-brand-deep shadow-sm">
-            Next
-          </span>
-        </button>
-      )}
-
-      {/* ================================================================
-          THUMBNAILS
-          ================================================================ */}
-
-      {images.length > 1 && (
-        <div className="mt-3 grid grid-cols-2 gap-3">
+        <div className="flex max-h-[560px] flex-col gap-3 overflow-y-auto pr-1">
           {images.map((src, index) => {
             const isActive = index === activeImage;
 
@@ -219,37 +115,115 @@ function ServiceMedia({
                 onClick={() => setActiveImage(index)}
                 aria-label={`View service image ${index + 1}`}
                 aria-pressed={isActive}
-                className={`group relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-[#EEF2F7] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 ${
+                className={`group relative flex h-[82px] w-[82px] shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#EEF2F7] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 ${
                   isActive
                     ? "ring-2 ring-brand ring-offset-2"
-                    : "opacity-70 hover:opacity-100"
+                    : "opacity-60 hover:opacity-100"
                 }`}
               >
                 <img
                   src={src}
-                  alt={
-                    service.caption
-                      ? `${service.caption} thumbnail ${index + 1}`
-                      : `Service image thumbnail ${index + 1}`
-                  }
-                  loading="lazy"
+                  alt={`Service image ${index + 1}`}
+                  loading={index === 0 ? "eager" : "lazy"}
                   decoding="async"
-                  className="block h-full w-full object-contain p-2 transition-transform duration-300 group-hover:scale-[1.03]"
+                  className="h-full w-full object-contain p-1.5 transition-transform duration-300 group-hover:scale-[1.03]"
                 />
 
                 {/* Active indicator */}
                 {isActive && (
-                  <span className="absolute bottom-2 left-2 rounded-full bg-brand px-2.5 py-1 font-display text-[9px] font-bold uppercase tracking-[0.14em] text-white">
-                    Viewing
-                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-y-0 left-0 w-1 bg-coral"
+                  />
                 )}
               </button>
             );
           })}
         </div>
-      )}
 
-      {/* Caption */}
+        {/* ----------------------------------------------------------------
+            MAIN IMAGE
+            ---------------------------------------------------------------- */}
+
+        <div className="relative flex min-h-[500px] items-center justify-center overflow-hidden rounded-2xl bg-[#EEF2F7] lg:min-h-[560px]">
+          <img
+            key={currentImage}
+            src={currentImage}
+            alt={
+              service.caption
+                ? `${service.caption} ${activeImage + 1}`
+                : `Service image ${activeImage + 1}`
+            }
+            loading="eager"
+            decoding="async"
+            className="block max-h-[560px] max-w-full object-contain transition-opacity duration-300"
+          />
+        </div>
+      </div>
+
+      {/* ==================================================================
+          MOBILE GALLERY
+          ================================================================== */}
+
+      <div className="sm:hidden">
+        {/* Main image */}
+        <div className="relative flex min-h-[390px] items-center justify-center overflow-hidden rounded-2xl bg-[#EEF2F7]">
+          <img
+            key={currentImage}
+            src={currentImage}
+            alt={
+              service.caption
+                ? `${service.caption} ${activeImage + 1}`
+                : `Service image ${activeImage + 1}`
+            }
+            loading="eager"
+            decoding="async"
+            className="block max-h-[500px] max-w-full object-contain"
+          />
+        </div>
+
+        {/* Mobile thumbnails */}
+        <div className="mt-3 flex gap-3 overflow-x-auto pb-2">
+          {images.map((src, index) => {
+            const isActive = index === activeImage;
+
+            return (
+              <button
+                key={`${src}-${index}`}
+                type="button"
+                onClick={() => setActiveImage(index)}
+                aria-label={`View service image ${index + 1}`}
+                aria-pressed={isActive}
+                className={`group relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-xl bg-[#EEF2F7] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 ${
+                  isActive
+                    ? "ring-2 ring-brand ring-offset-2"
+                    : "opacity-60 hover:opacity-100"
+                }`}
+              >
+                <img
+                  src={src}
+                  alt={`Service image ${index + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-contain p-1.5 transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+
+                {isActive && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 h-1 bg-coral"
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ==================================================================
+          CAPTION
+          ================================================================== */}
+
       {service.caption && (
         <p className="mt-4 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
           {service.caption}
@@ -292,7 +266,7 @@ function ServiceDetail() {
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-12 lg:px-8">
           {/* ==============================================================
-              LEFT — THE WORK
+              THE WORK
               ============================================================== */}
 
           <div className="lg:col-span-7">
@@ -304,7 +278,10 @@ function ServiceDetail() {
               ))}
             </div>
 
-            {/* Image Gallery */}
+            {/* ============================================================
+                IMAGE GALLERY
+                ============================================================ */}
+
             <ServiceMedia service={service} />
 
             {/* ============================================================
@@ -328,7 +305,7 @@ function ServiceDetail() {
           </div>
 
           {/* ==============================================================
-              RIGHT — WHAT'S INCLUDED
+              WHAT'S INCLUDED
               ============================================================== */}
 
           <aside className="lg:col-span-5">
@@ -452,7 +429,7 @@ function ServiceDetail() {
 
           <section className="bg-background pb-24 lg:pb-32">
             <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
-              {/* Best for */}
+              {/* Best For */}
               <div className="lg:col-span-5">
                 <div
                   className="h-full rounded-2xl p-8 text-white lg:p-10"
