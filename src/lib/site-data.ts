@@ -74,7 +74,7 @@ export type Service = {
   body: string[];
   includes: string[];
   outcome: string;
-  image: string;
+  image: string[];
   secondImage: string;
   caption: string;
 };
@@ -106,7 +106,9 @@ export const services: Service[] = [
     image: pdm_final.url,
     secondImage: pdm_final.url,
       images: [
-    pdm.url,
+    pdm_final.url,
+        a1.url,
+        a2.url,
   ],
     caption: "Trained promoters at the shelf",
   },
