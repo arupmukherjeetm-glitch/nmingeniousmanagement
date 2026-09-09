@@ -145,7 +145,7 @@ function ServiceMedia({
             MAIN IMAGE
             ---------------------------------------------------------------- */}
 
-        <div className="relative flex min-h-[500px] items-center justify-center overflow-hidden rounded-2xl bg-[#EEF2F7] lg:min-h-[560px]">
+       <div className="relative flex h-[560px] items-center justify-center overflow-hidden rounded-2xl bg-white px-8 py-8">
           <img
             key={currentImage}
             src={currentImage}
@@ -156,7 +156,7 @@ function ServiceMedia({
             }
             loading="eager"
             decoding="async"
-            className="block max-h-[560px] max-w-full object-contain transition-opacity duration-300"
+            className="block h-full w-full object-contain transition-opacity duration-300"
           />
         </div>
       </div>
@@ -167,7 +167,7 @@ function ServiceMedia({
 
       <div className="sm:hidden">
         {/* Main image */}
-        <div className="relative flex min-h-[390px] items-center justify-center overflow-hidden rounded-2xl bg-[#EEF2F7]">
+        <div className="relative flex h-[440px] items-center justify-center overflow-hidden rounded-2xl bg-white px-5 py-5">
           <img
             key={currentImage}
             src={currentImage}
@@ -178,7 +178,7 @@ function ServiceMedia({
             }
             loading="eager"
             decoding="async"
-            className="block max-h-[500px] max-w-full object-contain"
+            className="block h-full w-full object-contain"
           />
         </div>
 
