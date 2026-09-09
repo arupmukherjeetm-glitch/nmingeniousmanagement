@@ -942,8 +942,6 @@ function ServicesSection() {
 
 </div>
 
-</div>
-
       </div>
     </section>
   );
