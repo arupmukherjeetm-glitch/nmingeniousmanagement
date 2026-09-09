@@ -712,7 +712,10 @@ function ServicesSection() {
     <section className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        {/* Section Header */}
+        {/* =====================================================
+            SECTION HEADER
+        ====================================================== */}
+
         <div className="max-w-2xl">
           <Eyebrow>What we do</Eyebrow>
 
@@ -725,11 +728,12 @@ function ServicesSection() {
           </h2>
         </div>
 
+
         {/* =====================================================
-            FIRST 4 SERVICES — HORIZONTAL IMAGE CARDS
+            FIRST 4 SERVICES — COMPACT HORIZONTAL CARDS
         ====================================================== */}
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
           {services.slice(0, 4).map((s, i) => (
             <Reveal key={s.slug} delay={i * 50}>
               <Link
@@ -738,7 +742,7 @@ function ServicesSection() {
                 className="
                   group
                   flex
-                  h-[275px]
+                  h-[220px]
                   w-full
                   overflow-hidden
                   rounded-2xl
@@ -748,7 +752,7 @@ function ServicesSection() {
                   transition-all
                   duration-500
                   hover:-translate-y-1
-                  hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]
+                  hover:shadow-[0_16px_38px_rgba(20,45,90,0.10)]
                 "
               >
 
@@ -756,51 +760,80 @@ function ServicesSection() {
                     LEFT — IMAGE
                 ================================================== */}
 
-                <div className="relative h-full w-[40%] shrink-0 overflow-hidden bg-[#E9EEF5]">
+                <div className="relative h-full w-[38%] shrink-0 overflow-hidden bg-[#E9EEF5]">
+
+                  {/* Soft image background */}
+                  <div
+                    aria-hidden
+                    className="
+                      absolute
+                      inset-0
+                      scale-110
+                      bg-cover
+                      bg-center
+                      blur-xl
+                      opacity-40
+                    "
+                    style={{
+                      backgroundImage: `url(${s.image})`,
+                    }}
+                  />
+
+                  {/* Image */}
                   <img
                     src={s.image}
                     alt={s.caption}
                     loading="lazy"
                     className="
+                      relative
+                      z-10
                       h-full
                       w-full
-                      object-cover
+                      object-contain
                       transition-transform
-                      duration-[900ms]
+                      duration-700
                       ease-[cubic-bezier(0.22,1,0.36,1)]
-                      group-hover:scale-[1.04]
+                      group-hover:scale-[1.02]
                     "
                   />
 
-                  {/* Image overlay */}
+                  {/* Subtle overlay */}
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-0"
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-0
+                      z-20
+                    "
                     style={{
                       background:
-                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.78), transparent 58%)",
+                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.62), transparent 55%)",
                     }}
                   />
 
-                  {/* Image caption */}
+                  {/* Caption */}
                   <span
                     className="
                       absolute
-                      bottom-4
+                      bottom-3
                       left-4
                       right-3
+                      z-30
                       font-display
-                      text-[9px]
+                      text-[8px]
                       font-bold
                       uppercase
                       leading-tight
-                      tracking-[0.16em]
+                      tracking-[0.15em]
                       text-white/90
                     "
                   >
                     {s.caption}
                   </span>
+
                 </div>
+
 
                 {/* =================================================
                     RIGHT — SERVICE CONTENT
@@ -808,26 +841,27 @@ function ServicesSection() {
 
                 <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
 
-                  {/* Service name + arrow */}
+                  {/* Title + arrow */}
                   <div className="flex items-start justify-between gap-3">
 
                     <h3
                       className="
-                        max-w-[300px]
+                        max-w-[280px]
                         font-display
-                        text-lg
+                        text-base
                         font-extrabold
-                        leading-[1.08]
+                        leading-[1.1]
                         text-foreground
                         transition-colors
                         duration-300
                         group-hover:text-brand
-                        sm:text-xl
+                        sm:text-lg
                       "
                     >
                       {s.name}
                     </h3>
 
+                    {/* Arrow */}
                     <span
                       className="
                         flex
@@ -855,32 +889,34 @@ function ServicesSection() {
                         "
                       />
                     </span>
+
                   </div>
+
 
                   {/* Description */}
                   <p
                     className="
                       mt-3
-                      max-w-[340px]
+                      max-w-[320px]
                       text-xs
-                      leading-[1.55]
+                      leading-[1.5]
                       text-muted-foreground
-                      sm:text-sm
                     "
                   >
                     {s.summary}
                   </p>
 
+
                   {/* Explore */}
                   <span
                     className="
-                      mt-6
+                      mt-5
                       inline-flex
                       w-fit
                       items-center
                       gap-1.5
                       font-display
-                      text-xs
+                      text-[11px]
                       font-bold
                       uppercase
                       tracking-[0.08em]
@@ -905,6 +941,7 @@ function ServicesSection() {
             </Reveal>
           ))}
         </div>
+
 
         {/* =====================================================
             LAST 4 SERVICES — CONTINUATION
