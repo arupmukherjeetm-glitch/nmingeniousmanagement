@@ -188,12 +188,10 @@ images: [
       "Post-campaign reporting",
     ],
     outcome: "Measured trial, measured cost per conversion, measured repeat.",
-    image: btlsampling.url,
-    secondImage: btlsampling.url,
+    image: a23.url,
+    secondImage: a23.url,
 images: [
-    pdm_final.url,
-        a1.url,
-        a2.url,
+    a23.url,
   ],
     
     caption: "Activation and sampling",
