@@ -706,11 +706,14 @@ function ModelColumn({
     </div>
   );
 }
-/* WHAT WE DO */
+/* =========================================================
+   WHAT WE DO
+========================================================= */
+
 function ServicesSection() {
   return (
-    <section className="bg-background py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+    <section className="w-full overflow-hidden bg-background py-20 lg:py-28">
+      <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
 
         {/* =====================================================
             SECTION HEADER
@@ -730,233 +733,256 @@ function ServicesSection() {
 
 
         {/* =====================================================
-    FIRST 4 SERVICES
-====================================================== */}
+            FIRST 4 SERVICES
+            - Single column below LG
+            - Two columns on LG+
+        ====================================================== */}
 
-<div className="mt-10 grid min-w-0 gap-4 md:grid-cols-2">
-  {services.slice(0, 4).map((s, i) => (
-    <Reveal
-      key={s.slug}
-      delay={i * 50}
-      className="min-w-0"
-    >
-      <Link
-        to="/services/$slug"
-        params={{ slug: s.slug }}
-        className="
-          group
-          flex
-          h-[230px]
-          min-w-0
-          w-full
-          overflow-hidden
-          rounded-2xl
-          border
-          border-border
-          bg-white
-          transition-all
-          duration-300
-          hover:-translate-y-1
-          hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
-        "
-      >
-        {/* IMAGE */}
+        <div className="mt-10 grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-2">
 
-        <div
-          className="
-            relative
-            h-full
-            w-[145px]
-            shrink-0
-            overflow-hidden
-            bg-[#E9EEF5]
-            sm:w-[160px]
-            lg:w-[170px]
-          "
-        >
-          {/* Blurred background */}
+          {services.slice(0, 4).map((s, i) => (
+            <Reveal
+              key={s.slug}
+              delay={i * 50}
+              className="w-full min-w-0"
+            >
+              <Link
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                className="
+                  group
+                  flex
+                  h-[230px]
+                  w-full
+                  min-w-0
+                  max-w-full
+                  overflow-hidden
+                  rounded-2xl
+                  border
+                  border-border
+                  bg-white
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
+                "
+              >
 
-          <div
-            aria-hidden
-            className="
-              absolute
-              inset-0
-              scale-110
-              bg-cover
-              bg-center
-              blur-xl
-              opacity-45
-            "
-            style={{
-              backgroundImage: `url(${s.image})`,
-            }}
-          />
+                {/* =================================================
+                    IMAGE
+                ================================================== */}
 
-          {/* Soft overlay */}
+                <div
+                  className="
+                    relative
+                    h-full
+                    w-[145px]
+                    shrink-0
+                    overflow-hidden
+                    bg-[#E9EEF5]
+                    sm:w-[160px]
+                    lg:w-[170px]
+                  "
+                >
 
-          <div
-            aria-hidden
-            className="
-              absolute
-              inset-0
-              bg-[#082B61]/10
-            "
-          />
+                  {/* Blurred background */}
 
-          {/* Complete image */}
+                  <div
+                    aria-hidden
+                    className="
+                      absolute
+                      inset-0
+                      scale-110
+                      bg-cover
+                      bg-center
+                      blur-xl
+                      opacity-45
+                    "
+                    style={{
+                      backgroundImage: `url(${s.image})`,
+                    }}
+                  />
 
-          <img
-            src={s.image}
-            alt={s.caption}
-            loading="lazy"
-            className="
-              relative
-              z-10
-              block
-              h-full
-              w-full
-              object-contain
-              transition-transform
-              duration-700
-              ease-[cubic-bezier(0.22,1,0.36,1)]
-              group-hover:scale-[1.02]
-            "
-          />
+                  {/* Soft overlay */}
 
-          {/* Bottom gradient */}
+                  <div
+                    aria-hidden
+                    className="
+                      absolute
+                      inset-0
+                      bg-[#082B61]/10
+                    "
+                  />
 
-          <span
-            aria-hidden
-            className="
-              pointer-events-none
-              absolute
-              inset-x-0
-              bottom-0
-              z-20
-              h-20
-            "
-            style={{
-              background:
-                "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent)",
-            }}
-          />
+                  {/* Main image */}
 
-          {/* Caption */}
+                  <img
+                    src={s.image}
+                    alt={s.caption}
+                    loading="lazy"
+                    className="
+                      relative
+                      z-10
+                      block
+                      h-full
+                      w-full
+                      object-contain
+                      transition-transform
+                      duration-700
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      group-hover:scale-[1.02]
+                    "
+                  />
 
-          <span
-            className="
-              absolute
-              bottom-3
-              left-3
-              right-3
-              z-30
-              font-display
-              text-[8px]
-              font-bold
-              uppercase
-              leading-tight
-              tracking-[0.14em]
-              text-white
-            "
-          >
-            {s.caption}
-          </span>
+                  {/* Bottom gradient */}
+
+                  <span
+                    aria-hidden
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-x-0
+                      bottom-0
+                      z-20
+                      h-20
+                    "
+                    style={{
+                      background:
+                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent)",
+                    }}
+                  />
+
+                  {/* Caption */}
+
+                  <span
+                    className="
+                      absolute
+                      bottom-3
+                      left-3
+                      right-3
+                      z-30
+                      font-display
+                      text-[8px]
+                      font-bold
+                      uppercase
+                      leading-tight
+                      tracking-[0.14em]
+                      text-white
+                    "
+                  >
+                    {s.caption}
+                  </span>
+
+                </div>
+
+
+                {/* =================================================
+                    CONTENT
+                ================================================== */}
+
+                <div
+                  className="
+                    flex
+                    min-w-0
+                    flex-1
+                    flex-col
+                    overflow-hidden
+                    px-5
+                    py-5
+                    sm:px-6
+                  "
+                >
+
+                  {/* Service name */}
+
+                  <h3
+                    className="
+                      max-w-full
+                      font-display
+                      text-[17px]
+                      font-extrabold
+                      leading-[1.1]
+                      tracking-[-0.02em]
+                      text-foreground
+                      transition-colors
+                      duration-300
+                      group-hover:text-brand
+                      sm:text-lg
+                    "
+                  >
+                    {s.name}
+                  </h3>
+
+
+                  {/* Description */}
+
+                  <p
+                    className="
+                      mt-3
+                      max-w-full
+                      text-xs
+                      leading-[1.5]
+                      text-muted-foreground
+                      sm:text-[13px]
+                    "
+                  >
+                    {s.summary}
+                  </p>
+
+
+                  {/* Explore */}
+
+                  <span
+                    className="
+                      mt-5
+                      inline-flex
+                      w-fit
+                      items-center
+                      gap-2
+                      font-display
+                      text-[10px]
+                      font-bold
+                      uppercase
+                      tracking-[0.12em]
+                      text-coral
+                    "
+                  >
+                    Explore
+
+                    <ArrowRight
+                      className="
+                        size-3.5
+                        transition-transform
+                        duration-300
+                        group-hover:translate-x-1
+                      "
+                    />
+                  </span>
+
+                </div>
+
+              </Link>
+            </Reveal>
+          ))}
+
         </div>
-
-        {/* CONTENT */}
-
-        <div
-          className="
-            flex
-            min-w-0
-            flex-1
-            flex-col
-            px-5
-            py-5
-            sm:px-6
-          "
-        >
-          {/* Service name */}
-
-          <h3
-            className="
-              max-w-full
-              font-display
-              text-[17px]
-              font-extrabold
-              leading-[1.1]
-              text-foreground
-              transition-colors
-              duration-300
-              group-hover:text-brand
-              sm:text-lg
-            "
-          >
-            {s.name}
-          </h3>
-
-          {/* Description */}
-
-          <p
-            className="
-              mt-3
-              max-w-full
-              text-xs
-              leading-[1.5]
-              text-muted-foreground
-              sm:text-[13px]
-            "
-          >
-            {s.summary}
-          </p>
-
-          {/* Explore */}
-
-          <span
-            className="
-              mt-5
-              inline-flex
-              w-fit
-              items-center
-              gap-2
-              font-display
-              text-[10px]
-              font-bold
-              uppercase
-              tracking-[0.12em]
-              text-coral
-            "
-          >
-            Explore
-
-            <ArrowRight
-              className="
-                size-3.5
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            />
-          </span>
-        </div>
-      </Link>
-    </Reveal>
-  ))}
-</div>
 
 
         {/* =====================================================
-            LAST 4 SERVICES — CUSTOM ICON CARDS
+            LAST 4 SERVICES
+            CUSTOM ICON CARDS
         ====================================================== */}
 
-        <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-4 grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
           {/* =================================================
               5. REAL-TIME TRACKING & REPORTING
           ================================================== */}
 
-          <Reveal delay={0}>
-
+          <Reveal
+            delay={0}
+            className="min-w-0"
+          >
             <Link
               to="/services/$slug"
               params={{ slug: services[4]?.slug }}
@@ -966,6 +992,7 @@ function ServicesSection() {
                 flex
                 h-full
                 min-h-[230px]
+                min-w-0
                 flex-col
                 overflow-hidden
                 rounded-2xl
@@ -981,7 +1008,7 @@ function ServicesSection() {
               "
             >
 
-              {/* RED ACCENT */}
+              {/* Red accent */}
 
               <span
                 aria-hidden
@@ -998,7 +1025,8 @@ function ServicesSection() {
                 "
               />
 
-              {/* CUSTOM ICON */}
+
+              {/* Custom icon */}
 
               <div
                 className="
@@ -1021,6 +1049,7 @@ function ServicesSection() {
                   className="h-10 w-10"
                 >
                   {/* Store */}
+
                   <rect
                     x="5"
                     y="8"
@@ -1039,6 +1068,7 @@ function ServicesSection() {
                   />
 
                   {/* Live tracking graph */}
+
                   <path
                     d="M26 32L31 26L35 29L43 18"
                     stroke="currentColor"
@@ -1048,6 +1078,7 @@ function ServicesSection() {
                   />
 
                   {/* Live point */}
+
                   <circle
                     cx="43"
                     cy="18"
@@ -1056,6 +1087,7 @@ function ServicesSection() {
                   />
 
                   {/* Connection */}
+
                   <path
                     d="M24 14H30C34 14 37 17 37 21V24"
                     stroke="currentColor"
@@ -1067,11 +1099,11 @@ function ServicesSection() {
               </div>
 
 
-              {/* TITLE */}
+              {/* Title */}
 
               <h3
                 className="
-                  max-w-[220px]
+                  max-w-full
                   font-display
                   text-[17px]
                   font-extrabold
@@ -1087,7 +1119,7 @@ function ServicesSection() {
               </h3>
 
 
-              {/* DESCRIPTION */}
+              {/* Description */}
 
               <p
                 className="
@@ -1102,7 +1134,7 @@ function ServicesSection() {
               </p>
 
 
-              {/* EXPLORE */}
+              {/* Explore */}
 
               <span
                 className="
@@ -1132,7 +1164,6 @@ function ServicesSection() {
               </span>
 
             </Link>
-
           </Reveal>
 
 
@@ -1140,8 +1171,10 @@ function ServicesSection() {
               6. WORKFORCE MANAGEMENT
           ================================================== */}
 
-          <Reveal delay={50}>
-
+          <Reveal
+            delay={50}
+            className="min-w-0"
+          >
             <Link
               to="/services/$slug"
               params={{ slug: services[5]?.slug }}
@@ -1151,6 +1184,7 @@ function ServicesSection() {
                 flex
                 h-full
                 min-h-[230px]
+                min-w-0
                 flex-col
                 overflow-hidden
                 rounded-2xl
@@ -1166,7 +1200,7 @@ function ServicesSection() {
               "
             >
 
-              {/* RED ACCENT */}
+              {/* Red accent */}
 
               <span
                 aria-hidden
@@ -1183,7 +1217,8 @@ function ServicesSection() {
                 "
               />
 
-              {/* CUSTOM ICON */}
+
+              {/* Custom icon */}
 
               <div
                 className="
@@ -1206,6 +1241,7 @@ function ServicesSection() {
                   className="h-10 w-10"
                 >
                   {/* Person 1 */}
+
                   <circle
                     cx="17"
                     cy="13"
@@ -1222,6 +1258,7 @@ function ServicesSection() {
                   />
 
                   {/* Person 2 */}
+
                   <circle
                     cx="31"
                     cy="17"
@@ -1238,6 +1275,7 @@ function ServicesSection() {
                   />
 
                   {/* Verification */}
+
                   <circle
                     cx="34"
                     cy="34"
@@ -1258,11 +1296,11 @@ function ServicesSection() {
               </div>
 
 
-              {/* TITLE */}
+              {/* Title */}
 
               <h3
                 className="
-                  max-w-[220px]
+                  max-w-full
                   font-display
                   text-[17px]
                   font-extrabold
@@ -1278,7 +1316,7 @@ function ServicesSection() {
               </h3>
 
 
-              {/* DESCRIPTION */}
+              {/* Description */}
 
               <p
                 className="
@@ -1293,7 +1331,7 @@ function ServicesSection() {
               </p>
 
 
-              {/* EXPLORE */}
+              {/* Explore */}
 
               <span
                 className="
@@ -1323,7 +1361,6 @@ function ServicesSection() {
               </span>
 
             </Link>
-
           </Reveal>
 
 
@@ -1331,8 +1368,10 @@ function ServicesSection() {
               7. PAYROLL SERVICES
           ================================================== */}
 
-          <Reveal delay={100}>
-
+          <Reveal
+            delay={100}
+            className="min-w-0"
+          >
             <Link
               to="/services/$slug"
               params={{ slug: services[6]?.slug }}
@@ -1342,6 +1381,7 @@ function ServicesSection() {
                 flex
                 h-full
                 min-h-[230px]
+                min-w-0
                 flex-col
                 overflow-hidden
                 rounded-2xl
@@ -1357,7 +1397,7 @@ function ServicesSection() {
               "
             >
 
-              {/* RED ACCENT */}
+              {/* Red accent */}
 
               <span
                 aria-hidden
@@ -1374,7 +1414,8 @@ function ServicesSection() {
                 "
               />
 
-              {/* CUSTOM ICON */}
+
+              {/* Custom icon */}
 
               <div
                 className="
@@ -1397,6 +1438,7 @@ function ServicesSection() {
                   className="h-10 w-10"
                 >
                   {/* Payslip */}
+
                   <rect
                     x="7"
                     y="6"
@@ -1408,6 +1450,7 @@ function ServicesSection() {
                   />
 
                   {/* Payslip information */}
+
                   <path
                     d="M12 14H27M12 19H27M12 24H21"
                     stroke="currentColor"
@@ -1416,6 +1459,7 @@ function ServicesSection() {
                   />
 
                   {/* Salary */}
+
                   <path
                     d="M12 30H23"
                     stroke="currentColor"
@@ -1424,6 +1468,7 @@ function ServicesSection() {
                   />
 
                   {/* Payment */}
+
                   <circle
                     cx="34"
                     cy="32"
@@ -1434,6 +1479,7 @@ function ServicesSection() {
                   />
 
                   {/* Rupee */}
+
                   <path
                     d="M31.5 29H36.5"
                     stroke="currentColor"
@@ -1459,11 +1505,11 @@ function ServicesSection() {
               </div>
 
 
-              {/* TITLE */}
+              {/* Title */}
 
               <h3
                 className="
-                  max-w-[220px]
+                  max-w-full
                   font-display
                   text-[17px]
                   font-extrabold
@@ -1479,7 +1525,7 @@ function ServicesSection() {
               </h3>
 
 
-              {/* DESCRIPTION */}
+              {/* Description */}
 
               <p
                 className="
@@ -1494,7 +1540,7 @@ function ServicesSection() {
               </p>
 
 
-              {/* EXPLORE */}
+              {/* Explore */}
 
               <span
                 className="
@@ -1524,7 +1570,6 @@ function ServicesSection() {
               </span>
 
             </Link>
-
           </Reveal>
 
 
@@ -1532,8 +1577,10 @@ function ServicesSection() {
               8. FRACTIONAL HR SERVICES
           ================================================== */}
 
-          <Reveal delay={150}>
-
+          <Reveal
+            delay={150}
+            className="min-w-0"
+          >
             <Link
               to="/services/$slug"
               params={{ slug: services[7]?.slug }}
@@ -1543,6 +1590,7 @@ function ServicesSection() {
                 flex
                 h-full
                 min-h-[230px]
+                min-w-0
                 flex-col
                 overflow-hidden
                 rounded-2xl
@@ -1558,7 +1606,7 @@ function ServicesSection() {
               "
             >
 
-              {/* RED ACCENT */}
+              {/* Red accent */}
 
               <span
                 aria-hidden
@@ -1575,7 +1623,8 @@ function ServicesSection() {
                 "
               />
 
-              {/* CUSTOM ICON */}
+
+              {/* Custom icon */}
 
               <div
                 className="
@@ -1598,6 +1647,7 @@ function ServicesSection() {
                   className="h-10 w-10"
                 >
                   {/* Central HR */}
+
                   <circle
                     cx="24"
                     cy="13"
@@ -1614,6 +1664,7 @@ function ServicesSection() {
                   />
 
                   {/* Connected teams */}
+
                   <circle
                     cx="10"
                     cy="36"
@@ -1631,6 +1682,7 @@ function ServicesSection() {
                   />
 
                   {/* Connections */}
+
                   <path
                     d="M18 27L12 33M30 27L36 33"
                     stroke="currentColor"
@@ -1639,6 +1691,7 @@ function ServicesSection() {
                   />
 
                   {/* Central hub */}
+
                   <circle
                     cx="24"
                     cy="30"
@@ -1649,11 +1702,11 @@ function ServicesSection() {
               </div>
 
 
-              {/* TITLE */}
+              {/* Title */}
 
               <h3
                 className="
-                  max-w-[220px]
+                  max-w-full
                   font-display
                   text-[17px]
                   font-extrabold
@@ -1669,7 +1722,7 @@ function ServicesSection() {
               </h3>
 
 
-              {/* DESCRIPTION */}
+              {/* Description */}
 
               <p
                 className="
@@ -1684,7 +1737,7 @@ function ServicesSection() {
               </p>
 
 
-              {/* EXPLORE */}
+              {/* Explore */}
 
               <span
                 className="
@@ -1714,7 +1767,6 @@ function ServicesSection() {
               </span>
 
             </Link>
-
           </Reveal>
 
         </div>
