@@ -202,7 +202,7 @@ images: [
     navLabel: "Real-Time Tracking & Reporting",
     tagline: "Every shift, the shelf reports back to you.",
     summary:
-      "Live sales and stock tracking at shelf level through the Recibo platform, with MIS reporting brand teams can act on.",
+      "Live sales and stock tracking at shelf level with MIS reporting, brand teams can act on.",
     body: [
       "You should not have to wait for a month-end deck to learn that a top store went out of stock in week one.",
       "Store-level data flows in every shift and lands in dashboards your activation, sales and trade marketing teams can act on the same day.",
@@ -234,7 +234,7 @@ images: [
     summary:
       "A field force that stays trained, paid and compliant, so the risk never lands on you.",
     body: [
-      "Automated HRMS for field staff through FactoHR, with transparent employee records available to every employee on mobile.",
+      "Automated HRMS for field staff with transparent employee records available to every employee on mobile.",
       "Strict adherence to all government acts and norms: PF, ESIC, minimum wages, bonus, gratuity and state-specific labour requirements.",
     ],
     includes: [
