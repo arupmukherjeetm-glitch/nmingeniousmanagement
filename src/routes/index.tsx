@@ -758,9 +758,7 @@ function ServicesSection() {
                 "
               >
 
-                {/* =================================================
-                    IMAGE
-                ================================================== */}
+                {/* IMAGE */}
 
                 <div
                   className="
@@ -774,6 +772,7 @@ function ServicesSection() {
                 >
 
                   {/* Blurred background */}
+
                   <div
                     aria-hidden
                     className="
@@ -790,7 +789,8 @@ function ServicesSection() {
                     }}
                   />
 
-                  {/* Soft background overlay */}
+                  {/* Soft overlay */}
+
                   <div
                     aria-hidden
                     className="
@@ -800,7 +800,8 @@ function ServicesSection() {
                     "
                   />
 
-                  {/* Complete image — no cropping */}
+                  {/* Complete image */}
+
                   <img
                     src={s.image}
                     alt={s.caption}
@@ -820,6 +821,7 @@ function ServicesSection() {
                   />
 
                   {/* Bottom gradient */}
+
                   <span
                     aria-hidden
                     className="
@@ -837,6 +839,7 @@ function ServicesSection() {
                   />
 
                   {/* Caption */}
+
                   <span
                     className="
                       absolute
@@ -859,9 +862,7 @@ function ServicesSection() {
                 </div>
 
 
-                {/* =================================================
-                    CONTENT
-                ================================================== */}
+                {/* CONTENT */}
 
                 <div
                   className="
@@ -876,6 +877,7 @@ function ServicesSection() {
                 >
 
                   {/* Service name */}
+
                   <h3
                     className="
                       max-w-[310px]
@@ -895,6 +897,7 @@ function ServicesSection() {
 
 
                   {/* Description */}
+
                   <p
                     className="
                       mt-3
@@ -909,7 +912,8 @@ function ServicesSection() {
                   </p>
 
 
-                  {/* Explore — immediately after content */}
+                  {/* Explore */}
+
                   <span
                     className="
                       mt-5
@@ -948,108 +952,776 @@ function ServicesSection() {
 
 
         {/* =====================================================
-            LAST 4 SERVICES
+            LAST 4 SERVICES — CUSTOM ICON CARDS
         ====================================================== */}
 
         <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 
-          {services.slice(4).map((s, i) => (
-            <Reveal key={s.slug} delay={i * 50}>
+          {/* =================================================
+              5. REAL-TIME TRACKING & REPORTING
+          ================================================== */}
 
-              <Link
-                to="/services/$slug"
-                params={{ slug: s.slug }}
+          <Reveal delay={0}>
+
+            <Link
+              to="/services/$slug"
+              params={{ slug: services[4]?.slug }}
+              className="
+                group
+                relative
+                flex
+                h-full
+                min-h-[230px]
+                flex-col
+                overflow-hidden
+                rounded-2xl
+                border
+                border-border
+                bg-white
+                p-7
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-coral/40
+                hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
+              "
+            >
+
+              {/* RED ACCENT */}
+
+              <span
+                aria-hidden
                 className="
-                  brand-box
-                  group
-                  flex
-                  h-full
-                  min-h-[230px]
-                  flex-col
-                  p-7
+                  absolute
+                  left-7
+                  top-0
+                  h-[3px]
+                  w-8
+                  bg-coral
                   transition-all
                   duration-300
-                  hover:-translate-y-1
+                  group-hover:w-14
+                "
+              />
+
+              {/* CUSTOM ICON */}
+
+              <div
+                className="
+                  mb-6
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  text-brand
+                  transition-colors
+                  duration-300
+                  group-hover:text-coral
                 "
               >
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10"
+                >
+                  {/* Store */}
+                  <rect
+                    x="5"
+                    y="8"
+                    width="18"
+                    height="28"
+                    rx="2"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                  />
 
-                {/* Accent */}
-                <span
-                  aria-hidden
+                  <path
+                    d="M9 16H19M9 22H19M9 28H19"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Live tracking graph */}
+                  <path
+                    d="M26 32L31 26L35 29L43 18"
+                    stroke="currentColor"
+                    strokeWidth="1.9"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+
+                  {/* Live point */}
+                  <circle
+                    cx="43"
+                    cy="18"
+                    r="2.5"
+                    fill="currentColor"
+                  />
+
+                  {/* Connection */}
+                  <path
+                    d="M24 14H30C34 14 37 17 37 21V24"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeDasharray="2.5 3"
+                  />
+                </svg>
+              </div>
+
+
+              {/* TITLE */}
+
+              <h3
+                className="
+                  max-w-[220px]
+                  font-display
+                  text-[17px]
+                  font-extrabold
+                  leading-[1.15]
+                  tracking-[-0.02em]
+                  text-foreground
+                  transition-colors
+                  duration-300
+                  group-hover:text-brand
+                "
+              >
+                {services[4]?.name}
+              </h3>
+
+
+              {/* DESCRIPTION */}
+
+              <p
+                className="
+                  mt-3
+                  flex-1
+                  text-[12px]
+                  leading-[1.55]
+                  text-muted-foreground
+                "
+              >
+                {services[4]?.summary}
+              </p>
+
+
+              {/* EXPLORE */}
+
+              <span
+                className="
+                  mt-6
+                  inline-flex
+                  w-fit
+                  items-center
+                  gap-2
+                  font-display
+                  text-[10px]
+                  font-bold
+                  uppercase
+                  tracking-[0.12em]
+                  text-coral
+                "
+              >
+                Explore
+
+                <ArrowRight
                   className="
-                    mb-5
-                    block
-                    h-1
-                    w-8
-                    rounded-full
-                    bg-coral
-                    transition-all
+                    size-3.5
+                    transition-transform
                     duration-300
-                    group-hover:w-12
+                    group-hover:translate-x-1
                   "
                 />
+              </span>
+
+            </Link>
+
+          </Reveal>
 
 
-                {/* Service Name */}
-                <h3
-                  className="
-                    font-display
-                    text-xl
-                    font-extrabold
-                    leading-tight
-                    text-foreground
-                    transition-colors
-                    duration-300
-                    group-hover:text-brand
-                  "
+          {/* =================================================
+              6. WORKFORCE MANAGEMENT
+          ================================================== */}
+
+          <Reveal delay={50}>
+
+            <Link
+              to="/services/$slug"
+              params={{ slug: services[5]?.slug }}
+              className="
+                group
+                relative
+                flex
+                h-full
+                min-h-[230px]
+                flex-col
+                overflow-hidden
+                rounded-2xl
+                border
+                border-border
+                bg-white
+                p-7
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-coral/40
+                hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
+              "
+            >
+
+              {/* RED ACCENT */}
+
+              <span
+                aria-hidden
+                className="
+                  absolute
+                  left-7
+                  top-0
+                  h-[3px]
+                  w-8
+                  bg-coral
+                  transition-all
+                  duration-300
+                  group-hover:w-14
+                "
+              />
+
+              {/* CUSTOM ICON */}
+
+              <div
+                className="
+                  mb-6
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  text-brand
+                  transition-colors
+                  duration-300
+                  group-hover:text-coral
+                "
+              >
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10"
                 >
-                  {s.name}
-                </h3>
-
-
-                {/* Description */}
-                <p
-                  className="
-                    mt-3
-                    flex-1
-                    text-sm
-                    leading-relaxed
-                    text-muted-foreground
-                  "
-                >
-                  {s.summary}
-                </p>
-
-
-                {/* Explore */}
-                <span
-                  className="
-                    mt-6
-                    inline-flex
-                    items-center
-                    gap-2
-                    font-display
-                    text-sm
-                    font-bold
-                    text-coral
-                  "
-                >
-                  Explore
-
-                  <ArrowRight
-                    className="
-                      size-4
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
+                  {/* Person 1 */}
+                  <circle
+                    cx="17"
+                    cy="13"
+                    r="5"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
                   />
-                </span>
 
-              </Link>
+                  <path
+                    d="M8 31C8 25.5 11.8 21 17 21C22.2 21 26 25.5 26 31"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                  />
 
-            </Reveal>
-          ))}
+                  {/* Person 2 */}
+                  <circle
+                    cx="31"
+                    cy="17"
+                    r="4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+
+                  <path
+                    d="M26 31C26.5 26.8 29 24 32.5 24C36.2 24 39 27 39 31"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Verification */}
+                  <circle
+                    cx="34"
+                    cy="34"
+                    r="7"
+                    fill="white"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                  />
+
+                  <path
+                    d="M30.5 34L33 36.5L37.5 31.5"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
+
+              {/* TITLE */}
+
+              <h3
+                className="
+                  max-w-[220px]
+                  font-display
+                  text-[17px]
+                  font-extrabold
+                  leading-[1.15]
+                  tracking-[-0.02em]
+                  text-foreground
+                  transition-colors
+                  duration-300
+                  group-hover:text-brand
+                "
+              >
+                {services[5]?.name}
+              </h3>
+
+
+              {/* DESCRIPTION */}
+
+              <p
+                className="
+                  mt-3
+                  flex-1
+                  text-[12px]
+                  leading-[1.55]
+                  text-muted-foreground
+                "
+              >
+                {services[5]?.summary}
+              </p>
+
+
+              {/* EXPLORE */}
+
+              <span
+                className="
+                  mt-6
+                  inline-flex
+                  w-fit
+                  items-center
+                  gap-2
+                  font-display
+                  text-[10px]
+                  font-bold
+                  uppercase
+                  tracking-[0.12em]
+                  text-coral
+                "
+              >
+                Explore
+
+                <ArrowRight
+                  className="
+                    size-3.5
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                />
+              </span>
+
+            </Link>
+
+          </Reveal>
+
+
+          {/* =================================================
+              7. PAYROLL SERVICES
+          ================================================== */}
+
+          <Reveal delay={100}>
+
+            <Link
+              to="/services/$slug"
+              params={{ slug: services[6]?.slug }}
+              className="
+                group
+                relative
+                flex
+                h-full
+                min-h-[230px]
+                flex-col
+                overflow-hidden
+                rounded-2xl
+                border
+                border-border
+                bg-white
+                p-7
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-coral/40
+                hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
+              "
+            >
+
+              {/* RED ACCENT */}
+
+              <span
+                aria-hidden
+                className="
+                  absolute
+                  left-7
+                  top-0
+                  h-[3px]
+                  w-8
+                  bg-coral
+                  transition-all
+                  duration-300
+                  group-hover:w-14
+                "
+              />
+
+              {/* CUSTOM ICON */}
+
+              <div
+                className="
+                  mb-6
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  text-brand
+                  transition-colors
+                  duration-300
+                  group-hover:text-coral
+                "
+              >
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10"
+                >
+                  {/* Payslip */}
+                  <rect
+                    x="7"
+                    y="6"
+                    width="26"
+                    height="34"
+                    rx="2.5"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                  />
+
+                  {/* Payslip information */}
+                  <path
+                    d="M12 14H27M12 19H27M12 24H21"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Salary */}
+                  <path
+                    d="M12 30H23"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Payment */}
+                  <circle
+                    cx="34"
+                    cy="32"
+                    r="8"
+                    fill="white"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                  />
+
+                  {/* Rupee */}
+                  <path
+                    d="M31.5 29H36.5"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                  />
+
+                  <path
+                    d="M31.5 32H35"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                  />
+
+                  <path
+                    d="M33 29C35.2 29 36.5 30.1 36.5 31.5C36.5 33 35.2 34 33 34L36 37"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
+
+              {/* TITLE */}
+
+              <h3
+                className="
+                  max-w-[220px]
+                  font-display
+                  text-[17px]
+                  font-extrabold
+                  leading-[1.15]
+                  tracking-[-0.02em]
+                  text-foreground
+                  transition-colors
+                  duration-300
+                  group-hover:text-brand
+                "
+              >
+                {services[6]?.name}
+              </h3>
+
+
+              {/* DESCRIPTION */}
+
+              <p
+                className="
+                  mt-3
+                  flex-1
+                  text-[12px]
+                  leading-[1.55]
+                  text-muted-foreground
+                "
+              >
+                {services[6]?.summary}
+              </p>
+
+
+              {/* EXPLORE */}
+
+              <span
+                className="
+                  mt-6
+                  inline-flex
+                  w-fit
+                  items-center
+                  gap-2
+                  font-display
+                  text-[10px]
+                  font-bold
+                  uppercase
+                  tracking-[0.12em]
+                  text-coral
+                "
+              >
+                Explore
+
+                <ArrowRight
+                  className="
+                    size-3.5
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                />
+              </span>
+
+            </Link>
+
+          </Reveal>
+
+
+          {/* =================================================
+              8. FRACTIONAL HR SERVICES
+          ================================================== */}
+
+          <Reveal delay={150}>
+
+            <Link
+              to="/services/$slug"
+              params={{ slug: services[7]?.slug }}
+              className="
+                group
+                relative
+                flex
+                h-full
+                min-h-[230px]
+                flex-col
+                overflow-hidden
+                rounded-2xl
+                border
+                border-border
+                bg-white
+                p-7
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-coral/40
+                hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
+              "
+            >
+
+              {/* RED ACCENT */}
+
+              <span
+                aria-hidden
+                className="
+                  absolute
+                  left-7
+                  top-0
+                  h-[3px]
+                  w-8
+                  bg-coral
+                  transition-all
+                  duration-300
+                  group-hover:w-14
+                "
+              />
+
+              {/* CUSTOM ICON */}
+
+              <div
+                className="
+                  mb-6
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  text-brand
+                  transition-colors
+                  duration-300
+                  group-hover:text-coral
+                "
+              >
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10"
+                >
+                  {/* Central HR */}
+                  <circle
+                    cx="24"
+                    cy="13"
+                    r="5"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                  />
+
+                  <path
+                    d="M15 29C15 23.5 18.8 19.5 24 19.5C29.2 19.5 33 23.5 33 29"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Connected teams */}
+                  <circle
+                    cx="10"
+                    cy="36"
+                    r="4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+
+                  <circle
+                    cx="38"
+                    cy="36"
+                    r="4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+
+                  {/* Connections */}
+                  <path
+                    d="M18 27L12 33M30 27L36 33"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Central hub */}
+                  <circle
+                    cx="24"
+                    cy="30"
+                    r="2.2"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+
+
+              {/* TITLE */}
+
+              <h3
+                className="
+                  max-w-[220px]
+                  font-display
+                  text-[17px]
+                  font-extrabold
+                  leading-[1.15]
+                  tracking-[-0.02em]
+                  text-foreground
+                  transition-colors
+                  duration-300
+                  group-hover:text-brand
+                "
+              >
+                {services[7]?.name}
+              </h3>
+
+
+              {/* DESCRIPTION */}
+
+              <p
+                className="
+                  mt-3
+                  flex-1
+                  text-[12px]
+                  leading-[1.55]
+                  text-muted-foreground
+                "
+              >
+                {services[7]?.summary}
+              </p>
+
+
+              {/* EXPLORE */}
+
+              <span
+                className="
+                  mt-6
+                  inline-flex
+                  w-fit
+                  items-center
+                  gap-2
+                  font-display
+                  text-[10px]
+                  font-bold
+                  uppercase
+                  tracking-[0.12em]
+                  text-coral
+                "
+              >
+                Explore
+
+                <ArrowRight
+                  className="
+                    size-3.5
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                />
+              </span>
+
+            </Link>
+
+          </Reveal>
 
         </div>
 
