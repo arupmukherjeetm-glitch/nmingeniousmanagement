@@ -148,21 +148,17 @@ export function CtaBand() {
    ========================================================= */
 
 export function LogoWall({ compact = false }: { compact?: boolean }) {
-  /*
-   * Duplicate the logos so the marquee can create a
-   * continuous scrolling loop.
-   */
   const row = [...clientLogos, ...clientLogos];
 
   return (
     <section
       className={cn(
-        "overflow-hidden bg-background",
+        "w-full overflow-hidden bg-background",
         compact ? "py-16" : "py-20 lg:py-28"
       )}
     >
       {/* Heading */}
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
         {!compact && (
           <div className="max-w-3xl">
             <Eyebrow>Trusted by</Eyebrow>
@@ -172,37 +168,59 @@ export function LogoWall({ compact = false }: { compact?: boolean }) {
             </h2>
 
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              From global FMCG leaders to new-age brands, companies hand us the
-              last three feet between their product and their shopper.
+              From global FMCG leaders to new-age brands, companies hand us
+              the last three feet between their product and their shopper.
             </p>
           </div>
         )}
       </div>
 
-      {/* Logo Marquee */}
+      {/* Logo marquee */}
       <div
         className="relative mt-14 w-full overflow-hidden"
         style={{
           maskImage:
-            "linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%)",
         }}
       >
-        <div className="marquee-track flex w-max items-center">
+        <div className="marquee-track flex w-max items-center gap-6 lg:gap-8">
           {row.map((logo, index) => (
             <div
               key={`${logo.name}-${index}`}
-              className="flex h-24 w-[175px] shrink-0 items-center justify-center sm:w-[185px] lg:w-[195px]"
-              style={{
-                marginRight: "48px",
-              }}
+              className="
+                flex
+                h-20
+                w-[135px]
+                shrink-0
+                items-center
+                justify-center
+                sm:w-[145px]
+                lg:w-[155px]
+              "
             >
               <img
                 src={logo.url}
                 alt={logo.name}
                 loading="lazy"
-                className="block max-h-16 max-w-[145px] w-auto object-contain opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:max-h-[68px] sm:max-w-[155px]"
+                className="
+                  block
+                  max-h-14
+                  max-w-[130px]
+                  w-auto
+                  object-contain
+                  opacity-60
+                  grayscale
+                  transition-all
+                  duration-500
+                  hover:opacity-100
+                  hover:grayscale-0
+                  sm:max-h-16
+                  sm:max-w-[140px]
+                  lg:max-h-[68px]
+                  lg:max-w-[150px]
+                "
               />
             </div>
           ))}
