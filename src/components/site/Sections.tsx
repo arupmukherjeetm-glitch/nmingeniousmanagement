@@ -122,38 +122,53 @@ export function CtaBand() {
 
 export function LogoWall({ compact = false }: { compact?: boolean }) {
   const row = [...clientLogos, ...clientLogos];
+
   return (
-    <section className={cn("overflow-hidden bg-background", compact ? "py-16" : "py-20 lg:py-28")}>
+    <section
+      className={cn(
+        "overflow-hidden bg-background",
+        compact ? "py-16" : "py-20 lg:py-28"
+      )}
+    >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {!compact && (
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <Eyebrow>Trusted by</Eyebrow>
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
+
+            <h2 className="mt-5 font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-foreground lg:text-5xl">
               Already trusted on the shelves of India's biggest brands.
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              From global FMCG leaders to new-age brands, companies hand us the last three feet
-              between their product and their shopper.
+
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              From global FMCG leaders to new-age brands, companies hand us the
+              last three feet between their product and their shopper.
             </p>
           </div>
         )}
       </div>
+
       <div
-        className="relative mt-12"
+        className="relative mt-14 overflow-hidden"
         style={{
-          maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
-          WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
+          maskImage:
+            "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
         }}
       >
-        <div className="marquee-track items-center gap-14">
-          {row.map((l, i) => (
-            <img
-              key={l.name + i}
-              src={l.url}
-              alt={l.name}
-              loading="lazy"
-              className="h-10 w-auto shrink-0 opacity-55 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 lg:h-12"
-            />
+        <div className="marquee-track flex w-max items-center gap-16 lg:gap-20">
+          {row.map((logo, index) => (
+            <div
+              key={`${logo.name}-${index}`}
+              className="flex h-20 w-[150px] shrink-0 items-center justify-center sm:w-[175px] lg:h-24 lg:w-[190px]"
+            >
+              <img
+                src={logo.url}
+                alt={logo.name}
+                loading="lazy"
+                className="block h-14 w-auto max-w-full object-contain opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:h-16 lg:h-[68px]"
+              />
+            </div>
           ))}
         </div>
       </div>
