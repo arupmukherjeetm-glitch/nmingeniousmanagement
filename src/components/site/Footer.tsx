@@ -16,7 +16,6 @@ export function Footer() {
         style={{ background: "var(--gradient-edge)" }}
       />
 
-
       {/* =====================================================
           DECORATIVE BACKGROUND
       ====================================================== */}
@@ -66,7 +65,6 @@ export function Footer() {
         "
       />
 
-
       {/* =====================================================
           MAIN FOOTER
       ====================================================== */}
@@ -75,10 +73,8 @@ export function Footer() {
 
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
 
-
           {/* =================================================
-              COLUMN 1
-              BRAND + SOCIAL
+              COLUMN 1 — BRAND
           ================================================== */}
 
           <div className="lg:col-span-3">
@@ -93,7 +89,6 @@ export function Footer() {
               />
             </div>
 
-
             {/* DESCRIPTION */}
 
             <p className="mt-6 max-w-sm text-sm leading-7 text-white/75">
@@ -101,7 +96,6 @@ export function Footer() {
               presence into sell-out, with trained promoters, disciplined
               retail execution and real-time store intelligence.
             </p>
-
 
             {/* CERTIFICATION */}
 
@@ -123,7 +117,6 @@ export function Footer() {
             >
               Certified women-owned enterprise
             </p>
-
 
             {/* =================================================
                 SOCIAL ICONS
@@ -164,7 +157,6 @@ export function Footer() {
                 </svg>
               </a>
 
-
               {/* LINKEDIN */}
 
               <a
@@ -198,7 +190,6 @@ export function Footer() {
                 </svg>
               </a>
 
-
               {/* EMAIL */}
 
               <a
@@ -230,10 +221,8 @@ export function Footer() {
 
           </div>
 
-
           {/* =================================================
-              COLUMN 2
-              QUICK LINKS / SERVICES
+              COLUMN 2 — QUICK LINKS / SERVICES
           ================================================== */}
 
           <div className="lg:col-span-5">
@@ -257,10 +246,7 @@ export function Footer() {
 
             </div>
 
-
-            {/* =================================================
-                ALL 8 SERVICES
-            ================================================== */}
+            {/* SERVICES */}
 
             <div
               className="
@@ -297,10 +283,8 @@ export function Footer() {
 
           </div>
 
-
           {/* =================================================
-              COLUMN 3
-              CONTACT INFO
+              COLUMN 3 — CONTACT INFO
           ================================================== */}
 
           <div className="lg:col-span-3">
@@ -325,13 +309,9 @@ export function Footer() {
 
             </div>
 
-
             <div className="space-y-6 text-[13px] leading-6">
 
-
-              {/* =================================================
-                  OFFICE ADDRESS
-              ================================================== */}
+              {/* OFFICE ADDRESS */}
 
               <div className="flex items-start gap-3">
 
@@ -352,10 +332,7 @@ export function Footer() {
 
               </div>
 
-
-              {/* =================================================
-                  GOOGLE PLUS CODE
-              ================================================== */}
+              {/* GOOGLE PLUS CODE */}
 
               <div className="border-l border-white/15 pl-8">
 
@@ -371,10 +348,7 @@ export function Footer() {
 
               </div>
 
-
-              {/* =================================================
-                  LANDLINE
-              ================================================== */}
+              {/* LANDLINE */}
 
               <div className="flex items-center gap-3">
 
@@ -396,10 +370,7 @@ export function Footer() {
 
               </div>
 
-
-              {/* =================================================
-                  MOBILE NUMBERS
-              ================================================== */}
+              {/* MOBILE NUMBERS */}
 
               <div className="flex items-start gap-3">
 
@@ -450,10 +421,7 @@ export function Footer() {
 
               </div>
 
-
-              {/* =================================================
-                  EMAIL
-              ================================================== */}
+              {/* EMAIL */}
 
               <div className="flex items-start gap-3">
 
@@ -480,10 +448,8 @@ export function Footer() {
 
           </div>
 
-
           {/* =================================================
-              COLUMN 4
-              BRANCH OFFICES
+              COLUMN 4 — BRANCH OFFICES
           ================================================== */}
 
           <div className="lg:col-span-1">
@@ -506,10 +472,7 @@ export function Footer() {
                 Offices
               </h3>
 
-              <div className="mt-4 h-[2px] w-8 bg-[#EF4035]" />
-
             </div>
-
 
             {/* BANGALORE */}
 
@@ -520,7 +483,6 @@ export function Footer() {
               </p>
 
             </div>
-
 
             {/* NEW DELHI */}
 
@@ -537,7 +499,6 @@ export function Footer() {
         </div>
 
       </div>
-
 
       {/* =====================================================
           BOTTOM COPYRIGHT
