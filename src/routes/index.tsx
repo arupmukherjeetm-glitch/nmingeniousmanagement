@@ -734,8 +734,8 @@ function ServicesSection() {
 
         {/* =====================================================
             FIRST 4 SERVICES
-            - Single column below LG
-            - Two columns on LG+
+            Single column below LG
+            Two columns on LG+
         ====================================================== */}
 
         <div className="mt-10 grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-2">
@@ -785,36 +785,7 @@ function ServicesSection() {
                   "
                 >
 
-                  {/* Blurred background */}
-
-                  <div
-                    aria-hidden
-                    className="
-                      absolute
-                      inset-0
-                      scale-110
-                      bg-cover
-                      bg-center
-                      blur-xl
-                      opacity-45
-                    "
-                    style={{
-                      backgroundImage: `url(${s.image})`,
-                    }}
-                  />
-
-                  {/* Soft overlay */}
-
-                  <div
-                    aria-hidden
-                    className="
-                      absolute
-                      inset-0
-                      bg-[#082B61]/10
-                    "
-                  />
-
-                  {/* Main image */}
+                  {/* Main image - fills the entire panel */}
 
                   <img
                     src={s.image}
@@ -826,11 +797,12 @@ function ServicesSection() {
                       block
                       h-full
                       w-full
-                      object-contain
+                      object-cover
+                      object-center
                       transition-transform
                       duration-700
                       ease-[cubic-bezier(0.22,1,0.36,1)]
-                      group-hover:scale-[1.02]
+                      group-hover:scale-[1.03]
                     "
                   />
 
@@ -975,13 +947,14 @@ function ServicesSection() {
 
         <div className="mt-4 grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
+
           {/* =================================================
               5. REAL-TIME TRACKING & REPORTING
           ================================================== */}
 
           <Reveal
             delay={0}
-            className="min-w-0"
+            className="w-full min-w-0"
           >
             <Link
               to="/services/$slug"
@@ -993,6 +966,7 @@ function ServicesSection() {
                 h-full
                 min-h-[230px]
                 min-w-0
+                w-full
                 flex-col
                 overflow-hidden
                 rounded-2xl
@@ -1048,8 +1022,6 @@ function ServicesSection() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-10 w-10"
                 >
-                  {/* Store */}
-
                   <rect
                     x="5"
                     y="8"
@@ -1067,8 +1039,6 @@ function ServicesSection() {
                     strokeLinecap="round"
                   />
 
-                  {/* Live tracking graph */}
-
                   <path
                     d="M26 32L31 26L35 29L43 18"
                     stroke="currentColor"
@@ -1077,16 +1047,12 @@ function ServicesSection() {
                     strokeLinejoin="round"
                   />
 
-                  {/* Live point */}
-
                   <circle
                     cx="43"
                     cy="18"
                     r="2.5"
                     fill="currentColor"
                   />
-
-                  {/* Connection */}
 
                   <path
                     d="M24 14H30C34 14 37 17 37 21V24"
@@ -1173,7 +1139,7 @@ function ServicesSection() {
 
           <Reveal
             delay={50}
-            className="min-w-0"
+            className="w-full min-w-0"
           >
             <Link
               to="/services/$slug"
@@ -1185,6 +1151,7 @@ function ServicesSection() {
                 h-full
                 min-h-[230px]
                 min-w-0
+                w-full
                 flex-col
                 overflow-hidden
                 rounded-2xl
@@ -1200,8 +1167,6 @@ function ServicesSection() {
               "
             >
 
-              {/* Red accent */}
-
               <span
                 aria-hidden
                 className="
@@ -1216,7 +1181,6 @@ function ServicesSection() {
                   group-hover:w-14
                 "
               />
-
 
               {/* Custom icon */}
 
@@ -1240,8 +1204,6 @@ function ServicesSection() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-10 w-10"
                 >
-                  {/* Person 1 */}
-
                   <circle
                     cx="17"
                     cy="13"
@@ -1257,8 +1219,6 @@ function ServicesSection() {
                     strokeLinecap="round"
                   />
 
-                  {/* Person 2 */}
-
                   <circle
                     cx="31"
                     cy="17"
@@ -1273,8 +1233,6 @@ function ServicesSection() {
                     strokeWidth="1.5"
                     strokeLinecap="round"
                   />
-
-                  {/* Verification */}
 
                   <circle
                     cx="34"
@@ -1370,7 +1328,7 @@ function ServicesSection() {
 
           <Reveal
             delay={100}
-            className="min-w-0"
+            className="w-full min-w-0"
           >
             <Link
               to="/services/$slug"
@@ -1382,6 +1340,7 @@ function ServicesSection() {
                 h-full
                 min-h-[230px]
                 min-w-0
+                w-full
                 flex-col
                 overflow-hidden
                 rounded-2xl
@@ -1397,8 +1356,6 @@ function ServicesSection() {
               "
             >
 
-              {/* Red accent */}
-
               <span
                 aria-hidden
                 className="
@@ -1413,7 +1370,6 @@ function ServicesSection() {
                   group-hover:w-14
                 "
               />
-
 
               {/* Custom icon */}
 
@@ -1437,8 +1393,6 @@ function ServicesSection() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-10 w-10"
                 >
-                  {/* Payslip */}
-
                   <rect
                     x="7"
                     y="6"
@@ -1449,8 +1403,6 @@ function ServicesSection() {
                     strokeWidth="1.7"
                   />
 
-                  {/* Payslip information */}
-
                   <path
                     d="M12 14H27M12 19H27M12 24H21"
                     stroke="currentColor"
@@ -1458,16 +1410,12 @@ function ServicesSection() {
                     strokeLinecap="round"
                   />
 
-                  {/* Salary */}
-
                   <path
                     d="M12 30H23"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                   />
-
-                  {/* Payment */}
 
                   <circle
                     cx="34"
@@ -1477,8 +1425,6 @@ function ServicesSection() {
                     stroke="currentColor"
                     strokeWidth="1.7"
                   />
-
-                  {/* Rupee */}
 
                   <path
                     d="M31.5 29H36.5"
@@ -1579,7 +1525,7 @@ function ServicesSection() {
 
           <Reveal
             delay={150}
-            className="min-w-0"
+            className="w-full min-w-0"
           >
             <Link
               to="/services/$slug"
@@ -1591,6 +1537,7 @@ function ServicesSection() {
                 h-full
                 min-h-[230px]
                 min-w-0
+                w-full
                 flex-col
                 overflow-hidden
                 rounded-2xl
@@ -1606,8 +1553,6 @@ function ServicesSection() {
               "
             >
 
-              {/* Red accent */}
-
               <span
                 aria-hidden
                 className="
@@ -1622,7 +1567,6 @@ function ServicesSection() {
                   group-hover:w-14
                 "
               />
-
 
               {/* Custom icon */}
 
@@ -1646,8 +1590,6 @@ function ServicesSection() {
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-10 w-10"
                 >
-                  {/* Central HR */}
-
                   <circle
                     cx="24"
                     cy="13"
@@ -1662,8 +1604,6 @@ function ServicesSection() {
                     strokeWidth="1.7"
                     strokeLinecap="round"
                   />
-
-                  {/* Connected teams */}
 
                   <circle
                     cx="10"
@@ -1681,16 +1621,12 @@ function ServicesSection() {
                     strokeWidth="1.5"
                   />
 
-                  {/* Connections */}
-
                   <path
                     d="M18 27L12 33M30 27L36 33"
                     stroke="currentColor"
                     strokeWidth="1.6"
                     strokeLinecap="round"
                   />
-
-                  {/* Central hub */}
 
                   <circle
                     cx="24"
