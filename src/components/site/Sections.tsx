@@ -5,7 +5,9 @@ import { useReveal } from "@/hooks/use-reveal";
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">{children}</p>
+    <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
+      {children}
+    </p>
   );
 }
 
@@ -19,6 +21,7 @@ export function Reveal({
   delay?: number;
 }) {
   const { ref, shown } = useReveal();
+
   return (
     <div
       ref={ref}
@@ -56,17 +59,29 @@ export function PageHero({
           backgroundSize: "72px 72px",
         }}
       />
+
       <div
         aria-hidden
         className="pointer-events-none absolute -bottom-20 -left-32 size-96 rounded-full blur-3xl"
-        style={{ background: "var(--coral)", opacity: 0.2 }}
+        style={{
+          background: "var(--coral)",
+          opacity: 0.2,
+        }}
       />
+
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-        <p className="text-xs font-bold uppercase tracking-[0.28em] text-white/55">{eyebrow}</p>
+        <p className="text-xs font-bold uppercase tracking-[0.28em] text-white/55">
+          {eyebrow}
+        </p>
+
         <h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.08] text-white lg:text-6xl">
           {title}
         </h1>
-        <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/70 lg:text-lg">{intro}</p>
+
+        <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/70 lg:text-lg">
+          {intro}
+        </p>
+
         {accent && (
           <p className="mt-8 inline-block rounded-full border border-white/25 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/85">
             {accent}
@@ -88,22 +103,30 @@ export function CtaBand() {
           <div
             aria-hidden
             className="pointer-events-none absolute -right-20 -top-20 size-80 rounded-full blur-3xl"
-            style={{ background: "var(--coral)", opacity: 0.3 }}
+            style={{
+              background: "var(--coral)",
+              opacity: 0.3,
+            }}
           />
+
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-white/55">
                 Start here
               </p>
+
               <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-white lg:text-5xl">
                 You built it for someone. Let's get it into their hands.
               </h2>
+
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70">
-                If your product is listed, visible and still not selling the way you know it should,
-                we will find what is blocking it and build the field system that fixes it. It starts
-                with one audit.
+                If your product is listed, visible and still not selling the
+                way you know it should, we will find what is blocking it and
+                build the field system that fixes it. It starts with one
+                audit.
               </p>
             </div>
+
             <div className="lg:col-span-4 lg:justify-self-end">
               <Link
                 to="/contact"
@@ -120,7 +143,15 @@ export function CtaBand() {
   );
 }
 
+/* =========================================================
+   CLIENT LOGO WALL
+   ========================================================= */
+
 export function LogoWall({ compact = false }: { compact?: boolean }) {
+  /*
+   * Duplicate the logos so the marquee can create a
+   * continuous scrolling loop.
+   */
   const row = [...clientLogos, ...clientLogos];
 
   return (
@@ -130,12 +161,13 @@ export function LogoWall({ compact = false }: { compact?: boolean }) {
         compact ? "py-16" : "py-20 lg:py-28"
       )}
     >
+      {/* Heading */}
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {!compact && (
           <div className="max-w-3xl">
             <Eyebrow>Trusted by</Eyebrow>
 
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-foreground lg:text-5xl">
+            <h2 className="mt-5 max-w-3xl font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-foreground lg:text-5xl">
               Already trusted on the shelves of India's biggest brands.
             </h2>
 
@@ -147,26 +179,30 @@ export function LogoWall({ compact = false }: { compact?: boolean }) {
         )}
       </div>
 
+      {/* Logo Marquee */}
       <div
-        className="relative mt-14 overflow-hidden"
+        className="relative mt-14 w-full overflow-hidden"
         style={{
           maskImage:
-            "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
+            "linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
+            "linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%)",
         }}
       >
-        <div className="marquee-track flex w-max items-center gap-16 lg:gap-20">
+        <div className="marquee-track flex w-max items-center">
           {row.map((logo, index) => (
             <div
               key={`${logo.name}-${index}`}
-              className="flex h-20 w-[150px] shrink-0 items-center justify-center sm:w-[175px] lg:h-24 lg:w-[190px]"
+              className="flex h-24 w-[175px] shrink-0 items-center justify-center sm:w-[185px] lg:w-[195px]"
+              style={{
+                marginRight: "48px",
+              }}
             >
               <img
                 src={logo.url}
                 alt={logo.name}
                 loading="lazy"
-                className="block h-14 w-auto max-w-full object-contain opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:h-16 lg:h-[68px]"
+                className="block max-h-16 max-w-[145px] w-auto object-contain opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:max-h-[68px] sm:max-w-[155px]"
               />
             </div>
           ))}
