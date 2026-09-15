@@ -51,6 +51,21 @@ export function Footer() {
         "
       />
 
+      <div
+        aria-hidden
+        className="
+          pointer-events-none
+          absolute
+          -bottom-32
+          -left-32
+          h-[300px]
+          w-[300px]
+          rounded-full
+          border
+          border-white/[0.035]
+        "
+      />
+
 
       {/* =====================================================
           MAIN FOOTER
@@ -205,7 +220,10 @@ export function Footer() {
                   hover:shadow-lg
                 "
               >
-                <Mail className="h-5 w-5" strokeWidth={2} />
+                <Mail
+                  className="h-5 w-5"
+                  strokeWidth={2}
+                />
               </a>
 
             </div>
@@ -219,6 +237,8 @@ export function Footer() {
           ================================================== */}
 
           <div className="lg:col-span-5">
+
+            {/* HEADING */}
 
             <div className="mb-7 flex items-center gap-4">
 
@@ -238,67 +258,38 @@ export function Footer() {
             </div>
 
 
-            {/* SERVICES GRID */}
+            {/* =================================================
+                ALL 8 SERVICES
+            ================================================== */}
 
             <div
               className="
                 grid
                 grid-cols-1
-                gap-x-8
+                gap-x-10
                 gap-y-5
                 sm:grid-cols-2
               "
             >
 
-              {services.map((s, i) => (
+              {services.map((s) => (
                 <Link
                   key={s.slug}
                   to="/services/$slug"
                   params={{ slug: s.slug }}
                   className="
                     group
-                    flex
-                    items-start
-                    gap-3
+                    block
                     text-sm
+                    leading-5
                     text-white/75
                     transition-all
                     duration-300
+                    hover:translate-x-1
                     hover:text-white
                   "
                 >
-
-                  {/* NUMBER */}
-
-                  <span
-                    className="
-                      mt-0.5
-                      w-5
-                      shrink-0
-                      font-display
-                      text-[10px]
-                      font-bold
-                      tracking-[0.08em]
-                      text-[#EF4035]
-                    "
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-
-
-                  {/* SERVICE NAME */}
-
-                  <span
-                    className="
-                      leading-5
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  >
-                    {s.navLabel}
-                  </span>
-
+                  {s.navLabel}
                 </Link>
               ))}
 
@@ -313,6 +304,8 @@ export function Footer() {
           ================================================== */}
 
           <div className="lg:col-span-3">
+
+            {/* HEADING */}
 
             <div className="mb-7 flex items-center gap-4">
 
@@ -335,7 +328,10 @@ export function Footer() {
 
             <div className="space-y-6 text-[13px] leading-6">
 
-              {/* ADDRESS */}
+
+              {/* =================================================
+                  OFFICE ADDRESS
+              ================================================== */}
 
               <div className="flex items-start gap-3">
 
@@ -357,11 +353,13 @@ export function Footer() {
               </div>
 
 
-              {/* GOOGLE PLUS CODE */}
+              {/* =================================================
+                  GOOGLE PLUS CODE
+              ================================================== */}
 
               <div className="border-l border-white/15 pl-8">
 
-                <p className="text-white/60">
+                <p className="text-white/55">
                   Google Plus Code:
                 </p>
 
@@ -374,7 +372,9 @@ export function Footer() {
               </div>
 
 
-              {/* LANDLINE */}
+              {/* =================================================
+                  LANDLINE
+              ================================================== */}
 
               <div className="flex items-center gap-3">
 
@@ -385,7 +385,11 @@ export function Footer() {
 
                 <a
                   href="tel:+912249240438"
-                  className="text-white/75 transition-colors hover:text-white"
+                  className="
+                    text-white/75
+                    transition-colors
+                    hover:text-white
+                  "
                 >
                   +91-2249240438
                 </a>
@@ -393,7 +397,9 @@ export function Footer() {
               </div>
 
 
-              {/* MOBILE */}
+              {/* =================================================
+                  MOBILE NUMBERS
+              ================================================== */}
 
               <div className="flex items-start gap-3">
 
@@ -406,21 +412,36 @@ export function Footer() {
 
                   <a
                     href="tel:+919222289841"
-                    className="block text-white/75 hover:text-white"
+                    className="
+                      block
+                      text-white/75
+                      transition-colors
+                      hover:text-white
+                    "
                   >
                     +91 9222289841
                   </a>
 
                   <a
                     href="tel:+918800596876"
-                    className="block text-white/75 hover:text-white"
+                    className="
+                      block
+                      text-white/75
+                      transition-colors
+                      hover:text-white
+                    "
                   >
                     +91 8800596876
                   </a>
 
                   <a
                     href="tel:+919619533691"
-                    className="block text-white/75 hover:text-white"
+                    className="
+                      block
+                      text-white/75
+                      transition-colors
+                      hover:text-white
+                    "
                   >
                     +91 9619533691
                   </a>
@@ -430,7 +451,9 @@ export function Footer() {
               </div>
 
 
-              {/* EMAIL */}
+              {/* =================================================
+                  EMAIL
+              ================================================== */}
 
               <div className="flex items-start gap-3">
 
@@ -465,6 +488,8 @@ export function Footer() {
 
           <div className="lg:col-span-1">
 
+            {/* HEADING */}
+
             <div className="mb-7">
 
               <h3
@@ -486,36 +511,24 @@ export function Footer() {
             </div>
 
 
-            <div className="space-y-5">
+            {/* BANGALORE */}
 
-              {/* BANGALORE */}
+            <div className="mb-6">
 
-              <div>
+              <p className="text-sm leading-5 text-white/80">
+                Bangalore
+              </p>
 
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#EF4035]">
-                  01
-                </p>
-
-                <p className="mt-1 text-sm leading-5 text-white/80">
-                  Bangalore
-                </p>
-
-              </div>
+            </div>
 
 
-              {/* NEW DELHI */}
+            {/* NEW DELHI */}
 
-              <div>
+            <div>
 
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#EF4035]">
-                  02
-                </p>
-
-                <p className="mt-1 text-sm leading-5 text-white/80">
-                  New Delhi
-                </p>
-
-              </div>
+              <p className="text-sm leading-5 text-white/80">
+                New Delhi
+              </p>
 
             </div>
 
@@ -527,7 +540,7 @@ export function Footer() {
 
 
       {/* =====================================================
-          BOTTOM BAR
+          BOTTOM COPYRIGHT
       ====================================================== */}
 
       <div className="relative border-t border-white/10">
@@ -535,24 +548,14 @@ export function Footer() {
         <div
           className="
             mx-auto
-            flex
             max-w-7xl
-            flex-col
-            gap-3
             px-5
             py-5
-            text-xs
-            text-white/50
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
             lg:px-8
           "
         >
 
-          {/* ONLY COPYRIGHT — 2026 */}
-
-          <p>
+          <p className="text-xs text-white/50">
             Copyright © 2026 NM Ingenious Management Services Pvt. Ltd.
             All rights reserved.
           </p>
