@@ -730,225 +730,219 @@ function ServicesSection() {
 
 
         {/* =====================================================
-            FIRST 4 SERVICES
-        ====================================================== */}
+    FIRST 4 SERVICES
+====================================================== */}
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
+<div className="mt-10 grid min-w-0 gap-4 md:grid-cols-2">
+  {services.slice(0, 4).map((s, i) => (
+    <Reveal
+      key={s.slug}
+      delay={i * 50}
+      className="min-w-0"
+    >
+      <Link
+        to="/services/$slug"
+        params={{ slug: s.slug }}
+        className="
+          group
+          flex
+          h-[230px]
+          min-w-0
+          w-full
+          overflow-hidden
+          rounded-2xl
+          border
+          border-border
+          bg-white
+          transition-all
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
+        "
+      >
+        {/* IMAGE */}
 
-          {services.slice(0, 4).map((s, i) => (
-            <Reveal key={s.slug} delay={i * 50}>
+        <div
+          className="
+            relative
+            h-full
+            w-[145px]
+            shrink-0
+            overflow-hidden
+            bg-[#E9EEF5]
+            sm:w-[160px]
+            lg:w-[170px]
+          "
+        >
+          {/* Blurred background */}
 
-              <Link
-                to="/services/$slug"
-                params={{ slug: s.slug }}
-                className="
-                  group
-                  flex
-                  h-[230px]
-                  w-full
-                  overflow-hidden
-                  rounded-2xl
-                  border
-                  border-border
-                  bg-white
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
-                "
-              >
+          <div
+            aria-hidden
+            className="
+              absolute
+              inset-0
+              scale-110
+              bg-cover
+              bg-center
+              blur-xl
+              opacity-45
+            "
+            style={{
+              backgroundImage: `url(${s.image})`,
+            }}
+          />
 
-                {/* IMAGE */}
+          {/* Soft overlay */}
 
-                <div
-                  className="
-                    relative
-                    h-full
-                    w-[34%]
-                    shrink-0
-                    overflow-hidden
-                    bg-[#E9EEF5]
-                  "
-                >
+          <div
+            aria-hidden
+            className="
+              absolute
+              inset-0
+              bg-[#082B61]/10
+            "
+          />
 
-                  {/* Blurred background */}
+          {/* Complete image */}
 
-                  <div
-                    aria-hidden
-                    className="
-                      absolute
-                      inset-0
-                      scale-110
-                      bg-cover
-                      bg-center
-                      blur-xl
-                      opacity-45
-                    "
-                    style={{
-                      backgroundImage: `url(${s.image})`,
-                    }}
-                  />
+          <img
+            src={s.image}
+            alt={s.caption}
+            loading="lazy"
+            className="
+              relative
+              z-10
+              block
+              h-full
+              w-full
+              object-contain
+              transition-transform
+              duration-700
+              ease-[cubic-bezier(0.22,1,0.36,1)]
+              group-hover:scale-[1.02]
+            "
+          />
 
-                  {/* Soft overlay */}
+          {/* Bottom gradient */}
 
-                  <div
-                    aria-hidden
-                    className="
-                      absolute
-                      inset-0
-                      bg-[#082B61]/10
-                    "
-                  />
+          <span
+            aria-hidden
+            className="
+              pointer-events-none
+              absolute
+              inset-x-0
+              bottom-0
+              z-20
+              h-20
+            "
+            style={{
+              background:
+                "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent)",
+            }}
+          />
 
-                  {/* Complete image */}
+          {/* Caption */}
 
-                  <img
-                    src={s.image}
-                    alt={s.caption}
-                    loading="lazy"
-                    className="
-                      relative
-                      z-10
-                      block
-                      h-full
-                      w-full
-                      object-contain
-                      transition-transform
-                      duration-700
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
-                      group-hover:scale-[1.02]
-                    "
-                  />
-
-                  {/* Bottom gradient */}
-
-                  <span
-                    aria-hidden
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-x-0
-                      bottom-0
-                      z-20
-                      h-20
-                    "
-                    style={{
-                      background:
-                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent)",
-                    }}
-                  />
-
-                  {/* Caption */}
-
-                  <span
-                    className="
-                      absolute
-                      bottom-3
-                      left-3
-                      right-3
-                      z-30
-                      font-display
-                      text-[8px]
-                      font-bold
-                      uppercase
-                      leading-tight
-                      tracking-[0.14em]
-                      text-white
-                    "
-                  >
-                    {s.caption}
-                  </span>
-
-                </div>
-
-
-                {/* CONTENT */}
-
-                <div
-                  className="
-                    flex
-                    min-w-0
-                    flex-1
-                    flex-col
-                    px-5
-                    py-5
-                    sm:px-6
-                  "
-                >
-
-                  {/* Service name */}
-
-                  <h3
-                    className="
-                      max-w-[310px]
-                      font-display
-                      text-[17px]
-                      font-extrabold
-                      leading-[1.1]
-                      text-foreground
-                      transition-colors
-                      duration-300
-                      group-hover:text-brand
-                      sm:text-lg
-                    "
-                  >
-                    {s.name}
-                  </h3>
-
-
-                  {/* Description */}
-
-                  <p
-                    className="
-                      mt-3
-                      max-w-[340px]
-                      text-xs
-                      leading-[1.5]
-                      text-muted-foreground
-                      sm:text-[13px]
-                    "
-                  >
-                    {s.summary}
-                  </p>
-
-
-                  {/* Explore */}
-
-                  <span
-                    className="
-                      mt-5
-                      inline-flex
-                      w-fit
-                      items-center
-                      gap-2
-                      font-display
-                      text-[10px]
-                      font-bold
-                      uppercase
-                      tracking-[0.12em]
-                      text-coral
-                    "
-                  >
-                    Explore
-
-                    <ArrowRight
-                      className="
-                        size-3.5
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
-                    />
-                  </span>
-
-                </div>
-
-              </Link>
-
-            </Reveal>
-          ))}
-
+          <span
+            className="
+              absolute
+              bottom-3
+              left-3
+              right-3
+              z-30
+              font-display
+              text-[8px]
+              font-bold
+              uppercase
+              leading-tight
+              tracking-[0.14em]
+              text-white
+            "
+          >
+            {s.caption}
+          </span>
         </div>
+
+        {/* CONTENT */}
+
+        <div
+          className="
+            flex
+            min-w-0
+            flex-1
+            flex-col
+            px-5
+            py-5
+            sm:px-6
+          "
+        >
+          {/* Service name */}
+
+          <h3
+            className="
+              max-w-full
+              font-display
+              text-[17px]
+              font-extrabold
+              leading-[1.1]
+              text-foreground
+              transition-colors
+              duration-300
+              group-hover:text-brand
+              sm:text-lg
+            "
+          >
+            {s.name}
+          </h3>
+
+          {/* Description */}
+
+          <p
+            className="
+              mt-3
+              max-w-full
+              text-xs
+              leading-[1.5]
+              text-muted-foreground
+              sm:text-[13px]
+            "
+          >
+            {s.summary}
+          </p>
+
+          {/* Explore */}
+
+          <span
+            className="
+              mt-5
+              inline-flex
+              w-fit
+              items-center
+              gap-2
+              font-display
+              text-[10px]
+              font-bold
+              uppercase
+              tracking-[0.12em]
+              text-coral
+            "
+          >
+            Explore
+
+            <ArrowRight
+              className="
+                size-3.5
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+              "
+            />
+          </span>
+        </div>
+      </Link>
+    </Reveal>
+  ))}
+</div>
 
 
         {/* =====================================================
