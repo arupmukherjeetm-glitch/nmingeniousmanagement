@@ -1052,11 +1052,11 @@ function ServicesIndex() {
           "
         >
           <span className="lg:whitespace-nowrap">
-            The capabilities that keep
+            The capabilities that
           </span>
           <br />
           <span className="text-coral">
-            execution moving.
+          keep execution moving.
           </span>
         </h1>
       </div>
