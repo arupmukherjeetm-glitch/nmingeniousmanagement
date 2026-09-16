@@ -1,10 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  Repeat,
-  Store,
-  Users,
-} from "lucide-react";
+import { ArrowRight, Repeat, Store, Users } from "lucide-react";
 
 import { industries } from "@/lib/site-data";
 import {
@@ -68,8 +63,7 @@ const pillars = [
 ];
 
 /* =========================================================
-   ONLINE → OFFLINE
-   NO 01 / 02 / 03 / 04
+   ONLINE TO OFFLINE
 ========================================================= */
 
 const onlineToOffline = [
@@ -104,7 +98,7 @@ function WhoItsFor() {
     <>
       {/* =====================================================
           HERO
-          ORIGINAL HERO — H1 KEPT EXACTLY AS PROVIDED
+          EXACT HERO FROM USER'S ORIGINAL CODE
       ===================================================== */}
 
       <PageHero
@@ -125,56 +119,50 @@ function WhoItsFor() {
           WHAT BRANDS NEED
       ===================================================== */}
 
-      <section className="bg-background py-20 lg:py-28">
+      <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-          {/* SECTION HEADER */}
+          <Reveal>
+            <div className="max-w-3xl">
+              <Eyebrow>What brands need</Eyebrow>
 
-          <div className="max-w-3xl">
-            <Eyebrow>What brands need</Eyebrow>
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
+                Reach, frequency and shoppers you can actually measure.
+              </h2>
 
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
-              Reach, frequency and shoppers you can actually measure.
-            </h2>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                Physical retail becomes easier to manage when coverage,
+                frequency and shopper interaction are treated as operating
+                numbers — not assumptions.
+              </p>
+            </div>
+          </Reveal>
 
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              Physical retail becomes easier to manage when coverage,
-              frequency and shopper interaction are treated as operating
-              numbers — not assumptions.
-            </p>
-          </div>
-
-          {/* PILLARS */}
-
-          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+          <div className="mt-14 grid gap-4 lg:grid-cols-3">
             {pillars.map((pillar, index) => {
               const Icon = pillar.icon;
 
               return (
-                <div key={pillar.title}>
-                  <Reveal delay={index * 70}>
-                    <article className="group brand-box h-full rounded-2xl p-7 lg:p-8">
+                <Reveal key={pillar.title} delay={index * 70}>
+                  <article className="brand-box group h-full rounded-2xl p-8 transition-all duration-500 hover:-translate-y-1">
+                    <span
+                      className="inline-flex size-12 items-center justify-center rounded-xl text-white transition-transform duration-300 group-hover:scale-105"
+                      style={{
+                        background: "var(--gradient-brand)",
+                      }}
+                    >
+                      <Icon className="size-5" />
+                    </span>
 
-                      <div
-                        className="flex size-12 items-center justify-center rounded-xl text-white transition-transform duration-300 group-hover:scale-105"
-                        style={{
-                          background: "var(--gradient-brand)",
-                        }}
-                      >
-                        <Icon className="size-5" />
-                      </div>
+                    <h3 className="mt-6 font-display text-xl font-extrabold leading-tight text-foreground">
+                      {pillar.title}
+                    </h3>
 
-                      <h3 className="mt-6 font-display text-xl font-extrabold leading-tight text-foreground">
-                        {pillar.title}
-                      </h3>
-
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                        {pillar.body}
-                      </p>
-
-                    </article>
-                  </Reveal>
-                </div>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {pillar.body}
+                    </p>
+                  </article>
+                </Reveal>
               );
             })}
           </div>
@@ -184,73 +172,59 @@ function WhoItsFor() {
 
       {/* =====================================================
           REACH & FREQUENCY
-          EXISTING COMPONENT
+          EXISTING BLUE / BRAND COMPONENT
       ===================================================== */}
 
       <ReachFrequency />
 
       {/* =====================================================
-          ONLINE → OFFLINE
-          BLUE SECTION
-          NO NUMBERING
+          ONLINE-FIRST BRANDS
+          BLUE CONTAINER
       ===================================================== */}
 
-      <section className="bg-brand-deep py-20 text-white lg:py-28">
+      <section className="bg-brand-deep py-24 text-white lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <Reveal>
+            <div className="max-w-3xl">
 
-            {/* LEFT CONTENT */}
-
-            <div>
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
                 Online-first brands
               </p>
 
-              <h2 className="mt-5 max-w-2xl font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white lg:text-5xl">
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white lg:text-5xl">
                 You won the internet. Offline is where the next hundred
                 thousand shoppers are.
               </h2>
 
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65">
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65">
                 D2C brands come to us when the online curve flattens and
-                retail is the next route to growth. We give you the field
+                retail is the only way to grow. We give you the field
                 organisation, the store access and the reporting you never
                 had to build for ecommerce.
               </p>
 
-              <Link
-                to="/contact"
-                className="mt-8 inline-flex items-center justify-center rounded-xl bg-coral px-6 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
-              >
-                Plan your offline entry
-              </Link>
             </div>
+          </Reveal>
 
-            {/* RIGHT CONTENT */}
+          <div className="mt-14 grid gap-4 sm:grid-cols-2">
+            {onlineToOffline.map((item, index) => (
+              <Reveal key={item.title} delay={index * 70}>
+                <article className="group h-full rounded-2xl border border-white/10 bg-white/[0.04] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-coral/50 hover:bg-white/[0.06]">
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              {onlineToOffline.map((item, index) => (
-                <div key={item.title}>
-                  <Reveal delay={index * 60}>
-                    <article className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-coral/40 hover:bg-white/[0.06]">
+                  <div className="mb-6 h-1 w-9 rounded-full bg-coral transition-all duration-300 group-hover:w-14" />
 
-                      <div className="mb-5 h-1 w-8 rounded-full bg-coral" />
+                  <h3 className="font-display text-xl font-extrabold leading-tight text-white">
+                    {item.title}
+                  </h3>
 
-                      <h3 className="font-display text-lg font-extrabold leading-tight text-white">
-                        {item.title}
-                      </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-white/65">
+                    {item.body}
+                  </p>
 
-                      <p className="mt-3 text-sm leading-relaxed text-white/60">
-                        {item.body}
-                      </p>
-
-                    </article>
-                  </Reveal>
-                </div>
-              ))}
-            </div>
-
+                </article>
+              </Reveal>
+            ))}
           </div>
 
         </div>
@@ -258,92 +232,76 @@ function WhoItsFor() {
 
       {/* =====================================================
           CATEGORIES
-          SAND SECTION
+          LIGHT / SAND SECTION
       ===================================================== */}
 
-      <section className="bg-sand py-20 lg:py-28">
+      <section className="bg-sand py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-          {/* SECTION HEADER */}
-
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-end">
-
-            <div>
+          <Reveal>
+            <div className="max-w-3xl">
               <Eyebrow>Categories we run</Eyebrow>
 
-              <h2 className="mt-5 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
                 Seven categories, one shelf discipline.
               </h2>
+
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                Different products need different shopper conversations.
+                The underlying discipline of availability, visibility and
+                execution remains consistent.
+              </p>
             </div>
+          </Reveal>
 
-            <p className="max-w-lg text-sm leading-relaxed text-muted-foreground lg:justify-self-end">
-              Different products need different shopper conversations. The
-              underlying discipline of availability, visibility and execution
-              remains consistent.
-            </p>
-
-          </div>
-
-          {/* CATEGORY GRID */}
-
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
             {industries.map((industry, index) => (
-              <div key={industry.title}>
-                <Reveal delay={index * 45}>
-                  <article className="flex min-h-[185px] h-full flex-col rounded-2xl border border-border bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(20,45,90,0.08)]">
+              <Reveal key={industry.title} delay={index * 50}>
+                <article className="brand-box group h-full min-h-[190px] rounded-2xl p-7 transition-all duration-500 hover:-translate-y-1">
 
-                    <div className="mt-auto">
+                  <div className="flex h-full flex-col justify-end">
 
-                      <h3 className="font-display text-lg font-extrabold leading-tight text-foreground">
-                        {industry.title}
-                      </h3>
-
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                        {industry.body}
-                      </p>
-
-                    </div>
-
-                  </article>
-                </Reveal>
-              </div>
-            ))}
-
-            {/* ONLY THIS CARD IS CLICKABLE */}
-
-            <div>
-              <Reveal delay={industries.length * 45}>
-
-                <Link
-                  to="/services"
-                  className="group flex min-h-[185px] h-full flex-col justify-between rounded-2xl p-7"
-                  style={{
-                    background: "var(--gradient-brand)",
-                  }}
-                >
-
-                  <div>
-
-                    <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white/60">
-                      Explore further
-                    </p>
-
-                    <h3 className="mt-4 max-w-[230px] font-display text-xl font-extrabold leading-tight text-white">
-                      See the services behind the execution.
+                    <h3 className="font-display text-lg font-extrabold leading-tight text-foreground">
+                      {industry.title}
                     </h3>
+
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {industry.body}
+                    </p>
 
                   </div>
 
-                  <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold text-coral transition-transform duration-300 group-hover:translate-x-1">
-                    Explore services
-                    <ArrowRight className="size-4" />
-                  </span>
-
-                </Link>
-
+                </article>
               </Reveal>
-            </div>
+            ))}
+
+            {/* SERVICES LINK — ONLY UNNECESSARY ARROW REMOVED ELSEWHERE */}
+
+            <Reveal delay={industries.length * 50}>
+              <Link
+                to="/services"
+                className="group flex min-h-[190px] h-full flex-col justify-between rounded-2xl p-7 transition-all duration-500 hover:-translate-y-1"
+                style={{
+                  background: "var(--gradient-brand)",
+                }}
+              >
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/60">
+                    Explore further
+                  </p>
+
+                  <h3 className="mt-4 font-display text-xl font-extrabold leading-tight text-white">
+                    See the services behind it.
+                  </h3>
+                </div>
+
+                <span className="inline-flex items-center gap-2 font-display text-sm font-bold text-coral transition-transform duration-300 group-hover:translate-x-1">
+                  Explore services
+                  <ArrowRight className="size-4" />
+                </span>
+              </Link>
+            </Reveal>
 
           </div>
 
@@ -357,7 +315,7 @@ function WhoItsFor() {
       <OfflineExpansion />
 
       {/* =====================================================
-          LOGO WALL
+          CLIENT / BRAND LOGOS
       ===================================================== */}
 
       <LogoWall />
