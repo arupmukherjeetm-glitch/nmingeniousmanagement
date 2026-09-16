@@ -163,7 +163,7 @@ export function Header() {
                 </div>
               </div>
             </div>
- {/* Who It's For */}
+         {/* Who It's For */}
             <Link
               to="/who-its-for"
               className="font-display text-sm font-semibold text-brand-deep transition-colors hover:text-coral"
