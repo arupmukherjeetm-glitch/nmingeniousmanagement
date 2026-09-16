@@ -91,20 +91,20 @@ function Hero() {
           <div className="relative z-20 order-2 lg:order-1">
 
             <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.93] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[60px] xl:text-[68px]">
-              <span className="block">
-                You built the{" "}
-                <span className="hero-word hero-product">
-                  <span className="hero-word-inner">product.</span>
-                </span>
-              </span>
+  <span className="block">
+    You built the{" "}
+    <span className="hero-word hero-word-product">
+      product.
+    </span>
+  </span>
 
-              <span className="mt-2 block text-coral">
-                We get it to the{" "}
-                <span className="hero-word hero-people">
-                  <span className="hero-word-inner">people.</span>
-                </span>
-              </span>
-            </h1>
+  <span className="mt-2 block text-coral">
+    We get it to the{" "}
+    <span className="hero-word hero-word-people">
+      people.
+    </span>
+  </span>
+</h1>
 
             <p className="mt-6 max-w-[510px] text-[13px] leading-5 text-muted-foreground sm:text-[14px] sm:leading-6 lg:mt-7">
               NM Ingenious turns shelf presence into sell-out through
@@ -148,43 +148,20 @@ function Hero() {
 
             <div className="relative z-10 ml-auto w-full max-w-[720px]">
 
-              {/* Video frame */}
-              <div className="group overflow-hidden rounded-[20px] border-[3px] border-white bg-ink shadow-[0_28px_70px_rgba(8,43,97,0.18)] sm:rounded-[26px]">
+              <div className="overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
 
-                {/* Cropped video viewport */}
-                <div className="relative aspect-[16/9] overflow-hidden">
+                <video
+                  src={heroVideoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="block aspect-[16/9] w-full object-cover object-center"
+                />
 
-                  <video
-                    className="
-                      absolute
-                      left-1/2
-                      top-1/2
-                      h-[118%]
-                      w-[118%]
-                      -translate-x-1/2
-                      -translate-y-1/2
-                      object-cover
-                      object-center
-                      transition-transform
-                      duration-[1800ms]
-                      ease-out
-                      group-hover:scale-[1.025]
-                    "
-                    src={HERO_VIDEO}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    poster="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1600&q=80"
-                    aria-label="NM Ingenious retail execution in action"
-                  />
-
-                </div>
-
-                {/* Coral bottom rule */}
                 <div
-                  aria-hidden="true"
+                  aria-hidden
                   className="h-1.5 w-full bg-coral"
                 />
 
