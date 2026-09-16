@@ -163,7 +163,13 @@ export function Header() {
                 </div>
               </div>
             </div>
-
+ {/* Who It's For */}
+            <Link
+              to="/who-its-for"
+              className="font-display text-sm font-semibold text-brand-deep transition-colors hover:text-coral"
+            >
+             Who It's For
+            </Link>
             {/* CONTACT */}
             <Link
               to="/contact"
