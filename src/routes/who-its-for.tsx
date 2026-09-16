@@ -55,24 +55,25 @@ function WhoItsForPage() {
 
 /* =========================================================
    HERO
+   ONLY HERO H1 USES MULTICOLOR
 ========================================================= */
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-background">
-      <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+    <section className="bg-background">
+      <div className="mx-auto max-w-7xl px-5 pb-16 pt-16 lg:px-8 lg:pb-20 lg:pt-20">
+        <div className="grid items-end gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           {/* LEFT */}
-          <div className="max-w-3xl">
+          <div className="max-w-4xl">
             <Eyebrow>Who it's for</Eyebrow>
 
-            <h1 className="mt-5 font-display text-[2.65rem] font-extrabold leading-[1.02] tracking-[-0.045em] text-foreground sm:text-5xl lg:text-[4.6rem]">
+            <h1 className="mt-5 max-w-4xl font-display text-[2.8rem] font-extrabold leading-[1.01] tracking-[-0.045em] text-foreground sm:text-5xl lg:text-[4.65rem]">
               If your brand needs{" "}
               <span className="text-coral">
                 reach and frequency
               </span>{" "}
               at the shelf,{" "}
-              <span className="text-coral">
+              <span className="text-brand">
                 this is built for you.
               </span>
             </h1>
@@ -83,7 +84,7 @@ function HeroSection() {
               expanding stores, cities and shopper coverage.
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-deep"
@@ -91,90 +92,42 @@ function HeroSection() {
                 Talk to NM Ingenious
               </Link>
 
-              <span className="text-sm font-medium text-muted-foreground">
-                Retail execution. Made measurable.
+              <span className="text-sm text-muted-foreground">
+                Retail execution, made measurable.
               </span>
             </div>
           </div>
 
-          {/* RIGHT — PURPOSEFUL HERO VISUAL */}
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-[2rem] border border-border bg-sand p-6 sm:p-8 lg:p-10">
-              {/* subtle background structure */}
-              <div className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full border-[28px] border-coral/10" />
-              <div className="pointer-events-none absolute -bottom-24 -left-24 size-72 rounded-full border-[32px] border-brand/10" />
+          {/* RIGHT */}
+          <div className="hidden lg:block">
+            <div className="border-l-2 border-coral pl-8">
+              <p className="font-display text-4xl font-extrabold leading-tight tracking-[-0.035em] text-foreground">
+                The last three feet{" "}
+                <span className="text-foreground">
+                  matter.
+                </span>
+              </p>
 
-              <div className="relative">
-                <div className="flex items-center justify-between">
-                  <span className="font-display text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                    Retail growth
-                  </span>
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+                The moment where your brand meets the store, the shopper and
+                the purchase decision.
+              </p>
 
-                  <span className="size-2.5 rounded-full bg-coral" />
-                </div>
+              <div className="mt-7 grid grid-cols-3 gap-4">
+                <MiniHeroStat
+                  value="Stores"
+                  label="Coverage"
+                />
 
-                <div className="mt-10">
-                  <p className="font-display text-sm font-bold uppercase tracking-[0.16em] text-muted-foreground">
-                    The last three feet
-                  </p>
+                <MiniHeroStat
+                  value="People"
+                  label="Execution"
+                />
 
-                  <h2 className="mt-3 max-w-md font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] text-foreground sm:text-4xl">
-                    Turn{" "}
-                    <span className="text-coral">
-                      presence
-                    </span>{" "}
-                    into{" "}
-                    <span className="text-coral">
-                      purchase.
-                    </span>
-                  </h2>
-                </div>
-
-                <div className="mt-10 grid grid-cols-3 gap-3">
-                  <HeroMetric
-                    value="STORES"
-                    label="Coverage"
-                  />
-
-                  <HeroMetric
-                    value="PEOPLE"
-                    label="Execution"
-                  />
-
-                  <HeroMetric
-                    value="DATA"
-                    label="Visibility"
-                  />
-                </div>
-
-                <div className="mt-4 rounded-2xl bg-white p-5 shadow-[0_15px_45px_rgba(20,45,90,0.08)]">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                        Operating focus
-                      </p>
-
-                      <p className="mt-2 font-display text-lg font-extrabold text-foreground">
-                        Reach × Frequency
-                      </p>
-                    </div>
-
-                    <div className="h-12 w-28">
-                      <div className="flex h-full items-end gap-1.5">
-                        <span className="h-[35%] flex-1 rounded-t bg-coral/30" />
-                        <span className="h-[50%] flex-1 rounded-t bg-coral/50" />
-                        <span className="h-[68%] flex-1 rounded-t bg-coral/70" />
-                        <span className="h-[82%] flex-1 rounded-t bg-coral" />
-                        <span className="h-full flex-1 rounded-t bg-brand" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 grid grid-cols-2 gap-3">
-                  <HeroPill text="Store-level visibility" />
-                  <HeroPill text="Field productivity" />
-                </div>
+                <MiniHeroStat
+                  value="Data"
+                  label="Visibility"
+                />
               </div>
             </div>
           </div>
@@ -184,7 +137,7 @@ function HeroSection() {
   );
 }
 
-function HeroMetric({
+function MiniHeroStat({
   value,
   label,
 }: {
@@ -192,23 +145,15 @@ function HeroMetric({
   label: string;
 }) {
   return (
-    <div className="rounded-xl border border-border bg-white p-4">
-      <p className="font-display text-[11px] font-extrabold tracking-[0.08em] text-foreground">
+    <div>
+      <p className="font-display text-sm font-extrabold text-foreground">
         {value}
       </p>
 
-      <p className="mt-1 text-xs text-muted-foreground">
-        {label}
-      </p>
-    </div>
-  );
-}
+      <div className="mt-1 h-0.5 w-6 bg-coral" />
 
-function HeroPill({ text }: { text: string }) {
-  return (
-    <div className="rounded-xl bg-brand px-4 py-3">
-      <p className="text-xs font-semibold text-white">
-        {text}
+      <p className="mt-2 text-xs text-muted-foreground">
+        {label}
       </p>
     </div>
   );
@@ -216,33 +161,33 @@ function HeroPill({ text }: { text: string }) {
 
 /* =========================================================
    INDUSTRIES
+   ALL HEADINGS BLACK
 ========================================================= */
 
 function IndustrySection() {
   return (
-    <section className="bg-sand py-20 lg:py-24">
+    <section className="bg-sand py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="max-w-3xl">
-          <Eyebrow>Built for your category</Eyebrow>
+        <div className="grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+          <div>
+            <Eyebrow>Built for your category</Eyebrow>
 
-          <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] text-foreground lg:text-5xl">
-            Different categories.{" "}
-            <span className="text-coral">
-              The same retail reality.
-            </span>
-          </h2>
+            <h2 className="mt-4 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
+              Different categories. The same retail reality.
+            </h2>
+          </div>
 
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            The product may change, but the operating challenge remains:
-            getting the right people into the right stores often enough to
-            create visibility, trial and sell-out.
+          <p className="max-w-lg text-sm leading-relaxed text-muted-foreground lg:justify-self-end">
+            Whether you're selling food, beauty, health or a premium
+            proposition, physical retail still comes down to availability,
+            visibility, people and consistent execution.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {industries.map((industry, index) => (
             <div key={industry.title}>
-              <Reveal delay={index * 50}>
+              <Reveal delay={index * 40}>
                 <IndustryCard
                   title={industry.title}
                   body={industry.body}
@@ -252,34 +197,35 @@ function IndustrySection() {
           ))}
         </div>
 
-        {/* REAL CTA — no fake arrow */}
-        <div className="mt-4 overflow-hidden rounded-2xl bg-brand-deep">
-          <div className="grid items-center gap-8 px-7 py-8 sm:px-9 lg:grid-cols-[1fr_auto] lg:px-10">
-            <div>
-              <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-coral">
-                Planning
-              </p>
+        {/* REAL CTA */}
+        <div className="mt-3">
+          <Reveal delay={200}>
+            <div className="overflow-hidden rounded-2xl bg-brand-deep">
+              <div className="grid items-center gap-6 px-7 py-7 sm:px-9 lg:grid-cols-[1fr_auto] lg:px-10 lg:py-8">
+                <div>
+                  <p className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-coral">
+                    Planning
+                  </p>
 
-              <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-white lg:text-3xl">
-                Reach and frequency{" "}
-                <span className="text-coral">
-                  planned properly.
-                </span>
-              </h3>
+                  <h3 className="mt-2 font-display text-2xl font-extrabold leading-tight text-white lg:text-3xl">
+                    Reach and frequency planned properly.
+                  </h3>
 
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
-                Build a retail operating model around store coverage,
-                shopper frequency and measurable execution.
-              </p>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/60">
+                    Build coverage around the stores, shoppers and markets
+                    that matter most.
+                  </p>
+                </div>
+
+                <Link
+                  to="/contact"
+                  className="inline-flex shrink-0 items-center justify-center rounded-xl bg-coral px-6 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  Discuss your retail plan
+                </Link>
+              </div>
             </div>
-
-            <Link
-              to="/contact"
-              className="inline-flex shrink-0 items-center justify-center rounded-xl bg-coral px-6 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
-            >
-              Discuss your retail plan
-            </Link>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -294,13 +240,13 @@ function IndustryCard({
   body: string;
 }) {
   return (
-    <div className="flex min-h-[205px] h-full flex-col rounded-2xl border border-border bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(20,45,90,0.08)]">
+    <div className="flex min-h-[175px] h-full flex-col rounded-2xl border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(20,45,90,0.08)]">
       <div className="mt-auto">
-        <h3 className="max-w-[210px] font-display text-xl font-extrabold leading-tight text-foreground">
+        <h3 className="font-display text-lg font-extrabold leading-tight text-foreground">
           {title}
         </h3>
 
-        <p className="mt-3 max-w-[230px] text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-2.5 max-w-[250px] text-sm leading-relaxed text-muted-foreground">
           {body}
         </p>
       </div>
@@ -335,46 +281,43 @@ function BrandStageSection() {
   ];
 
   return (
-    <section className="bg-background py-24 lg:py-32">
+    <section className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <div>
             <Eyebrow>Where we fit</Eyebrow>
 
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] text-foreground lg:text-5xl">
-              Different growth stages.{" "}
-              <span className="text-coral">
-                One operating discipline.
-              </span>
+            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
+              Different growth stages. One operating discipline.
             </h2>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
               Whether you're entering offline retail or defending an
-              established footprint, the operating questions are similar:
-              where should we deploy, how often should we be present, and what
+              established footprint, the operating questions remain similar:
+              where should we deploy, how often should we be present and what
               happened in every store?
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {stages.map((stage, index) => {
               const Icon = stage.icon;
 
               return (
                 <div key={stage.title}>
-                  <Reveal delay={index * 70}>
-                    <div className="rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:border-coral/30 hover:shadow-[0_18px_45px_rgba(20,45,90,0.08)] lg:p-8">
-                      <div className="flex gap-6">
-                        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-coral-soft text-coral">
+                  <Reveal delay={index * 60}>
+                    <div className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-coral/30 hover:shadow-[0_18px_45px_rgba(20,45,90,0.08)] lg:p-7">
+                      <div className="flex gap-5">
+                        <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-coral-soft text-coral">
                           <Icon className="size-5" />
                         </div>
 
-                        <div className="min-w-0">
+                        <div>
                           <h3 className="font-display text-xl font-extrabold text-foreground">
                             {stage.title}
                           </h3>
 
-                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                             {stage.body}
                           </p>
                         </div>
@@ -393,6 +336,8 @@ function BrandStageSection() {
 
 /* =========================================================
    PROBLEMS
+   BLUE CONTAINER — KEEP BLUE
+   HEADINGS INSIDE IT STAY WHITE
 ========================================================= */
 
 function ProblemSection() {
@@ -436,26 +381,23 @@ function ProblemSection() {
   ];
 
   return (
-    <section className="bg-brand-deep py-24 text-white lg:py-32">
+    <section className="bg-brand-deep py-20 text-white lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="max-w-3xl">
           <Eyebrow>What we solve</Eyebrow>
 
-          <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] lg:text-5xl">
-            Offline growth gets difficult when execution becomes{" "}
-            <span className="text-coral">
-              invisible.
-            </span>
+          <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white lg:text-5xl">
+            Offline growth gets difficult when execution becomes invisible.
           </h2>
 
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/65">
             We turn the last three feet into an operating system — connecting
             people, stores, execution and reporting so teams can act on what is
             happening in the market.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map((problem) => {
             const Icon = problem.icon;
 
@@ -468,7 +410,7 @@ function ProblemSection() {
                   <Icon className="size-5" />
                 </div>
 
-                <h3 className="mt-8 font-display text-xl font-extrabold">
+                <h3 className="mt-7 font-display text-xl font-extrabold text-white">
                   {problem.title}
                 </h3>
 
@@ -513,31 +455,28 @@ function EngagementSection() {
   ];
 
   return (
-    <section className="bg-sand py-24 lg:py-32">
+    <section className="bg-sand py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <div>
             <Eyebrow>How we engage</Eyebrow>
 
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] text-foreground lg:text-5xl">
-              Start with the problem.{" "}
-              <span className="text-coral">
-                Build the system around it.
-              </span>
+            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
+              Start with the problem. Build the system around it.
             </h2>
 
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              You don't need to buy every service at once. We can start with a
-              specific execution requirement and expand as your offline
+              You don't need to buy every service at once. Start with the
+              execution requirement that matters now and expand as your
               operation grows.
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2">
             {models.map((model, index) => (
               <div key={model.title}>
-                <Reveal delay={index * 60}>
-                  <div className="brand-box h-full p-7 lg:p-8">
+                <Reveal delay={index * 50}>
+                  <div className="brand-box h-full p-7">
                     <h3 className="font-display text-2xl font-extrabold text-foreground">
                       {model.title}
                     </h3>
@@ -571,17 +510,14 @@ function FitSection() {
   ];
 
   return (
-    <section className="bg-background py-24 lg:py-32">
+    <section className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-24">
           <div>
             <Eyebrow>Is this you?</Eyebrow>
 
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] text-foreground lg:text-5xl">
-              If the shelf matters to your growth,{" "}
-              <span className="text-coral">
-                let's make it measurable.
-              </span>
+            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
+              If the shelf matters to your growth, let's make it measurable.
             </h2>
 
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
@@ -613,7 +549,7 @@ function FitSection() {
               {fitPoints.map((point) => (
                 <div
                   key={point}
-                  className="flex gap-4 py-5 first:pt-6 last:pb-2"
+                  className="flex gap-4 py-4 first:pt-6 last:pb-2"
                 >
                   <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-coral" />
 
@@ -632,23 +568,19 @@ function FitSection() {
 
 /* =========================================================
    FINAL CTA
+   BLUE CONTAINER — KEEP BLUE
 ========================================================= */
 
 function FinalCtaSection() {
   return (
-    <section className="px-5 pb-20 lg:px-8 lg:pb-28">
+    <section className="px-5 pb-16 lg:px-8 lg:pb-24">
       <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-brand-deep">
-        <div className="relative px-7 py-14 sm:px-10 lg:px-16 lg:py-16">
-          <div className="pointer-events-none absolute -right-20 -top-32 size-80 rounded-full border-[45px] border-coral/10" />
-
-          <div className="relative max-w-3xl">
+        <div className="px-7 py-12 sm:px-10 lg:px-16 lg:py-14">
+          <div className="max-w-3xl">
             <Eyebrow>Ready to build the footprint?</Eyebrow>
 
-            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] text-white lg:text-5xl">
-              Your brand deserves more than{" "}
-              <span className="text-coral">
-                presence.
-              </span>
+            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white lg:text-5xl">
+              Your brand deserves more than presence.
             </h2>
 
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/65">
@@ -658,7 +590,7 @@ function FinalCtaSection() {
 
             <Link
               to="/contact"
-              className="mt-8 inline-flex items-center justify-center rounded-xl bg-coral px-6 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+              className="mt-7 inline-flex items-center justify-center rounded-xl bg-coral px-6 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
             >
               Start the conversation
             </Link>
