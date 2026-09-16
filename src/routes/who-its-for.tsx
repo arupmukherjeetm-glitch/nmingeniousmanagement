@@ -69,13 +69,16 @@ function HeroSection() {
 
           <h1 className="mt-5 max-w-4xl font-display text-4xl font-extrabold leading-[1.04] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-7xl">
             If your brand needs reach and frequency at the shelf,{" "}
-            <em className="not-italic text-coral">this is built for you.</em>
+            <em className="not-italic text-coral">
+              this is built for you.
+            </em>
           </h1>
 
           <p className="mt-7 max-w-3xl text-base leading-relaxed text-muted-foreground lg:text-lg">
-            Built for activation managers planning coverage, and for online-first
-            brands stepping into offline retail: we quantify how many stores,
-            how many shoppers and how often, then hold that number every week.
+            Built for activation managers planning coverage, and for
+            online-first brands stepping into offline retail: we quantify how
+            many stores, how many shoppers and how often, then hold that number
+            every week.
           </p>
         </div>
       </div>
@@ -96,7 +99,6 @@ function IndustrySection() {
             <div key={industry.title}>
               <Reveal delay={index * 50}>
                 <IndustryCard
-                  number={String(index + 1).padStart(2, "0")}
                   title={industry.title}
                   body={industry.body}
                 />
@@ -105,12 +107,9 @@ function IndustrySection() {
           ))}
 
           <Reveal delay={industries.length * 50}>
-            <div
-              className="flex h-full min-h-[220px] flex-col justify-between overflow-hidden rounded-2xl p-7"
-              style={{ background: "var(--gradient-brand)" }}
-            >
+            <div className="flex h-full min-h-[220px] flex-col justify-between overflow-hidden rounded-2xl bg-coral p-7">
               <div>
-                <span className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white/60">
+                <span className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white/70">
                   Planning
                 </span>
 
@@ -121,7 +120,7 @@ function IndustrySection() {
 
               <Link
                 to="/contact"
-                className="mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-coral transition-transform duration-300 hover:translate-x-1"
+                className="mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-white transition-transform duration-300 hover:translate-x-1"
               >
                 See the full picture
                 <ArrowRight className="size-4" />
@@ -135,25 +134,17 @@ function IndustrySection() {
 }
 
 function IndustryCard({
-  number,
   title,
   body,
 }: {
-  number: string;
   title: string;
   body: string;
 }) {
   return (
-    <div className="group relative flex min-h-[220px] h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
-      <div className="flex items-start justify-between">
-        <span className="font-display text-xs font-bold tracking-[0.18em] text-coral">
-          {number}
-        </span>
+    <div className="group relative flex min-h-[220px] h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-coral/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+      <ArrowRight className="absolute right-7 top-7 size-4 text-coral/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-coral" />
 
-        <ArrowRight className="size-4 text-brand/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-coral" />
-      </div>
-
-      <div className="mt-auto">
+      <div className="mt-auto pr-6">
         <h2 className="font-display text-xl font-extrabold leading-tight text-foreground">
           {title}
         </h2>
@@ -174,21 +165,18 @@ function BrandStageSection() {
   const stages = [
     {
       icon: PackageCheck,
-      number: "01",
       title: "D2C brands going physical",
       body:
         "You already have demand online. Now you need a repeatable operating model that converts awareness into availability, trial and purchase across physical retail.",
     },
     {
       icon: Store,
-      number: "02",
       title: "Brands expanding their footprint",
       body:
         "New cities, new channels or more stores require disciplined deployment. We build coverage plans around the stores and shoppers that matter.",
     },
     {
       icon: Radar,
-      number: "03",
       title: "Established brands under pressure",
       body:
         "When competition intensifies at the shelf, execution becomes measurable. We bring visibility, promoter productivity and store-level intelligence into one system.",
@@ -204,14 +192,16 @@ function BrandStageSection() {
 
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
               Different growth stages.{" "}
-              <span className="text-brand">One operating discipline.</span>
+              <span className="text-coral">
+                One operating discipline.
+              </span>
             </h2>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Whether you're entering offline retail or defending an established
-              footprint, the operating questions are similar: where should we
-              deploy, how often should we be present, and what happened in every
-              store?
+              Whether you're entering offline retail or defending an
+              established footprint, the operating questions are similar:
+              where should we deploy, how often should we be present, and what
+              happened in every store?
             </p>
           </div>
 
@@ -220,24 +210,18 @@ function BrandStageSection() {
               const Icon = stage.icon;
 
               return (
-                <div key={stage.number}>
+                <div key={stage.title}>
                   <Reveal delay={index * 70}>
-                    <div className="group rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:border-brand/30 hover:shadow-[0_18px_45px_rgba(0,0,0,0.06)] lg:p-8">
+                    <div className="group rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:border-coral/30 hover:shadow-[0_18px_45px_rgba(0,0,0,0.06)] lg:p-8">
                       <div className="flex gap-6">
-                        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand-pale text-brand">
+                        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-coral/10 text-coral">
                           <Icon className="size-5" />
                         </div>
 
                         <div className="min-w-0">
-                          <div className="flex items-center gap-3">
-                            <span className="font-display text-xs font-bold tracking-[0.16em] text-coral">
-                              {stage.number}
-                            </span>
-
-                            <h3 className="font-display text-xl font-extrabold text-foreground">
-                              {stage.title}
-                            </h3>
-                          </div>
+                          <h3 className="font-display text-xl font-extrabold text-foreground">
+                            {stage.title}
+                          </h3>
 
                           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                             {stage.body}
@@ -265,32 +249,38 @@ function ProblemSection() {
     {
       icon: Store,
       title: "Availability",
-      body: "Is the product actually present where the shopper expects to find it?",
+      body:
+        "Is the product actually present where the shopper expects to find it?",
     },
     {
       icon: Users,
       title: "Visibility",
-      body: "Is your brand visible enough to compete for attention at the shelf?",
+      body:
+        "Is your brand visible enough to compete for attention at the shelf?",
     },
     {
       icon: Target,
       title: "Conversion",
-      body: "Is someone actively helping the shopper understand and choose the product?",
+      body:
+        "Is someone actively helping the shopper understand and choose the product?",
     },
     {
       icon: BarChart3,
       title: "Measurement",
-      body: "Can you see what happened across stores instead of relying on anecdotes?",
+      body:
+        "Can you see what happened across stores instead of relying on anecdotes?",
     },
     {
       icon: CircleDollarSign,
       title: "Productivity",
-      body: "Are field teams spending their time in the stores that matter most?",
+      body:
+        "Are field teams spending their time in the stores that matter most?",
     },
     {
       icon: Layers3,
       title: "Consistency",
-      body: "Does the same standard of execution happen week after week?",
+      body:
+        "Does the same standard of execution happen week after week?",
     },
   ];
 
@@ -301,7 +291,8 @@ function ProblemSection() {
           <Eyebrow>What we solve</Eyebrow>
 
           <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight lg:text-5xl">
-            Offline growth gets difficult when execution becomes invisible.
+            Offline growth gets difficult when execution becomes{" "}
+            <span className="text-coral">invisible.</span>
           </h2>
 
           <p className="mt-6 text-base leading-relaxed text-white/65">
@@ -312,7 +303,7 @@ function ProblemSection() {
         </div>
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-          {problems.map((problem, index) => {
+          {problems.map((problem) => {
             const Icon = problem.icon;
 
             return (
@@ -320,15 +311,11 @@ function ProblemSection() {
                 key={problem.title}
                 className="bg-brand-deep p-7 lg:p-8"
               >
-                <div className="flex size-11 items-center justify-center rounded-xl bg-white/10 text-coral">
+                <div className="flex size-11 items-center justify-center rounded-xl bg-coral/10 text-coral">
                   <Icon className="size-5" />
                 </div>
 
-                <span className="mt-8 block font-display text-xs font-bold tracking-[0.16em] text-white/35">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <h3 className="mt-2 font-display text-xl font-extrabold">
+                <h3 className="mt-8 font-display text-xl font-extrabold">
                   {problem.title}
                 </h3>
 
@@ -351,25 +338,21 @@ function ProblemSection() {
 function EngagementSection() {
   const models = [
     {
-      number: "01",
       title: "Launch",
       body:
         "Build the initial offline footprint, deploy the right people and establish store-level reporting from day one.",
     },
     {
-      number: "02",
       title: "Scale",
       body:
         "Expand cities, stores and teams while maintaining the operating standards that made the first phase work.",
     },
     {
-      number: "03",
       title: "Optimise",
       body:
         "Use field intelligence to improve deployment, productivity, visibility and shopper conversion.",
     },
     {
-      number: "04",
       title: "Integrate",
       body:
         "Connect promoters, merchandising, activations, audits, workforce and reporting into one operating system.",
@@ -385,7 +368,9 @@ function EngagementSection() {
 
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
               Start with the problem.{" "}
-              <span className="text-coral">Build the system around it.</span>
+              <span className="text-coral">
+                Build the system around it.
+              </span>
             </h2>
 
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
@@ -397,14 +382,10 @@ function EngagementSection() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             {models.map((model, index) => (
-              <div key={model.number}>
+              <div key={model.title}>
                 <Reveal delay={index * 60}>
                   <div className="brand-box h-full p-7 lg:p-8">
-                    <span className="font-display text-xs font-bold tracking-[0.18em] text-coral">
-                      {model.number}
-                    </span>
-
-                    <h3 className="mt-6 font-display text-2xl font-extrabold text-foreground">
+                    <h3 className="font-display text-2xl font-extrabold text-foreground">
                       {model.title}
                     </h3>
 
@@ -445,7 +426,7 @@ function FitSection() {
 
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
               If the shelf matters to your growth,{" "}
-              <span className="text-brand">let's make it measurable.</span>
+              <span className="text-coral">let's make it measurable.</span>
             </h2>
 
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
