@@ -63,7 +63,9 @@ function isImageFreeService(service: { name: string; slug: string }) {
   const name = normalizeServiceName(service.name);
   const slug = normalizeSlug(service.slug);
 
-  if (IMAGE_FREE_SERVICE_NAMES.has(name)) return true;
+  if (IMAGE_FREE_SERVICE_NAMES.has(name)) {
+    return true;
+  }
 
   if (
     slug.includes("real-time-tracking") ||
@@ -81,7 +83,9 @@ function isImageFreeService(service: { name: string; slug: string }) {
     return true;
   }
 
-  if (slug.includes("payroll")) return true;
+  if (slug.includes("payroll")) {
+    return true;
+  }
 
   if (
     slug.includes("fractional-hr") ||
@@ -131,7 +135,7 @@ function ImageServiceCard({
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block h-full overflow-hidden rounded-[1.75rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_70px_rgba(11,27,51,0.11)]"
+        className="group block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_22px_60px_rgba(11,27,51,0.10)]"
       >
         {/* IMAGE */}
         <div className="relative aspect-[16/9] overflow-hidden">
@@ -139,20 +143,23 @@ function ImageServiceCard({
             src={service.image}
             alt={service.caption}
             loading={index < 2 ? "eager" : "lazy"}
-            className="size-full object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+            className="size-full object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
           />
 
-          {/* Very subtle overlay */}
-          <div className="absolute inset-0 bg-brand/[0.04] transition-colors duration-500 group-hover:bg-transparent" />
+          {/* LIGHT BRAND LAYER ABOVE IMAGE */}
+          <div className="pointer-events-none absolute inset-0 bg-white/[0.14] transition-opacity duration-500 group-hover:bg-white/[0.07]" />
+
+          {/* Very subtle bottom gradient for depth */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-brand/20 to-transparent" />
 
           {/* Arrow */}
-          <div className="absolute bottom-5 right-5 flex size-10 items-center justify-center rounded-full bg-white text-brand shadow-md transition-all duration-300 group-hover:bg-coral group-hover:text-white">
+          <div className="absolute bottom-4 right-4 flex size-9 items-center justify-center rounded-full bg-white/95 text-brand shadow-sm transition-all duration-300 group-hover:bg-coral group-hover:text-white">
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
 
         {/* CONTENT */}
-        <div className="p-7 lg:p-8">
+        <div className="p-6 sm:p-7 lg:p-8">
           <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
             {service.tagline}
           </p>
@@ -161,13 +168,13 @@ function ImageServiceCard({
             {service.name}
           </h3>
 
-          <p className="mt-4 text-sm leading-6 text-muted-foreground">
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
             {service.summary}
           </p>
 
-          <div className="mt-6 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-brand">
+          <div className="mt-5 flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-brand">
             Explore service
-            <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -193,29 +200,29 @@ function IconServiceCard({
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group relative flex h-full min-h-[390px] flex-col overflow-hidden rounded-[1.75rem] border border-border/70 bg-background p-7 transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_70px_rgba(11,27,51,0.11)] sm:p-8 lg:p-9"
+        className="group block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_22px_60px_rgba(11,27,51,0.10)]"
       >
         {/* LARGE ICON AREA */}
-        <div className="relative flex min-h-[155px] items-center justify-between overflow-hidden rounded-[1.25rem] bg-muted/30 px-8">
-          {/* Soft background circle */}
-          <div className="absolute -right-10 -top-10 size-44 rounded-full bg-brand/[0.035] transition-all duration-700 group-hover:scale-125 group-hover:bg-coral/[0.045]" />
+        <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-muted/25">
+          {/* Soft neutral background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand/[0.025] via-transparent to-coral/[0.035]" />
 
-          {/* Large clear icon */}
-          <div className="relative flex size-[88px] items-center justify-center rounded-full bg-brand text-white shadow-sm transition-all duration-500 group-hover:bg-coral group-hover:scale-[1.04]">
+          {/* Large gentle icon */}
+          <div className="relative flex size-24 items-center justify-center rounded-full border border-brand/10 bg-white text-brand shadow-[0_8px_30px_rgba(11,27,51,0.06)] transition-all duration-500 group-hover:border-coral/20 group-hover:text-coral group-hover:shadow-[0_12px_35px_rgba(11,27,51,0.10)]">
             <Icon
-              className="size-10"
-              strokeWidth={1.45}
+              className="size-11"
+              strokeWidth={1.35}
             />
           </div>
 
-          {/* Small arrow */}
-          <div className="relative flex size-10 items-center justify-center rounded-full border border-border bg-background text-brand transition-all duration-300 group-hover:border-coral group-hover:bg-coral group-hover:text-white">
+          {/* Arrow */}
+          <div className="absolute bottom-4 right-4 flex size-9 items-center justify-center rounded-full border border-border bg-white text-brand transition-all duration-300 group-hover:border-coral group-hover:bg-coral group-hover:text-white">
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
 
         {/* CONTENT */}
-        <div className="mt-7 flex flex-1 flex-col">
+        <div className="p-6 sm:p-7 lg:p-8">
           <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
             {service.tagline}
           </p>
@@ -224,15 +231,13 @@ function IconServiceCard({
             {service.name}
           </h3>
 
-          <p className="mt-4 text-sm leading-6 text-muted-foreground">
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
             {service.summary}
           </p>
 
-          <div className="mt-auto pt-7">
-            <div className="flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-brand">
-              Explore service
-              <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1" />
-            </div>
+          <div className="mt-5 flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-brand">
+            Explore service
+            <ArrowRight className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -389,82 +394,36 @@ function ServicesIndex() {
   return (
     <>
       {/* ------------------------------------------------------------------ */}
-      {/* HERO                                                               */}
+      {/* CLEAN INTRO                                                         */}
       {/* ------------------------------------------------------------------ */}
 
-      <section className="bg-background pt-20 lg:pt-28">
+      <section className="bg-background pt-16 lg:pt-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-10 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:pb-24">
-            <div>
-              <Eyebrow>Services</Eyebrow>
+          <div className="max-w-3xl pb-12 lg:pb-16">
+            <Eyebrow>Services</Eyebrow>
 
-              <h1 className="mt-6 max-w-5xl font-display text-[3.4rem] font-extrabold leading-[0.92] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-[6.3rem]">
-                From the field
-                <br />
-                <span className="text-brand">to the boardroom.</span>
-              </h1>
-            </div>
+            <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl">
+              Everything your brand needs to{" "}
+              <span className="text-coral">execute better.</span>
+            </h1>
 
-            <div className="lg:pb-2">
-              <p className="max-w-xl text-base leading-8 text-muted-foreground lg:text-lg">
-                Everything it takes to move a product from the shelf to the
-                shopper's hand — backed by the people, systems and visibility
-                behind the execution.
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-xs font-bold uppercase tracking-[0.15em] text-brand">
-                <span>8 Services</span>
-                <span className="text-coral">•</span>
-                <span>31 States & UTs</span>
-                <span className="text-coral">•</span>
-                <span>One System</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-border">
-          <div className="mx-auto max-w-7xl px-5 lg:px-8">
-            <div className="flex items-center justify-between py-4">
-              <span className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                What we do
-              </span>
-
-              <ArrowRight className="size-4 text-coral" />
-            </div>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground lg:text-lg">
+              From frontline retail execution to workforce, payroll and
+              operational systems — built to work independently or together.
+            </p>
           </div>
         </div>
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* ALL SERVICES                                                        */}
+      {/* ALL 8 SERVICES — CONTINUOUS 2 COLUMN GRID                          */}
       {/* ------------------------------------------------------------------ */}
 
-      <section className="bg-background py-20 lg:py-28">
+      <section className="bg-background pb-20 lg:pb-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-
-          {/* SINGLE HEADING FOR ALL 8 SERVICES */}
-          <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div>
-              <Eyebrow>Our capabilities</Eyebrow>
-
-              <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl">
-                Everything your
-                <span className="text-coral"> operation needs.</span>
-              </h2>
-            </div>
-
-            <p className="max-w-sm text-sm leading-7 text-muted-foreground lg:text-right">
-              From frontline execution to the systems that keep your operation
-              running.
-            </p>
-          </div>
-
-          {/* -------------------------------------------------------------- */}
-          {/* IMAGE SERVICES — TWO COLUMNS                                  */}
-          {/* -------------------------------------------------------------- */}
-
           <div className="grid gap-5 md:grid-cols-2">
+
+            {/* FOUR IMAGE SERVICES */}
             {imageServices.map((service, index) => (
               <ImageServiceCard
                 key={service.slug}
@@ -473,10 +432,7 @@ function ServicesIndex() {
               />
             ))}
 
-            {/* ---------------------------------------------------------- */}
-            {/* ICON SERVICES — SAME TWO-COLUMN GRID                       */}
-            {/* ---------------------------------------------------------- */}
-
+            {/* FOUR IMAGE-FREE SERVICES */}
             {iconServices.map((service, index) => (
               <IconServiceCard
                 key={service.slug}
@@ -484,6 +440,7 @@ function ServicesIndex() {
                 index={index}
               />
             ))}
+
           </div>
         </div>
       </section>
