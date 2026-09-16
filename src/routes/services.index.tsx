@@ -576,7 +576,7 @@ function ServiceArchitecture() {
             <Eyebrow>Service architecture</Eyebrow>
 
             <h2 className="mt-5 max-w-xl font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl">
-              <span className="text-coral">Four operating layers.</span>
+              Four operating <span className="text-coral">layers.</span>
             </h2>
           </div>
 
