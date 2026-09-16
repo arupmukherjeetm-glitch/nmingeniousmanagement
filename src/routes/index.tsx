@@ -90,41 +90,19 @@ function Hero() {
           ===================================================== */}
           <div className="relative z-20 order-2 lg:order-1">
 
-           <h1
-  className="
-    hero-h1
-    max-w-[700px]
-    font-display
-    text-[42px]
-    font-black
-    leading-[0.93]
-    tracking-[-0.055em]
-    text-brand-deep
-    sm:text-[54px]
-    lg:text-[60px]
-    xl:text-[68px]
-  "
->
-  <span className="hero-line hero-line-1">
-    <span className="hero-word">You</span>{" "}
-    <span className="hero-word">built</span>{" "}
-    <span className="hero-word">the</span>
+           <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.93] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[60px] xl:text-[68px]">
+  <span className="block">
+    You built the{" "}
+    <span className="hero-word hero-product">
+      <span className="hero-word-inner">product.</span>
+    </span>
   </span>
 
-  <span className="hero-line hero-line-2">
-    <span className="hero-word hero-product-word">product.</span>
-  </span>
-
-  <span className="hero-line hero-line-3 text-coral">
-    <span className="hero-word">We</span>{" "}
-    <span className="hero-word">get</span>{" "}
-    <span className="hero-word">it</span>{" "}
-    <span className="hero-word">to</span>{" "}
-    <span className="hero-word">the</span>
-  </span>
-
-  <span className="hero-line hero-line-4 text-coral">
-    <span className="hero-word hero-people-word">people.</span>
+  <span className="mt-2 block text-coral">
+    We get it to the{" "}
+    <span className="hero-word hero-people">
+      <span className="hero-word-inner">people.</span>
+    </span>
   </span>
 </h1>
 
