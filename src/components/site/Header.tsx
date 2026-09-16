@@ -8,8 +8,7 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
-import { contactDetails, logoUrl } from "@/lib/site-data";
-import { services } from "@/data/services";
+import { contactDetails, logoUrl, services } from "@/lib/site-data";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
