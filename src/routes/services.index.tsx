@@ -1031,39 +1031,55 @@ function ServicesIndex() {
       ====================================================== */}
 
       <section className="bg-background pb-14 pt-16 lg:pb-16 lg:pt-20">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-end">
-            <div>
-              <Eyebrow>Services</Eyebrow>
+  <div className="mx-auto max-w-7xl px-5 lg:px-8">
+    <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+      {/* LEFT */}
+      <div className="min-w-0">
+        <Eyebrow>Services</Eyebrow>
 
-              <h1
-  className="
-    mt-5
-    max-w-[760px]
-    font-display
-    text-4xl
-    font-extrabold
-    leading-[1.01]
-    tracking-[-0.045em]
-    text-foreground
-    sm:text-5xl
-    lg:text-6xl
-  "
->
-  The capabilities that keep
-  <br />
-  <span className="text-coral">execution moving.</span>
-</h1>
-            </div>
+        <h1
+          className="
+            mt-5
+            max-w-none
+            font-display
+            text-4xl
+            font-extrabold
+            leading-[1.01]
+            tracking-[-0.045em]
+            text-foreground
+            sm:text-5xl
+            lg:text-6xl
+          "
+        >
+          <span className="lg:whitespace-nowrap">
+            The capabilities that keep
+          </span>
+          <br />
+          <span className="text-coral">
+            execution moving.
+          </span>
+        </h1>
+      </div>
 
-            <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:pb-1 lg:text-base">
-              From people on the shop floor to the systems supporting them,
-              our services cover the practical work required to execute,
-              measure and manage a distributed retail operation.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* RIGHT */}
+      <div className="min-w-0 lg:pb-1">
+        <p
+          className="
+            max-w-xl
+            text-sm
+            leading-7
+            text-muted-foreground
+            lg:text-base
+          "
+        >
+          From people on the shop floor to the systems supporting them, our
+          services cover the practical work required to execute, measure and
+          manage a distributed retail operation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* =====================================================
           4 IMAGE SERVICES
