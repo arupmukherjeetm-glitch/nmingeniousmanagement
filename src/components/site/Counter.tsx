@@ -1,129 +1,123 @@
-import { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
-function easeOutExpo(t: number) {
-  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-}
+type StatItem = {
+  value: number;
+  suffix?: string;
+  label: string;
+};
 
-export function Counter({
+type StatBoardProps = {
+  items: StatItem[];
+};
+
+function CountUp({
   value,
   suffix = "",
-  duration = 1900,
-  className,
 }: {
   value: number;
   suffix?: string;
-  duration?: number;
-  className?: string;
 }) {
-  const ref = useRef<HTMLSpanElement | null>(null);
-  const [display, setDisplay] = useState(0);
-  const started = useRef(false);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el || typeof IntersectionObserver === "undefined") {
-      setDisplay(value);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0]?.isIntersecting || started.current) return;
-        started.current = true;
-        io.disconnect();
-        const start = performance.now();
-        const tick = (now: number) => {
-          const p = Math.min((now - start) / duration, 1);
-          setDisplay(Math.round(easeOutExpo(p) * value));
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [value, duration]);
+    let start = 0;
+    const duration = 1400;
+    const startTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const progress = Math.min(
+        (currentTime - startTime) / duration,
+        1,
+      );
+
+      const eased =
+        1 - Math.pow(1 - progress, 3);
+
+      const nextValue = Math.round(value * eased);
+
+      setCount(nextValue);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        start = value;
+        setCount(start);
+      }
+    };
+
+    requestAnimationFrame(animate);
+
+    return () => {
+      start = value;
+    };
+  }, [value]);
 
   return (
-    <span ref={ref} className={cn("tabular-nums", className)}>
-      {display.toLocaleString("en-IN")}
+    <>
+      {count.toLocaleString()}
       {suffix}
-    </span>
+    </>
   );
 }
 
-export function StatBoard({
-  items,
-  tone = "dark",
-}: {
-  items: { value: number; suffix: string; label: string }[];
-  tone?: "dark" | "light";
-}) {
-  const dark = tone === "dark";
+export function StatBoard({ items }: StatBoardProps) {
   return (
     <div
-      className={cn(
-        "relative overflow-hidden rounded-2xl",
-        dark ? "text-primary-foreground" : "text-foreground",
-      )}
-      style={dark ? { background: "var(--gradient-brand)" } : undefined}
+      className="relative overflow-hidden rounded-2xl text-white"
+      style={{
+        background: "var(--gradient-brand)",
+      }}
     >
-      {dark && (
-        <>
+      {/* Subtle grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.10]"
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              rgba(255,255,255,0.35) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255,255,255,0.35) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: "64px 64px",
+        }}
+      />
+
+      <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        {items.map((item, index) => (
           <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.13]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-              backgroundSize: "64px 64px",
-            }}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full blur-3xl"
-            style={{ background: "var(--coral)", opacity: 0.28 }}
-          />
-        </>
-      )}
-      <div className="relative grid gap-px sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((s, i) => (
-          <div
-            key={s.label}
-            className={cn(
-              "group relative px-8 py-12",
-              dark ? "border-white/10" : "border-border",
-              i > 0 && "lg:border-l",
-              i % 2 === 1 && "sm:border-l lg:border-l",
-              i >= 2 && "lg:border-t-0",
-              i >= 2 && "sm:border-t",
-            )}
+            key={item.label}
+            className={[
+              "relative px-8 py-10 lg:px-8 lg:py-11",
+              index !== items.length - 1
+                ? "border-b border-white/10 sm:border-r lg:border-b-0"
+                : "",
+              index === 1
+                ? "sm:border-r-0 lg:border-r"
+                : "",
+              index === 3
+                ? "lg:border-r-0"
+                : "",
+            ].join(" ")}
           >
-            <span
-              className={cn(
-                "block text-xs font-bold uppercase tracking-[0.2em]",
-                dark ? "text-white/45" : "text-muted-foreground",
-              )}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <div className="mt-4 font-display text-5xl font-extrabold leading-none lg:text-6xl">
-              <Counter value={s.value} suffix={s.suffix} />
+            {/* NO 01 / 02 / 03 / 04 */}
+
+            <div className="font-display text-5xl font-extrabold leading-none tracking-[-0.04em] sm:text-6xl">
+              <CountUp
+                value={item.value}
+                suffix={item.suffix}
+              />
             </div>
-            <span
-              className={cn(
-                "mt-4 block h-0.5 w-10 origin-left scale-x-100 transition-transform duration-500 group-hover:scale-x-[3.2]",
-              )}
-              style={{ background: "var(--coral)" }}
-            />
-            <p
-              className={cn(
-                "mt-4 text-sm leading-relaxed",
-                dark ? "text-white/70" : "text-muted-foreground",
-              )}
-            >
-              {s.label}
+
+            {/* Coral accent line */}
+            <div className="mt-5 h-0.5 w-12 bg-coral" />
+
+            <p className="mt-4 text-sm font-medium text-white/65">
+              {item.label}
             </p>
           </div>
         ))}
