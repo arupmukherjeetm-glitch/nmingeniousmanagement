@@ -93,19 +93,15 @@ function Hero() {
             <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.93] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[60px] xl:text-[68px]">
   <span className="block">
     You built the{" "}
-    <span className="hero-highlight hero-highlight-product">
-      <span className="hero-highlight-text">product.</span>
-      <span className="hero-highlight-stroke" aria-hidden="true" />
-      <span className="hero-highlight-dot" aria-hidden="true" />
+    <span className="hero-word hero-word-product">
+      product.
     </span>
   </span>
 
   <span className="mt-2 block text-coral">
     We get it to the{" "}
-    <span className="hero-highlight hero-highlight-people">
-      <span className="hero-highlight-text">people.</span>
-      <span className="hero-highlight-stroke" aria-hidden="true" />
-      <span className="hero-highlight-dot" aria-hidden="true" />
+    <span className="hero-word hero-word-people">
+      people.
     </span>
   </span>
 </h1>
