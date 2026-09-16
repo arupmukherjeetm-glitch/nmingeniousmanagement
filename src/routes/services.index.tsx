@@ -3,8 +3,6 @@ import {
   Activity,
   ArrowRight,
   BriefcaseBusiness,
-  CheckCircle2,
-  FileCheck2,
   ShieldCheck,
   UserRoundCog,
   Users,
@@ -40,7 +38,7 @@ export const Route = createFileRoute("/services/")({
 });
 
 /* -------------------------------------------------------------------------- */
-/* SERVICE CLASSIFICATION                                                     */
+/* IMAGE-FREE SERVICES                                                        */
 /* -------------------------------------------------------------------------- */
 
 const IMAGE_FREE_SERVICE_NAMES = new Set([
@@ -98,7 +96,7 @@ function isImageFreeService(service: { name: string; slug: string }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ICON MAPPING                                                               */
+/* ICONS                                                                      */
 /* -------------------------------------------------------------------------- */
 
 function getServiceIcon(name: string, slug: string) {
@@ -135,52 +133,46 @@ function ImageServiceCard({
   index: number;
 }) {
   return (
-    <Reveal delay={index * 70}>
+    <Reveal delay={index * 60}>
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group relative block h-full overflow-hidden rounded-[2rem] bg-brand"
+        className="group block overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_20px_60px_rgba(11,27,51,0.12)]"
       >
-        {/* Image */}
-        <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[3/4]">
-          <img
-            src={service.image}
-            alt={service.caption}
-            loading={index < 2 ? "eager" : "lazy"}
-            className="size-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
-          />
+        <div className="grid lg:grid-cols-[42%_58%]">
+          {/* Smaller image */}
+          <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-[260px]">
+            <img
+              src={service.image}
+              alt={service.caption}
+              loading={index < 2 ? "eager" : "lazy"}
+              className="size-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+            />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-brand via-brand/35 to-transparent opacity-95" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand/10 via-transparent to-brand/30" />
 
-          {/* Top information */}
-          <div className="absolute inset-x-0 top-0 flex items-start justify-between p-6 lg:p-7">
-            <span className="font-display text-xs font-extrabold tracking-[0.22em] text-white/75">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-
-            <span className="flex size-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-all duration-300 group-hover:bg-coral group-hover:border-coral">
-              <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </span>
+            <div className="absolute bottom-5 left-5 flex size-10 items-center justify-center rounded-full bg-white text-brand shadow-lg transition-all duration-300 group-hover:bg-coral group-hover:text-white">
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </div>
           </div>
 
-          {/* Bottom content */}
-          <div className="absolute inset-x-0 bottom-0 p-6 lg:p-8">
-            <p className="mb-3 font-display text-[11px] font-extrabold uppercase tracking-[0.2em] text-coral">
+          {/* Content */}
+          <div className="flex flex-col justify-center p-6 sm:p-7 lg:p-8">
+            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.18em] text-coral">
               {service.tagline}
             </p>
 
-            <h3 className="max-w-lg font-display text-2xl font-extrabold leading-[1.05] text-white sm:text-3xl lg:text-[2.15rem]">
+            <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand sm:text-3xl">
               {service.name}
             </h3>
 
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/70">
+            <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
               {service.summary}
             </p>
 
-            <div className="mt-6 flex items-center gap-2 font-display text-sm font-bold text-white">
+            <div className="mt-5 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-brand">
               Explore service
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           </div>
         </div>
@@ -190,7 +182,7 @@ function ImageServiceCard({
 }
 
 /* -------------------------------------------------------------------------- */
-/* IMAGE-FREE SERVICE CARD                                                    */
+/* ICON SERVICE CARD                                                          */
 /* -------------------------------------------------------------------------- */
 
 function IconServiceCard({
@@ -203,37 +195,24 @@ function IconServiceCard({
   const Icon = getServiceIcon(service.name, service.slug);
 
   return (
-    <Reveal delay={index * 70}>
+    <Reveal delay={index * 60}>
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group relative block h-full overflow-hidden rounded-[2rem] border border-border/70 bg-background p-7 transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_70px_rgba(11,27,51,0.10)] sm:p-8 lg:p-9"
+        className="group relative block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background p-7 transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_20px_60px_rgba(11,27,51,0.10)] sm:p-8"
       >
-        {/* Decorative corner */}
-        <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-[5rem] bg-brand/[0.035] transition-all duration-500 group-hover:h-36 group-hover:w-36 group-hover:bg-coral/[0.06]" />
-
-        {/* Number */}
-        <div className="relative flex items-start justify-between">
-          <span className="font-display text-xs font-extrabold tracking-[0.22em] text-coral">
-            {String(index + 5).padStart(2, "0")}
-          </span>
-
-          <div className="flex size-12 items-center justify-center rounded-2xl bg-brand text-white transition-all duration-500 group-hover:bg-coral group-hover:scale-105">
+        <div className="flex items-start justify-between">
+          <div className="flex size-12 items-center justify-center rounded-xl bg-brand text-white transition-all duration-400 group-hover:bg-coral">
             <Icon className="size-5" strokeWidth={1.8} />
           </div>
-        </div>
 
-        {/* Icon line */}
-        <div className="relative mt-10 flex items-center gap-3">
-          <div className="h-px w-10 bg-coral transition-all duration-500 group-hover:w-16" />
-          <span className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-            Infrastructure
+          <span className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 group-hover:border-coral group-hover:bg-coral group-hover:text-white">
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </span>
         </div>
 
-        {/* Content */}
-        <div className="relative mt-5">
-          <h3 className="font-display text-2xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand lg:text-[1.8rem]">
+        <div className="mt-8">
+          <h3 className="font-display text-2xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand">
             {service.name}
           </h3>
 
@@ -241,20 +220,15 @@ function IconServiceCard({
             {service.tagline}
           </p>
 
-          <p className="mt-4 text-sm leading-7 text-muted-foreground">
+          <p className="mt-4 text-sm leading-6 text-muted-foreground">
             {service.summary}
           </p>
         </div>
 
-        {/* Bottom */}
-        <div className="relative mt-8 flex items-center justify-between border-t border-border/70 pt-5">
-          <span className="font-display text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
-            Explore service
-          </span>
+        <div className="mt-7 h-px w-full bg-border transition-all duration-500 group-hover:bg-coral/40" />
 
-          <span className="flex size-9 items-center justify-center rounded-full border border-border transition-all duration-300 group-hover:border-coral group-hover:bg-coral group-hover:text-white">
-            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-          </span>
+        <div className="mt-4 font-display text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">
+          Explore service
         </div>
       </Link>
     </Reveal>
@@ -262,7 +236,7 @@ function IconServiceCard({
 }
 
 /* -------------------------------------------------------------------------- */
-/* OPERATING SYSTEM SECTION                                                   */
+/* OPERATING SYSTEM                                                           */
 /* -------------------------------------------------------------------------- */
 
 function OperatingSystemSection() {
@@ -280,67 +254,52 @@ function OperatingSystemSection() {
     {
       icon: ShieldCheck,
       title: "Control",
-      text: "Processes, compliance and governance that keep execution consistent.",
+      text: "Processes and governance that keep execution consistent.",
     },
     {
       icon: UserRoundCog,
       title: "HR",
-      text: "Workforce, payroll and people systems that keep the operation moving.",
+      text: "Workforce and people systems that keep the operation moving.",
     },
   ];
 
   return (
-    <section className="relative overflow-hidden bg-brand py-24 lg:py-32">
-      {/* Background texture */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.035]">
-        <div className="absolute left-[-10%] top-[-30%] size-[600px] rounded-full border-[80px] border-white" />
-        <div className="absolute bottom-[-35%] right-[-5%] size-[600px] rounded-full border-[80px] border-white" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+    <section className="bg-brand py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <Eyebrow className="text-white/55">One operating system</Eyebrow>
+            <Eyebrow className="text-white/55">
+              One connected operation
+            </Eyebrow>
 
-            <h2 className="mt-5 max-w-2xl font-display text-4xl font-extrabold leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="mt-5 max-w-2xl font-display text-4xl font-extrabold leading-[1] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Eight services.
               <br />
-              <span className="text-coral">One connected</span>
-              <br />
-              operation.
+              <span className="text-coral">One system.</span>
             </h2>
           </div>
 
-          <div>
-            <p className="max-w-xl text-base leading-8 text-white/65 lg:text-lg">
-              Retail execution does not happen in isolation. The strongest
-              operations connect people, visibility, compliance and HR into one
-              system built around the commercial outcome.
-            </p>
-          </div>
+          <p className="max-w-xl text-base leading-7 text-white/60 lg:text-lg">
+            Retail execution works best when people, visibility, compliance
+            and HR operate together around the same commercial objective.
+          </p>
         </div>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-          {capabilities.map((item, index) => {
+        <div className="mt-14 grid gap-px overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          {capabilities.map((item) => {
             const Icon = item.icon;
 
             return (
               <div
                 key={item.title}
-                className="group bg-brand p-7 transition-colors duration-300 hover:bg-white/[0.045] lg:p-8"
+                className="bg-brand p-7 transition-colors duration-300 hover:bg-white/[0.04] lg:p-8"
               >
-                <div className="flex items-center justify-between">
-                  <Icon
-                    className="size-6 text-coral"
-                    strokeWidth={1.7}
-                  />
+                <Icon
+                  className="size-6 text-coral"
+                  strokeWidth={1.7}
+                />
 
-                  <span className="font-display text-[10px] font-bold tracking-[0.18em] text-white/25">
-                    0{index + 1}
-                  </span>
-                </div>
-
-                <h3 className="mt-10 font-display text-xl font-extrabold text-white">
+                <h3 className="mt-8 font-display text-xl font-extrabold text-white">
                   {item.title}
                 </h3>
 
@@ -357,65 +316,56 @@ function OperatingSystemSection() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* CONNECTION SECTION                                                         */
+/* HOW IT CONNECTS                                                            */
 /* -------------------------------------------------------------------------- */
 
 function ConnectionSection() {
   const steps = [
     {
-      number: "01",
       title: "Deploy",
       text: "Right people in the right stores and markets.",
     },
     {
-      number: "02",
       title: "Execute",
       text: "Merchandising, visibility, activations and retail discipline.",
     },
     {
-      number: "03",
       title: "Measure",
       text: "Field data converted into actionable intelligence.",
     },
     {
-      number: "04",
       title: "Improve",
-      text: "Governance, HR and insights continuously strengthen execution.",
+      text: "Insights and governance continuously strengthen execution.",
     },
   ];
 
   return (
-    <section className="bg-background py-24 lg:py-32">
+    <section className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
+        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
           <div>
             <Eyebrow>How it connects</Eyebrow>
 
             <h2 className="mt-5 max-w-md font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-foreground sm:text-5xl">
-              Built for the way brands actually operate.
+              Built around the way brands operate.
             </h2>
 
-            <p className="mt-6 max-w-md text-sm leading-7 text-muted-foreground">
-              Choose one capability or combine multiple services. The model is
-              designed to work around your commercial priorities rather than
-              forcing you into a fixed package.
+            <p className="mt-5 max-w-md text-sm leading-7 text-muted-foreground">
+              Choose one capability or combine multiple services around your
+              commercial priorities.
             </p>
           </div>
 
           <div className="divide-y divide-border border-y border-border">
             {steps.map((step, index) => (
-              <Reveal key={step.number} delay={index * 50}>
-                <div className="group grid gap-5 py-7 sm:grid-cols-[70px_180px_1fr] sm:items-center">
-                  <span className="font-display text-xs font-extrabold tracking-[0.2em] text-coral">
-                    {step.number}
-                  </span>
-
+              <Reveal key={step.title} delay={index * 40}>
+                <div className="group grid gap-4 py-6 sm:grid-cols-[150px_1fr] sm:items-center">
                   <h3 className="font-display text-xl font-extrabold text-foreground transition-colors group-hover:text-brand">
                     {step.title}
                   </h3>
 
                   <div className="flex items-center justify-between gap-6">
-                    <p className="max-w-md text-sm leading-6 text-muted-foreground">
+                    <p className="text-sm leading-6 text-muted-foreground">
                       {step.text}
                     </p>
 
@@ -446,17 +396,14 @@ function ServicesIndex() {
 
   return (
     <>
-      {/* ------------------------------------------------------------------ */}
-      {/* HERO                                                               */}
-      {/* ------------------------------------------------------------------ */}
-
-      <section className="relative overflow-hidden bg-background pt-20 lg:pt-28">
+      {/* HERO */}
+      <section className="bg-background pt-20 lg:pt-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:pb-28">
+          <div className="grid gap-10 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:pb-24">
             <div>
               <Eyebrow>Services</Eyebrow>
 
-              <h1 className="mt-6 max-w-5xl font-display text-[3.4rem] font-extrabold leading-[0.92] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-[6.5rem]">
+              <h1 className="mt-6 max-w-5xl font-display text-[3.4rem] font-extrabold leading-[0.92] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-[6.3rem]">
                 From the field
                 <br />
                 <span className="text-brand">to the boardroom.</span>
@@ -466,11 +413,11 @@ function ServicesIndex() {
             <div className="lg:pb-2">
               <p className="max-w-xl text-base leading-8 text-muted-foreground lg:text-lg">
                 Everything it takes to move a product from the shelf to the
-                shopper's hand — and build the people, systems and visibility
+                shopper's hand — backed by the people, systems and visibility
                 behind the execution.
               </p>
 
-              <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-3 font-display text-xs font-bold uppercase tracking-[0.16em] text-brand">
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-xs font-bold uppercase tracking-[0.15em] text-brand">
                 <span>8 Services</span>
                 <span className="text-coral">•</span>
                 <span>31 States & UTs</span>
@@ -481,7 +428,6 @@ function ServicesIndex() {
           </div>
         </div>
 
-        {/* Hero divider */}
         <div className="border-t border-border">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             <div className="flex items-center justify-between py-4">
@@ -495,13 +441,10 @@ function ServicesIndex() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* FOUR IMAGE SERVICES                                                 */}
-      {/* ------------------------------------------------------------------ */}
-
-      <section className="bg-background py-20 lg:py-28">
+      {/* IMAGE SERVICES */}
+      <section className="bg-background py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="mb-10 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <Eyebrow>Retail execution</Eyebrow>
 
@@ -512,12 +455,12 @@ function ServicesIndex() {
             </div>
 
             <p className="max-w-sm text-sm leading-7 text-muted-foreground lg:text-right">
-              The frontline capabilities that put your brand in motion across
+              Frontline capabilities that put your brand in motion across
               stores, markets and retail environments.
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-5">
             {imageServices.map((service, index) => (
               <ImageServiceCard
                 key={service.slug}
@@ -529,13 +472,10 @@ function ServicesIndex() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* FOUR ICON SERVICES                                                  */}
-      {/* ------------------------------------------------------------------ */}
-
-      <section className="border-t border-border bg-muted/20 py-20 lg:py-28">
+      {/* ICON SERVICES */}
+      <section className="border-t border-border bg-muted/20 py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="mb-10 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <Eyebrow>Operational infrastructure</Eyebrow>
 
@@ -546,8 +486,7 @@ function ServicesIndex() {
             </div>
 
             <p className="max-w-sm text-sm leading-7 text-muted-foreground lg:text-right">
-              Four specialist capabilities built without unnecessary
-              complexity — designed to make your field operation more visible,
+              Specialist capabilities that make your operation more visible,
               compliant and scalable.
             </p>
           </div>
@@ -564,22 +503,13 @@ function ServicesIndex() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* OPERATING SYSTEM                                                    */}
-      {/* ------------------------------------------------------------------ */}
-
+      {/* ONE SYSTEM */}
       <OperatingSystemSection />
 
-      {/* ------------------------------------------------------------------ */}
-      {/* CONNECTION                                                          */}
-      {/* ------------------------------------------------------------------ */}
-
+      {/* HOW IT CONNECTS */}
       <ConnectionSection />
 
-      {/* ------------------------------------------------------------------ */}
-      {/* CTA                                                                 */}
-      {/* ------------------------------------------------------------------ */}
-
+      {/* CTA */}
       <CtaBand />
     </>
   );
