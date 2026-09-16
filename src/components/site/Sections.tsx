@@ -110,6 +110,7 @@ export function CtaBand() {
           />
 
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-end">
+            {/* LEFT CONTENT */}
             <div className="lg:col-span-8">
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-white/55">
                 Start here
@@ -127,13 +128,22 @@ export function CtaBand() {
               </p>
             </div>
 
-            <div className="lg:col-span-4 lg:justify-self-end">
+            {/* RIGHT CTA */}
+            <div className="lg:col-span-4 lg:flex lg:justify-end">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-coral px-8 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:shadow-[0_20px_40px_-16px_oklch(0.55_0.21_27/0.7)] hover:brightness-110"
+                className="inline-flex min-h-[72px] min-w-[365px] shrink-0 items-center justify-center gap-4 whitespace-nowrap rounded-full bg-coral px-8 py-4 font-display text-sm font-bold text-coral-foreground transition-all duration-300 hover:shadow-[0_20px_40px_-16px_oklch(0.55_0.21_27/0.7)] hover:brightness-110"
               >
-                Request a Sell-Out Acceleration Audit
-                <span aria-hidden>→</span>
+                <span className="whitespace-nowrap">
+                  Request a Sell-Out Acceleration Audit
+                </span>
+
+                <span
+                  aria-hidden
+                  className="shrink-0 text-base leading-none"
+                >
+                  →
+                </span>
               </Link>
             </div>
           </div>
