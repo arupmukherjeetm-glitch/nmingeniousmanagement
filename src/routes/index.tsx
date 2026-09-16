@@ -75,230 +75,161 @@ function Home() {
 /* HERO */
 function Hero() {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-[#F4F7FB]">
+    <section className="relative w-full overflow-hidden bg-[#F4F7FB]">
 
       {/* =====================================================
-          VIDEO BACKGROUND
+          MOBILE HERO
       ====================================================== */}
 
-      <div className="absolute inset-0 -z-10">
-        <video
-          src="media/hero_final (1).mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="
-            h-full
-            w-full
-            object-cover
-            object-center
-          "
-        />
+      <div className="lg:hidden">
 
-        {/* Overall video overlay */}
-        <div className="absolute inset-0 bg-[#082B61]/55" />
+        {/* HERO IMAGE / VIDEO */}
 
-        {/* Stronger overlay behind the text */}
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-r
-            from-[#082B61]/90
-            via-[#082B61]/45
-            to-transparent
-          "
-        />
-      </div>
+        <div className="relative h-[310px] w-full overflow-hidden">
 
-
-      {/* =====================================================
-          HERO CONTENT
-      ====================================================== */}
-
-      <div
-        className="
-          relative
-          mx-auto
-          flex
-          w-full
-          max-w-[1440px]
-          items-center
-          px-5
-          py-7
-          sm:px-8
-          lg:h-[calc(100vh-140px)]
-          lg:min-h-[480px]
-          lg:max-h-[570px]
-          lg:px-12
-        "
-      >
-
-        {/* =================================================
-            CONTENT PANEL
-        ================================================== */}
-
-        <div
-          className="
-            relative
-            z-10
-            w-full
-            max-w-[590px]
-            overflow-hidden
-            rounded-[22px]
-            border
-            border-white/50
-            bg-[#F4F7FB]/[0.98]
-            px-6
-            py-6
-            shadow-[0_25px_60px_rgba(0,0,0,0.16)]
-            sm:px-7
-            sm:py-7
-            lg:px-8
-            lg:py-7
-          "
-        >
-
-          {/* Coral edge */}
-          <span
-            aria-hidden="true"
-            className="
-              absolute
-              inset-y-0
-              left-0
-              w-1
-              bg-coral
-            "
+          <video
+            src="media/hero_final (1).mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-cover object-center"
           />
 
+          {/* Dark lower fade */}
 
-          {/* =================================================
-              HEADLINE
-          ================================================== */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-t from-brand-deep/75 via-brand-deep/10 to-transparent"
+          />
 
-          <h1
+        </div>
+
+
+        {/* =================================================
+            MOBILE CONTENT
+        ================================================== */}
+
+        <div className="relative z-10 px-4 pb-6">
+
+          <div
             className="
-              max-w-[540px]
-              font-display
-              text-[2.25rem]
-              font-extrabold
-              leading-[0.93]
-              tracking-[-0.06em]
-              text-brand-deep
-              sm:text-[2.8rem]
-              md:text-[3.2rem]
-              lg:text-[3.65rem]
-              xl:text-[3.9rem]
+              relative
+              -mt-10
+              rounded-[26px]
+              border
+              border-brand/10
+              bg-white
+              px-6
+              py-7
+              shadow-[0_20px_55px_rgba(8,43,97,0.14)]
             "
           >
-            <span className="block">
-              You built the product.
-            </span>
 
-            <span className="mt-1 block text-coral">
-              We get it to the people
-            </span>
+            {/* Accent line */}
 
-            <span className="block text-coral">
-              you built it for.
-            </span>
-          </h1>
+            <div className="mb-5 h-1 w-12 rounded-full bg-coral" />
 
 
-          {/* =================================================
-              DESCRIPTION
-          ================================================== */}
+            {/* HEADLINE */}
 
-          <p
-            className="
-              mt-4
-              max-w-[480px]
-              text-[13px]
-              leading-5.5
-              text-brand-deep/65
-              sm:text-sm
-            "
-          >
-            NM Ingenious turns shelf presence into sell-out
-            through trained promoters, disciplined retail
-            execution and real-time store intelligence.
-          </p>
-
-
-          {/* =================================================
-              CTA
-          ================================================== */}
-
-          <div className="mt-5 flex flex-wrap items-center gap-4">
-
-            {/* Primary CTA */}
-            <Link
-              to="/contact"
+            <h1
               className="
-                group
-                inline-flex
-                shrink-0
-                items-center
-                gap-3
-                rounded-full
-                bg-coral
-                px-6
-                py-3
                 font-display
-                text-sm
-                font-bold
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:bg-brand-deep
-                hover:shadow-lg
-              "
-            >
-              Request an Audit
-
-              <ArrowRight
-                className="
-                  size-4
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-              />
-            </Link>
-
-
-            {/* Secondary CTA */}
-            <Link
-              to="/services"
-              className="
-                group
-                inline-flex
-                shrink-0
-                items-center
-                gap-2
-                font-display
-                text-sm
-                font-bold
+                text-[34px]
+                font-extrabold
+                leading-[1.02]
+                tracking-[-0.045em]
                 text-brand-deep
-                transition-colors
-                duration-300
-                hover:text-coral
+                sm:text-[40px]
               "
             >
-              Explore services
+              You built the product.
+            </h1>
 
-              <ArrowRight
+            <h1
+              className="
+                mt-1
+                font-display
+                text-[34px]
+                font-extrabold
+                leading-[1.02]
+                tracking-[-0.045em]
+                text-coral
+                sm:text-[40px]
+              "
+            >
+              We get it to the people
+              <br />
+              you built it for.
+            </h1>
+
+
+            {/* DESCRIPTION */}
+
+            <p
+              className="
+                mt-5
+                max-w-[390px]
+                text-[14px]
+                leading-6
+                text-muted-foreground
+              "
+            >
+              NM Ingenious turns shelf presence into sell-out through trained
+              promoters, disciplined retail execution and real-time store
+              intelligence.
+            </p>
+
+
+            {/* CTA */}
+
+            <div className="mt-6 flex flex-col items-start gap-4">
+
+              <Link
+                to="/contact"
                 className="
-                  size-4
-                  transition-transform
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  bg-coral
+                  px-6
+                  py-3.5
+                  font-display
+                  text-sm
+                  font-bold
+                  text-coral-foreground
+                  transition-all
                   duration-300
-                  group-hover:translate-x-1
+                  hover:brightness-110
                 "
-              />
-            </Link>
+              >
+                Request an Audit
+                <ArrowRight className="size-4" />
+              </Link>
+
+
+              <Link
+                to="/services"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  font-display
+                  text-sm
+                  font-bold
+                  text-brand-deep
+                  transition-colors
+                  hover:text-coral
+                "
+              >
+                Explore services
+                <ArrowRight className="size-4" />
+              </Link>
+
+            </div>
 
           </div>
 
@@ -308,20 +239,168 @@ function Hero() {
 
 
       {/* =====================================================
-          BOTTOM ACCENT
+          DESKTOP HERO
       ====================================================== */}
 
-      <div
-        aria-hidden="true"
-        className="
-          absolute
-          bottom-0
-          left-0
-          h-1
-          w-full
-          bg-coral
-        "
-      />
+      <div className="relative hidden min-h-[680px] lg:block">
+
+        {/* VIDEO */}
+
+        <div className="absolute inset-0">
+
+          <video
+            src="media/hero_final (1).mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-cover object-center"
+          />
+
+          <div className="absolute inset-0 bg-brand-deep/55" />
+
+          <div
+            className="
+              absolute
+              inset-0
+              bg-gradient-to-r
+              from-brand-deep/80
+              via-brand-deep/45
+              to-transparent
+            "
+          />
+
+        </div>
+
+
+        {/* DESKTOP CONTENT */}
+
+        <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-center px-8">
+
+          <div
+            className="
+              max-w-[620px]
+              rounded-[28px]
+              border
+              border-white/20
+              bg-white/[0.95]
+              p-10
+              shadow-[0_30px_80px_rgba(0,0,0,0.18)]
+              backdrop-blur-sm
+              xl:p-12
+            "
+          >
+
+            {/* Accent */}
+
+            <div className="mb-6 h-1 w-12 bg-coral" />
+
+
+            {/* HEADLINE */}
+
+            <h1
+              className="
+                font-display
+                text-5xl
+                font-extrabold
+                leading-[0.98]
+                tracking-[-0.05em]
+                text-brand-deep
+                xl:text-6xl
+              "
+            >
+              You built the product.
+            </h1>
+
+            <h2
+              className="
+                mt-1
+                font-display
+                text-5xl
+                font-extrabold
+                leading-[0.98]
+                tracking-[-0.05em]
+                text-coral
+                xl:text-6xl
+              "
+            >
+              We get it to the people
+              <br />
+              you built it for.
+            </h2>
+
+
+            {/* DESCRIPTION */}
+
+            <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground">
+              NM Ingenious turns shelf presence into sell-out through trained
+              promoters, disciplined retail execution and real-time store
+              intelligence.
+            </p>
+
+
+            {/* ACTIONS */}
+
+            <div className="mt-8 flex items-center gap-6">
+
+              <Link
+                to="/contact"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  bg-coral
+                  px-7
+                  py-4
+                  font-display
+                  text-sm
+                  font-bold
+                  text-coral-foreground
+                  transition-all
+                  duration-300
+                  hover:brightness-110
+                "
+              >
+                Request an Audit
+                <ArrowRight className="size-4" />
+              </Link>
+
+
+              <Link
+                to="/services"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  font-display
+                  text-sm
+                  font-bold
+                  text-white
+                  transition-colors
+                  hover:text-coral
+                "
+              >
+                Explore services
+                <ArrowRight className="size-4" />
+              </Link>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* BOTTOM BRAND ACCENT */}
+
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 h-1 w-full bg-coral"
+        />
+
+      </div>
 
     </section>
   );
