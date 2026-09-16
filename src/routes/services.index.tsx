@@ -1036,11 +1036,24 @@ function ServicesIndex() {
             <div>
               <Eyebrow>Services</Eyebrow>
 
-              <h1 className="mt-5 max-w-4xl font-display text-4xl font-extrabold leading-[1.01] tracking-[-0.045em] text-foreground sm:text-5xl lg:text-6xl">
-                The capabilities that keep
-                <br />
-                <span className="text-coral">execution moving.</span>
-              </h1>
+              <h1
+  className="
+    mt-5
+    max-w-[760px]
+    font-display
+    text-4xl
+    font-extrabold
+    leading-[1.01]
+    tracking-[-0.045em]
+    text-foreground
+    sm:text-5xl
+    lg:text-6xl
+  "
+>
+  The capabilities that keep
+  <br />
+  <span className="text-coral">execution moving.</span>
+</h1>
             </div>
 
             <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:pb-1 lg:text-base">
