@@ -535,7 +535,7 @@ function About() {
             <Eyebrow>Our strengths</Eyebrow>
 
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
-              Four disciplines we refuse to compromise on.
+              Five disciplines we refuse to compromise on.
             </h2>
           </div>
 
