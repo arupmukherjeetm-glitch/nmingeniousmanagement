@@ -148,24 +148,40 @@ function Hero() {
 
             <div className="relative z-10 ml-auto w-full max-w-[720px]">
 
-              <div className="overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
+              <div className="group overflow-hidden rounded-[20px] border-[3px] border-white bg-ink shadow-[0_28px_70px_rgba(8,43,97,0.18)] sm:rounded-[26px]">
+  <div className="relative aspect-[16/9] overflow-hidden">
+    <video
+      className="
+        absolute
+        left-1/2
+        top-1/2
+        h-[112%]
+        w-[112%]
+        -translate-x-1/2
+        -translate-y-1/2
+        object-cover
+        object-center
+        transition-transform
+        duration-[1800ms]
+        ease-out
+        group-hover:scale-[1.025]
+      "
+      src={HERO_VIDEO}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      poster="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1600&q=80"
+      aria-label="NM Ingenious retail execution in action"
+    />
+  </div>
 
-                <video
-                  src={heroVideoUrl}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="block aspect-[16/9] w-full object-cover object-center"
-                />
-
-                <div
-                  aria-hidden
-                  className="h-1.5 w-full bg-coral"
-                />
-
-              </div>
+  <div
+    aria-hidden="true"
+    className="h-1.5 w-full bg-accent"
+  />
+</div>
 
             </div>
           </div>
