@@ -441,6 +441,58 @@ function WhoItsFor() {
       </section>
 
       {/* =====================================================
+          FINAL CUSTOM CTA
+      ===================================================== */}
+
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl bg-brand-deep p-8 text-white sm:p-12 lg:p-16">
+
+              <div className="absolute -right-24 -top-24 size-72 rounded-full border border-white/10" />
+
+              <div className="absolute -right-8 -top-8 size-40 rounded-full border border-coral/20" />
+
+              <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+
+                <div className="max-w-3xl">
+
+                  <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
+                    Ready for the shelf
+                  </p>
+
+                  <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.035em] text-white lg:text-5xl">
+                    Your next retail phase needs more than distribution.
+                  </h2>
+
+                  <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/65">
+                    It needs people, process and measurement working
+                    together at the point where the shopper makes a
+                    decision.
+                  </p>
+
+                </div>
+
+                <Link
+                  to="/contact"
+                  className="group inline-flex w-fit items-center gap-3 rounded-xl bg-coral px-6 py-4 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  Talk to NM Ingenious
+                  <ArrowUpRight
+                    className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
+
+              </div>
+
+            </div>
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* =====================================================
           EXISTING GLOBAL CTA
       ===================================================== */}
 
