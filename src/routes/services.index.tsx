@@ -13,7 +13,8 @@ export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       {
-        title: "Services | Retail Execution, Payroll & Fractional HR | NM Ingenious",
+        title:
+          "Services | Retail Execution, Payroll & Fractional HR | NM Ingenious",
       },
       {
         name: "description",
@@ -135,31 +136,26 @@ function ImageServiceCard({
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_22px_60px_rgba(11,27,51,0.10)]"
+        className="group block h-full overflow-hidden rounded-[1.75rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_70px_rgba(11,27,51,0.11)]"
       >
-        {/* IMAGE */}
-        <div className="relative aspect-[16/9] overflow-hidden">
+        {/* FULL-LENGTH IMAGE */}
+        <div className="relative aspect-[4/5] overflow-hidden">
           <img
             src={service.image}
             alt={service.caption}
             loading={index < 2 ? "eager" : "lazy"}
-            className="size-full object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
+            className="size-full object-cover object-center transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
           />
 
-          {/* LIGHT BRAND LAYER ABOVE IMAGE */}
-          <div className="pointer-events-none absolute inset-0 bg-white/[0.14] transition-opacity duration-500 group-hover:bg-white/[0.07]" />
+          {/* LIGHT LAYER ABOVE IMAGE */}
+          <div className="pointer-events-none absolute inset-0 bg-white/[0.13] transition-opacity duration-500 group-hover:bg-white/[0.06]" />
 
-          {/* Very subtle bottom gradient for depth */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-brand/20 to-transparent" />
-
-          {/* Arrow */}
-          <div className="absolute bottom-4 right-4 flex size-9 items-center justify-center rounded-full bg-white/95 text-brand shadow-sm transition-all duration-300 group-hover:bg-coral group-hover:text-white">
-            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </div>
+          {/* VERY SUBTLE BOTTOM DEPTH */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brand/15 to-transparent" />
         </div>
 
         {/* CONTENT */}
-        <div className="p-6 sm:p-7 lg:p-8">
+        <div className="p-7 lg:p-8">
           <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
             {service.tagline}
           </p>
@@ -168,13 +164,13 @@ function ImageServiceCard({
             {service.name}
           </h3>
 
-          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+          <p className="mt-4 text-sm leading-6 text-muted-foreground">
             {service.summary}
           </p>
 
-          <div className="mt-5 flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-brand">
+          <div className="mt-6 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-brand">
             Explore service
-            <ArrowRight className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -200,29 +196,24 @@ function IconServiceCard({
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_22px_60px_rgba(11,27,51,0.10)]"
+        className="group block h-full overflow-hidden rounded-[1.75rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_70px_rgba(11,27,51,0.11)]"
       >
-        {/* LARGE ICON AREA */}
-        <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-muted/25">
-          {/* Soft neutral background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-brand/[0.025] via-transparent to-coral/[0.035]" />
+        {/* LARGE ICON VISUAL */}
+        <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-muted/20">
+          {/* Very subtle background treatment */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand/[0.025] via-transparent to-coral/[0.045]" />
 
-          {/* Large gentle icon */}
-          <div className="relative flex size-24 items-center justify-center rounded-full border border-brand/10 bg-white text-brand shadow-[0_8px_30px_rgba(11,27,51,0.06)] transition-all duration-500 group-hover:border-coral/20 group-hover:text-coral group-hover:shadow-[0_12px_35px_rgba(11,27,51,0.10)]">
+          {/* Large clear icon */}
+          <div className="relative flex size-32 items-center justify-center rounded-full border border-brand/[0.10] bg-white text-brand shadow-[0_12px_35px_rgba(11,27,51,0.07)] transition-all duration-500 group-hover:border-coral/20 group-hover:text-coral group-hover:shadow-[0_16px_42px_rgba(11,27,51,0.10)]">
             <Icon
-              className="size-11"
-              strokeWidth={1.35}
+              className="size-[3.5rem]"
+              strokeWidth={1.3}
             />
-          </div>
-
-          {/* Arrow */}
-          <div className="absolute bottom-4 right-4 flex size-9 items-center justify-center rounded-full border border-border bg-white text-brand transition-all duration-300 group-hover:border-coral group-hover:bg-coral group-hover:text-white">
-            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
 
         {/* CONTENT */}
-        <div className="p-6 sm:p-7 lg:p-8">
+        <div className="p-7 lg:p-8">
           <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
             {service.tagline}
           </p>
@@ -231,13 +222,13 @@ function IconServiceCard({
             {service.name}
           </h3>
 
-          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+          <p className="mt-4 text-sm leading-6 text-muted-foreground">
             {service.summary}
           </p>
 
-          <div className="mt-5 flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-brand">
+          <div className="mt-6 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-brand">
             Explore service
-            <ArrowRight className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -394,7 +385,7 @@ function ServicesIndex() {
   return (
     <>
       {/* ------------------------------------------------------------------ */}
-      {/* CLEAN INTRO                                                         */}
+      {/* CLEAN PAGE INTRO                                                     */}
       {/* ------------------------------------------------------------------ */}
 
       <section className="bg-background pt-16 lg:pt-20">
@@ -416,14 +407,18 @@ function ServicesIndex() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* ALL 8 SERVICES — CONTINUOUS 2 COLUMN GRID                          */}
+      {/* ALL 8 SERVICES                                                       */}
       {/* ------------------------------------------------------------------ */}
 
       <section className="bg-background pb-20 lg:pb-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
           <div className="grid gap-5 md:grid-cols-2">
 
-            {/* FOUR IMAGE SERVICES */}
+            {/* ------------------------------------------------------------ */}
+            {/* 4 IMAGE SERVICES                                             */}
+            {/* ------------------------------------------------------------ */}
+
             {imageServices.map((service, index) => (
               <ImageServiceCard
                 key={service.slug}
@@ -432,7 +427,10 @@ function ServicesIndex() {
               />
             ))}
 
-            {/* FOUR IMAGE-FREE SERVICES */}
+            {/* ------------------------------------------------------------ */}
+            {/* 4 IMAGE-FREE SERVICES                                        */}
+            {/* ------------------------------------------------------------ */}
+
             {iconServices.map((service, index) => (
               <IconServiceCard
                 key={service.slug}
@@ -446,19 +444,19 @@ function ServicesIndex() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* ONE SYSTEM                                                         */}
+      {/* ONE SYSTEM                                                          */}
       {/* ------------------------------------------------------------------ */}
 
       <OperatingSystemSection />
 
       {/* ------------------------------------------------------------------ */}
-      {/* HOW IT CONNECTS                                                    */}
+      {/* HOW IT CONNECTS                                                     */}
       {/* ------------------------------------------------------------------ */}
 
       <ConnectionSection />
 
       {/* ------------------------------------------------------------------ */}
-      {/* CTA                                                                */}
+      {/* CTA                                                                 */}
       {/* ------------------------------------------------------------------ */}
 
       <CtaBand />
