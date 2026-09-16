@@ -230,6 +230,7 @@ function PanIndiaReachSection() {
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal>
           <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+
             {/* ==================================================
                 LEFT — SCALE
             ================================================== */}
@@ -254,7 +255,7 @@ function PanIndiaReachSection() {
                 </div>
               </div>
 
-              <div className="mt-8 h-px w-16 bg-coral" />
+              {/* Horizontal line removed */}
 
               <p className="mt-7 max-w-md text-lg leading-8 text-muted-foreground">
                 One network. 31 states. Every aisle that matters.
@@ -266,6 +267,7 @@ function PanIndiaReachSection() {
             ================================================== */}
             <div className="relative">
               <div className="relative overflow-hidden rounded-2xl border border-brand/10 bg-white p-7 shadow-[0_20px_60px_rgba(20,45,90,0.06)] sm:p-10 lg:p-12">
+
                 {/* Network visual */}
                 <div
                   aria-hidden="true"
@@ -324,17 +326,8 @@ function PanIndiaReachSection() {
                 </div>
               </div>
 
-              {/* Small floating location marker */}
-              <div className="absolute -bottom-5 left-6 flex items-center gap-3 rounded-full border border-border bg-background px-4 py-2.5 shadow-lg">
-                <span className="relative flex size-2.5">
-                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-coral opacity-40" />
-                  <span className="relative inline-flex size-2.5 rounded-full bg-coral" />
-                </span>
+              {/* Floating "One network. Everywhere." marker removed */}
 
-                <span className="text-xs font-bold uppercase tracking-[0.12em] text-foreground">
-                  One network. Everywhere.
-                </span>
-              </div>
             </div>
           </div>
         </Reveal>
