@@ -75,118 +75,151 @@ function Home() {
 /* HERO */
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#F5F8FC]">
+    <section className="relative overflow-hidden bg-[#F3F6FA]">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
 
-      {/* =========================================================
-          HERO CONTAINER
-      ========================================================= */}
-      <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12">
-
-        <div className="grid items-center gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12 xl:gap-16">
+        <div className="relative grid min-h-[500px] items-center py-7 sm:min-h-[540px] sm:py-10 lg:min-h-[560px] lg:grid-cols-[0.9fr_1.1fr] lg:gap-8 lg:py-12">
 
           {/* =====================================================
-              LEFT — HERO CONTENT
+              DECORATIVE BACKGROUND ELEMENTS
           ===================================================== */}
-          <div className="order-2 lg:order-1">
 
-            {/* CORAL ACCENT */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-20 top-8 h-40 w-40 rounded-full border-[18px] border-coral/10"
+          />
+
+          <div
+            aria-hidden
+            className="pointer-events-none absolute bottom-[-100px] right-[-60px] h-64 w-64 rounded-full bg-brand-deep/[0.035]"
+          />
+
+          {/* =====================================================
+              LEFT CONTENT
+          ===================================================== */}
+
+          <div className="relative z-20 order-2 mt-7 lg:order-1 lg:mt-0">
+
+            {/* SMALL INDEX */}
             <div className="mb-5 flex items-center gap-3">
-              <span className="h-1 w-12 rounded-full bg-coral" />
+              <span className="font-display text-[11px] font-black tracking-[0.2em] text-coral">
+                01
+              </span>
 
-              <span className="font-display text-[10px] font-bold uppercase tracking-[0.28em] text-brand-deep">
-                Retail Execution & Growth
+              <span className="h-px w-8 bg-brand-deep/30" />
+
+              <span className="font-display text-[9px] font-bold uppercase tracking-[0.24em] text-brand-deep/65">
+                Retail Execution
               </span>
             </div>
 
-            {/* HEADLINE */}
-            <h1 className="max-w-[680px] font-display text-[38px] font-extrabold leading-[0.98] tracking-[-0.045em] text-brand-deep sm:text-[48px] lg:text-[56px] xl:text-[64px]">
+            {/* MAIN HEADLINE */}
+            <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.91] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[62px] xl:text-[70px]">
 
               <span className="block">
-                You built the product.
+                You built
+              </span>
+
+              <span className="block">
+                the product.
               </span>
 
               <span className="mt-2 block text-coral">
-                We get it to the people
+                We get it
               </span>
 
               <span className="block text-coral">
-                you built it for.
+                to the people.
               </span>
 
             </h1>
 
-            {/* DESCRIPTION */}
-            <p className="mt-6 max-w-[570px] text-[14px] leading-6 text-muted-foreground sm:text-[15px] sm:leading-7 lg:mt-7 lg:text-base">
+            {/* SUPPORTING COPY */}
+            <p className="mt-6 max-w-[470px] text-[13px] leading-5 text-muted-foreground sm:text-[14px] sm:leading-6">
               NM Ingenious turns shelf presence into sell-out through
               trained promoters, disciplined retail execution and
               real-time store intelligence.
             </p>
 
-            {/* CTA AREA */}
-            <div className="mt-7 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6 lg:mt-8">
+            {/* ACTIONS */}
+            <div className="mt-6 flex flex-wrap items-center gap-5">
 
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-coral px-6 py-3.5 font-display text-sm font-bold text-coral-foreground shadow-[0_12px_30px_rgba(239,68,68,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:px-7 sm:py-4"
+                className="group inline-flex items-center gap-3 rounded-full bg-coral px-6 py-3.5 font-display text-xs font-bold text-coral-foreground shadow-[0_12px_28px_rgba(239,68,68,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
               >
                 Request an Audit
-                <ArrowRight className="size-4" />
+
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
               <Link
                 to="/services"
-                className="group inline-flex items-center gap-2 font-display text-sm font-bold text-brand-deep"
+                className="group inline-flex items-center gap-2 font-display text-xs font-bold text-brand-deep"
               >
                 Explore services
 
-                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
             </div>
 
-            {/* SMALL TRUST LINE */}
-            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-brand-deep/10 pt-5 lg:mt-10">
+            {/* COMPACT PROOF POINTS */}
+            <div className="mt-7 flex items-center gap-5 border-t border-brand-deep/10 pt-4">
 
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                Retail
-              </span>
+              <div>
+                <p className="font-display text-[18px] font-black leading-none text-brand-deep">
+                  15+
+                </p>
 
-              <span className="h-1 w-1 rounded-full bg-coral" />
+                <p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                  Years
+                </p>
+              </div>
 
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                BTL
-              </span>
+              <div className="h-7 w-px bg-brand-deep/10" />
 
-              <span className="h-1 w-1 rounded-full bg-coral" />
+              <div>
+                <p className="font-display text-[18px] font-black leading-none text-brand-deep">
+                  165+
+                </p>
 
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                Workforce
-              </span>
+                <p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                  Cities
+                </p>
+              </div>
 
-              <span className="h-1 w-1 rounded-full bg-coral" />
+              <div className="h-7 w-px bg-brand-deep/10" />
 
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                Intelligence
-              </span>
+              <div>
+                <p className="font-display text-[18px] font-black leading-none text-brand-deep">
+                  1,650+
+                </p>
+
+                <p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                  People
+                </p>
+              </div>
 
             </div>
           </div>
 
           {/* =====================================================
-              RIGHT — VIDEO
+              RIGHT — HERO VIDEO
           ===================================================== */}
-          <div className="order-1 lg:order-2">
 
-            <div className="relative">
+          <div className="relative z-10 order-1 lg:order-2">
 
-              {/* DECORATIVE CORAL ELEMENT */}
-              <div
-                aria-hidden
-                className="absolute -right-3 -top-3 z-0 h-20 w-20 rounded-2xl bg-coral/10 sm:-right-4 sm:-top-4 sm:h-24 sm:w-24"
-              />
+            {/* CORAL OFFSET BLOCK */}
+            <div
+              aria-hidden
+              className="absolute -right-2 -top-2 h-20 w-20 rounded-[22px] bg-coral sm:-right-3 sm:-top-3 sm:h-24 sm:w-24 lg:-right-5 lg:-top-5"
+            />
 
-              {/* VIDEO FRAME */}
-              <div className="relative z-10 overflow-hidden rounded-[24px] border border-brand-deep/10 bg-brand-deep shadow-[0_25px_70px_rgba(8,43,97,0.18)] sm:rounded-[30px]">
+            {/* VIDEO */}
+            <div className="relative ml-auto w-full max-w-[700px]">
+
+              <div className="relative overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_30px_70px_rgba(8,43,97,0.20)] sm:rounded-[28px]">
 
                 <video
                   src={heroVideoUrl}
@@ -195,23 +228,33 @@ function Hero() {
                   muted
                   playsInline
                   preload="auto"
-                  className="block aspect-[16/10] h-auto w-full object-cover object-center sm:aspect-[16/10] lg:aspect-[5/4]"
+                  className="block aspect-[16/9] w-full object-cover object-center"
                 />
 
-                {/* VIDEO BOTTOM ACCENT */}
+                {/* VIDEO EDGE */}
                 <div
                   aria-hidden
-                  className="absolute bottom-0 left-0 right-0 h-1.5 bg-coral"
+                  className="absolute bottom-0 left-0 h-1.5 w-full bg-coral"
                 />
 
               </div>
 
-              {/* DECORATIVE BLUE ELEMENT */}
-              <div
-                aria-hidden
-                className="absolute -bottom-4 -left-4 z-0 h-16 w-16 rounded-2xl bg-brand-deep/10 sm:-bottom-5 sm:-left-5 sm:h-20 sm:w-20"
-              />
+              {/* FLOATING LABEL */}
+              <div className="absolute -bottom-5 left-4 z-30 flex items-center gap-3 rounded-xl bg-brand-deep px-4 py-3 shadow-[0_12px_30px_rgba(8,43,97,0.18)] sm:left-6">
 
+                <span className="h-2 w-2 rounded-full bg-coral" />
+
+                <span className="font-display text-[9px] font-bold uppercase tracking-[0.18em] text-white">
+                  From shelf to sell-out
+                </span>
+
+              </div>
+
+            </div>
+
+            {/* SIDE NUMBER */}
+            <div className="absolute -right-1 bottom-3 hidden rotate-90 font-display text-[9px] font-bold uppercase tracking-[0.28em] text-brand-deep/35 xl:block">
+              NM Ingenious / 2026
             </div>
 
           </div>
@@ -220,13 +263,13 @@ function Hero() {
       </div>
 
       {/* =========================================================
-          MOBILE BOTTOM DIVIDER
+          MOBILE ACCENT
       ========================================================= */}
+
       <div
         aria-hidden
         className="h-1 w-full bg-coral lg:hidden"
       />
-
     </section>
   );
 }
