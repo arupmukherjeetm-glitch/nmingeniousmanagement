@@ -54,14 +54,14 @@ function WhoItsForPage() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* HERO                                                                       */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   HERO
+   ========================================================================== */
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-sand">
-      <div className="absolute inset-y-0 right-0 hidden w-[34%] bg-brand-pale lg:block" />
+    <section className="relative overflow-hidden bg-background">
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[34%] bg-brand-soft lg:block" />
 
       <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
         <div className="max-w-4xl">
@@ -69,7 +69,7 @@ function HeroSection() {
 
           <h1 className="mt-5 max-w-4xl font-display text-4xl font-extrabold leading-[1.04] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-7xl">
             If your brand needs reach and frequency at the shelf,{" "}
-            <em className="not-italic text-coral">
+            <em className="not-italic text-brand">
               this is built for you.
             </em>
           </h1>
@@ -86,9 +86,9 @@ function HeroSection() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* INDUSTRIES                                                                 */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   INDUSTRIES
+   ========================================================================== */
 
 function IndustrySection() {
   return (
@@ -107,9 +107,12 @@ function IndustrySection() {
           ))}
 
           <Reveal delay={industries.length * 50}>
-            <div className="flex h-full min-h-[220px] flex-col justify-between overflow-hidden rounded-2xl bg-coral p-7">
+            <div
+              className="flex h-full min-h-[220px] flex-col justify-between overflow-hidden rounded-2xl p-7"
+              style={{ background: "var(--gradient-brand)" }}
+            >
               <div>
-                <span className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white/70">
+                <span className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white/60">
                   Planning
                 </span>
 
@@ -120,7 +123,7 @@ function IndustrySection() {
 
               <Link
                 to="/contact"
-                className="mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-white transition-transform duration-300 hover:translate-x-1"
+                className="mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-coral transition-transform duration-300 hover:translate-x-1"
               >
                 See the full picture
                 <ArrowRight className="size-4" />
@@ -141,10 +144,10 @@ function IndustryCard({
   body: string;
 }) {
   return (
-    <div className="group relative flex min-h-[220px] h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-coral/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
-      <ArrowRight className="absolute right-7 top-7 size-4 text-coral/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-coral" />
+    <div className="group relative flex min-h-[220px] h-full flex-col overflow-hidden rounded-2xl border border-border bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-coral/30 hover:shadow-[0_20px_50px_rgba(20,45,90,0.10)]">
+      <ArrowRight className="absolute right-7 top-7 size-4 text-coral/35 transition-all duration-300 group-hover:translate-x-1 group-hover:text-coral" />
 
-      <div className="mt-auto pr-6">
+      <div className="mt-auto pr-7">
         <h2 className="font-display text-xl font-extrabold leading-tight text-foreground">
           {title}
         </h2>
@@ -157,9 +160,9 @@ function IndustryCard({
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* BRAND STAGES                                                               */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   BRAND STAGES
+   ========================================================================== */
 
 function BrandStageSection() {
   const stages = [
@@ -192,7 +195,7 @@ function BrandStageSection() {
 
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
               Different growth stages.{" "}
-              <span className="text-coral">
+              <span className="text-brand">
                 One operating discipline.
               </span>
             </h2>
@@ -212,9 +215,9 @@ function BrandStageSection() {
               return (
                 <div key={stage.title}>
                   <Reveal delay={index * 70}>
-                    <div className="group rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:border-coral/30 hover:shadow-[0_18px_45px_rgba(0,0,0,0.06)] lg:p-8">
+                    <div className="group rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:border-coral/30 hover:shadow-[0_18px_45px_rgba(20,45,90,0.08)] lg:p-8">
                       <div className="flex gap-6">
-                        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-coral/10 text-coral">
+                        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-coral-soft text-coral">
                           <Icon className="size-5" />
                         </div>
 
@@ -240,9 +243,9 @@ function BrandStageSection() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* PROBLEMS                                                                   */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   PROBLEMS
+   ========================================================================== */
 
 function ProblemSection() {
   const problems = [
@@ -331,9 +334,9 @@ function ProblemSection() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* ENGAGEMENT                                                                 */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   ENGAGEMENT
+   ========================================================================== */
 
 function EngagementSection() {
   const models = [
@@ -368,7 +371,7 @@ function EngagementSection() {
 
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
               Start with the problem.{" "}
-              <span className="text-coral">
+              <span className="text-brand">
                 Build the system around it.
               </span>
             </h2>
@@ -403,9 +406,9 @@ function EngagementSection() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* FIT                                                                        */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   FIT
+   ========================================================================== */
 
 function FitSection() {
   const fitPoints = [
@@ -426,7 +429,9 @@ function FitSection() {
 
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-5xl">
               If the shelf matters to your growth,{" "}
-              <span className="text-coral">let's make it measurable.</span>
+              <span className="text-brand">
+                let's make it measurable.
+              </span>
             </h2>
 
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
@@ -446,7 +451,7 @@ function FitSection() {
 
           <div className="rounded-2xl border border-border bg-card p-7 lg:p-9">
             <div className="flex items-center gap-3 border-b border-border pb-5">
-              <div className="flex size-10 items-center justify-center rounded-lg bg-coral/10 text-coral">
+              <div className="flex size-10 items-center justify-center rounded-lg bg-coral-soft text-coral">
                 <CheckCircle2 className="size-5" />
               </div>
 
