@@ -75,332 +75,157 @@ function Home() {
 /* HERO */
 function Hero() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#F4F7FB]">
+    <section className="relative overflow-hidden bg-[#F5F8FC]">
 
-      {/* =====================================================
-          MOBILE HERO
-      ====================================================== */}
+      {/* =========================================================
+          HERO CONTAINER
+      ========================================================= */}
+      <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12">
 
-      <div className="lg:hidden">
+        <div className="grid items-center gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12 xl:gap-16">
 
-        {/* HERO IMAGE / VIDEO */}
+          {/* =====================================================
+              LEFT — HERO CONTENT
+          ===================================================== */}
+          <div className="order-2 lg:order-1">
 
-        <div className="relative h-[310px] w-full overflow-hidden">
+            {/* CORAL ACCENT */}
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-1 w-12 rounded-full bg-coral" />
 
-          <video
-            src="media/hero_final (1).mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className="h-full w-full object-cover object-center"
-          />
-
-          {/* Dark lower fade */}
-
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-brand-deep/75 via-brand-deep/10 to-transparent"
-          />
-
-        </div>
-
-
-        {/* =================================================
-            MOBILE CONTENT
-        ================================================== */}
-
-        <div className="relative z-10 px-4 pb-6">
-
-          <div
-            className="
-              relative
-              -mt-10
-              rounded-[26px]
-              border
-              border-brand/10
-              bg-white
-              px-6
-              py-7
-              shadow-[0_20px_55px_rgba(8,43,97,0.14)]
-            "
-          >
-
-            {/* Accent line */}
-
-            <div className="mb-5 h-1 w-12 rounded-full bg-coral" />
-
+              <span className="font-display text-[10px] font-bold uppercase tracking-[0.28em] text-brand-deep">
+                Retail Execution & Growth
+              </span>
+            </div>
 
             {/* HEADLINE */}
+            <h1 className="max-w-[680px] font-display text-[38px] font-extrabold leading-[0.98] tracking-[-0.045em] text-brand-deep sm:text-[48px] lg:text-[56px] xl:text-[64px]">
 
-            <h1
-              className="
-                font-display
-                text-[34px]
-                font-extrabold
-                leading-[1.02]
-                tracking-[-0.045em]
-                text-brand-deep
-                sm:text-[40px]
-              "
-            >
-              You built the product.
+              <span className="block">
+                You built the product.
+              </span>
+
+              <span className="mt-2 block text-coral">
+                We get it to the people
+              </span>
+
+              <span className="block text-coral">
+                you built it for.
+              </span>
+
             </h1>
-
-            <h1
-              className="
-                mt-1
-                font-display
-                text-[34px]
-                font-extrabold
-                leading-[1.02]
-                tracking-[-0.045em]
-                text-coral
-                sm:text-[40px]
-              "
-            >
-              We get it to the people
-              <br />
-              you built it for.
-            </h1>
-
 
             {/* DESCRIPTION */}
-
-            <p
-              className="
-                mt-5
-                max-w-[390px]
-                text-[14px]
-                leading-6
-                text-muted-foreground
-              "
-            >
-              NM Ingenious turns shelf presence into sell-out through trained
-              promoters, disciplined retail execution and real-time store
-              intelligence.
+            <p className="mt-6 max-w-[570px] text-[14px] leading-6 text-muted-foreground sm:text-[15px] sm:leading-7 lg:mt-7 lg:text-base">
+              NM Ingenious turns shelf presence into sell-out through
+              trained promoters, disciplined retail execution and
+              real-time store intelligence.
             </p>
 
-
-            {/* CTA */}
-
-            <div className="mt-6 flex flex-col items-start gap-4">
+            {/* CTA AREA */}
+            <div className="mt-7 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6 lg:mt-8">
 
               <Link
                 to="/contact"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  bg-coral
-                  px-6
-                  py-3.5
-                  font-display
-                  text-sm
-                  font-bold
-                  text-coral-foreground
-                  transition-all
-                  duration-300
-                  hover:brightness-110
-                "
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-coral px-6 py-3.5 font-display text-sm font-bold text-coral-foreground shadow-[0_12px_30px_rgba(239,68,68,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:px-7 sm:py-4"
               >
                 Request an Audit
                 <ArrowRight className="size-4" />
               </Link>
 
-
               <Link
                 to="/services"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  font-display
-                  text-sm
-                  font-bold
-                  text-brand-deep
-                  transition-colors
-                  hover:text-coral
-                "
+                className="group inline-flex items-center gap-2 font-display text-sm font-bold text-brand-deep"
               >
                 Explore services
-                <ArrowRight className="size-4" />
+
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
+
+            </div>
+
+            {/* SMALL TRUST LINE */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-brand-deep/10 pt-5 lg:mt-10">
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                Retail
+              </span>
+
+              <span className="h-1 w-1 rounded-full bg-coral" />
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                BTL
+              </span>
+
+              <span className="h-1 w-1 rounded-full bg-coral" />
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                Workforce
+              </span>
+
+              <span className="h-1 w-1 rounded-full bg-coral" />
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                Intelligence
+              </span>
+
+            </div>
+          </div>
+
+          {/* =====================================================
+              RIGHT — VIDEO
+          ===================================================== */}
+          <div className="order-1 lg:order-2">
+
+            <div className="relative">
+
+              {/* DECORATIVE CORAL ELEMENT */}
+              <div
+                aria-hidden
+                className="absolute -right-3 -top-3 z-0 h-20 w-20 rounded-2xl bg-coral/10 sm:-right-4 sm:-top-4 sm:h-24 sm:w-24"
+              />
+
+              {/* VIDEO FRAME */}
+              <div className="relative z-10 overflow-hidden rounded-[24px] border border-brand-deep/10 bg-brand-deep shadow-[0_25px_70px_rgba(8,43,97,0.18)] sm:rounded-[30px]">
+
+                <video
+                  src={heroVideoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="block aspect-[16/10] h-auto w-full object-cover object-center sm:aspect-[16/10] lg:aspect-[5/4]"
+                />
+
+                {/* VIDEO BOTTOM ACCENT */}
+                <div
+                  aria-hidden
+                  className="absolute bottom-0 left-0 right-0 h-1.5 bg-coral"
+                />
+
+              </div>
+
+              {/* DECORATIVE BLUE ELEMENT */}
+              <div
+                aria-hidden
+                className="absolute -bottom-4 -left-4 z-0 h-16 w-16 rounded-2xl bg-brand-deep/10 sm:-bottom-5 sm:-left-5 sm:h-20 sm:w-20"
+              />
 
             </div>
 
           </div>
 
         </div>
-
       </div>
 
-
-      {/* =====================================================
-          DESKTOP HERO
-      ====================================================== */}
-
-      <div className="relative hidden min-h-[680px] lg:block">
-
-        {/* VIDEO */}
-
-        <div className="absolute inset-0">
-
-          <video
-            src="media/hero_final (1).mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className="h-full w-full object-cover object-center"
-          />
-
-          <div className="absolute inset-0 bg-brand-deep/55" />
-
-          <div
-            className="
-              absolute
-              inset-0
-              bg-gradient-to-r
-              from-brand-deep/80
-              via-brand-deep/45
-              to-transparent
-            "
-          />
-
-        </div>
-
-
-        {/* DESKTOP CONTENT */}
-
-        <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-center px-8">
-
-          <div
-            className="
-              max-w-[620px]
-              rounded-[28px]
-              border
-              border-white/20
-              bg-white/[0.95]
-              p-10
-              shadow-[0_30px_80px_rgba(0,0,0,0.18)]
-              backdrop-blur-sm
-              xl:p-12
-            "
-          >
-
-            {/* Accent */}
-
-            <div className="mb-6 h-1 w-12 bg-coral" />
-
-
-            {/* HEADLINE */}
-
-            <h1
-              className="
-                font-display
-                text-5xl
-                font-extrabold
-                leading-[0.98]
-                tracking-[-0.05em]
-                text-brand-deep
-                xl:text-6xl
-              "
-            >
-              You built the product.
-            </h1>
-
-            <h2
-              className="
-                mt-1
-                font-display
-                text-5xl
-                font-extrabold
-                leading-[0.98]
-                tracking-[-0.05em]
-                text-coral
-                xl:text-6xl
-              "
-            >
-              We get it to the people
-              <br />
-              you built it for.
-            </h2>
-
-
-            {/* DESCRIPTION */}
-
-            <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground">
-              NM Ingenious turns shelf presence into sell-out through trained
-              promoters, disciplined retail execution and real-time store
-              intelligence.
-            </p>
-
-
-            {/* ACTIONS */}
-
-            <div className="mt-8 flex items-center gap-6">
-
-              <Link
-                to="/contact"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  bg-coral
-                  px-7
-                  py-4
-                  font-display
-                  text-sm
-                  font-bold
-                  text-coral-foreground
-                  transition-all
-                  duration-300
-                  hover:brightness-110
-                "
-              >
-                Request an Audit
-                <ArrowRight className="size-4" />
-              </Link>
-
-
-              <Link
-                to="/services"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  font-display
-                  text-sm
-                  font-bold
-                  text-white
-                  transition-colors
-                  hover:text-coral
-                "
-              >
-                Explore services
-                <ArrowRight className="size-4" />
-              </Link>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        {/* BOTTOM BRAND ACCENT */}
-
-        <div
-          aria-hidden
-          className="absolute bottom-0 left-0 h-1 w-full bg-coral"
-        />
-
-      </div>
+      {/* =========================================================
+          MOBILE BOTTOM DIVIDER
+      ========================================================= */}
+      <div
+        aria-hidden
+        className="h-1 w-full bg-coral lg:hidden"
+      />
 
     </section>
   );
