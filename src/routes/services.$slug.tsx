@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   Clock3,
   FileCheck2,
-  MapPin,
   ShieldCheck,
   UserRoundCog,
   Users,
@@ -83,8 +82,43 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 /* ==========================================================================
-   SERVICE IMAGE GALLERY
-   Used ONLY when the service actually has images.
+   IMAGE-FREE SERVICES
+   These services intentionally NEVER use service.images.
+   ========================================================================== */
+
+const IMAGE_FREE_SERVICE_NAMES = new Set([
+  "Real-Time Tracking & Reporting",
+  "Compliant Workforce Management",
+  "Payroll Services",
+  "Fractional HR Services",
+]);
+
+function isImageFreeService(service: {
+  name: string;
+  slug: string;
+}) {
+  const name = service.name.trim();
+
+  if (IMAGE_FREE_SERVICE_NAMES.has(name)) {
+    return true;
+  }
+
+  const slug = service.slug.toLowerCase();
+
+  return (
+    slug.includes("tracking") ||
+    slug.includes("reporting") ||
+    slug.includes("compliance") ||
+    slug.includes("compliant") ||
+    slug.includes("payroll") ||
+    slug.includes("fractional-hr") ||
+    slug.includes("fractional_hr")
+  );
+}
+
+/* ==========================================================================
+   IMAGE GALLERY
+   Only used by the four services that genuinely have photography.
    ========================================================================== */
 
 function ServiceMedia({
@@ -107,10 +141,10 @@ function ServiceMedia({
   return (
     <div className="w-full">
       {/* Desktop */}
-      <div className="hidden gap-4 sm:grid sm:grid-cols-[86px_minmax(0,1fr)]">
-        <div className="flex max-h-[570px] flex-col gap-3 overflow-y-auto pr-1">
+      <div className="hidden gap-4 sm:grid sm:grid-cols-[82px_minmax(0,1fr)]">
+        <div className="flex max-h-[560px] flex-col gap-3 overflow-y-auto pr-1">
           {images.map((src, index) => {
-            const isActive = index === activeImage;
+            const active = index === activeImage;
 
             return (
               <button
@@ -118,9 +152,8 @@ function ServiceMedia({
                 type="button"
                 onClick={() => setActiveImage(index)}
                 aria-label={`View service image ${index + 1}`}
-                aria-pressed={isActive}
-                className={`group relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-xl bg-[#EEF2F7] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 ${
-                  isActive
+                className={`relative h-[76px] w-[76px] shrink-0 overflow-hidden rounded-xl bg-[#EEF2F7] transition-all duration-300 ${
+                  active
                     ? "ring-2 ring-brand ring-offset-2"
                     : "opacity-60 hover:opacity-100"
                 }`}
@@ -130,21 +163,18 @@ function ServiceMedia({
                   alt={`Service image ${index + 1}`}
                   loading={index === 0 ? "eager" : "lazy"}
                   decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover"
                 />
 
-                {isActive && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-y-0 left-0 w-1 bg-coral"
-                  />
+                {active && (
+                  <span className="absolute inset-y-0 left-0 w-1 bg-coral" />
                 )}
               </button>
             );
           })}
         </div>
 
-        <div className="relative h-[570px] overflow-hidden rounded-[2rem] bg-[#EEF2F7]">
+        <div className="relative h-[560px] overflow-hidden rounded-[2rem] bg-[#EEF2F7]">
           <img
             key={currentImage}
             src={currentImage}
@@ -158,21 +188,19 @@ function ServiceMedia({
             className="h-full w-full object-cover transition-opacity duration-500"
           />
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/35 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/40 to-transparent" />
 
           {service.caption && (
-            <div className="absolute bottom-6 left-6 right-6">
-              <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
-                {service.caption}
-              </p>
-            </div>
+            <p className="absolute bottom-6 left-6 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-white/80">
+              {service.caption}
+            </p>
           )}
         </div>
       </div>
 
       {/* Mobile */}
       <div className="sm:hidden">
-        <div className="relative h-[420px] overflow-hidden rounded-[1.5rem] bg-[#EEF2F7]">
+        <div className="relative h-[400px] overflow-hidden rounded-[1.5rem] bg-[#EEF2F7]">
           <img
             key={currentImage}
             src={currentImage}
@@ -188,29 +216,24 @@ function ServiceMedia({
         </div>
 
         <div className="mt-3 flex gap-3 overflow-x-auto pb-2">
-          {images.map((src, index) => {
-            const isActive = index === activeImage;
-
-            return (
-              <button
-                key={`${src}-${index}`}
-                type="button"
-                onClick={() => setActiveImage(index)}
-                aria-label={`View service image ${index + 1}`}
-                className={`relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-xl bg-[#EEF2F7] ${
-                  isActive
-                    ? "ring-2 ring-brand ring-offset-2"
-                    : "opacity-60"
-                }`}
-              >
-                <img
-                  src={src}
-                  alt={`Service image ${index + 1}`}
-                  className="h-full w-full object-cover"
-                />
-              </button>
-            );
-          })}
+          {images.map((src, index) => (
+            <button
+              key={`${src}-${index}`}
+              type="button"
+              onClick={() => setActiveImage(index)}
+              className={`h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl ${
+                index === activeImage
+                  ? "ring-2 ring-brand ring-offset-2"
+                  : "opacity-60"
+              }`}
+            >
+              <img
+                src={src}
+                alt={`Service image ${index + 1}`}
+                className="h-full w-full object-cover"
+              />
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -218,456 +241,408 @@ function ServiceMedia({
 }
 
 /* ==========================================================================
-   NO-IMAGE VISUAL SYSTEM
-
-   These are NOT images.
-   They are purpose-built HTML/CSS visual compositions for services that
-   don't have photography.
+   IMAGE-FREE HERO SYSTEM
+   No photograph.
+   No image container.
+   No artificial empty space.
    ========================================================================== */
 
-function NoImageServiceVisual({ slug }: { slug: string }) {
-  const normalized = slug.toLowerCase();
+function ImageFreeHeroVisual({
+  service,
+}: {
+  service: {
+    name: string;
+    slug: string;
+  };
+}) {
+  const slug = service.slug.toLowerCase();
 
-  if (
-    normalized.includes("tracking") ||
-    normalized.includes("reporting")
-  ) {
-    return <TrackingReportingVisual />;
+  if (slug.includes("tracking") || slug.includes("reporting")) {
+    return <TrackingHero />;
   }
 
   if (
-    normalized.includes("compliance") ||
-    normalized.includes("compliant")
+    slug.includes("compliance") ||
+    slug.includes("compliant")
   ) {
-    return <ComplianceVisual />;
+    return <ComplianceHero />;
   }
 
-  if (normalized.includes("payroll")) {
-    return <PayrollVisual />;
+  if (slug.includes("payroll")) {
+    return <PayrollHero />;
   }
 
   if (
-    normalized.includes("fractional") ||
-    normalized.includes("hr")
+    slug.includes("fractional") ||
+    slug.includes("fractional-hr")
   ) {
-    return <FractionalHRVisual />;
+    return <FractionalHRHero />;
   }
 
-  return <GenericOperationsVisual />;
+  return <OperationsHero />;
 }
 
 /* ==========================================================================
-   SHARED NO-IMAGE VISUAL FRAME
+   TRACKING — TYPOGRAPHIC / DATA VISUAL
    ========================================================================== */
 
-function VisualFrame({
-  eyebrow,
-  children,
-}: {
-  eyebrow: string;
-  children: React.ReactNode;
-}) {
+function TrackingHero() {
   return (
-    <div className="relative overflow-hidden rounded-[2rem] bg-[#09243F] p-5 shadow-[0_30px_80px_rgba(9,36,63,0.16)] sm:p-7">
-      {/* Decorative geometry */}
+    <div className="relative min-h-[430px] overflow-hidden lg:min-h-[500px]">
+      {/* Grid */}
       <div
-        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-20 blur-3xl"
+        className="absolute inset-0 opacity-50"
         style={{
-          background: "var(--gradient-brand)",
+          backgroundImage:
+            "linear-gradient(rgba(20,55,95,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(20,55,95,0.08) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
         }}
       />
 
-      <div className="pointer-events-none absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-coral/10 blur-3xl" />
-
-      <div className="relative">
-        <div className="mb-6 flex items-center justify-between">
-          <span className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-white/45">
-            {eyebrow}
-          </span>
-
-          <span className="flex items-center gap-2 font-display text-[9px] font-bold uppercase tracking-[0.15em] text-white/40">
-            <span className="size-2 rounded-full bg-coral" />
-            NM Ingenious
-          </span>
+      <div className="relative flex h-full min-h-[430px] items-center justify-center lg:min-h-[500px]">
+        {/* Giant number */}
+        <div className="pointer-events-none absolute -right-3 top-1/2 -translate-y-1/2 font-display text-[210px] font-extrabold leading-none tracking-[-0.12em] text-brand/[0.045] sm:text-[280px]">
+          01
         </div>
 
-        {children}
+        {/* Connecting field lines */}
+        <div className="absolute left-[8%] top-[22%] h-px w-[72%] bg-brand/10" />
+        <div className="absolute left-[15%] top-[55%] h-px w-[68%] bg-brand/10" />
+        <div className="absolute left-[30%] top-[15%] h-[65%] w-px bg-brand/10" />
+        <div className="absolute right-[24%] top-[8%] h-[78%] w-px bg-brand/10" />
+
+        {/* Nodes */}
+        <span className="absolute left-[8%] top-[22%] size-3 rounded-full bg-coral shadow-[0_0_0_6px_rgba(236,99,73,0.10)]" />
+        <span className="absolute left-[30%] top-[55%] size-3 rounded-full bg-brand shadow-[0_0_0_6px_rgba(20,55,95,0.08)]" />
+        <span className="absolute right-[24%] top-[22%] size-3 rounded-full bg-coral shadow-[0_0_0_6px_rgba(236,99,73,0.10)]" />
+        <span className="absolute right-[8%] top-[55%] size-3 rounded-full bg-brand shadow-[0_0_0_6px_rgba(20,55,95,0.08)]" />
+
+        {/* Central system */}
+        <div className="relative w-[78%] max-w-[430px]">
+          <div className="bg-background px-4">
+            <div className="border-y border-brand/10 py-5">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                    Field intelligence
+                  </p>
+
+                  <p className="mt-2 font-display text-xl font-extrabold text-brand sm:text-2xl">
+                    Real-time visibility
+                  </p>
+                </div>
+
+                <Activity className="size-6 text-coral" />
+              </div>
+
+              <div className="mt-6 grid grid-cols-3 divide-x divide-border">
+                <div className="pr-3">
+                  <p className="font-display text-xl font-extrabold text-foreground">
+                    Live
+                  </p>
+                  <p className="mt-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                    Activity
+                  </p>
+                </div>
+
+                <div className="px-3">
+                  <p className="font-display text-xl font-extrabold text-foreground">
+                    Daily
+                  </p>
+                  <p className="mt-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                    Reporting
+                  </p>
+                </div>
+
+                <div className="pl-3">
+                  <p className="font-display text-xl font-extrabold text-foreground">
+                    Clear
+                  </p>
+                  <p className="mt-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                    Decisions
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating labels */}
+        <div className="absolute left-[2%] top-[37%] hidden border border-border bg-background px-3 py-2 sm:block">
+          <p className="font-display text-[9px] font-bold uppercase tracking-[0.12em] text-brand">
+            Attendance
+          </p>
+        </div>
+
+        <div className="absolute right-[0%] top-[38%] hidden border border-border bg-background px-3 py-2 sm:block">
+          <p className="font-display text-[9px] font-bold uppercase tracking-[0.12em] text-brand">
+            Reporting
+          </p>
+        </div>
       </div>
     </div>
   );
 }
 
 /* ==========================================================================
-   REAL-TIME TRACKING & REPORTING
+   COMPLIANCE — CONTROL FRAMEWORK
    ========================================================================== */
 
-function TrackingReportingVisual() {
-  return (
-    <VisualFrame eyebrow="Field intelligence">
-      {/* Header */}
-      <div className="rounded-2xl bg-white p-5 sm:p-6">
-        <div className="flex items-start justify-between">
-          <div>
-            <p className="font-display text-sm font-extrabold text-foreground">
-              Field operations
-            </p>
-
-            <p className="mt-1 text-xs text-muted-foreground">
-              Real-time visibility across the network
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 rounded-full bg-[#EAF7EF] px-3 py-1.5">
-            <span className="size-1.5 rounded-full bg-green-600" />
-            <span className="text-[9px] font-bold uppercase tracking-[0.12em] text-green-700">
-              Live
-            </span>
-          </div>
-        </div>
-
-        {/* KPI cards */}
-        <div className="mt-6 grid grid-cols-2 gap-3">
-          <div className="rounded-xl bg-[#F4F7FB] p-4">
-            <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-              Active outlets
-            </p>
-
-            <p className="mt-2 font-display text-3xl font-extrabold text-brand">
-              247
-            </p>
-          </div>
-
-          <div className="rounded-xl bg-[#F4F7FB] p-4">
-            <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-              Reports today
-            </p>
-
-            <p className="mt-2 font-display text-3xl font-extrabold text-brand">
-              96%
-            </p>
-          </div>
-        </div>
-
-        {/* Activity */}
-        <div className="mt-4 rounded-xl border border-border p-4">
-          <div className="flex items-center gap-2">
-            <Activity className="size-4 text-coral" />
-
-            <span className="font-display text-xs font-bold text-foreground">
-              Live activity
-            </span>
-          </div>
-
-          <div className="mt-5 space-y-3">
-            {[
-              ["North", "94%"],
-              ["West", "88%"],
-              ["South", "97%"],
-            ].map(([region, value]) => (
-              <div key={region}>
-                <div className="flex justify-between text-[10px] text-muted-foreground">
-                  <span>{region}</span>
-                  <span className="font-bold text-brand">{value}</span>
-                </div>
-
-                <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#E8EDF3]">
-                  <div
-                    className="h-full rounded-full bg-brand"
-                    style={{
-                      width: value,
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom status strip */}
-      <div className="mt-3 grid grid-cols-3 gap-2">
-        {["Attendance", "Visits", "Reports"].map((item) => (
-          <div
-            key={item}
-            className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-center"
-          >
-            <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-white/35">
-              {item}
-            </p>
-
-            <p className="mt-1 font-display text-xs font-bold text-white/75">
-              Tracked
-            </p>
-          </div>
-        ))}
-      </div>
-    </VisualFrame>
-  );
-}
-
-/* ==========================================================================
-   COMPLIANT WORKFORCE MANAGEMENT
-   ========================================================================== */
-
-function ComplianceVisual() {
+function ComplianceHero() {
   const controls = [
-    "Attendance verification",
-    "Outlet visit verification",
-    "Documentation checks",
+    "Attendance",
+    "Documentation",
+    "Field visits",
     "Process adherence",
   ];
 
   return (
-    <VisualFrame eyebrow="Workforce control">
-      <div className="rounded-2xl bg-white p-5 sm:p-6">
-        <div className="flex items-center gap-3">
-          <div className="flex size-11 items-center justify-center rounded-xl bg-[#EEF2F7]">
-            <ShieldCheck className="size-5 text-brand" />
-          </div>
+    <div className="relative min-h-[430px] lg:min-h-[500px]">
+      <div className="absolute inset-y-0 left-1/2 w-px bg-brand/10" />
 
-          <div>
-            <p className="font-display text-sm font-extrabold text-foreground">
-              Compliance control
-            </p>
+      <div className="absolute left-0 top-[12%] h-px w-full bg-brand/10" />
+      <div className="absolute left-0 bottom-[12%] h-px w-full bg-brand/10" />
 
-            <p className="mt-1 text-xs text-muted-foreground">
-              Workforce operating standards
-            </p>
-          </div>
-        </div>
+      <div className="absolute left-1/2 top-1/2 w-[82%] max-w-[430px] -translate-x-1/2 -translate-y-1/2">
+        <div className="border border-brand/15 bg-background p-5 shadow-[0_20px_60px_rgba(20,55,95,0.08)] sm:p-7">
+          <div className="flex items-center justify-between border-b border-border pb-4">
+            <div className="flex items-center gap-3">
+              <ShieldCheck className="size-5 text-coral" />
 
-        <div className="mt-6 rounded-xl bg-[#EAF7EF] p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-green-700/60">
-                Overall status
-              </p>
+              <div>
+                <p className="font-display text-xs font-extrabold text-brand">
+                  Workforce controls
+                </p>
 
-              <p className="mt-1 font-display text-xl font-extrabold text-green-800">
-                Controlled
-              </p>
+                <p className="mt-1 text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+                  Compliance framework
+                </p>
+              </div>
             </div>
 
-            <CheckCircle2 className="size-7 text-green-700" />
+            <span className="font-display text-[9px] font-bold uppercase tracking-[0.12em] text-coral">
+              Active
+            </span>
           </div>
-        </div>
 
-        <div className="mt-4 space-y-2.5">
-          {controls.map((control, index) => (
-            <div
-              key={control}
-              className="flex items-center gap-3 rounded-xl border border-border p-3"
-            >
-              <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#F4F7FB]">
-                <span className="font-display text-[9px] font-extrabold text-brand">
+          <div className="mt-5 space-y-2">
+            {controls.map((control, index) => (
+              <div
+                key={control}
+                className="flex items-center gap-3 border-b border-border/70 py-3 last:border-0"
+              >
+                <span className="font-display text-[9px] font-extrabold text-coral">
                   {String(index + 1).padStart(2, "0")}
                 </span>
+
+                <span className="flex-1 text-xs text-foreground/75">
+                  {control}
+                </span>
+
+                <Check
+                  className="size-3.5 text-brand"
+                  strokeWidth={3}
+                />
               </div>
-
-              <span className="flex-1 text-xs font-medium text-foreground/80">
-                {control}
-              </span>
-
-              <Check className="size-4 text-coral" strokeWidth={3} />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </VisualFrame>
+
+      <div className="absolute left-[2%] top-[18%] font-display text-[9px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+        Control
+      </div>
+
+      <div className="absolute right-[2%] bottom-[18%] font-display text-[9px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+        Verify
+      </div>
+
+      <div className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 font-display text-[180px] font-extrabold leading-none text-brand/[0.035]">
+        02
+      </div>
+    </div>
   );
 }
 
 /* ==========================================================================
-   PAYROLL SERVICES
+   PAYROLL — PROCESS DESIGN
    ========================================================================== */
 
-function PayrollVisual() {
+function PayrollHero() {
   const steps = [
-    {
-      title: "Attendance capture",
-      body: "Collect workforce inputs",
-    },
-    {
-      title: "Validation",
-      body: "Review and verify records",
-    },
-    {
-      title: "Payroll processing",
-      body: "Process approved payroll",
-    },
-    {
-      title: "Disbursement",
-      body: "Complete the payroll cycle",
-    },
+    "Attendance",
+    "Validation",
+    "Processing",
+    "Disbursement",
   ];
 
   return (
-    <VisualFrame eyebrow="Payroll operations">
-      <div className="rounded-2xl bg-white p-5 sm:p-6">
-        <div className="flex items-center gap-3">
-          <div className="flex size-11 items-center justify-center rounded-xl bg-[#EEF2F7]">
-            <WalletCards className="size-5 text-brand" />
-          </div>
+    <div className="relative min-h-[430px] lg:min-h-[500px]">
+      <div className="absolute left-[9%] right-[9%] top-1/2 h-px -translate-y-1/2 bg-brand/10" />
 
-          <div>
-            <p className="font-display text-sm font-extrabold text-foreground">
-              Payroll workflow
-            </p>
-
-            <p className="mt-1 text-xs text-muted-foreground">
-              From attendance to disbursement
-            </p>
-          </div>
+      <div className="relative flex min-h-[430px] items-center justify-center lg:min-h-[500px]">
+        <div className="absolute -right-3 top-1/2 -translate-y-1/2 font-display text-[210px] font-extrabold leading-none text-brand/[0.035] sm:text-[270px]">
+          03
         </div>
 
-        <div className="relative mt-7">
-          {/* Connecting line */}
-          <div className="absolute bottom-5 left-[17px] top-5 w-px bg-border" />
+        <div className="relative w-[90%] max-w-[460px]">
+          <div className="mb-8 flex items-center gap-3">
+            <WalletCards className="size-5 text-coral" />
 
-          <div className="space-y-5">
+            <div>
+              <p className="font-display text-sm font-extrabold text-brand">
+                Payroll workflow
+              </p>
+
+              <p className="mt-1 text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                Structured from input to completion
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-4 gap-2">
             {steps.map((step, index) => (
-              <div key={step.title} className="relative flex gap-4">
-                <div className="relative z-10 flex size-[35px] shrink-0 items-center justify-center rounded-full bg-brand">
-                  <span className="font-display text-[9px] font-extrabold text-white">
+              <div key={step} className="relative">
+                <div className="relative z-10 mx-auto flex size-10 items-center justify-center rounded-full border border-brand/15 bg-background">
+                  <span className="font-display text-[9px] font-extrabold text-brand">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
-                <div className="pt-1">
-                  <p className="font-display text-xs font-extrabold text-foreground">
-                    {step.title}
-                  </p>
-
-                  <p className="mt-1 text-[10px] leading-relaxed text-muted-foreground">
-                    {step.body}
+                <div className="mt-4 text-center">
+                  <p className="font-display text-[9px] font-bold leading-tight text-foreground">
+                    {step}
                   </p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
 
-        <div className="mt-6 flex items-center gap-2 rounded-xl bg-[#F4F7FB] p-3">
-          <Clock3 className="size-4 text-coral" />
+          <div className="mt-8 grid grid-cols-3 divide-x divide-border border-y border-border py-4">
+            <div className="pr-3">
+              <p className="text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                Capture
+              </p>
+            </div>
 
-          <span className="text-[10px] font-medium text-muted-foreground">
-            Structured payroll operations
-          </span>
+            <div className="px-3">
+              <p className="text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                Process
+              </p>
+            </div>
+
+            <div className="pl-3">
+              <p className="text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                Complete
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </VisualFrame>
+    </div>
   );
 }
 
 /* ==========================================================================
-   FRACTIONAL HR SERVICES
+   FRACTIONAL HR — PEOPLE OPERATING MODEL
    ========================================================================== */
 
-function FractionalHRVisual() {
+function FractionalHRHero() {
   const areas = [
     {
-      label: "People",
+      title: "People",
       icon: Users,
     },
     {
-      label: "Policy",
+      title: "Policy",
       icon: FileCheck2,
     },
     {
-      label: "Process",
+      title: "Process",
       icon: Clock3,
     },
     {
-      label: "Leadership",
+      title: "Leadership",
       icon: UserRoundCog,
     },
   ];
 
   return (
-    <VisualFrame eyebrow="HR operating system">
-      <div className="rounded-2xl bg-white p-5 sm:p-6">
-        <div className="flex items-center gap-3">
-          <div className="flex size-11 items-center justify-center rounded-xl bg-[#EEF2F7]">
-            <UserRoundCog className="size-5 text-brand" />
-          </div>
+    <div className="relative min-h-[430px] lg:min-h-[500px]">
+      <div className="relative flex min-h-[430px] items-center justify-center lg:min-h-[500px]">
+        <div className="absolute -right-4 top-1/2 -translate-y-1/2 font-display text-[190px] font-extrabold leading-none text-brand/[0.035] sm:text-[260px]">
+          04
+        </div>
 
-          <div>
-            <p className="font-display text-sm font-extrabold text-foreground">
-              Fractional HR
+        {/* Connection lines */}
+        <div className="absolute left-1/2 top-[18%] h-[64%] w-px bg-brand/10" />
+        <div className="absolute left-[18%] right-[18%] top-1/2 h-px bg-brand/10" />
+
+        {/* Centre */}
+        <div className="relative z-10 flex size-36 items-center justify-center rounded-full border border-brand/15 bg-background shadow-[0_20px_60px_rgba(20,55,95,0.08)] sm:size-44">
+          <div className="text-center">
+            <UserRoundCog className="mx-auto size-6 text-coral" />
+
+            <p className="mt-3 font-display text-xs font-extrabold text-brand">
+              HR
             </p>
 
-            <p className="mt-1 text-xs text-muted-foreground">
-              Strategic people operations
+            <p className="mt-1 font-display text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+              Operating layer
             </p>
           </div>
         </div>
 
-        <div className="mt-7 grid grid-cols-2 gap-3">
-          {areas.map(({ label, icon: Icon }) => (
+        {/* Four capabilities */}
+        {areas.map(({ title, icon: Icon }, index) => {
+          const positions = [
+            "left-[3%] top-[13%]",
+            "right-[3%] top-[13%]",
+            "left-[3%] bottom-[13%]",
+            "right-[3%] bottom-[13%]",
+          ];
+
+          return (
             <div
-              key={label}
-              className="rounded-xl border border-border p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-sm"
+              key={title}
+              className={`absolute ${positions[index]} z-10 w-[110px] border border-border bg-background p-3 sm:w-[130px] sm:p-4`}
             >
               <Icon className="size-4 text-coral" />
 
-              <p className="mt-4 font-display text-xs font-extrabold text-foreground">
-                {label}
+              <p className="mt-3 font-display text-[10px] font-extrabold text-brand sm:text-xs">
+                {title}
               </p>
 
-              <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
-                Structured HR support
+              <p className="mt-1 text-[8px] leading-relaxed text-muted-foreground sm:text-[9px]">
+                Strategic HR support
               </p>
             </div>
-          ))}
-        </div>
-
-        <div className="relative mt-4 rounded-xl bg-brand p-5 text-center">
-          <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/45">
-            One connected layer
-          </p>
-
-          <p className="mt-2 font-display text-lg font-extrabold text-white">
-            HR Operating System
-          </p>
-
-          <div className="absolute left-1/2 top-0 h-4 w-px -translate-y-full bg-brand/30" />
-        </div>
+          );
+        })}
       </div>
-    </VisualFrame>
+    </div>
   );
 }
 
 /* ==========================================================================
-   FALLBACK VISUAL
+   FALLBACK
    ========================================================================== */
 
-function GenericOperationsVisual() {
+function OperationsHero() {
   return (
-    <VisualFrame eyebrow="Operations">
-      <div className="rounded-2xl bg-white p-6">
-        <div className="grid grid-cols-2 gap-3">
-          {[
-            "People",
-            "Process",
-            "Visibility",
-            "Performance",
-          ].map((item, index) => (
-            <div
-              key={item}
-              className="rounded-xl bg-[#F4F7FB] p-5"
-            >
-              <span className="font-display text-[10px] font-extrabold text-coral">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+    <div className="relative flex min-h-[430px] items-center justify-center lg:min-h-[500px]">
+      <div className="absolute inset-0 border-y border-brand/10" />
 
-              <p className="mt-5 font-display text-sm font-extrabold text-brand">
-                {item}
-              </p>
-            </div>
-          ))}
-        </div>
+      <div className="relative text-center">
+        <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-coral">
+          Operations
+        </p>
+
+        <p className="mt-5 font-display text-5xl font-extrabold text-brand">
+          Built to execute.
+        </p>
       </div>
-    </VisualFrame>
+    </div>
   );
 }
 
@@ -687,17 +662,30 @@ function ServiceHero({
     images: string[];
   };
 }) {
-  const hasImages = service.images.filter(Boolean).length > 0;
+  const imageFree = isImageFreeService(service);
+
+  /*
+   * IMPORTANT:
+   * Image-free services never use service.images.
+   */
+  const hasImages =
+    !imageFree && service.images.filter(Boolean).length > 0;
 
   return (
-    <section className="relative overflow-hidden bg-background pb-16 pt-20 lg:pb-24 lg:pt-28">
+    <section
+      className={`relative overflow-hidden bg-background ${
+        imageFree
+          ? "pb-12 pt-16 lg:pb-16 lg:pt-20"
+          : "pb-16 pt-20 lg:pb-24 lg:pt-28"
+      }`}
+    >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Copy */}
-          <div className={hasImages ? "lg:col-span-5" : "lg:col-span-5"}>
+        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+          {/* LEFT */}
+          <div className="lg:col-span-5">
             <Eyebrow>Service</Eyebrow>
 
-            <h1 className="mt-5 max-w-2xl font-display text-4xl font-extrabold leading-[0.98] tracking-[-0.045em] text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 max-w-2xl font-display text-4xl font-extrabold leading-[0.96] tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
               {service.name}
             </h1>
 
@@ -705,7 +693,7 @@ function ServiceHero({
               {service.tagline}
             </p>
 
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               {service.summary}
             </p>
 
@@ -715,21 +703,24 @@ function ServiceHero({
                 className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:bg-brand-deep"
               >
                 Talk to us
+
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
-              <span className="inline-flex items-center rounded-full border border-border px-5 py-3.5 font-display text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
-                {service.caption ?? "Built for scale"}
-              </span>
+              {service.caption && (
+                <span className="inline-flex items-center rounded-full border border-border px-5 py-3.5 font-display text-[9px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
+                  {service.caption}
+                </span>
+              )}
             </div>
           </div>
 
-          {/* Visual */}
+          {/* RIGHT */}
           <div className="lg:col-span-7">
             {hasImages ? (
               <ServiceMedia service={service} />
             ) : (
-              <NoImageServiceVisual slug={service.slug} />
+              <ImageFreeHeroVisual service={service} />
             )}
           </div>
         </div>
@@ -753,10 +744,7 @@ function ServiceDetail() {
 
   return (
     <>
-      {/* =====================================================================
-          HERO
-          ===================================================================== */}
-
+      {/* HERO */}
       <ServiceHero service={service} />
 
       {/* =====================================================================
@@ -780,14 +768,12 @@ function ServiceDetail() {
           </div>
 
           <aside className="lg:col-span-5">
-            <div className="relative overflow-hidden rounded-[2rem] p-8 lg:p-10">
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: "var(--gradient-brand)",
-                }}
-              />
-
+            <div
+              className="relative overflow-hidden rounded-[2rem] p-8 lg:p-10"
+              style={{
+                background: "var(--gradient-brand)",
+              }}
+            >
               <div className="relative">
                 <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/50">
                   The outcome
@@ -797,7 +783,7 @@ function ServiceDetail() {
                   {service.outcome}
                 </p>
 
-                <div className="mt-8 flex items-center gap-2 text-white/55">
+                <div className="mt-8 flex items-center gap-2 text-white/60">
                   <CheckCircle2 className="size-4 text-coral" />
 
                   <span className="text-xs">
@@ -860,6 +846,7 @@ function ServiceDetail() {
                 className="group mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-4 font-display text-sm font-bold text-white transition-all duration-300 hover:bg-brand-deep"
               >
                 Talk to us about this
+
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
@@ -868,7 +855,7 @@ function ServiceDetail() {
       </section>
 
       {/* =====================================================================
-          ADDITIONAL SERVICE DETAIL
+          ADDITIONAL DETAIL
           ===================================================================== */}
 
       {detail && (
@@ -914,15 +901,11 @@ function ServiceDetail() {
           {/* METHOD */}
           <section className="bg-sand py-20 lg:py-28">
             <div className="mx-auto max-w-7xl px-5 lg:px-8">
-              <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
-                <div>
-                  <Eyebrow>{detail.approachTitle}</Eyebrow>
+              <Eyebrow>{detail.approachTitle}</Eyebrow>
 
-                  <h2 className="mt-5 max-w-2xl font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-4xl">
-                    A clear operating method from start to finish.
-                  </h2>
-                </div>
-              </div>
+              <h2 className="mt-5 max-w-2xl font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-4xl">
+                A clear operating method from start to finish.
+              </h2>
 
               <div className="mt-10 grid gap-4 lg:grid-cols-4">
                 {detail.approach.map((a, i) => (
@@ -1055,10 +1038,6 @@ function ServiceDetail() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================================
-          CTA
-          ===================================================================== */}
 
       <CtaBand />
     </>
