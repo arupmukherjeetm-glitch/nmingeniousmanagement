@@ -1,16 +1,28 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Repeat, Store, Users } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  ArrowUpRight,
+  Building2,
+  Check,
+  Globe2,
+  LineChart,
+  MapPin,
+  Megaphone,
+  PackageCheck,
+  Repeat2,
+  ShoppingBag,
+  Store,
+  Target,
+  Users,
+  Zap,
+} from "lucide-react";
 
 import { industries } from "@/lib/site-data";
 import {
   CtaBand,
   Eyebrow,
-  LogoWall,
   PageHero,
   Reveal,
 } from "@/components/site/Sections";
-import { OfflineExpansion } from "@/components/site/OfflineExpansion";
-import { ReachFrequency } from "@/components/site/ReachFrequency";
 
 export const Route = createFileRoute("/who-its-for")({
   head: () => ({
@@ -38,54 +50,101 @@ export const Route = createFileRoute("/who-its-for")({
 });
 
 /* =========================================================
-   CORE PILLARS
+   AUDIENCE CARDS
 ========================================================= */
 
-const pillars = [
+const audiences = [
+  {
+    icon: Target,
+    eyebrow: "01",
+    title: "Activation Managers",
+    body:
+      "For teams that already know their targets but need a field organisation capable of delivering coverage, frequency and execution consistently.",
+    points: [
+      "Plan store coverage",
+      "Control visit frequency",
+      "Track field execution",
+    ],
+  },
+  {
+    icon: Globe2,
+    eyebrow: "02",
+    title: "Online-First Brands",
+    body:
+      "For D2C brands moving beyond digital acquisition and looking to build a structured presence across physical retail.",
+    points: [
+      "Enter offline without building an org",
+      "Pilot before scaling",
+      "Connect digital demand to retail",
+    ],
+  },
   {
     icon: Store,
-    title: "Reach you can count",
+    eyebrow: "03",
+    title: "Retail-Focused Brands",
     body:
-      "2,000+ modern trade and general trade outlets across 185+ cities and 31 states and UTs. We map the store universe, agree the covered list with you, and publish coverage against it every single week.",
-  },
-  {
-    icon: Repeat,
-    title: "Frequency you can hold",
-    body:
-      "Coverage without rhythm is a one-off. We fix visit frequency per store class, staff to it, cover absenteeism the same day and report adherence, so your shopper meets your brand again and again, not once.",
-  },
-  {
-    icon: Users,
-    title: "Shoppers you can measure",
-    body:
-      "Every interaction, demo, sample and conversion is captured at the store. You see how many shoppers were reached, how often, and what it did to offtake, not how many people signed an attendance sheet.",
+      "For established brands that need stronger in-store execution, better visibility and disciplined shopper engagement across their retail footprint.",
+    points: [
+      "Improve store execution",
+      "Strengthen visibility",
+      "Build shopper engagement",
+    ],
   },
 ];
 
 /* =========================================================
-   ONLINE TO OFFLINE
+   BUSINESS STAGES
 ========================================================= */
 
-const onlineToOffline = [
+const stages = [
   {
-    title: "Awareness is already yours",
+    icon: Megaphone,
+    title: "You have built awareness",
     body:
-      "You spent years building an audience online. Offline, that audience walks past your product because nobody is there to connect the brand they follow with the pack on the shelf.",
+      "Your brand already has recognition, demand or a loyal online audience. The next challenge is making that connection happen inside a physical store.",
   },
   {
-    title: "Retail is a different sport",
+    icon: PackageCheck,
+    title: "Your product is ready for retail",
     body:
-      "No retargeting, no reviews, no product page. Just three feet, a few seconds and a competitor beside you. We supply the human layer that does what your website used to do.",
+      "The product, packaging and proposition are ready. What is missing is the operational layer between getting listed and actually being noticed.",
   },
   {
-    title: "Start small, prove, scale",
+    icon: LineChart,
+    title: "You need measurable execution",
     body:
-      "We run a pilot cluster of stores, measure sell-out per outlet honestly, kill what does not work, then scale city by city with the same team and the same reporting spine.",
+      "You do not want field activity to disappear into attendance reports. You need visibility into stores covered, visits completed and shopper interactions.",
+  },
+];
+
+/* =========================================================
+   OPERATING MODEL
+========================================================= */
+
+const operatingModel = [
+  {
+    icon: MapPin,
+    title: "Store universe",
+    body:
+      "Define where the brand needs to be present and establish a clear, agreed store universe.",
   },
   {
-    title: "Full back office included",
+    icon: Repeat2,
+    title: "Visit rhythm",
     body:
-      "Payroll, statutory compliance, HR shared services and fractional HR leadership come with the field team, so you enter offline retail without building an offline org chart.",
+      "Set the right frequency by store class and maintain the rhythm required to keep execution consistent.",
+  },
+  {
+    icon: Users,
+    title: "Field organisation",
+    body:
+      "Deploy trained people with clear responsibilities, supervision and operational support.",
+  },
+  {
+    icon: LineChart,
+    title: "Measurement",
+    body:
+      "Turn activity into structured reporting so teams can see what happened at the shelf.",
   },
 ];
 
@@ -98,7 +157,7 @@ function WhoItsFor() {
     <>
       {/* =====================================================
           HERO
-          EXACT HERO FROM USER'S ORIGINAL CODE
+          ONLY THIS HERO IS TAKEN FROM THE USER'S ORIGINAL CODE
       ===================================================== */}
 
       <PageHero
@@ -116,51 +175,79 @@ function WhoItsFor() {
       />
 
       {/* =====================================================
-          WHAT BRANDS NEED
+          INTRO / AUDIENCE
+          NEW DESIGN
       ===================================================== */}
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
           <Reveal>
-            <div className="max-w-3xl">
-              <Eyebrow>What brands need</Eyebrow>
+            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
 
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
-                Reach, frequency and shoppers you can actually measure.
-              </h2>
+              <div>
+                <Eyebrow>Built around the people running growth</Eyebrow>
 
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                Physical retail becomes easier to manage when coverage,
-                frequency and shopper interaction are treated as operating
-                numbers — not assumptions.
+                <h2 className="mt-5 max-w-xl font-display text-3xl font-extrabold leading-[1.05] tracking-[-0.04em] text-foreground lg:text-5xl">
+                  Different challenges. One field execution system.
+                </h2>
+              </div>
+
+              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground lg:justify-self-end">
+                NM Ingenious is designed for brands where physical retail
+                matters — whether you are scaling an existing retail
+                operation or making the move from digital into stores for
+                the first time.
               </p>
+
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-4 lg:grid-cols-3">
-            {pillars.map((pillar, index) => {
-              const Icon = pillar.icon;
+          <div className="mt-14 grid gap-5 lg:grid-cols-3">
+            {audiences.map((audience, index) => {
+              const Icon = audience.icon;
 
               return (
-                <Reveal key={pillar.title} delay={index * 70}>
-                  <article className="brand-box group h-full rounded-2xl p-8 transition-all duration-500 hover:-translate-y-1">
-                    <span
-                      className="inline-flex size-12 items-center justify-center rounded-xl text-white transition-transform duration-300 group-hover:scale-105"
+                <Reveal key={audience.title} delay={index * 80}>
+                  <article className="group relative h-full overflow-hidden rounded-2xl border border-border bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(20,45,90,0.09)]">
+
+                    <div className="absolute right-7 top-7 font-display text-xs font-bold tracking-[0.2em] text-muted-foreground/40">
+                      {audience.eyebrow}
+                    </div>
+
+                    <div
+                      className="flex size-12 items-center justify-center rounded-xl text-white"
                       style={{
                         background: "var(--gradient-brand)",
                       }}
                     >
                       <Icon className="size-5" />
-                    </span>
+                    </div>
 
-                    <h3 className="mt-6 font-display text-xl font-extrabold leading-tight text-foreground">
-                      {pillar.title}
+                    <h3 className="mt-7 font-display text-2xl font-extrabold tracking-[-0.025em] text-foreground">
+                      {audience.title}
                     </h3>
 
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {pillar.body}
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                      {audience.body}
                     </p>
+
+                    <div className="mt-7 border-t border-border pt-6">
+                      <div className="space-y-3">
+                        {audience.points.map((point) => (
+                          <div
+                            key={point}
+                            className="flex items-center gap-3 text-sm font-medium text-foreground"
+                          >
+                            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-coral/10 text-coral">
+                              <Check className="size-3" />
+                            </span>
+                            {point}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
                   </article>
                 </Reveal>
               );
@@ -171,157 +258,242 @@ function WhoItsFor() {
       </section>
 
       {/* =====================================================
-          REACH & FREQUENCY
-          EXISTING BLUE / BRAND COMPONENT
+          BLUE STATEMENT SECTION
+          NEW DESIGN
       ===================================================== */}
 
-      <ReachFrequency />
-
-      {/* =====================================================
-          ONLINE-FIRST BRANDS
-          BLUE CONTAINER
-      ===================================================== */}
-
-      <section className="bg-brand-deep py-24 text-white lg:py-32">
+      <section className="overflow-hidden bg-brand-deep py-24 text-white lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-          <Reveal>
-            <div className="max-w-3xl">
+          <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
 
-              <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
-                Online-first brands
-              </p>
+            <Reveal>
+              <div>
 
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-white lg:text-5xl">
-                You won the internet. Offline is where the next hundred
-                thousand shoppers are.
-              </h2>
+                <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
+                  When the shelf becomes the next growth channel
+                </p>
 
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65">
-                D2C brands come to us when the online curve flattens and
-                retail is the only way to grow. We give you the field
-                organisation, the store access and the reporting you never
-                had to build for ecommerce.
-              </p>
+                <h2 className="mt-5 max-w-2xl font-display text-3xl font-extrabold leading-[1.05] tracking-[-0.04em] text-white lg:text-5xl">
+                  Digital creates demand.
+                  <br />
+                  Retail converts presence into habit.
+                </h2>
 
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65">
+                  The move into offline is not simply about getting more
+                  stores. It is about building a repeatable system for
+                  presence, visibility and shopper interaction.
+                </p>
+
+              </div>
+            </Reveal>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {stages.map((stage, index) => {
+                const Icon = stage.icon;
+
+                return (
+                  <Reveal key={stage.title} delay={index * 70}>
+                    <article className="h-full rounded-2xl border border-white/10 bg-white/[0.045] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-coral/40">
+
+                      <div className="flex size-11 items-center justify-center rounded-xl bg-white/10 text-coral">
+                        <Icon className="size-5" />
+                      </div>
+
+                      <h3 className="mt-6 font-display text-lg font-extrabold leading-tight text-white">
+                        {stage.title}
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-relaxed text-white/60">
+                        {stage.body}
+                      </p>
+
+                    </article>
+                  </Reveal>
+                );
+              })}
             </div>
-          </Reveal>
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2">
-            {onlineToOffline.map((item, index) => (
-              <Reveal key={item.title} delay={index * 70}>
-                <article className="group h-full rounded-2xl border border-white/10 bg-white/[0.04] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-coral/50 hover:bg-white/[0.06]">
-
-                  <div className="mb-6 h-1 w-9 rounded-full bg-coral transition-all duration-300 group-hover:w-14" />
-
-                  <h3 className="font-display text-xl font-extrabold leading-tight text-white">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-4 text-sm leading-relaxed text-white/65">
-                    {item.body}
-                  </p>
-
-                </article>
-              </Reveal>
-            ))}
           </div>
 
         </div>
       </section>
 
       {/* =====================================================
-          CATEGORIES
-          LIGHT / SAND SECTION
+          HOW THE MODEL WORKS
+          NEW DESIGN
+      ===================================================== */}
+
+      <section className="bg-background py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+          <Reveal>
+            <div className="max-w-3xl">
+              <Eyebrow>What changes when you work with us</Eyebrow>
+
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.04em] text-foreground lg:text-5xl">
+                You get an operating system for the shelf.
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                Instead of managing disconnected field activities, your
+                retail execution is organised around four connected
+                operating layers.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
+
+            {operatingModel.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <Reveal key={item.title} delay={index * 60}>
+                  <article className="group h-full bg-white p-7 transition-colors duration-300 hover:bg-sand lg:p-8">
+
+                    <div className="flex items-start justify-between">
+                      <div className="flex size-11 items-center justify-center rounded-xl bg-brand-deep text-white">
+                        <Icon className="size-5" />
+                      </div>
+
+                      <span className="font-display text-xs font-bold text-muted-foreground/40">
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-7 font-display text-lg font-extrabold text-foreground">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {item.body}
+                    </p>
+
+                  </article>
+                </Reveal>
+              );
+            })}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          CATEGORY / BRAND FIT
+          NEW DESIGN
       ===================================================== */}
 
       <section className="bg-sand py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
           <Reveal>
-            <div className="max-w-3xl">
-              <Eyebrow>Categories we run</Eyebrow>
+            <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
 
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-foreground lg:text-5xl">
-                Seven categories, one shelf discipline.
-              </h2>
+              <div className="max-w-3xl">
+                <Eyebrow>Where we fit</Eyebrow>
 
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                Different products need different shopper conversations.
-                The underlying discipline of availability, visibility and
-                execution remains consistent.
+                <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.04em] text-foreground lg:text-5xl">
+                  Built for products that need a human moment at retail.
+                </h2>
+              </div>
+
+              <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                From everyday consumer products to emerging D2C brands,
+                our field model is designed around the realities of the
+                physical shelf.
               </p>
+
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
+          <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {industries.map((industry, index) => (
-              <Reveal key={industry.title} delay={index * 50}>
-                <article className="brand-box group h-full min-h-[190px] rounded-2xl p-7 transition-all duration-500 hover:-translate-y-1">
+              <Reveal key={industry.title} delay={index * 45}>
+                <article className="group min-h-[180px] rounded-2xl border border-border bg-white p-7 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(20,45,90,0.07)]">
 
-                  <div className="flex h-full flex-col justify-end">
+                  <div className="flex h-full flex-col justify-between">
 
-                    <h3 className="font-display text-lg font-extrabold leading-tight text-foreground">
-                      {industry.title}
-                    </h3>
+                    <div className="flex size-9 items-center justify-center rounded-lg bg-brand-deep/5 text-brand-deep transition-colors duration-300 group-hover:bg-coral/10 group-hover:text-coral">
+                      <ShoppingBag className="size-4" />
+                    </div>
 
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {industry.body}
-                    </p>
+                    <div className="mt-10">
+
+                      <h3 className="font-display text-lg font-extrabold text-foreground">
+                        {industry.title}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {industry.body}
+                      </p>
+
+                    </div>
 
                   </div>
 
                 </article>
               </Reveal>
             ))}
-
-            {/* SERVICES LINK — ONLY UNNECESSARY ARROW REMOVED ELSEWHERE */}
-
-            <Reveal delay={industries.length * 50}>
-              <Link
-                to="/services"
-                className="group flex min-h-[190px] h-full flex-col justify-between rounded-2xl p-7 transition-all duration-500 hover:-translate-y-1"
-                style={{
-                  background: "var(--gradient-brand)",
-                }}
-              >
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/60">
-                    Explore further
-                  </p>
-
-                  <h3 className="mt-4 font-display text-xl font-extrabold leading-tight text-white">
-                    See the services behind it.
-                  </h3>
-                </div>
-
-                <span className="inline-flex items-center gap-2 font-display text-sm font-bold text-coral transition-transform duration-300 group-hover:translate-x-1">
-                  Explore services
-                  <ArrowRight className="size-4" />
-                </span>
-              </Link>
-            </Reveal>
-
           </div>
 
         </div>
       </section>
 
       {/* =====================================================
-          OFFLINE EXPANSION
+          CTA / TRANSITION
+          NEW DESIGN
       ===================================================== */}
 
-      <OfflineExpansion />
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl bg-brand-deep p-8 text-white sm:p-12 lg:p-16">
+
+              <div className="absolute -right-20 -top-20 size-64 rounded-full border border-white/10" />
+              <div className="absolute -right-5 -top-5 size-32 rounded-full border border-coral/20" />
+
+              <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+
+                <div className="max-w-3xl">
+
+                  <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
+                    Ready for the shelf
+                  </p>
+
+                  <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.035em] text-white lg:text-5xl">
+                    Your next retail phase needs more than distribution.
+                  </h2>
+
+                  <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/65">
+                    It needs people, process and measurement working
+                    together at the point where the shopper makes a
+                    decision.
+                  </p>
+
+                </div>
+
+                <a
+                  href="/contact"
+                  className="group inline-flex w-fit items-center gap-3 rounded-xl bg-coral px-6 py-4 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  Talk to NM Ingenious
+                  <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+
+              </div>
+
+            </div>
+          </Reveal>
+
+        </div>
+      </section>
 
       {/* =====================================================
-          CLIENT / BRAND LOGOS
-      ===================================================== */}
-
-      <LogoWall />
-
-      {/* =====================================================
-          FINAL CTA
+          EXISTING FINAL CTA
       ===================================================== */}
 
       <CtaBand />
