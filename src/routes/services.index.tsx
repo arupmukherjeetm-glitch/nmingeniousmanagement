@@ -31,10 +31,10 @@ export const Route = createFileRoute("/services/")({
 });
 
 /* =========================================================
-   EXACT ICONS FROM index.tsx
+   EXACT SERVICE ICONS
    ========================================================= */
 
-/* 01 — REAL-TIME TRACKING & REPORTING */
+/* REAL-TIME TRACKING & REPORTING */
 
 function TrackingIcon() {
   return (
@@ -46,49 +46,63 @@ function TrackingIcon() {
       aria-hidden="true"
     >
       <rect
-        x="5"
-        y="8"
-        width="18"
-        height="28"
+        x="7"
+        y="7"
+        width="21"
+        height="29"
         rx="2"
         stroke="currentColor"
         strokeWidth="1.7"
       />
 
       <path
-        d="M9 16H19M9 22H19M9 28H19"
+        d="M12 14H23"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
 
       <path
-        d="M26 32L31 26L35 29L43 18"
+        d="M12 20H23"
         stroke="currentColor"
-        strokeWidth="1.9"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M12 26H20"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M29 31L33.5 25L37 28L43 19"
+        stroke="currentColor"
+        strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
 
       <circle
         cx="43"
-        cy="18"
-        r="2.5"
+        cy="19"
+        r="2"
         fill="currentColor"
       />
 
       <path
-        d="M24 14H30C34 14 37 17 37 21V24"
+        d="M29 14H33C36.3 14 39 16.7 39 20V23"
         stroke="currentColor"
         strokeWidth="1.4"
         strokeLinecap="round"
-        strokeDasharray="2.5 3"
+        strokeDasharray="2 2.5"
       />
     </svg>
   );
 }
 
-/* 02 — COMPLIANT WORKFORCE MANAGEMENT */
+/* COMPLIANT WORKFORCE MANAGEMENT */
 
 function WorkforceIcon() {
   return (
@@ -99,39 +113,42 @@ function WorkforceIcon() {
       className="h-10 w-10"
       aria-hidden="true"
     >
+      {/* Main person */}
       <circle
-        cx="17"
-        cy="13"
+        cx="18"
+        cy="14"
         r="5"
         stroke="currentColor"
         strokeWidth="1.7"
       />
 
       <path
-        d="M8 31C8 25.5 11.8 21 17 21C22.2 21 26 25.5 26 31"
+        d="M9 31C9 25.5 12.8 21 18 21C23.2 21 27 25.5 27 31"
         stroke="currentColor"
         strokeWidth="1.7"
         strokeLinecap="round"
       />
 
+      {/* Second person */}
       <circle
-        cx="31"
-        cy="17"
-        r="4"
+        cx="30"
+        cy="18"
+        r="3.8"
         stroke="currentColor"
         strokeWidth="1.5"
       />
 
       <path
-        d="M26 31C26.5 26.8 29 24 32.5 24C36.2 24 39 27 39 31"
+        d="M27 27C27.8 24.4 29.8 23 32.2 23"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
 
+      {/* Verification circle */}
       <circle
-        cx="34"
-        cy="34"
+        cx="35"
+        cy="33"
         r="7"
         fill="white"
         stroke="currentColor"
@@ -139,9 +156,9 @@ function WorkforceIcon() {
       />
 
       <path
-        d="M30.5 34L33 36.5L37.5 31.5"
+        d="M31.5 33L34 35.5L38.5 30.5"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="1.7"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -149,7 +166,7 @@ function WorkforceIcon() {
   );
 }
 
-/* 03 — PAYROLL SERVICES */
+/* PAYROLL SERVICES */
 
 function PayrollIcon() {
   return (
@@ -162,28 +179,36 @@ function PayrollIcon() {
     >
       <rect
         x="7"
-        y="6"
-        width="26"
-        height="34"
-        rx="2.5"
+        y="7"
+        width="25"
+        height="32"
+        rx="2"
         stroke="currentColor"
         strokeWidth="1.7"
       />
 
       <path
-        d="M12 14H27M12 19H27M12 24H21"
+        d="M12 14H27"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
 
       <path
-        d="M12 30H23"
+        d="M12 20H27"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.5"
         strokeLinecap="round"
       />
 
+      <path
+        d="M12 26H22"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+
+      {/* Rupee/payment badge */}
       <circle
         cx="34"
         cy="32"
@@ -194,21 +219,21 @@ function PayrollIcon() {
       />
 
       <path
-        d="M31.5 29H36.5"
+        d="M31.5 28.5H36.5"
         stroke="currentColor"
         strokeWidth="1.4"
         strokeLinecap="round"
       />
 
       <path
-        d="M31.5 32H35"
+        d="M31.5 31.5H35"
         stroke="currentColor"
         strokeWidth="1.4"
         strokeLinecap="round"
       />
 
       <path
-        d="M33 29C35.2 29 36.5 30.1 36.5 31.5C36.5 33 35.2 34 33 34L36 37"
+        d="M33 28.5C35.2 28.5 36.5 29.6 36.5 31C36.5 32.4 35.2 33.5 33 33.5L36 36.5"
         stroke="currentColor"
         strokeWidth="1.4"
         strokeLinecap="round"
@@ -218,7 +243,7 @@ function PayrollIcon() {
   );
 }
 
-/* 04 — FRACTIONAL HR SERVICES */
+/* FRACTIONAL HR SERVICES */
 
 function FractionalHRIcon() {
   return (
@@ -229,21 +254,39 @@ function FractionalHRIcon() {
       className="h-10 w-10"
       aria-hidden="true"
     >
+      {/* Top person */}
       <circle
         cx="24"
-        cy="13"
+        cy="12"
         r="5"
         stroke="currentColor"
         strokeWidth="1.7"
       />
 
+      {/* Central person/body */}
       <path
-        d="M15 29C15 23.5 18.8 19.5 24 19.5C29.2 19.5 33 23.5 33 29"
+        d="M15 28C15 22.7 18.8 19 24 19C29.2 19 33 22.7 33 28"
         stroke="currentColor"
         strokeWidth="1.7"
         strokeLinecap="round"
       />
 
+      {/* Network lines */}
+      <path
+        d="M18 27L12 34"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M30 27L36 34"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+
+      {/* Left node */}
       <circle
         cx="10"
         cy="36"
@@ -252,6 +295,7 @@ function FractionalHRIcon() {
         strokeWidth="1.5"
       />
 
+      {/* Right node */}
       <circle
         cx="38"
         cy="36"
@@ -260,16 +304,10 @@ function FractionalHRIcon() {
         strokeWidth="1.5"
       />
 
-      <path
-        d="M18 27L12 33M30 27L36 33"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-
+      {/* Centre node */}
       <circle
         cx="24"
-        cy="30"
+        cy="29"
         r="2.2"
         fill="currentColor"
       />
@@ -279,7 +317,7 @@ function FractionalHRIcon() {
 
 /* =========================================================
    IMAGE SERVICE CARD
-   ORIGINAL 2-COLUMN STYLE
+   4-COLUMN GRID
    ========================================================= */
 
 function ImageServiceCard({
@@ -292,7 +330,7 @@ function ImageServiceCard({
   return (
     <Reveal
       delay={index * 50}
-      className="w-full min-w-0"
+      className="h-full"
     >
       <Link
         to="/services/$slug"
@@ -300,42 +338,28 @@ function ImageServiceCard({
         className="
           group
           flex
-          h-[230px]
-          w-full
-          min-w-0
-          max-w-full
+          h-full
+          flex-col
           overflow-hidden
-          rounded-2xl
+          rounded-[18px]
           border
           border-border
           bg-white
           transition-all
-          duration-300
+          duration-500
           hover:-translate-y-1
-          hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
+          hover:border-brand/20
+          hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]
         "
       >
         {/* IMAGE */}
 
-        <div
-          className="
-            relative
-            h-full
-            w-[145px]
-            shrink-0
-            overflow-hidden
-            bg-[#E9EEF5]
-            sm:w-[160px]
-            lg:w-[170px]
-          "
-        >
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#EEF2F7]">
           <img
             src={service.image}
             alt={service.caption}
-            loading="lazy"
+            loading={index < 2 ? "eager" : "lazy"}
             className="
-              relative
-              z-10
               block
               h-full
               w-full
@@ -344,11 +368,11 @@ function ImageServiceCard({
               transition-transform
               duration-700
               ease-[cubic-bezier(0.22,1,0.36,1)]
-              group-hover:scale-[1.03]
+              group-hover:scale-[1.025]
             "
           />
 
-          {/* LIGHT IMAGE LAYER */}
+          {/* LIGHT LAYER */}
 
           <div
             aria-hidden
@@ -356,124 +380,45 @@ function ImageServiceCard({
               pointer-events-none
               absolute
               inset-0
-              z-20
               bg-white/[0.08]
               transition-opacity
               duration-500
               group-hover:opacity-0
             "
           />
-
-          {/* BOTTOM IMAGE GRADIENT */}
-
-          <span
-            aria-hidden
-            className="
-              pointer-events-none
-              absolute
-              inset-x-0
-              bottom-0
-              z-30
-              h-16
-              bg-gradient-to-t
-              from-brand/45
-              to-transparent
-            "
-          />
-
-          {/* IMAGE CAPTION */}
-
-          <span
-            className="
-              absolute
-              bottom-3
-              left-3
-              right-3
-              z-40
-              font-display
-              text-[7px]
-              font-bold
-              uppercase
-              leading-tight
-              tracking-[0.12em]
-              text-white
-            "
-          >
-            {service.caption}
-          </span>
         </div>
 
         {/* CONTENT */}
 
-        <div
-          className="
-            flex
-            min-w-0
-            flex-1
-            flex-col
-            overflow-hidden
-            px-5
-            py-5
-            sm:px-6
-          "
-        >
-          <h2
-            className="
-              max-w-full
-              font-display
-              text-[17px]
-              font-extrabold
-              leading-[1.1]
-              tracking-[-0.02em]
-              text-foreground
-              transition-colors
-              duration-300
-              group-hover:text-brand
-              sm:text-lg
-            "
-          >
+        <div className="flex flex-1 flex-col p-5">
+          <p className="font-display text-[8px] font-bold uppercase tracking-[0.17em] text-coral">
+            {service.tagline}
+          </p>
+
+          <h2 className="mt-2 font-display text-[18px] font-extrabold leading-[1.08] tracking-[-0.025em] text-foreground transition-colors duration-300 group-hover:text-brand">
             {service.name}
           </h2>
 
-          <p
-            className="
-              mt-3
-              max-w-full
-              text-xs
-              leading-[1.5]
-              text-muted-foreground
-              sm:text-[13px]
-            "
-          >
+          <p className="mt-3 line-clamp-3 text-[11px] leading-[1.55] text-muted-foreground">
             {service.summary}
           </p>
 
-          <span
-            className="
-              mt-auto
-              inline-flex
-              w-fit
-              items-center
-              gap-2
-              font-display
-              text-[9px]
-              font-bold
-              uppercase
-              tracking-[0.12em]
-              text-coral
-            "
-          >
-            Explore service
+          <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
+            <span className="font-display text-[9px] font-bold uppercase tracking-[0.13em] text-brand">
+              Explore service
+            </span>
 
             <ArrowRight
+              aria-hidden
               className="
                 size-3.5
+                text-coral
                 transition-transform
                 duration-300
                 group-hover:translate-x-1
               "
             />
-          </span>
+          </div>
         </div>
       </Link>
     </Reveal>
@@ -482,20 +427,22 @@ function ImageServiceCard({
 
 /* =========================================================
    ICON SERVICE CARD
-   NORMAL CARD — NO BIG ICON BOX
+   4-COLUMN GRID
    ========================================================= */
 
 function IconServiceCard({
   service,
+  icon,
   index,
 }: {
   service: (typeof services)[number];
+  icon: React.ReactNode;
   index: number;
 }) {
   return (
     <Reveal
       delay={index * 50}
-      className="w-full min-w-0"
+      className="h-full"
     >
       <Link
         to="/services/$slug"
@@ -504,37 +451,36 @@ function IconServiceCard({
           group
           relative
           flex
-          min-h-[230px]
-          w-full
-          min-w-0
+          min-h-[255px]
+          h-full
           flex-col
           overflow-hidden
-          rounded-2xl
+          rounded-[18px]
           border
           border-border
           bg-white
-          p-7
+          p-6
           transition-all
-          duration-300
+          duration-500
           hover:-translate-y-1
-          hover:border-coral/40
-          hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
+          hover:border-coral/35
+          hover:shadow-[0_18px_45px_rgba(20,45,90,0.09)]
         "
       >
-        {/* CORAL TOP ACCENT */}
+        {/* SMALL CORAL TOP LINE */}
 
         <span
           aria-hidden
           className="
             absolute
-            left-7
+            left-6
             top-0
             h-[3px]
             w-8
             bg-coral
             transition-all
             duration-300
-            group-hover:w-14
+            group-hover:w-12
           "
         />
 
@@ -542,33 +488,27 @@ function IconServiceCard({
 
         <div
           className="
-            mb-6
             flex
-            h-11
-            w-11
+            h-12
             items-center
-            justify-center
             text-brand
             transition-colors
             duration-300
             group-hover:text-coral
           "
         >
-          {index === 0 && <TrackingIcon />}
-          {index === 1 && <WorkforceIcon />}
-          {index === 2 && <PayrollIcon />}
-          {index === 3 && <FractionalHRIcon />}
+          {icon}
         </div>
 
-        {/* TITLE */}
+        {/* SERVICE NAME */}
 
         <h2
           className="
-            max-w-full
+            mt-7
             font-display
             text-[17px]
             font-extrabold
-            leading-[1.15]
+            leading-[1.12]
             tracking-[-0.02em]
             text-foreground
             transition-colors
@@ -595,32 +535,32 @@ function IconServiceCard({
 
         {/* EXPLORE */}
 
-        <span
-          className="
-            mt-6
-            inline-flex
-            w-fit
-            items-center
-            gap-2
-            font-display
-            text-[10px]
-            font-bold
-            uppercase
-            tracking-[0.12em]
-            text-coral
-          "
-        >
-          Explore
-
-          <ArrowRight
+        <div className="mt-6 flex items-center justify-between">
+          <span
             className="
-              size-3.5
-              transition-transform
-              duration-300
-              group-hover:translate-x-1
+              inline-flex
+              items-center
+              gap-2
+              font-display
+              text-[9px]
+              font-bold
+              uppercase
+              tracking-[0.14em]
+              text-coral
             "
-          />
-        </span>
+          >
+            Explore
+            <ArrowRight
+              aria-hidden
+              className="
+                size-3.5
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+              "
+            />
+          </span>
+        </div>
       </Link>
     </Reveal>
   );
@@ -631,13 +571,16 @@ function IconServiceCard({
    ========================================================= */
 
 function ServicesIndex() {
+  const imageServices = services.slice(0, 4);
+  const iconServices = services.slice(4, 8);
+
   return (
     <>
       {/* =====================================================
-          PAGE INTRO
+          INTRO
       ====================================================== */}
 
-      <section className="bg-background pt-16 pb-12 lg:pt-20 lg:pb-14">
+      <section className="bg-background pb-12 pt-16 lg:pb-14 lg:pt-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-3xl">
             <Eyebrow>Services</Eyebrow>
@@ -677,14 +620,22 @@ function ServicesIndex() {
       </section>
 
       {/* =====================================================
-          FIRST 4 SERVICES
-          ORIGINAL TWO-COLUMN IMAGE + CONTENT DESIGN
+          FIRST 4 — IMAGE SERVICES
+          4 CARDS IN ONE ROW
       ====================================================== */}
 
       <section className="bg-background pb-5 lg:pb-6">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-2">
-            {services.slice(0, 4).map((service, index) => (
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-5
+              sm:grid-cols-2
+              lg:grid-cols-4
+            "
+          >
+            {imageServices.map((service, index) => (
               <ImageServiceCard
                 key={service.slug}
                 service={service}
@@ -696,20 +647,44 @@ function ServicesIndex() {
       </section>
 
       {/* =====================================================
-          LAST 4 SERVICES
-          EXACT SVG ICONS FROM index.tsx
+          LAST 4 — ICON SERVICES
+          4 CARDS IN ONE ROW
       ====================================================== */}
 
       <section className="bg-background pb-20 lg:pb-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {services.slice(4, 8).map((service, index) => (
-              <IconServiceCard
-                key={service.slug}
-                service={service}
-                index={index}
-              />
-            ))}
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-5
+              sm:grid-cols-2
+              lg:grid-cols-4
+            "
+          >
+            <IconServiceCard
+              service={iconServices[0]}
+              index={0}
+              icon={<TrackingIcon />}
+            />
+
+            <IconServiceCard
+              service={iconServices[1]}
+              index={1}
+              icon={<WorkforceIcon />}
+            />
+
+            <IconServiceCard
+              service={iconServices[2]}
+              index={2}
+              icon={<PayrollIcon />}
+            />
+
+            <IconServiceCard
+              service={iconServices[3]}
+              index={3}
+              icon={<FractionalHRIcon />}
+            />
           </div>
         </div>
       </section>
