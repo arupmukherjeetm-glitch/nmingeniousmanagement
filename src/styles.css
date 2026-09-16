@@ -691,197 +691,145 @@ main > [data-grid-overlay] {
   }
 }
  /* =========================================================
-   PREMIUM HERO H1 ANIMATION
+   PREMIUM HERO WORD MOTION
    ========================================================= */
 
-.hero-h1 {
-  overflow: visible;
-}
-
-.hero-line {
-  display: block;
-  overflow: visible;
-  line-height: inherit;
-}
-
 .hero-word {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.hero-word-inner {
   display: inline-block;
   opacity: 0;
-  transform: translate3d(0, 55px, 0) scale(0.96);
-  filter: blur(8px);
   will-change: transform, opacity, filter;
+}
 
-  animation:
-    heroWordIn 800ms
+
+/* PRODUCT
+   Comes from the right
+*/
+.hero-product .hero-word-inner {
+  animation: productEntrance 1000ms
     cubic-bezier(0.16, 1, 0.3, 1)
+    180ms
+    forwards;
+}
+
+
+/* PEOPLE
+   Comes from the left
+*/
+.hero-people .hero-word-inner {
+  animation: peopleEntrance 1000ms
+    cubic-bezier(0.16, 1, 0.3, 1)
+    600ms
     forwards;
 }
 
 
 /* =========================================================
-   WORD TIMING
+   PRODUCT — RIGHT → FINAL
    ========================================================= */
 
-/* LINE 1 */
-
-.hero-line-1 .hero-word:nth-child(1) {
-  animation-delay: 100ms;
-}
-
-.hero-line-1 .hero-word:nth-child(2) {
-  animation-delay: 160ms;
-}
-
-.hero-line-1 .hero-word:nth-child(3) {
-  animation-delay: 220ms;
-}
-
-
-/* PRODUCT */
-
-.hero-line-2 .hero-word {
-  animation-delay: 300ms;
-}
-
-
-/* LINE 3 */
-
-.hero-line-3 .hero-word:nth-child(1) {
-  animation-delay: 420ms;
-}
-
-.hero-line-3 .hero-word:nth-child(2) {
-  animation-delay: 480ms;
-}
-
-.hero-line-3 .hero-word:nth-child(3) {
-  animation-delay: 540ms;
-}
-
-.hero-line-3 .hero-word:nth-child(4) {
-  animation-delay: 600ms;
-}
-
-.hero-line-3 .hero-word:nth-child(5) {
-  animation-delay: 660ms;
-}
-
-
-/* PEOPLE */
-
-.hero-line-4 .hero-word {
-  animation-delay: 740ms;
-}
-
-
-/* =========================================================
-   MAIN ANIMATION
-   ========================================================= */
-
-@keyframes heroWordIn {
+@keyframes productEntrance {
   0% {
     opacity: 0;
-    transform: translate3d(0, 55px, 0) scale(0.96);
-    filter: blur(8px);
+    transform: translate3d(70px, 0, 0) scaleX(0.88);
+    filter: blur(10px);
   }
 
   45% {
     opacity: 1;
-    filter: blur(1px);
+    filter: blur(0);
   }
 
   75% {
-    transform: translate3d(0, -3px, 0) scale(1.01);
+    transform: translate3d(-5px, 0, 0) scaleX(1.015);
   }
 
   100% {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scaleX(1);
     filter: blur(0);
   }
 }
 
 
 /* =========================================================
-   PRODUCT — SPECIAL FINAL SETTLE
+   PEOPLE — LEFT → FINAL
    ========================================================= */
 
-.hero-product-word {
-  position: relative;
-}
-
-.hero-product-word::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -3px;
-  height: 3px;
-  border-radius: 999px;
-  background: currentColor;
-  opacity: 0;
-
-  transform: scaleX(0);
-  transform-origin: left center;
-
-  animation:
-    heroProductAccent 500ms
-    cubic-bezier(0.22, 1, 0.36, 1)
-    900ms
-    forwards;
-}
-
-@keyframes heroProductAccent {
+@keyframes peopleEntrance {
   0% {
     opacity: 0;
-    transform: scaleX(0);
+    transform: translate3d(-70px, 0, 0) scaleX(0.88);
+    filter: blur(10px);
+  }
+
+  45% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate3d(5px, 0, 0) scaleX(1.015);
   }
 
   100% {
-    opacity: 0.7;
-    transform: scaleX(1);
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scaleX(1);
+    filter: blur(0);
   }
 }
 
 
 /* =========================================================
-   PEOPLE — SPECIAL FINAL SETTLE
+   VERY SUBTLE LIGHT SWEEP
    ========================================================= */
 
-.hero-people-word {
-  position: relative;
-}
-
-.hero-people-word::after {
+.hero-word::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -3px;
-  height: 3px;
-  border-radius: 999px;
-  background: currentColor;
-  opacity: 0;
+  top: 0;
+  bottom: 0;
+  left: -120%;
+  width: 45%;
+  pointer-events: none;
 
-  transform: scaleX(0);
-  transform-origin: left center;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255,255,255,0.05) 35%,
+    rgba(255,255,255,0.45) 50%,
+    rgba(255,255,255,0.05) 65%,
+    transparent 100%
+  );
 
-  animation:
-    heroPeopleAccent 500ms
-    cubic-bezier(0.22, 1, 0.36, 1)
-    1350ms
+  transform: skewX(-18deg);
+
+  animation: wordLightSweep 700ms ease-out
     forwards;
 }
 
-@keyframes heroPeopleAccent {
+.hero-product::after {
+  animation-delay: 950ms;
+}
+
+.hero-people::after {
+  animation-delay: 1350ms;
+}
+
+
+@keyframes wordLightSweep {
   0% {
-    opacity: 0;
-    transform: scaleX(0);
+    left: -120%;
   }
 
   100% {
-    opacity: 0.7;
-    transform: scaleX(1);
+    left: 160%;
   }
 }
 
@@ -891,76 +839,41 @@ main > [data-grid-overlay] {
    ========================================================= */
 
 @media (max-width: 640px) {
-  .hero-word {
-    transform: translate3d(0, 35px, 0) scale(0.97);
-    filter: blur(6px);
-    animation-duration: 700ms;
+
+  .hero-product .hero-word-inner {
+    animation-duration: 800ms;
+    animation-delay: 150ms;
   }
 
-  .hero-line-1 .hero-word:nth-child(1) {
-    animation-delay: 80ms;
+  .hero-people .hero-word-inner {
+    animation-duration: 800ms;
+    animation-delay: 500ms;
   }
 
-  .hero-line-1 .hero-word:nth-child(2) {
-    animation-delay: 130ms;
+  .hero-product::after {
+    animation-delay: 800ms;
   }
 
-  .hero-line-1 .hero-word:nth-child(3) {
-    animation-delay: 180ms;
-  }
-
-  .hero-line-2 .hero-word {
-    animation-delay: 240ms;
-  }
-
-  .hero-line-3 .hero-word:nth-child(1) {
-    animation-delay: 340ms;
-  }
-
-  .hero-line-3 .hero-word:nth-child(2) {
-    animation-delay: 390ms;
-  }
-
-  .hero-line-3 .hero-word:nth-child(3) {
-    animation-delay: 440ms;
-  }
-
-  .hero-line-3 .hero-word:nth-child(4) {
-    animation-delay: 490ms;
-  }
-
-  .hero-line-3 .hero-word:nth-child(5) {
-    animation-delay: 540ms;
-  }
-
-  .hero-line-4 .hero-word {
-    animation-delay: 620ms;
-  }
-
-  .hero-product-word::after,
-  .hero-people-word::after {
-    bottom: -2px;
-    height: 2px;
+  .hero-people::after {
+    animation-delay: 1150ms;
   }
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-word {
+
+  .hero-word-inner {
     opacity: 1;
     transform: none;
     filter: none;
     animation: none;
   }
 
-  .hero-product-word::after,
-  .hero-people-word::after {
-    opacity: 0.7;
-    transform: scaleX(1);
-    animation: none;
+  .hero-word::after {
+    display: none;
   }
 }
