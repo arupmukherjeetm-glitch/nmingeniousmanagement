@@ -157,7 +157,7 @@ function Hero() {
                   muted
                   playsInline
                   preload="auto"
-                    className="block aspect-[16/9] w-full scale-[1.37] object-cover object-center"
+                    className="block aspect-[16/9] w-full scale-[1.40] object-cover object-center"
                 />
 
                 <div
