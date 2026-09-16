@@ -93,15 +93,15 @@ function Hero() {
             <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.93] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[60px] xl:text-[68px]">
   <span className="block">
     You built the{" "}
-    <span className="hero-word hero-word-product">
-      product.
+    <span className="hero-word hero-product">
+      <span className="hero-word-inner">product.</span>
     </span>
   </span>
 
   <span className="mt-2 block text-coral">
     We get it to the{" "}
-    <span className="hero-word hero-word-people">
-      people.
+    <span className="hero-word hero-people">
+      <span className="hero-word-inner">people.</span>
     </span>
   </span>
 </h1>
