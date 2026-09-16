@@ -691,43 +691,54 @@ main > [data-grid-overlay] {
   }
 }
  /* =========================================================
-    HERO — DIRECT WORD ANIMATION
-    ========================================================= */
+   PREMIUM HERO WORD MOTION
+   ========================================================= */
 
 .hero-word {
   position: relative;
   display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
 
-  /* Initial state */
+.hero-word-inner {
+  display: inline-block;
   opacity: 0;
-  transform: translateY(22px) scale(0.96);
-  filter: blur(5px);
+  will-change: transform, opacity, filter;
+}
 
-  animation: heroWordReveal 750ms
+
+/* PRODUCT
+   Comes from the right
+*/
+.hero-product .hero-word-inner {
+  animation: productEntrance 1000ms
     cubic-bezier(0.16, 1, 0.3, 1)
+    180ms
     forwards;
 }
 
-/* PRODUCT appears first */
-.hero-word-product {
-  animation-delay: 250ms;
-}
 
-/* PEOPLE follows */
-.hero-word-people {
-  animation-delay: 650ms;
+/* PEOPLE
+   Comes from the left
+*/
+.hero-people .hero-word-inner {
+  animation: peopleEntrance 1000ms
+    cubic-bezier(0.16, 1, 0.3, 1)
+    600ms
+    forwards;
 }
 
 
 /* =========================================================
-   WORD REVEAL
+   PRODUCT — RIGHT → FINAL
    ========================================================= */
 
-@keyframes heroWordReveal {
+@keyframes productEntrance {
   0% {
     opacity: 0;
-    transform: translateY(22px) scale(0.96);
-    filter: blur(5px);
+    transform: translate3d(70px, 0, 0) scaleX(0.88);
+    filter: blur(10px);
   }
 
   45% {
@@ -736,13 +747,89 @@ main > [data-grid-overlay] {
   }
 
   75% {
-    transform: translateY(-2px) scale(1.01);
+    transform: translate3d(-5px, 0, 0) scaleX(1.015);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0) scaleX(1);
     filter: blur(0);
+  }
+}
+
+
+/* =========================================================
+   PEOPLE — LEFT → FINAL
+   ========================================================= */
+
+@keyframes peopleEntrance {
+  0% {
+    opacity: 0;
+    transform: translate3d(-70px, 0, 0) scaleX(0.88);
+    filter: blur(10px);
+  }
+
+  45% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  75% {
+    transform: translate3d(5px, 0, 0) scaleX(1.015);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scaleX(1);
+    filter: blur(0);
+  }
+}
+
+
+/* =========================================================
+   VERY SUBTLE LIGHT SWEEP
+   ========================================================= */
+
+.hero-word::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -120%;
+  width: 45%;
+  pointer-events: none;
+
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255,255,255,0.05) 35%,
+    rgba(255,255,255,0.45) 50%,
+    rgba(255,255,255,0.05) 65%,
+    transparent 100%
+  );
+
+  transform: skewX(-18deg);
+
+  animation: wordLightSweep 700ms ease-out
+    forwards;
+}
+
+.hero-product::after {
+  animation-delay: 950ms;
+}
+
+.hero-people::after {
+  animation-delay: 1350ms;
+}
+
+
+@keyframes wordLightSweep {
+  0% {
+    left: -120%;
+  }
+
+  100% {
+    left: 160%;
   }
 }
 
@@ -752,33 +839,41 @@ main > [data-grid-overlay] {
    ========================================================= */
 
 @media (max-width: 640px) {
-  .hero-word {
-    transform: translateY(16px) scale(0.97);
-    filter: blur(4px);
-    animation-duration: 650ms;
+
+  .hero-product .hero-word-inner {
+    animation-duration: 800ms;
+    animation-delay: 150ms;
   }
 
-  .hero-word-product {
-    animation-delay: 180ms;
-  }
-
-  .hero-word-people {
+  .hero-people .hero-word-inner {
+    animation-duration: 800ms;
     animation-delay: 500ms;
+  }
+
+  .hero-product::after {
+    animation-delay: 800ms;
+  }
+
+  .hero-people::after {
+    animation-delay: 1150ms;
   }
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-word,
-  .hero-word-product,
-  .hero-word-people {
+
+  .hero-word-inner {
     opacity: 1;
     transform: none;
     filter: none;
     animation: none;
+  }
+
+  .hero-word::after {
+    display: none;
   }
 }
