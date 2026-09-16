@@ -57,7 +57,9 @@ export function Header() {
       <div className="bg-white">
         <div className="mx-auto flex h-[68px] w-full max-w-7xl items-center justify-between px-4 sm:h-[76px] sm:px-6 lg:h-[82px] lg:px-8">
 
-          {/* LOGO */}
+          {/* =====================================================
+              LOGO
+          ===================================================== */}
           <Link
             to="/"
             aria-label="NM Ingenious Home"
@@ -81,6 +83,7 @@ export function Header() {
             className="hidden items-center gap-8 lg:flex"
             aria-label="Primary navigation"
           >
+
             {/* HOME */}
             <Link
               to="/"
@@ -122,7 +125,10 @@ export function Header() {
                 />
               </Link>
 
-              {/* DROPDOWN */}
+              {/* =================================================
+                  SERVICES DROPDOWN
+                  TITLES ONLY
+              ================================================= */}
               <div
                 className={`absolute left-1/2 top-full z-[200] w-[520px] -translate-x-1/2 pt-4 transition-all duration-200 ${
                   servicesOpen
@@ -135,7 +141,7 @@ export function Header() {
                   {/* TOP ACCENT */}
                   <div className="h-1 w-full bg-gradient-brand" />
 
-                  {/* DROPDOWN CONTENT */}
+                  {/* SERVICE TITLES ONLY */}
                   <div className="grid grid-cols-2 gap-1 p-3">
                     {services.map((service) => (
                       <Link
@@ -143,33 +149,17 @@ export function Header() {
                         to="/services/$slug"
                         params={{ slug: service.slug }}
                         onClick={() => setServicesOpen(false)}
-                        className="group rounded-xl p-4 transition-all duration-200 hover:bg-[#F4F7FB]"
+                        className="group flex items-center justify-between rounded-xl px-4 py-4 transition-all duration-200 hover:bg-[#F4F7FB]"
                       >
-                        <div className="flex items-center justify-between gap-3">
-                          <span className="font-display text-sm font-bold text-brand-deep transition-colors group-hover:text-coral">
-                            {service.navName}
-                          </span>
-
-                          <ArrowRight className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:text-coral group-hover:opacity-100" />
-                        </div>
-
-                        <span className="mt-1.5 block line-clamp-2 text-xs leading-5 text-muted-foreground">
-                          {service.tagline}
+                        <span className="font-display text-sm font-bold text-brand-deep transition-colors group-hover:text-coral">
+                          {service.name}
                         </span>
+
+                        <ArrowRight className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:text-coral group-hover:opacity-100" />
                       </Link>
                     ))}
                   </div>
 
-                  {/* VIEW ALL */}
-                  <Link
-                    to="/services"
-                    onClick={() => setServicesOpen(false)}
-                    className="flex items-center justify-between border-t border-border bg-[#F7F9FC] px-5 py-3.5 font-display text-xs font-bold uppercase tracking-[0.14em] text-brand-deep transition-colors hover:bg-[#EEF3F9] hover:text-coral"
-                  >
-                    <span>View all services</span>
-
-                    <ArrowRight className="size-4" />
-                  </Link>
                 </div>
               </div>
             </div>
@@ -248,6 +238,7 @@ export function Header() {
 
           {/* =====================================================
               MOBILE SERVICES
+              TITLES ONLY
           ===================================================== */}
           <div className="border-b border-border">
             <button
@@ -272,20 +263,7 @@ export function Header() {
                   : "max-h-0 opacity-0"
               }`}
             >
-              {/* ALL SERVICES */}
-              <Link
-                to="/services"
-                onClick={() => {
-                  setMenuOpen(false);
-                  setServicesOpen(false);
-                }}
-                className="block rounded-lg bg-[#F4F7FB] px-4 py-3 font-display text-sm font-bold text-brand-deep"
-              >
-                All Services
-              </Link>
-
-              {/* SERVICE LINKS */}
-              <div className="mt-1 pl-2">
+              <div className="pl-2">
                 {services.map((service) => (
                   <Link
                     key={service.slug}
@@ -295,9 +273,9 @@ export function Header() {
                       setMenuOpen(false);
                       setServicesOpen(false);
                     }}
-                    className="block py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-coral"
+                    className="block py-3 text-sm font-medium text-brand-deep transition-colors hover:text-coral"
                   >
-                    {service.navName}
+                    {service.name}
                   </Link>
                 ))}
               </div>
