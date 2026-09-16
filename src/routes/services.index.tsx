@@ -36,7 +36,7 @@ export const Route = createFileRoute("/services/")({
 });
 
 /* -------------------------------------------------------------------------- */
-/* SERVICES WITHOUT PHOTOGRAPHY                                               */
+/* IMAGE-FREE SERVICES                                                        */
 /* -------------------------------------------------------------------------- */
 
 const IMAGE_FREE_SERVICE_NAMES = new Set([
@@ -94,7 +94,7 @@ function isImageFreeService(service: { name: string; slug: string }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* GENTLE ICONS                                                               */
+/* ICON MAPPING                                                               */
 /* -------------------------------------------------------------------------- */
 
 function getServiceIcon(name: string, slug: string) {
@@ -127,49 +127,47 @@ function ImageServiceCard({
   index: number;
 }) {
   return (
-    <Reveal delay={index * 50}>
+    <Reveal delay={index * 60}>
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-0.5 hover:border-brand/20 hover:shadow-[0_18px_50px_rgba(11,27,51,0.09)]"
+        className="group block h-full overflow-hidden rounded-[1.75rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_70px_rgba(11,27,51,0.11)]"
       >
-        <div className="grid lg:grid-cols-[31%_69%]">
-          {/* IMAGE */}
-          <div className="relative aspect-[16/9] overflow-hidden lg:aspect-auto lg:min-h-[245px]">
-            <img
-              src={service.image}
-              alt={service.caption}
-              loading={index < 2 ? "eager" : "lazy"}
-              className="size-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
-            />
+        {/* IMAGE */}
+        <div className="relative aspect-[16/9] overflow-hidden">
+          <img
+            src={service.image}
+            alt={service.caption}
+            loading={index < 2 ? "eager" : "lazy"}
+            className="size-full object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+          />
 
-            {/* Subtle image overlay */}
-            <div className="absolute inset-0 bg-brand/5 transition-colors duration-500 group-hover:bg-brand/0" />
+          {/* Very subtle overlay */}
+          <div className="absolute inset-0 bg-brand/[0.04] transition-colors duration-500 group-hover:bg-transparent" />
 
-            {/* Small arrow */}
-            <div className="absolute bottom-4 left-4 flex size-8 items-center justify-center rounded-full bg-white/95 text-brand shadow-sm transition-all duration-300 group-hover:bg-coral group-hover:text-white">
-              <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </div>
+          {/* Arrow */}
+          <div className="absolute bottom-5 right-5 flex size-10 items-center justify-center rounded-full bg-white text-brand shadow-md transition-all duration-300 group-hover:bg-coral group-hover:text-white">
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </div>
+        </div>
 
-          {/* CONTENT */}
-          <div className="flex flex-col justify-center p-6 sm:p-7 lg:p-8">
-            <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
-              {service.tagline}
-            </p>
+        {/* CONTENT */}
+        <div className="p-7 lg:p-8">
+          <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
+            {service.tagline}
+          </p>
 
-            <h3 className="mt-2 font-display text-2xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand sm:text-[1.75rem]">
-              {service.name}
-            </h3>
+          <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand lg:text-[1.8rem]">
+            {service.name}
+          </h3>
 
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-              {service.summary}
-            </p>
+          <p className="mt-4 text-sm leading-6 text-muted-foreground">
+            {service.summary}
+          </p>
 
-            <div className="mt-5 flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-brand">
-              Explore service
-              <ArrowRight className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1" />
-            </div>
+          <div className="mt-6 flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-brand">
+            Explore service
+            <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -191,40 +189,49 @@ function IconServiceCard({
   const Icon = getServiceIcon(service.name, service.slug);
 
   return (
-    <Reveal delay={index * 50}>
+    <Reveal delay={index * 60}>
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-0.5 hover:border-brand/20 hover:shadow-[0_18px_50px_rgba(11,27,51,0.08)]"
+        className="group relative flex h-full min-h-[390px] flex-col overflow-hidden rounded-[1.75rem] border border-border/70 bg-background p-7 transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_24px_70px_rgba(11,27,51,0.11)] sm:p-8 lg:p-9"
       >
-        <div className="grid min-h-[245px] lg:grid-cols-[31%_69%]">
-          {/* QUIET ICON AREA */}
-          <div className="flex items-center justify-center bg-muted/20 p-8 lg:p-10">
-            <div className="flex size-16 items-center justify-center rounded-full border border-brand/10 bg-white text-brand transition-all duration-500 group-hover:border-coral/20 group-hover:text-coral">
-              <Icon
-                className="size-6"
-                strokeWidth={1.35}
-              />
-            </div>
+        {/* LARGE ICON AREA */}
+        <div className="relative flex min-h-[155px] items-center justify-between overflow-hidden rounded-[1.25rem] bg-muted/30 px-8">
+          {/* Soft background circle */}
+          <div className="absolute -right-10 -top-10 size-44 rounded-full bg-brand/[0.035] transition-all duration-700 group-hover:scale-125 group-hover:bg-coral/[0.045]" />
+
+          {/* Large clear icon */}
+          <div className="relative flex size-[88px] items-center justify-center rounded-full bg-brand text-white shadow-sm transition-all duration-500 group-hover:bg-coral group-hover:scale-[1.04]">
+            <Icon
+              className="size-10"
+              strokeWidth={1.45}
+            />
           </div>
 
-          {/* CONTENT */}
-          <div className="flex flex-col justify-center p-6 sm:p-7 lg:p-8">
-            <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
-              {service.tagline}
-            </p>
+          {/* Small arrow */}
+          <div className="relative flex size-10 items-center justify-center rounded-full border border-border bg-background text-brand transition-all duration-300 group-hover:border-coral group-hover:bg-coral group-hover:text-white">
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </div>
+        </div>
 
-            <h3 className="mt-2 font-display text-2xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand sm:text-[1.75rem]">
-              {service.name}
-            </h3>
+        {/* CONTENT */}
+        <div className="mt-7 flex flex-1 flex-col">
+          <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
+            {service.tagline}
+          </p>
 
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-              {service.summary}
-            </p>
+          <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-foreground transition-colors duration-300 group-hover:text-brand lg:text-[1.8rem]">
+            {service.name}
+          </h3>
 
-            <div className="mt-5 flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-brand">
+          <p className="mt-4 text-sm leading-6 text-muted-foreground">
+            {service.summary}
+          </p>
+
+          <div className="mt-auto pt-7">
+            <div className="flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.12em] text-brand">
               Explore service
-              <ArrowRight className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           </div>
         </div>
@@ -240,22 +247,18 @@ function IconServiceCard({
 function OperatingSystemSection() {
   const capabilities = [
     {
-      icon: "People",
       title: "People",
       text: "Field teams that represent your brand where purchase decisions happen.",
     },
     {
-      icon: "Visibility",
       title: "Visibility",
       text: "Information that turns field activity into measurable intelligence.",
     },
     {
-      icon: "Control",
       title: "Control",
       text: "Processes and governance that keep execution consistent.",
     },
     {
-      icon: "HR",
       title: "HR",
       text: "Workforce and people systems that keep the operation moving.",
     },
@@ -289,15 +292,11 @@ function OperatingSystemSection() {
               key={item.title}
               className="bg-brand p-7 transition-colors duration-300 hover:bg-white/[0.04] lg:p-8"
             >
-              <span className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-coral">
-                {item.icon}
+              <span className="font-display text-xs font-bold uppercase tracking-[0.16em] text-coral">
+                {item.title}
               </span>
 
-              <h3 className="mt-7 font-display text-xl font-extrabold text-white">
-                {item.title}
-              </h3>
-
-              <p className="mt-3 text-sm leading-6 text-white/50">
+              <p className="mt-6 text-sm leading-6 text-white/50">
                 {item.text}
               </p>
             </div>
@@ -438,14 +437,14 @@ function ServicesIndex() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* ALL 8 SERVICES — ONE CONTINUOUS SERVICE LIST                       */}
+      {/* ALL SERVICES                                                        */}
       {/* ------------------------------------------------------------------ */}
 
-      <section className="bg-background py-20 lg:py-24">
+      <section className="bg-background py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-          {/* ONLY ONE H2 FOR THE COMPLETE SERVICE LIST */}
-          <div className="mb-10 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
+          {/* SINGLE HEADING FOR ALL 8 SERVICES */}
+          <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <Eyebrow>Our capabilities</Eyebrow>
 
@@ -462,10 +461,10 @@ function ServicesIndex() {
           </div>
 
           {/* -------------------------------------------------------------- */}
-          {/* FIRST 4 — IMAGE SERVICES                                       */}
+          {/* IMAGE SERVICES — TWO COLUMNS                                  */}
           {/* -------------------------------------------------------------- */}
 
-          <div className="space-y-5">
+          <div className="grid gap-5 md:grid-cols-2">
             {imageServices.map((service, index) => (
               <ImageServiceCard
                 key={service.slug}
@@ -475,7 +474,7 @@ function ServicesIndex() {
             ))}
 
             {/* ---------------------------------------------------------- */}
-            {/* LAST 4 — ICON SERVICES                                     */}
+            {/* ICON SERVICES — SAME TWO-COLUMN GRID                       */}
             {/* ---------------------------------------------------------- */}
 
             {iconServices.map((service, index) => (
