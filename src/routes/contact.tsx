@@ -41,7 +41,7 @@ function Contact() {
           </>
         }
         intro="Pick a subject, add a few details, and your brief goes straight to the team that would actually run your account, not a generic inbox."
-        accent="We reply within one working day"
+        accent=""
       />
 
       <section className="bg-background py-20 lg:py-28">
