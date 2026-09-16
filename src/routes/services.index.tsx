@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Activity,
   ArrowRight,
-  ShieldCheck,
-  UserRoundCog,
-  WalletCards,
+  FileCheck2,
+  FileText,
+  Network,
+  UsersRound,
 } from "lucide-react";
 import { services } from "@/lib/site-data";
 import { CtaBand, Eyebrow, Reveal } from "@/components/site/Sections";
@@ -99,29 +99,34 @@ function isImageFreeService(service: { name: string; slug: string }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ICONS                                                                      */
+/* SERVICE ICONS                                                              */
 /* -------------------------------------------------------------------------- */
 
 function getServiceIcon(name: string, slug: string) {
   const value = `${name} ${slug}`.toLowerCase();
 
+  /*
+   * These four icons intentionally follow the icon language
+   * from the supplied reference.
+   */
+
   if (value.includes("tracking") || value.includes("reporting")) {
-    return Activity;
+    return FileCheck2;
   }
 
   if (value.includes("workforce") || value.includes("compliance")) {
-    return ShieldCheck;
+    return UsersRound;
   }
 
   if (value.includes("payroll")) {
-    return WalletCards;
+    return FileText;
   }
 
-  return UserRoundCog;
+  return Network;
 }
 
 /* -------------------------------------------------------------------------- */
-/* IMAGE CARD                                                                 */
+/* IMAGE SERVICE CARD                                                         */
 /* -------------------------------------------------------------------------- */
 
 function ImageServiceCard({
@@ -136,23 +141,23 @@ function ImageServiceCard({
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block h-full overflow-hidden rounded-[1.35rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_20px_50px_rgba(11,27,51,0.10)]"
+        className="group block h-full overflow-hidden rounded-[1.25rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_20px_50px_rgba(11,27,51,0.10)]"
       >
         {/* IMAGE */}
-        <div className="relative h-[245px] overflow-hidden bg-muted/10">
+        <div className="relative overflow-hidden bg-muted/10">
           <img
             src={service.image}
             alt={service.caption}
             loading={index < 4 ? "eager" : "lazy"}
-            className="size-full object-cover object-center transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
+            className="block h-auto w-full object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
           />
 
           {/* LIGHT LAYER */}
-          <div className="pointer-events-none absolute inset-0 bg-white/[0.10] transition-opacity duration-500 group-hover:bg-white/[0.045]" />
+          <div className="pointer-events-none absolute inset-0 bg-white/[0.08] transition-opacity duration-500 group-hover:bg-white/[0.025]" />
         </div>
 
         {/* CONTENT */}
-        <div className="p-5">
+        <div className="p-5 sm:p-6">
           <p className="font-display text-[9px] font-extrabold uppercase tracking-[0.16em] text-coral">
             {service.tagline}
           </p>
@@ -179,7 +184,7 @@ function ImageServiceCard({
 }
 
 /* -------------------------------------------------------------------------- */
-/* ICON CARD                                                                  */
+/* ICON SERVICE CARD                                                          */
 /* -------------------------------------------------------------------------- */
 
 function IconServiceCard({
@@ -196,20 +201,31 @@ function IconServiceCard({
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block h-full overflow-hidden rounded-[1.35rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_20px_50px_rgba(11,27,51,0.10)]"
+        className="group relative block h-full overflow-hidden rounded-[1.25rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[0_20px_50px_rgba(11,27,51,0.09)]"
       >
-        {/* NORMAL ICON AREA */}
-        <div className="relative flex h-[150px] items-center justify-center overflow-hidden bg-muted/[0.16]">
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand/[0.018] via-transparent to-coral/[0.025]" />
+        {/* SUBTLE CORAL TOP ACCENT */}
+        <div className="absolute left-7 top-0 h-[3px] w-8 bg-coral transition-all duration-300 group-hover:w-12" />
 
+        {/* ---------------------------------------------------------------- */}
+        {/* ICON AREA                                                        */}
+        {/* ---------------------------------------------------------------- */}
+
+        <div className="relative flex h-[145px] items-start bg-background px-7 pt-8 sm:h-[155px]">
+          {/* Very subtle tonal wash — no box, no circle */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand/[0.018] to-coral/[0.018]" />
+
+          {/* Reference-style icon */}
           <Icon
-            className="relative size-12 text-brand transition-all duration-500 group-hover:scale-[1.05] group-hover:text-coral"
-            strokeWidth={1.2}
+            className="relative size-[2.8rem] text-brand transition-all duration-300 group-hover:text-coral"
+            strokeWidth={1.35}
           />
         </div>
 
-        {/* CONTENT */}
-        <div className="p-5">
+        {/* ---------------------------------------------------------------- */}
+        {/* CONTENT                                                          */}
+        {/* ---------------------------------------------------------------- */}
+
+        <div className="px-7 pb-7">
           <p className="font-display text-[9px] font-extrabold uppercase tracking-[0.16em] text-coral">
             {service.tagline}
           </p>
@@ -383,7 +399,10 @@ function ServicesIndex() {
 
   return (
     <>
-      {/* PAGE INTRO */}
+      {/* ------------------------------------------------------------------ */}
+      {/* INTRO                                                               */}
+      {/* ------------------------------------------------------------------ */}
+
       <section className="bg-background pt-16 lg:pt-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-3xl pb-10 lg:pb-14">
@@ -402,11 +421,11 @@ function ServicesIndex() {
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* ROW 1 — FOUR IMAGE SERVICES                                     */}
-      {/* ================================================================ */}
+      {/* ------------------------------------------------------------------ */}
+      {/* ROW 1 — FOUR IMAGE SERVICES                                         */}
+      {/* ------------------------------------------------------------------ */}
 
-      <section className="bg-background pb-6 lg:pb-8">
+      <section className="bg-background pb-5 lg:pb-6">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {imageServices.map((service, index) => (
@@ -420,9 +439,9 @@ function ServicesIndex() {
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* ROW 2 — FOUR ICON SERVICES                                      */}
-      {/* ================================================================ */}
+      {/* ------------------------------------------------------------------ */}
+      {/* ROW 2 — FOUR ICON SERVICES                                          */}
+      {/* ------------------------------------------------------------------ */}
 
       <section className="bg-background pb-20 lg:pb-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -438,13 +457,22 @@ function ServicesIndex() {
         </div>
       </section>
 
-      {/* ONE SYSTEM */}
+      {/* ------------------------------------------------------------------ */}
+      {/* ONE SYSTEM                                                          */}
+      {/* ------------------------------------------------------------------ */}
+
       <OperatingSystemSection />
 
-      {/* HOW IT CONNECTS */}
+      {/* ------------------------------------------------------------------ */}
+      {/* HOW IT CONNECTS                                                     */}
+      {/* ------------------------------------------------------------------ */}
+
       <ConnectionSection />
 
-      {/* CTA */}
+      {/* ------------------------------------------------------------------ */}
+      {/* CTA                                                                 */}
+      {/* ------------------------------------------------------------------ */}
+
       <CtaBand />
     </>
   );
