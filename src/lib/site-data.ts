@@ -162,9 +162,7 @@ export const services: Service[] = [
     image: MVE.url,
     secondImage: MVE.url,
 images: [
-    pdm_final.url,
-        a1.url,
-        a2.url,
+    MVE.url,
   ],
     
     caption: "Seen, stocked, presented right",
@@ -880,22 +878,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     approachTitle: "How a promoter reaches your shelf",
     approach: [
       {
-        step: "01",
+        step: "STEP 01",
         title: "Profile before hiring",
         body: "We write the profile with your team: category familiarity, language, grooming standard, store format experience and shift pattern. Sourcing starts only after the profile is signed off.",
       },
       {
-        step: "02",
+        step: "STEP 02",
         title: "Product-story training",
         body: "Two-part induction: your brand narrative and objection handling, then a live floor assessment before the promoter is billed to you.",
       },
       {
-        step: "03",
+        step: "STEP 03",
         title: "Supervised deployment",
         body: "One supervisor per cluster, weekly store visits, photo-verified attendance and a documented coaching note for every underperformer.",
       },
       {
-        step: "04",
+        step: "STEP 04",
         title: "Conversion review",
         body: "Monthly review on interactions per shift, conversion rate and bill value, not headcount. Bottom-quartile promoters are retrained or replaced.",
       },
@@ -936,22 +934,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     approachTitle: "The consultation model",
     approach: [
       {
-        step: "01",
+        step: "STEP 01",
         title: "Diagnose",
         body: "Advisors are trained to open with a skin, hair or concern question rather than a product pitch, which is what turns a browse into a consultation.",
       },
       {
-        step: "02",
+        step: "STEP 02",
         title: "Demonstrate",
         body: "Patch tests, shade matching, texture demos and routine building on the counter, with hygiene protocol maintained through the shift.",
       },
       {
-        step: "03",
+        step: "STEP 03",
         title: "Justify the ladder",
         body: "Advisors are scripted on trading a shopper up one step, from entry SKU to the variant that actually solves her stated concern.",
       },
       {
-        step: "04",
+        step: "STEP 04",
         title: "Build the basket",
         body: "Regimen selling: cleanser with serum, colour with after-care. Basket size is tracked per advisor, per store, per week.",
       },
@@ -992,22 +990,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     approachTitle: "Audit, correct, evidence",
     approach: [
       {
-        step: "01",
+        step: "STEP 01",
         title: "Baseline the store",
         body: "First visit captures current facings, share of shelf, competitor blocks, POSM present and planogram deviation, with photographs.",
       },
       {
-        step: "02",
+        step: "STEP 02",
         title: "Correct on the spot",
         body: "Merchandisers reset the block, restore facings, replace damaged POSM and escalate stock gaps to the store manager during the same visit.",
       },
       {
-        step: "03",
+        step: "STEP 03",
         title: "Photo evidence",
         body: "Before-and-after images tagged to store, date and time, so visibility investment is verifiable and not a claim.",
       },
       {
-        step: "04",
+        step: "STEP 04",
         title: "Compliance scoring",
         body: "Each store gets a weekly compliance score. Persistent low scorers get a joint visit with your regional lead.",
       },
@@ -1048,22 +1046,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     approachTitle: "Planned for reach, judged on trial",
     approach: [
       {
-        step: "01",
+        step: "STEP 01",
         title: "Catchment selection",
         body: "Sites chosen on shopper profile and footfall quality, not availability, with reach and frequency modelled before the calendar is locked.",
       },
       {
-        step: "02",
+        step: "STEP 02",
         title: "Interaction design",
         body: "The demo is built around one behaviour change: taste it, feel it, try the shade, smell the difference. One clear ask per shopper.",
       },
       {
-        step: "03",
+        step: "STEP 03",
         title: "Trained activation crew",
         body: "Crew rehearsed on the script, the sampling protocol and the data capture flow before day one.",
       },
       {
-        step: "04",
+        step: "STEP 04",
         title: "Cost per conversion",
         body: "Every campaign closes with contacts, samples, conversions and cost per trial, plus a recommendation on which sites to repeat.",
       },
@@ -1104,22 +1102,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     approachTitle: "From shift to dashboard",
     approach: [
       {
-        step: "01",
+        step: "STEP 01",
         title: "Capture at source",
         body: "Field staff log sales, stock, competitor activity and shopper objections on the Recibo app during the shift, not from memory at night.",
       },
       {
-        step: "02",
+        step: "STEP 02",
         title: "Validate",
         body: "Geo-tagged, time-stamped entries with photo backup, reviewed by supervisors so the dashboard is not polluted with guesswork.",
       },
       {
-        step: "03",
+        step: "STEP 03",
         title: "Surface exceptions",
         body: "Stock-out alerts, zero-sale stores and sudden competitor price moves are pushed the same day, not buried in a monthly deck.",
       },
       {
-        step: "04",
+        step: "STEP 04",
         title: "Act on it",
         body: "A weekly action list per region: which store to fix, which promoter to retrain, which SKU to re-order.",
       },
@@ -1160,22 +1158,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     approachTitle: "Compliance as an operating system",
     approach: [
       {
-        step: "01",
+        step: "STEP 01",
         title: "Documented onboarding",
         body: "Appointment letters, KYC, bank and statutory enrolments completed before day one on the floor, stored digitally.",
       },
       {
-        step: "02",
+        step: "STEP 02",
         title: "Automated HRMS",
         body: "FactoHR maintains attendance, leave, salary and statutory records, with every employee able to see their own file on mobile.",
       },
       {
-        step: "03",
+        step: "STEP 03",
         title: "Statutory cycle",
         body: "PF, ESIC, professional tax, minimum wages, bonus and gratuity filed on schedule, state by state.",
       },
       {
-        step: "04",
+        step: "STEP 04",
         title: "Audit pack",
         body: "A standing, retrievable evidence pack per client covering registers, challans and employee records.",
       },
@@ -1216,22 +1214,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     approachTitle: "One cycle, closed cleanly",
     approach: [
       {
-        step: "01",
+        step: "STEP 01",
         title: "Inputs by a fixed date",
         body: "A locked monthly calendar for attendance, variable pay and reimbursement inputs, so nothing is chased on the last day.",
       },
       {
-        step: "02",
+        step: "STEP 02",
         title: "Processing and checks",
         body: "Salary computation, statutory deductions and a reconciliation review before any disbursement is released.",
       },
       {
-        step: "03",
+        step: "STEP 03",
         title: "Filing and evidence",
         body: "PF, ESIC, PT and TDS filed within due dates, with challans filed into your monthly compliance folder.",
       },
       {
-        step: "04",
+        step: "STEP 04",
         title: "Employee self-service",
         body: "Slips, tax statements, Form 16 and claim status available to every employee on their phone, which removes the query load from your team.",
       },
@@ -1272,22 +1270,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     approachTitle: "A senior partner, a shared bench",
     approach: [
       {
-        step: "01",
+        step: "STEP 01",
         title: "Diagnostic",
         body: "A structured review of policy, hiring, onboarding, performance and attrition data, ending in a prioritised gap list.",
       },
       {
-        step: "02",
+        step: "STEP 02",
         title: "Foundation build",
         body: "Handbook, contracts, leave and grievance policy written to industry benchmark and to the states you operate in.",
       },
       {
-        step: "03",
+        step: "STEP 03",
         title: "Operating rhythm",
         body: "Fixed days on site or online each month: hiring reviews, manager coaching, confirmation and appraisal cycles.",
       },
       {
-        step: "04",
+        step: "STEP 04",
         title: "Handover-ready",
         body: "Everything is documented so an in-house HR hire can take over without rebuilding from zero.",
       },
