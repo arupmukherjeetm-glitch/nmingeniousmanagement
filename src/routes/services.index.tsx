@@ -138,23 +138,26 @@ function ImageServiceCard({
         params={{ slug: service.slug }}
         className="group block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_22px_60px_rgba(11,27,51,0.10)]"
       >
-        {/* IMAGE */}
-        <div className="relative h-[300px] overflow-hidden bg-muted/10 sm:h-[320px]">
+        {/* ---------------------------------------------------------------- */}
+        {/* FULL IMAGE — NO CROPPING                                         */}
+        {/* ---------------------------------------------------------------- */}
+
+        <div className="relative overflow-hidden bg-muted/[0.08]">
           <img
             src={service.image}
             alt={service.caption}
             loading={index < 2 ? "eager" : "lazy"}
-            className="size-full object-cover object-center transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
+            className="block h-auto w-full object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.015]"
           />
 
-          {/* LIGHT LAYER */}
-          <div className="pointer-events-none absolute inset-0 bg-white/[0.10] transition-opacity duration-500 group-hover:bg-white/[0.045]" />
-
-          {/* SUBTLE BOTTOM FADE */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-brand/[0.12] to-transparent" />
+          {/* Light layer over image */}
+          <div className="pointer-events-none absolute inset-0 bg-white/[0.09] transition-opacity duration-500 group-hover:bg-white/[0.035]" />
         </div>
 
-        {/* CONTENT */}
+        {/* ---------------------------------------------------------------- */}
+        {/* CONTENT                                                          */}
+        {/* ---------------------------------------------------------------- */}
+
         <div className="p-6 sm:p-7 lg:p-8">
           <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
             {service.tagline}
@@ -201,22 +204,25 @@ function IconServiceCard({
         params={{ slug: service.slug }}
         className="group block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_22px_60px_rgba(11,27,51,0.10)]"
       >
-        {/* NORMAL ICON HEADER */}
-        <div className="relative flex h-[150px] items-center border-b border-border/70 bg-muted/[0.18] px-7 sm:h-[165px] sm:px-8">
-          {/* Soft brand tint */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-brand/[0.025] via-transparent to-coral/[0.025]" />
+        {/* ---------------------------------------------------------------- */}
+        {/* SIMPLE NORMAL ICON AREA                                         */}
+        {/* ---------------------------------------------------------------- */}
 
-          {/* Normal-sized clear icon */}
+        <div className="relative flex h-[190px] items-center justify-center overflow-hidden bg-muted/[0.16] sm:h-[205px]">
+          {/* Extremely subtle brand wash */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand/[0.018] via-transparent to-coral/[0.025]" />
+
+          {/* Normal, clearly visible icon */}
           <Icon
-            className="relative size-12 text-brand transition-all duration-500 group-hover:text-coral"
-            strokeWidth={1.25}
+            className="relative size-12 text-brand transition-all duration-500 group-hover:scale-[1.04] group-hover:text-coral"
+            strokeWidth={1.2}
           />
-
-          {/* Minimal corner accent */}
-          <div className="absolute bottom-6 right-7 h-1 w-7 rounded-full bg-coral/60 transition-all duration-300 group-hover:w-10" />
         </div>
 
-        {/* CONTENT */}
+        {/* ---------------------------------------------------------------- */}
+        {/* CONTENT                                                          */}
+        {/* ---------------------------------------------------------------- */}
+
         <div className="p-6 sm:p-7 lg:p-8">
           <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
             {service.tagline}
@@ -392,7 +398,7 @@ function ServicesIndex() {
   return (
     <>
       {/* ------------------------------------------------------------------ */}
-      {/* PAGE INTRO                                                           */}
+      {/* INTRO                                                               */}
       {/* ------------------------------------------------------------------ */}
 
       <section className="bg-background pt-16 lg:pt-20">
@@ -414,14 +420,13 @@ function ServicesIndex() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* SERVICES                                                             */}
+      {/* SERVICES                                                            */}
       {/* ------------------------------------------------------------------ */}
 
       <section className="bg-background pb-20 lg:pb-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2">
-
-            {/* 4 SERVICES WITH IMAGES */}
+            {/* 4 IMAGE SERVICES */}
             {imageServices.map((service, index) => (
               <ImageServiceCard
                 key={service.slug}
@@ -430,7 +435,7 @@ function ServicesIndex() {
               />
             ))}
 
-            {/* 4 SERVICES WITHOUT IMAGES */}
+            {/* 4 NON-IMAGE SERVICES */}
             {iconServices.map((service, index) => (
               <IconServiceCard
                 key={service.slug}
@@ -438,7 +443,6 @@ function ServicesIndex() {
                 index={index}
               />
             ))}
-
           </div>
         </div>
       </section>
