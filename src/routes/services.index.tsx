@@ -576,7 +576,7 @@ function ServiceArchitecture() {
             <Eyebrow>Service architecture</Eyebrow>
 
             <h2 className="mt-5 max-w-xl font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl">
-              Four operating <span className="text-coral">layers.</span>
+              Four operating layers.
             </h2>
           </div>
 
@@ -890,7 +890,7 @@ function OperatingStackSection() {
             <h2 className="mt-5 max-w-xl font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl">
               Start with the problem.
               <br />
-              <span className="text-coral">Add what you need.</span>
+             Add what you need.
             </h2>
           </div>
 
@@ -985,7 +985,7 @@ function ServiceFaqSection() {
           <h2 className="mt-5 font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl">
             Questions before
             <br />
-            <span className="text-coral">we get started.</span>
+            we get started.
           </h2>
         </div>
 
