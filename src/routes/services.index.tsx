@@ -531,7 +531,7 @@ function IconServiceCard({
 function ServiceArchitecture() {
   const groups = [
     {
-      number: "01",
+      number: "",
       title: "Field Execution",
       text: "Put trained people where the product is being seen, considered and purchased.",
       services: [
@@ -540,7 +540,7 @@ function ServiceArchitecture() {
       ],
     },
     {
-      number: "02",
+      number: "",
       title: "Retail Visibility",
       text: "Improve how products are presented, activated and maintained across the retail environment.",
       services: [
@@ -549,7 +549,7 @@ function ServiceArchitecture() {
       ],
     },
     {
-      number: "03",
+      number: "",
       title: "Operational Intelligence",
       text: "Create the visibility required to understand what is happening in the field.",
       services: [
@@ -558,7 +558,7 @@ function ServiceArchitecture() {
       ],
     },
     {
-      number: "04",
+      number: "",
       title: "People Infrastructure",
       text: "Take care of the employment, payroll and senior HR layer behind the operation.",
       services: [
@@ -576,8 +576,6 @@ function ServiceArchitecture() {
             <Eyebrow>Service architecture</Eyebrow>
 
             <h2 className="mt-5 max-w-xl font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl">
-              Eight capabilities.
-              <br />
               <span className="text-coral">Four operating layers.</span>
             </h2>
           </div>
@@ -785,22 +783,22 @@ function WhatChangesSection() {
 function DeliveryModelSection() {
   const steps = [
     {
-      number: "01",
+      number: "",
       title: "Scope",
       text: "We define the geography, channel, workforce requirement and operating objective.",
     },
     {
-      number: "02",
+      number: "",
       title: "Deploy",
       text: "People, processes and reporting structures are put into the field.",
     },
     {
-      number: "03",
+      number: "",
       title: "Operate",
       text: "The service runs continuously with supervision, governance and issue resolution.",
     },
     {
-      number: "04",
+      number: "",
       title: "Optimise",
       text: "Field intelligence is used to identify gaps and improve the operating model.",
     },
