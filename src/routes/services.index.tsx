@@ -31,8 +31,10 @@ export const Route = createFileRoute("/services/")({
 });
 
 /* =========================================================
-   EXACT ICONS FROM THE EXISTING SERVICES CODE
+   EXACT ICONS FROM index.tsx
    ========================================================= */
+
+/* 01 — REAL-TIME TRACKING & REPORTING */
 
 function TrackingIcon() {
   return (
@@ -40,7 +42,7 @@ function TrackingIcon() {
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10 sm:h-11 sm:w-11"
+      className="h-10 w-10"
       aria-hidden="true"
     >
       <rect
@@ -86,13 +88,15 @@ function TrackingIcon() {
   );
 }
 
+/* 02 — COMPLIANT WORKFORCE MANAGEMENT */
+
 function WorkforceIcon() {
   return (
     <svg
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10 sm:h-11 sm:w-11"
+      className="h-10 w-10"
       aria-hidden="true"
     >
       <circle
@@ -145,13 +149,15 @@ function WorkforceIcon() {
   );
 }
 
+/* 03 — PAYROLL SERVICES */
+
 function PayrollIcon() {
   return (
     <svg
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10 sm:h-11 sm:w-11"
+      className="h-10 w-10"
       aria-hidden="true"
     >
       <rect
@@ -212,13 +218,15 @@ function PayrollIcon() {
   );
 }
 
+/* 04 — FRACTIONAL HR SERVICES */
+
 function FractionalHRIcon() {
   return (
     <svg
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10 sm:h-11 sm:w-11"
+      className="h-10 w-10"
       aria-hidden="true"
     >
       <circle
@@ -270,27 +278,8 @@ function FractionalHRIcon() {
 }
 
 /* =========================================================
-   ICON SELECTOR
-   ========================================================= */
-
-function ServiceIcon({ index }: { index: number }) {
-  if (index === 0) {
-    return <TrackingIcon />;
-  }
-
-  if (index === 1) {
-    return <WorkforceIcon />;
-  }
-
-  if (index === 2) {
-    return <PayrollIcon />;
-  }
-
-  return <FractionalHRIcon />;
-}
-
-/* =========================================================
    IMAGE SERVICE CARD
+   ORIGINAL 2-COLUMN STYLE
    ========================================================= */
 
 function ImageServiceCard({
@@ -302,8 +291,8 @@ function ImageServiceCard({
 }) {
   return (
     <Reveal
-      delay={index * 60}
-      className="h-full"
+      delay={index * 50}
+      className="w-full min-w-0"
     >
       <Link
         to="/services/$slug"
@@ -311,84 +300,180 @@ function ImageServiceCard({
         className="
           group
           flex
-          h-full
-          flex-col
+          h-[230px]
+          w-full
+          min-w-0
+          max-w-full
           overflow-hidden
-          rounded-[18px]
+          rounded-2xl
           border
           border-border
           bg-white
           transition-all
-          duration-500
+          duration-300
           hover:-translate-y-1
-          hover:border-brand/20
-          hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]
+          hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
         "
       >
         {/* IMAGE */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#EEF2F7]">
+
+        <div
+          className="
+            relative
+            h-full
+            w-[145px]
+            shrink-0
+            overflow-hidden
+            bg-[#E9EEF5]
+            sm:w-[160px]
+            lg:w-[170px]
+          "
+        >
           <img
             src={service.image}
             alt={service.caption}
-            loading={index < 2 ? "eager" : "lazy"}
+            loading="lazy"
             className="
+              relative
+              z-10
               block
               h-full
               w-full
               object-cover
               object-center
               transition-transform
-              duration-[800ms]
+              duration-700
               ease-[cubic-bezier(0.22,1,0.36,1)]
-              group-hover:scale-[1.025]
+              group-hover:scale-[1.03]
             "
           />
 
-          {/* LIGHT LAYER */}
+          {/* LIGHT IMAGE LAYER */}
+
           <div
             aria-hidden
             className="
               pointer-events-none
               absolute
               inset-0
-              bg-white/[0.07]
+              z-20
+              bg-white/[0.08]
               transition-opacity
               duration-500
               group-hover:opacity-0
             "
           />
+
+          {/* BOTTOM IMAGE GRADIENT */}
+
+          <span
+            aria-hidden
+            className="
+              pointer-events-none
+              absolute
+              inset-x-0
+              bottom-0
+              z-30
+              h-16
+              bg-gradient-to-t
+              from-brand/45
+              to-transparent
+            "
+          />
+
+          {/* IMAGE CAPTION */}
+
+          <span
+            className="
+              absolute
+              bottom-3
+              left-3
+              right-3
+              z-40
+              font-display
+              text-[7px]
+              font-bold
+              uppercase
+              leading-tight
+              tracking-[0.12em]
+              text-white
+            "
+          >
+            {service.caption}
+          </span>
         </div>
 
         {/* CONTENT */}
-        <div className="flex flex-1 flex-col p-5">
-          <p className="font-display text-[8px] font-bold uppercase tracking-[0.18em] text-coral">
-            {service.tagline}
-          </p>
 
-          <h2 className="mt-2 font-display text-[18px] font-extrabold leading-[1.08] tracking-[-0.025em] text-foreground transition-colors duration-300 group-hover:text-brand">
+        <div
+          className="
+            flex
+            min-w-0
+            flex-1
+            flex-col
+            overflow-hidden
+            px-5
+            py-5
+            sm:px-6
+          "
+        >
+          <h2
+            className="
+              max-w-full
+              font-display
+              text-[17px]
+              font-extrabold
+              leading-[1.1]
+              tracking-[-0.02em]
+              text-foreground
+              transition-colors
+              duration-300
+              group-hover:text-brand
+              sm:text-lg
+            "
+          >
             {service.name}
           </h2>
 
-          <p className="mt-3 line-clamp-3 text-[11px] leading-[1.55] text-muted-foreground">
+          <p
+            className="
+              mt-3
+              max-w-full
+              text-xs
+              leading-[1.5]
+              text-muted-foreground
+              sm:text-[13px]
+            "
+          >
             {service.summary}
           </p>
 
-          <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
-            <span className="font-display text-[9px] font-bold uppercase tracking-[0.14em] text-brand">
-              Explore service
-            </span>
+          <span
+            className="
+              mt-auto
+              inline-flex
+              w-fit
+              items-center
+              gap-2
+              font-display
+              text-[9px]
+              font-bold
+              uppercase
+              tracking-[0.12em]
+              text-coral
+            "
+          >
+            Explore service
 
             <ArrowRight
-              aria-hidden
               className="
                 size-3.5
-                text-coral
                 transition-transform
                 duration-300
                 group-hover:translate-x-1
               "
             />
-          </div>
+          </span>
         </div>
       </Link>
     </Reveal>
@@ -397,6 +482,7 @@ function ImageServiceCard({
 
 /* =========================================================
    ICON SERVICE CARD
+   NORMAL CARD — NO BIG ICON BOX
    ========================================================= */
 
 function IconServiceCard({
@@ -408,8 +494,8 @@ function IconServiceCard({
 }) {
   return (
     <Reveal
-      delay={index * 60}
-      className="h-full"
+      delay={index * 50}
+      className="w-full min-w-0"
     >
       <Link
         to="/services/$slug"
@@ -418,84 +504,123 @@ function IconServiceCard({
           group
           relative
           flex
-          h-full
-          min-h-[265px]
+          min-h-[230px]
+          w-full
+          min-w-0
           flex-col
           overflow-hidden
-          rounded-[18px]
+          rounded-2xl
           border
           border-border
           bg-white
-          p-6
+          p-7
           transition-all
-          duration-500
+          duration-300
           hover:-translate-y-1
-          hover:border-brand/20
-          hover:shadow-[0_18px_45px_rgba(20,45,90,0.09)]
+          hover:border-coral/40
+          hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
         "
       >
-        {/* SUBTLE TOP ACCENT */}
+        {/* CORAL TOP ACCENT */}
+
         <span
           aria-hidden
           className="
             absolute
-            left-6
+            left-7
             top-0
             h-[3px]
             w-8
             bg-coral
             transition-all
             duration-300
-            group-hover:w-12
+            group-hover:w-14
           "
         />
 
         {/* ICON */}
+
         <div
           className="
+            mb-6
             flex
-            h-[68px]
+            h-11
+            w-11
             items-center
+            justify-center
             text-brand
             transition-colors
             duration-300
             group-hover:text-coral
           "
         >
-          <ServiceIcon index={index} />
+          {index === 0 && <TrackingIcon />}
+          {index === 1 && <WorkforceIcon />}
+          {index === 2 && <PayrollIcon />}
+          {index === 3 && <FractionalHRIcon />}
         </div>
 
-        {/* CONTENT */}
-        <div className="flex flex-1 flex-col">
-          <p className="font-display text-[8px] font-bold uppercase tracking-[0.18em] text-coral">
-            {service.tagline}
-          </p>
+        {/* TITLE */}
 
-          <h2 className="mt-2 font-display text-[18px] font-extrabold leading-[1.08] tracking-[-0.025em] text-foreground transition-colors duration-300 group-hover:text-brand">
-            {service.name}
-          </h2>
+        <h2
+          className="
+            max-w-full
+            font-display
+            text-[17px]
+            font-extrabold
+            leading-[1.15]
+            tracking-[-0.02em]
+            text-foreground
+            transition-colors
+            duration-300
+            group-hover:text-brand
+          "
+        >
+          {service.name}
+        </h2>
 
-          <p className="mt-3 line-clamp-3 text-[11px] leading-[1.55] text-muted-foreground">
-            {service.summary}
-          </p>
+        {/* DESCRIPTION */}
 
-          <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
-            <span className="font-display text-[9px] font-bold uppercase tracking-[0.14em] text-brand">
-              Explore service
-            </span>
+        <p
+          className="
+            mt-3
+            flex-1
+            text-[12px]
+            leading-[1.55]
+            text-muted-foreground
+          "
+        >
+          {service.summary}
+        </p>
 
-            <ArrowRight
-              aria-hidden
-              className="
-                size-3.5
-                text-coral
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            />
-          </div>
-        </div>
+        {/* EXPLORE */}
+
+        <span
+          className="
+            mt-6
+            inline-flex
+            w-fit
+            items-center
+            gap-2
+            font-display
+            text-[10px]
+            font-bold
+            uppercase
+            tracking-[0.12em]
+            text-coral
+          "
+        >
+          Explore
+
+          <ArrowRight
+            className="
+              size-3.5
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+            "
+          />
+        </span>
       </Link>
     </Reveal>
   );
@@ -506,13 +631,10 @@ function IconServiceCard({
    ========================================================= */
 
 function ServicesIndex() {
-  const imageServices = services.slice(0, 4);
-  const iconServices = services.slice(4, 8);
-
   return (
     <>
       {/* =====================================================
-          INTRO
+          PAGE INTRO
       ====================================================== */}
 
       <section className="bg-background pt-16 pb-12 lg:pt-20 lg:pb-14">
@@ -520,11 +642,32 @@ function ServicesIndex() {
           <div className="max-w-3xl">
             <Eyebrow>Services</Eyebrow>
 
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
+            <h1
+              className="
+                mt-5
+                font-display
+                text-4xl
+                font-extrabold
+                leading-[1.02]
+                tracking-[-0.04em]
+                text-foreground
+                sm:text-5xl
+                lg:text-6xl
+              "
+            >
               Everything your operation needs.
             </h1>
 
-            <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground lg:text-lg">
+            <p
+              className="
+                mt-5
+                max-w-2xl
+                text-base
+                leading-7
+                text-muted-foreground
+                lg:text-lg
+              "
+            >
               From the people representing your brand on the shelf to the
               systems that keep the operation running, every service is built
               around execution.
@@ -534,14 +677,14 @@ function ServicesIndex() {
       </section>
 
       {/* =====================================================
-          FIRST 4 — IMAGE SERVICES
-          4 COLUMNS ON DESKTOP
+          FIRST 4 SERVICES
+          ORIGINAL TWO-COLUMN IMAGE + CONTENT DESIGN
       ====================================================== */}
 
       <section className="bg-background pb-5 lg:pb-6">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {imageServices.map((service, index) => (
+          <div className="grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-2">
+            {services.slice(0, 4).map((service, index) => (
               <ImageServiceCard
                 key={service.slug}
                 service={service}
@@ -553,14 +696,14 @@ function ServicesIndex() {
       </section>
 
       {/* =====================================================
-          LAST 4 — ICON SERVICES
-          4 COLUMNS ON DESKTOP
+          LAST 4 SERVICES
+          EXACT SVG ICONS FROM index.tsx
       ====================================================== */}
 
       <section className="bg-background pb-20 lg:pb-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {iconServices.map((service, index) => (
+          <div className="grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {services.slice(4, 8).map((service, index) => (
               <IconServiceCard
                 key={service.slug}
                 service={service}
