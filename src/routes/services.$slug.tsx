@@ -25,6 +25,10 @@ import {
   Reveal,
 } from "@/components/site/Sections";
 
+/* ==========================================================================
+   ROUTE
+   ========================================================================== */
+
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
     const service = services.find((s) => s.slug === params.slug);
@@ -83,42 +87,86 @@ export const Route = createFileRoute("/services/$slug")({
 
 /* ==========================================================================
    IMAGE-FREE SERVICES
-   These services intentionally NEVER use service.images.
+   ==========================================================================
+
+   These four services NEVER display service.images.
+
+   This is intentionally based on BOTH service name and slug so that even
+   if duplicate/old image URLs remain in site-data.ts, they cannot appear.
    ========================================================================== */
 
 const IMAGE_FREE_SERVICE_NAMES = new Set([
-  "Real-Time Tracking & Reporting",
-  "Compliant Workforce Management",
-  "Payroll Services",
-  "Fractional HR Services",
+  "real-time tracking & reporting",
+  "real-time tracking and reporting",
+  "compliant workforce management",
+  "payroll services",
+  "fractional hr services",
 ]);
+
+function normalizeServiceName(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+function normalizeSlug(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/_/g, "-")
+    .replace(/\s+/g, "-");
+}
 
 function isImageFreeService(service: {
   name: string;
   slug: string;
 }) {
-  const name = service.name.trim();
+  const name = normalizeServiceName(service.name);
+  const slug = normalizeSlug(service.slug);
 
+  /* Exact service-name protection */
   if (IMAGE_FREE_SERVICE_NAMES.has(name)) {
     return true;
   }
 
-  const slug = service.slug.toLowerCase();
+  /* Real-Time Tracking & Reporting */
+  if (
+    slug.includes("real-time-tracking") ||
+    slug.includes("real-time-reporting") ||
+    (slug.includes("tracking") && slug.includes("reporting"))
+  ) {
+    return true;
+  }
 
-  return (
-    slug.includes("tracking") ||
-    slug.includes("reporting") ||
-    slug.includes("compliance") ||
-    slug.includes("compliant") ||
-    slug.includes("payroll") ||
+  /* Compliant Workforce Management */
+  if (
+    slug.includes("compliant-workforce") ||
+    slug.includes("workforce-compliance") ||
+    slug.includes("compliance")
+  ) {
+    return true;
+  }
+
+  /* Payroll */
+  if (slug.includes("payroll")) {
+    return true;
+  }
+
+  /* Fractional HR */
+  if (
     slug.includes("fractional-hr") ||
-    slug.includes("fractional_hr")
-  );
+    (slug.includes("fractional") && slug.includes("hr"))
+  ) {
+    return true;
+  }
+
+  return false;
 }
 
 /* ==========================================================================
-   IMAGE GALLERY
-   Only used by the four services that genuinely have photography.
+   IMAGE SERVICE GALLERY
+   Only used by services that genuinely have photography.
    ========================================================================== */
 
 function ServiceMedia({
@@ -163,7 +211,7 @@ function ServiceMedia({
                   alt={`Service image ${index + 1}`}
                   loading={index === 0 ? "eager" : "lazy"}
                   decoding="async"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                 />
 
                 {active && (
@@ -241,10 +289,7 @@ function ServiceMedia({
 }
 
 /* ==========================================================================
-   IMAGE-FREE HERO SYSTEM
-   No photograph.
-   No image container.
-   No artificial empty space.
+   IMAGE-FREE HERO
    ========================================================================== */
 
 function ImageFreeHeroVisual({
@@ -255,26 +300,38 @@ function ImageFreeHeroVisual({
     slug: string;
   };
 }) {
-  const slug = service.slug.toLowerCase();
+  const slug = normalizeSlug(service.slug);
+  const name = normalizeServiceName(service.name);
 
-  if (slug.includes("tracking") || slug.includes("reporting")) {
+  if (
+    name.includes("real-time tracking") ||
+    name.includes("real-time reporting") ||
+    slug.includes("real-time-tracking") ||
+    (slug.includes("tracking") && slug.includes("reporting"))
+  ) {
     return <TrackingHero />;
   }
 
   if (
-    slug.includes("compliance") ||
-    slug.includes("compliant")
+    name.includes("compliant workforce") ||
+    name.includes("compliance") ||
+    slug.includes("compliant-workforce") ||
+    slug.includes("compliance")
   ) {
     return <ComplianceHero />;
   }
 
-  if (slug.includes("payroll")) {
+  if (
+    name.includes("payroll") ||
+    slug.includes("payroll")
+  ) {
     return <PayrollHero />;
   }
 
   if (
-    slug.includes("fractional") ||
-    slug.includes("fractional-hr")
+    name.includes("fractional hr") ||
+    slug.includes("fractional-hr") ||
+    (slug.includes("fractional") && slug.includes("hr"))
   ) {
     return <FractionalHRHero />;
   }
@@ -283,259 +340,311 @@ function ImageFreeHeroVisual({
 }
 
 /* ==========================================================================
-   TRACKING — TYPOGRAPHIC / DATA VISUAL
+   REAL-TIME TRACKING & REPORTING
    ========================================================================== */
 
 function TrackingHero() {
   return (
-    <div className="relative min-h-[430px] overflow-hidden lg:min-h-[500px]">
-      {/* Grid */}
+    <div className="relative min-h-[390px] lg:min-h-[470px]">
+      {/* Editorial grid */}
       <div
         className="absolute inset-0 opacity-50"
         style={{
           backgroundImage:
             "linear-gradient(rgba(20,55,95,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(20,55,95,0.08) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+          backgroundSize: "46px 46px",
         }}
       />
 
-      <div className="relative flex h-full min-h-[430px] items-center justify-center lg:min-h-[500px]">
-        {/* Giant number */}
-        <div className="pointer-events-none absolute -right-3 top-1/2 -translate-y-1/2 font-display text-[210px] font-extrabold leading-none tracking-[-0.12em] text-brand/[0.045] sm:text-[280px]">
-          01
-        </div>
+      {/* Horizontal data lines */}
+      <div className="absolute left-[5%] right-[5%] top-[18%] h-px bg-brand/10" />
+      <div className="absolute left-[12%] right-[10%] top-[72%] h-px bg-brand/10" />
 
-        {/* Connecting field lines */}
-        <div className="absolute left-[8%] top-[22%] h-px w-[72%] bg-brand/10" />
-        <div className="absolute left-[15%] top-[55%] h-px w-[68%] bg-brand/10" />
-        <div className="absolute left-[30%] top-[15%] h-[65%] w-px bg-brand/10" />
-        <div className="absolute right-[24%] top-[8%] h-[78%] w-px bg-brand/10" />
+      {/* Vertical data lines */}
+      <div className="absolute left-[25%] top-[8%] h-[82%] w-px bg-brand/10" />
+      <div className="absolute right-[23%] top-[12%] h-[76%] w-px bg-brand/10" />
 
-        {/* Nodes */}
-        <span className="absolute left-[8%] top-[22%] size-3 rounded-full bg-coral shadow-[0_0_0_6px_rgba(236,99,73,0.10)]" />
-        <span className="absolute left-[30%] top-[55%] size-3 rounded-full bg-brand shadow-[0_0_0_6px_rgba(20,55,95,0.08)]" />
-        <span className="absolute right-[24%] top-[22%] size-3 rounded-full bg-coral shadow-[0_0_0_6px_rgba(236,99,73,0.10)]" />
-        <span className="absolute right-[8%] top-[55%] size-3 rounded-full bg-brand shadow-[0_0_0_6px_rgba(20,55,95,0.08)]" />
+      {/* Nodes */}
+      <span className="absolute left-[5%] top-[18%] size-2.5 rounded-full bg-coral" />
+      <span className="absolute left-[25%] top-[72%] size-2.5 rounded-full bg-brand" />
+      <span className="absolute right-[23%] top-[28%] size-2.5 rounded-full bg-coral" />
+      <span className="absolute right-[10%] top-[72%] size-2.5 rounded-full bg-brand" />
 
-        {/* Central system */}
-        <div className="relative w-[78%] max-w-[430px]">
-          <div className="bg-background px-4">
-            <div className="border-y border-brand/10 py-5">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                    Field intelligence
-                  </p>
+      {/* Main content */}
+      <div className="absolute left-1/2 top-1/2 w-[88%] max-w-[480px] -translate-x-1/2 -translate-y-1/2">
+        <div className="border-y border-brand/10 bg-background/95 px-5 py-6 backdrop-blur-sm sm:px-7">
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <p className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-coral">
+                Field intelligence
+              </p>
 
-                  <p className="mt-2 font-display text-xl font-extrabold text-brand sm:text-2xl">
-                    Real-time visibility
-                  </p>
-                </div>
+              <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-brand sm:text-3xl">
+                Real-time visibility.
+              </h3>
 
-                <Activity className="size-6 text-coral" />
-              </div>
+              <p className="mt-2 max-w-sm text-xs leading-relaxed text-muted-foreground">
+                Know what is happening across your field operation while it is
+                happening.
+              </p>
+            </div>
 
-              <div className="mt-6 grid grid-cols-3 divide-x divide-border">
-                <div className="pr-3">
-                  <p className="font-display text-xl font-extrabold text-foreground">
-                    Live
-                  </p>
-                  <p className="mt-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                    Activity
-                  </p>
-                </div>
+            <Activity className="mt-1 size-6 shrink-0 text-coral" />
+          </div>
 
-                <div className="px-3">
-                  <p className="font-display text-xl font-extrabold text-foreground">
-                    Daily
-                  </p>
-                  <p className="mt-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                    Reporting
-                  </p>
-                </div>
+          {/* Metrics */}
+          <div className="mt-7 grid grid-cols-3 divide-x divide-border border-y border-border py-4">
+            <div className="pr-3">
+              <p className="font-display text-lg font-extrabold text-foreground sm:text-xl">
+                Live
+              </p>
 
-                <div className="pl-3">
-                  <p className="font-display text-xl font-extrabold text-foreground">
-                    Clear
-                  </p>
-                  <p className="mt-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                    Decisions
-                  </p>
-                </div>
-              </div>
+              <p className="mt-1 text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
+                Activity
+              </p>
+            </div>
+
+            <div className="px-3">
+              <p className="font-display text-lg font-extrabold text-foreground sm:text-xl">
+                Daily
+              </p>
+
+              <p className="mt-1 text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
+                Reporting
+              </p>
+            </div>
+
+            <div className="pl-3">
+              <p className="font-display text-lg font-extrabold text-foreground sm:text-xl">
+                Clear
+              </p>
+
+              <p className="mt-1 text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
+                Decisions
+              </p>
             </div>
           </div>
-        </div>
 
-        {/* Floating labels */}
-        <div className="absolute left-[2%] top-[37%] hidden border border-border bg-background px-3 py-2 sm:block">
-          <p className="font-display text-[9px] font-bold uppercase tracking-[0.12em] text-brand">
-            Attendance
-          </p>
-        </div>
+          {/* Activity bars */}
+          <div className="mt-5 space-y-3">
+            {[
+              ["Sales visibility", "94%"],
+              ["Stock visibility", "88%"],
+              ["Field reporting", "97%"],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <div className="flex items-center justify-between">
+                  <span className="text-[9px] text-muted-foreground">
+                    {label}
+                  </span>
 
-        <div className="absolute right-[0%] top-[38%] hidden border border-border bg-background px-3 py-2 sm:block">
-          <p className="font-display text-[9px] font-bold uppercase tracking-[0.12em] text-brand">
-            Reporting
-          </p>
+                  <span className="font-display text-[9px] font-bold text-brand">
+                    {value}
+                  </span>
+                </div>
+
+                <div className="mt-1.5 h-1 overflow-hidden bg-[#E8EDF3]">
+                  <div
+                    className="h-full bg-brand"
+                    style={{ width: value }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* Small labels */}
+      <div className="absolute left-[1%] top-[37%] hidden border border-border bg-background px-3 py-2 sm:block">
+        <p className="font-display text-[8px] font-bold uppercase tracking-[0.12em] text-brand">
+          Attendance
+        </p>
+      </div>
+
+      <div className="absolute right-[1%] top-[40%] hidden border border-border bg-background px-3 py-2 sm:block">
+        <p className="font-display text-[8px] font-bold uppercase tracking-[0.12em] text-brand">
+          Reporting
+        </p>
       </div>
     </div>
   );
 }
 
 /* ==========================================================================
-   COMPLIANCE — CONTROL FRAMEWORK
+   COMPLIANT WORKFORCE MANAGEMENT
    ========================================================================== */
 
 function ComplianceHero() {
   const controls = [
-    "Attendance",
-    "Documentation",
-    "Field visits",
+    "Attendance verification",
+    "Documentation checks",
+    "Field visit verification",
     "Process adherence",
   ];
 
   return (
-    <div className="relative min-h-[430px] lg:min-h-[500px]">
-      <div className="absolute inset-y-0 left-1/2 w-px bg-brand/10" />
+    <div className="relative min-h-[390px] lg:min-h-[470px]">
+      {/* Editorial framework */}
+      <div className="absolute left-0 right-0 top-[14%] h-px bg-brand/10" />
+      <div className="absolute left-0 right-0 bottom-[14%] h-px bg-brand/10" />
 
-      <div className="absolute left-0 top-[12%] h-px w-full bg-brand/10" />
-      <div className="absolute left-0 bottom-[12%] h-px w-full bg-brand/10" />
+      <div className="absolute bottom-[14%] left-[18%] top-[14%] w-px bg-brand/10" />
+      <div className="absolute bottom-[14%] right-[18%] top-[14%] w-px bg-brand/10" />
 
-      <div className="absolute left-1/2 top-1/2 w-[82%] max-w-[430px] -translate-x-1/2 -translate-y-1/2">
-        <div className="border border-brand/15 bg-background p-5 shadow-[0_20px_60px_rgba(20,55,95,0.08)] sm:p-7">
-          <div className="flex items-center justify-between border-b border-border pb-4">
+      <div className="absolute left-1/2 top-1/2 w-[88%] max-w-[470px] -translate-x-1/2 -translate-y-1/2">
+        <div className="border border-brand/10 bg-background p-5 shadow-[0_24px_70px_rgba(20,55,95,0.07)] sm:p-7">
+          {/* Heading */}
+          <div className="flex items-center justify-between border-b border-border pb-5">
             <div className="flex items-center gap-3">
-              <ShieldCheck className="size-5 text-coral" />
+              <div className="flex size-10 items-center justify-center bg-[#F4F7FB]">
+                <ShieldCheck className="size-5 text-coral" />
+              </div>
 
               <div>
                 <p className="font-display text-xs font-extrabold text-brand">
                   Workforce controls
                 </p>
 
-                <p className="mt-1 text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+                <p className="mt-1 text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
                   Compliance framework
                 </p>
               </div>
             </div>
 
-            <span className="font-display text-[9px] font-bold uppercase tracking-[0.12em] text-coral">
-              Active
+            <span className="text-[8px] font-bold uppercase tracking-[0.14em] text-coral">
+              Controlled
             </span>
           </div>
 
-          <div className="mt-5 space-y-2">
-            {controls.map((control, index) => (
+          {/* Controls */}
+          <div className="mt-5 grid gap-2">
+            {controls.map((control) => (
               <div
                 key={control}
                 className="flex items-center gap-3 border-b border-border/70 py-3 last:border-0"
               >
-                <span className="font-display text-[9px] font-extrabold text-coral">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <Check
+                  className="size-3.5 shrink-0 text-coral"
+                  strokeWidth={3}
+                />
 
                 <span className="flex-1 text-xs text-foreground/75">
                   {control}
                 </span>
 
-                <Check
-                  className="size-3.5 text-brand"
-                  strokeWidth={3}
-                />
+                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-muted-foreground">
+                  Verified
+                </span>
               </div>
             ))}
+          </div>
+
+          {/* Footer */}
+          <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
+            <span className="text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
+              Operational standard
+            </span>
+
+            <CheckCircle2 className="size-4 text-brand" />
           </div>
         </div>
       </div>
 
-      <div className="absolute left-[2%] top-[18%] font-display text-[9px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+      <div className="absolute left-[3%] top-[20%] font-display text-[8px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
         Control
       </div>
 
-      <div className="absolute right-[2%] bottom-[18%] font-display text-[9px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+      <div className="absolute right-[3%] bottom-[20%] font-display text-[8px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
         Verify
-      </div>
-
-      <div className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 font-display text-[180px] font-extrabold leading-none text-brand/[0.035]">
-        02
       </div>
     </div>
   );
 }
 
 /* ==========================================================================
-   PAYROLL — PROCESS DESIGN
+   PAYROLL SERVICES
    ========================================================================== */
 
 function PayrollHero() {
   const steps = [
-    "Attendance",
-    "Validation",
-    "Processing",
-    "Disbursement",
+    {
+      title: "Attendance",
+      description: "Capture",
+    },
+    {
+      title: "Validation",
+      description: "Verify",
+    },
+    {
+      title: "Processing",
+      description: "Calculate",
+    },
+    {
+      title: "Disbursement",
+      description: "Complete",
+    },
   ];
 
   return (
-    <div className="relative min-h-[430px] lg:min-h-[500px]">
-      <div className="absolute left-[9%] right-[9%] top-1/2 h-px -translate-y-1/2 bg-brand/10" />
+    <div className="relative min-h-[390px] lg:min-h-[470px]">
+      {/* Editorial lines */}
+      <div className="absolute left-[7%] right-[7%] top-1/2 h-px bg-brand/10" />
 
-      <div className="relative flex min-h-[430px] items-center justify-center lg:min-h-[500px]">
-        <div className="absolute -right-3 top-1/2 -translate-y-1/2 font-display text-[210px] font-extrabold leading-none text-brand/[0.035] sm:text-[270px]">
-          03
-        </div>
+      <div className="absolute left-[7%] top-[20%] h-px w-[30%] bg-brand/10" />
+      <div className="absolute right-[7%] bottom-[20%] h-px w-[30%] bg-brand/10" />
 
-        <div className="relative w-[90%] max-w-[460px]">
-          <div className="mb-8 flex items-center gap-3">
-            <WalletCards className="size-5 text-coral" />
+      <div className="relative flex min-h-[390px] items-center justify-center lg:min-h-[470px]">
+        <div className="w-[92%] max-w-[500px]">
+          <div className="flex items-center gap-3">
+            <div className="flex size-10 items-center justify-center bg-[#F4F7FB]">
+              <WalletCards className="size-5 text-coral" />
+            </div>
 
             <div>
-              <p className="font-display text-sm font-extrabold text-brand">
+              <p className="font-display text-xs font-extrabold text-brand">
                 Payroll workflow
               </p>
 
-              <p className="mt-1 text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+              <p className="mt-1 text-[8px] uppercase tracking-[0.15em] text-muted-foreground">
                 Structured from input to completion
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-2">
+          {/* Process */}
+          <div className="mt-10 grid grid-cols-4 gap-2">
             {steps.map((step, index) => (
-              <div key={step} className="relative">
-                <div className="relative z-10 mx-auto flex size-10 items-center justify-center rounded-full border border-brand/15 bg-background">
+              <div key={step.title} className="relative">
+                <div className="relative z-10 mx-auto flex size-11 items-center justify-center rounded-full border border-brand/15 bg-background">
                   <span className="font-display text-[9px] font-extrabold text-brand">
-                    {String(index + 1).padStart(2, "0")}
+                    {index + 1}
                   </span>
                 </div>
 
                 <div className="mt-4 text-center">
-                  <p className="font-display text-[9px] font-bold leading-tight text-foreground">
-                    {step}
+                  <p className="font-display text-[9px] font-extrabold text-foreground sm:text-[10px]">
+                    {step.title}
+                  </p>
+
+                  <p className="mt-1 text-[8px] uppercase tracking-[0.08em] text-muted-foreground">
+                    {step.description}
                   </p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 grid grid-cols-3 divide-x divide-border border-y border-border py-4">
-            <div className="pr-3">
-              <p className="text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                Capture
-              </p>
-            </div>
+          {/* Bottom statement */}
+          <div className="mt-10 border-y border-border py-5 text-center">
+            <p className="font-display text-lg font-extrabold text-brand sm:text-xl">
+              One structured payroll cycle.
+            </p>
 
-            <div className="px-3">
-              <p className="text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                Process
-              </p>
-            </div>
-
-            <div className="pl-3">
-              <p className="text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-                Complete
-              </p>
-            </div>
+            <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground">
+              From workforce inputs through validated processing and
+              disbursement.
+            </p>
           </div>
         </div>
       </div>
@@ -544,7 +653,7 @@ function PayrollHero() {
 }
 
 /* ==========================================================================
-   FRACTIONAL HR — PEOPLE OPERATING MODEL
+   FRACTIONAL HR SERVICES
    ========================================================================== */
 
 function FractionalHRHero() {
@@ -568,18 +677,14 @@ function FractionalHRHero() {
   ];
 
   return (
-    <div className="relative min-h-[430px] lg:min-h-[500px]">
-      <div className="relative flex min-h-[430px] items-center justify-center lg:min-h-[500px]">
-        <div className="absolute -right-4 top-1/2 -translate-y-1/2 font-display text-[190px] font-extrabold leading-none text-brand/[0.035] sm:text-[260px]">
-          04
-        </div>
+    <div className="relative min-h-[390px] lg:min-h-[470px]">
+      {/* Framework lines */}
+      <div className="absolute left-1/2 top-[12%] h-[76%] w-px bg-brand/10" />
+      <div className="absolute left-[15%] right-[15%] top-1/2 h-px bg-brand/10" />
 
-        {/* Connection lines */}
-        <div className="absolute left-1/2 top-[18%] h-[64%] w-px bg-brand/10" />
-        <div className="absolute left-[18%] right-[18%] top-1/2 h-px bg-brand/10" />
-
+      <div className="relative flex min-h-[390px] items-center justify-center lg:min-h-[470px]">
         {/* Centre */}
-        <div className="relative z-10 flex size-36 items-center justify-center rounded-full border border-brand/15 bg-background shadow-[0_20px_60px_rgba(20,55,95,0.08)] sm:size-44">
+        <div className="relative z-20 flex size-32 items-center justify-center rounded-full border border-brand/15 bg-background shadow-[0_24px_70px_rgba(20,55,95,0.08)] sm:size-40">
           <div className="text-center">
             <UserRoundCog className="mx-auto size-6 text-coral" />
 
@@ -587,38 +692,63 @@ function FractionalHRHero() {
               HR
             </p>
 
-            <p className="mt-1 font-display text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+            <p className="mt-1 text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
               Operating layer
             </p>
           </div>
         </div>
 
-        {/* Four capabilities */}
-        {areas.map(({ title, icon: Icon }, index) => {
-          const positions = [
-            "left-[3%] top-[13%]",
-            "right-[3%] top-[13%]",
-            "left-[3%] bottom-[13%]",
-            "right-[3%] bottom-[13%]",
-          ];
+        {/* People */}
+        <div className="absolute left-[2%] top-[12%] w-[112px] border border-border bg-background p-4 sm:w-[132px]">
+          <Users className="size-4 text-coral" />
 
-          return (
-            <div
-              key={title}
-              className={`absolute ${positions[index]} z-10 w-[110px] border border-border bg-background p-3 sm:w-[130px] sm:p-4`}
-            >
-              <Icon className="size-4 text-coral" />
+          <p className="mt-3 font-display text-[10px] font-extrabold text-brand sm:text-xs">
+            People
+          </p>
 
-              <p className="mt-3 font-display text-[10px] font-extrabold text-brand sm:text-xs">
-                {title}
-              </p>
+          <p className="mt-1 text-[8px] leading-relaxed text-muted-foreground sm:text-[9px]">
+            Strategic HR support
+          </p>
+        </div>
 
-              <p className="mt-1 text-[8px] leading-relaxed text-muted-foreground sm:text-[9px]">
-                Strategic HR support
-              </p>
-            </div>
-          );
-        })}
+        {/* Policy */}
+        <div className="absolute right-[2%] top-[12%] w-[112px] border border-border bg-background p-4 sm:w-[132px]">
+          <FileCheck2 className="size-4 text-coral" />
+
+          <p className="mt-3 font-display text-[10px] font-extrabold text-brand sm:text-xs">
+            Policy
+          </p>
+
+          <p className="mt-1 text-[8px] leading-relaxed text-muted-foreground sm:text-[9px]">
+            Strategic HR support
+          </p>
+        </div>
+
+        {/* Process */}
+        <div className="absolute bottom-[12%] left-[2%] w-[112px] border border-border bg-background p-4 sm:w-[132px]">
+          <Clock3 className="size-4 text-coral" />
+
+          <p className="mt-3 font-display text-[10px] font-extrabold text-brand sm:text-xs">
+            Process
+          </p>
+
+          <p className="mt-1 text-[8px] leading-relaxed text-muted-foreground sm:text-[9px]">
+            Strategic HR support
+          </p>
+        </div>
+
+        {/* Leadership */}
+        <div className="absolute bottom-[12%] right-[2%] w-[112px] border border-border bg-background p-4 sm:w-[132px]">
+          <UserRoundCog className="size-4 text-coral" />
+
+          <p className="mt-3 font-display text-[10px] font-extrabold text-brand sm:text-xs">
+            Leadership
+          </p>
+
+          <p className="mt-1 text-[8px] leading-relaxed text-muted-foreground sm:text-[9px]">
+            Strategic HR support
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -630,15 +760,15 @@ function FractionalHRHero() {
 
 function OperationsHero() {
   return (
-    <div className="relative flex min-h-[430px] items-center justify-center lg:min-h-[500px]">
-      <div className="absolute inset-0 border-y border-brand/10" />
+    <div className="relative flex min-h-[390px] items-center justify-center lg:min-h-[470px]">
+      <div className="absolute inset-y-[12%] left-0 right-0 border-y border-brand/10" />
 
       <div className="relative text-center">
-        <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-coral">
+        <p className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-coral">
           Operations
         </p>
 
-        <p className="mt-5 font-display text-5xl font-extrabold text-brand">
+        <p className="mt-5 font-display text-4xl font-extrabold text-brand sm:text-5xl">
           Built to execute.
         </p>
       </div>
@@ -665,23 +795,70 @@ function ServiceHero({
   const imageFree = isImageFreeService(service);
 
   /*
-   * IMPORTANT:
-   * Image-free services never use service.images.
+   * IMAGE-FREE SERVICES
+   *
+   * Completely bypass ServiceMedia.
+   * service.images are deliberately ignored.
    */
-  const hasImages =
-    !imageFree && service.images.filter(Boolean).length > 0;
+  if (imageFree) {
+    return (
+      <section className="relative overflow-hidden bg-background pb-10 pt-16 lg:pb-12 lg:pt-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-8">
+            {/* Copy */}
+            <div className="relative z-10 lg:col-span-5">
+              <Eyebrow>Service</Eyebrow>
 
+              <h1 className="mt-5 max-w-2xl font-display text-4xl font-extrabold leading-[0.96] tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
+                {service.name}
+              </h1>
+
+              <p className="mt-6 max-w-xl font-display text-xl font-bold leading-snug text-brand sm:text-2xl">
+                {service.tagline}
+              </p>
+
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {service.summary}
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 font-display text-sm font-bold text-white transition-all duration-300 hover:bg-brand-deep"
+                >
+                  Talk to us
+
+                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+
+                {service.caption && (
+                  <span className="inline-flex items-center rounded-full border border-border px-5 py-3.5 font-display text-[9px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
+                    {service.caption}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Designed visual — NOT an image */}
+            <div className="lg:col-span-7">
+              <ImageFreeHeroVisual service={service} />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /*
+   * IMAGE-LED SERVICES
+   *
+   * Only these services are allowed to render their photography.
+   */
   return (
-    <section
-      className={`relative overflow-hidden bg-background ${
-        imageFree
-          ? "pb-12 pt-16 lg:pb-16 lg:pt-20"
-          : "pb-16 pt-20 lg:pb-24 lg:pt-28"
-      }`}
-    >
+    <section className="relative overflow-hidden bg-background pb-16 pt-20 lg:pb-24 lg:pt-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
-          {/* LEFT */}
+          {/* Copy */}
           <div className="lg:col-span-5">
             <Eyebrow>Service</Eyebrow>
 
@@ -715,12 +892,10 @@ function ServiceHero({
             </div>
           </div>
 
-          {/* RIGHT */}
+          {/* Photography */}
           <div className="lg:col-span-7">
-            {hasImages ? (
+            {service.images.filter(Boolean).length > 0 && (
               <ServiceMedia service={service} />
-            ) : (
-              <ImageFreeHeroVisual service={service} />
             )}
           </div>
         </div>
@@ -744,7 +919,10 @@ function ServiceDetail() {
 
   return (
     <>
-      {/* HERO */}
+      {/* =====================================================================
+          HERO
+          ===================================================================== */}
+
       <ServiceHero service={service} />
 
       {/* =====================================================================
@@ -855,7 +1033,7 @@ function ServiceDetail() {
       </section>
 
       {/* =====================================================================
-          ADDITIONAL DETAIL
+          ADDITIONAL SERVICE DETAIL
           ===================================================================== */}
 
       {detail && (
@@ -1039,6 +1217,7 @@ function ServiceDetail() {
         </div>
       </section>
 
+      {/* CTA */}
       <CtaBand />
     </>
   );
