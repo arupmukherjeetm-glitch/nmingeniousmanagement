@@ -1,5 +1,51 @@
 import { useEffect, useState } from "react";
 
+type CounterProps = {
+  value: number;
+  suffix?: string;
+  duration?: number;
+};
+
+export function Counter({
+  value,
+  suffix = "",
+  duration = 1400,
+}: CounterProps) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let animationFrame = 0;
+    const startTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Smooth ease-out
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+      setCount(Math.round(value * easedProgress));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [value, duration]);
+
+  return (
+    <>
+      {count.toLocaleString()}
+      {suffix}
+    </>
+  );
+}
+
 type StatItem = {
   value: number;
   suffix?: string;
@@ -9,56 +55,6 @@ type StatItem = {
 type StatBoardProps = {
   items: StatItem[];
 };
-
-function CountUp({
-  value,
-  suffix = "",
-}: {
-  value: number;
-  suffix?: string;
-}) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let start = 0;
-    const duration = 1400;
-    const startTime = performance.now();
-
-    const animate = (currentTime: number) => {
-      const progress = Math.min(
-        (currentTime - startTime) / duration,
-        1,
-      );
-
-      const eased =
-        1 - Math.pow(1 - progress, 3);
-
-      const nextValue = Math.round(value * eased);
-
-      setCount(nextValue);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        start = value;
-        setCount(start);
-      }
-    };
-
-    requestAnimationFrame(animate);
-
-    return () => {
-      start = value;
-    };
-  }, [value]);
-
-  return (
-    <>
-      {count.toLocaleString()}
-      {suffix}
-    </>
-  );
-}
 
 export function StatBoard({ items }: StatBoardProps) {
   return (
@@ -70,7 +66,7 @@ export function StatBoard({ items }: StatBoardProps) {
     >
       {/* Subtle grid */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.10]"
+        className="pointer-events-none absolute inset-0 opacity-[0.1]"
         style={{
           backgroundImage: `
             linear-gradient(
@@ -88,32 +84,20 @@ export function StatBoard({ items }: StatBoardProps) {
       />
 
       <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <div
             key={item.label}
-            className={[
-              "relative px-8 py-10 lg:px-8 lg:py-11",
-              index !== items.length - 1
-                ? "border-b border-white/10 sm:border-r lg:border-b-0"
-                : "",
-              index === 1
-                ? "sm:border-r-0 lg:border-r"
-                : "",
-              index === 3
-                ? "lg:border-r-0"
-                : "",
-            ].join(" ")}
+            className="relative px-8 py-10 lg:px-8 lg:py-11"
           >
             {/* NO 01 / 02 / 03 / 04 */}
 
             <div className="font-display text-5xl font-extrabold leading-none tracking-[-0.04em] sm:text-6xl">
-              <CountUp
+              <Counter
                 value={item.value}
                 suffix={item.suffix}
               />
             </div>
 
-            {/* Coral accent line */}
             <div className="mt-5 h-0.5 w-12 bg-coral" />
 
             <p className="mt-4 text-sm font-medium text-white/65">
