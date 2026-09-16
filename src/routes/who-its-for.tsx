@@ -1,19 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ArrowRight,
   ArrowUpRight,
-  Building2,
   Check,
   Globe2,
   LineChart,
-  MapPin,
   Megaphone,
+  MapPin,
   PackageCheck,
   Repeat2,
-  ShoppingBag,
   Store,
   Target,
   Users,
-  Zap,
 } from "lucide-react";
 
 import { industries } from "@/lib/site-data";
@@ -50,13 +48,12 @@ export const Route = createFileRoute("/who-its-for")({
 });
 
 /* =========================================================
-   AUDIENCE CARDS
+   WHO THIS IS FOR
 ========================================================= */
 
 const audiences = [
   {
     icon: Target,
-    eyebrow: "01",
     title: "Activation Managers",
     body:
       "For teams that already know their targets but need a field organisation capable of delivering coverage, frequency and execution consistently.",
@@ -68,7 +65,6 @@ const audiences = [
   },
   {
     icon: Globe2,
-    eyebrow: "02",
     title: "Online-First Brands",
     body:
       "For D2C brands moving beyond digital acquisition and looking to build a structured presence across physical retail.",
@@ -80,7 +76,6 @@ const audiences = [
   },
   {
     icon: Store,
-    eyebrow: "03",
     title: "Retail-Focused Brands",
     body:
       "For established brands that need stronger in-store execution, better visibility and disciplined shopper engagement across their retail footprint.",
@@ -93,10 +88,10 @@ const audiences = [
 ];
 
 /* =========================================================
-   BUSINESS STAGES
+   GROWTH MOMENTS
 ========================================================= */
 
-const stages = [
+const growthMoments = [
   {
     icon: Megaphone,
     title: "You have built awareness",
@@ -118,7 +113,7 @@ const stages = [
 ];
 
 /* =========================================================
-   OPERATING MODEL
+   OPERATING SYSTEM
 ========================================================= */
 
 const operatingModel = [
@@ -157,7 +152,7 @@ function WhoItsFor() {
     <>
       {/* =====================================================
           HERO
-          ONLY THIS HERO IS TAKEN FROM THE USER'S ORIGINAL CODE
+          EXACT HERO FROM THE USER'S ORIGINAL CODE
       ===================================================== */}
 
       <PageHero
@@ -175,18 +170,18 @@ function WhoItsFor() {
       />
 
       {/* =====================================================
-          INTRO / AUDIENCE
-          NEW DESIGN
+          AUDIENCE
       ===================================================== */}
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
           <Reveal>
-            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
               <div>
-                <Eyebrow>Built around the people running growth</Eyebrow>
+                <Eyebrow>
+                  Built around the people running growth
+                </Eyebrow>
 
                 <h2 className="mt-5 max-w-xl font-display text-3xl font-extrabold leading-[1.05] tracking-[-0.04em] text-foreground lg:text-5xl">
                   Different challenges. One field execution system.
@@ -199,9 +194,10 @@ function WhoItsFor() {
                 operation or making the move from digital into stores for
                 the first time.
               </p>
-
             </div>
           </Reveal>
+
+          {/* AUDIENCE CARDS */}
 
           <div className="mt-14 grid gap-5 lg:grid-cols-3">
             {audiences.map((audience, index) => {
@@ -209,40 +205,49 @@ function WhoItsFor() {
 
               return (
                 <Reveal key={audience.title} delay={index * 80}>
-                  <article className="group relative h-full overflow-hidden rounded-2xl border border-border bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(20,45,90,0.09)]">
+                  <article className="group h-full rounded-2xl border border-border bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(20,45,90,0.08)]">
 
-                    <div className="absolute right-7 top-7 font-display text-xs font-bold tracking-[0.2em] text-muted-foreground/40">
-                      {audience.eyebrow}
+                    {/* FEATURE ICON
+                        Same simple icon treatment:
+                        no gradient box
+                        no circle
+                        no extra container
+                    */}
+
+                    <div className="text-coral">
+                      <Icon
+                        strokeWidth={1.7}
+                        className="size-9 transition-transform duration-300 group-hover:translate-x-0.5"
+                      />
                     </div>
 
-                    <div
-                      className="flex size-12 items-center justify-center rounded-xl text-white"
-                      style={{
-                        background: "var(--gradient-brand)",
-                      }}
-                    >
-                      <Icon className="size-5" />
-                    </div>
+                    {/* TITLE */}
 
-                    <h3 className="mt-7 font-display text-2xl font-extrabold tracking-[-0.025em] text-foreground">
+                    <h3 className="mt-6 font-display text-2xl font-extrabold leading-tight tracking-[-0.025em] text-foreground">
                       {audience.title}
                     </h3>
 
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {/* BODY — DIRECTLY BELOW TITLE */}
+
+                    <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                       {audience.body}
                     </p>
+
+                    {/* SUPPORTING POINTS */}
 
                     <div className="mt-7 border-t border-border pt-6">
                       <div className="space-y-3">
                         {audience.points.map((point) => (
                           <div
                             key={point}
-                            className="flex items-center gap-3 text-sm font-medium text-foreground"
+                            className="flex items-start gap-3 text-sm font-medium text-foreground"
                           >
-                            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-coral/10 text-coral">
-                              <Check className="size-3" />
-                            </span>
-                            {point}
+                            <Check
+                              strokeWidth={2}
+                              className="mt-0.5 size-4 shrink-0 text-coral"
+                            />
+
+                            <span>{point}</span>
                           </div>
                         ))}
                       </div>
@@ -258,18 +263,16 @@ function WhoItsFor() {
       </section>
 
       {/* =====================================================
-          BLUE STATEMENT SECTION
-          NEW DESIGN
+          BLUE BRAND STATEMENT
       ===================================================== */}
 
-      <section className="overflow-hidden bg-brand-deep py-24 text-white lg:py-32">
+      <section className="bg-brand-deep py-24 text-white lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
           <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
 
             <Reveal>
               <div>
-
                 <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
                   When the shelf becomes the next growth channel
                 </p>
@@ -285,28 +288,30 @@ function WhoItsFor() {
                   stores. It is about building a repeatable system for
                   presence, visibility and shopper interaction.
                 </p>
-
               </div>
             </Reveal>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {stages.map((stage, index) => {
-                const Icon = stage.icon;
+              {growthMoments.map((moment, index) => {
+                const Icon = moment.icon;
 
                 return (
-                  <Reveal key={stage.title} delay={index * 70}>
+                  <Reveal key={moment.title} delay={index * 70}>
                     <article className="h-full rounded-2xl border border-white/10 bg-white/[0.045] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-coral/40">
 
-                      <div className="flex size-11 items-center justify-center rounded-xl bg-white/10 text-coral">
-                        <Icon className="size-5" />
+                      <div className="text-coral">
+                        <Icon
+                          strokeWidth={1.7}
+                          className="size-8"
+                        />
                       </div>
 
                       <h3 className="mt-6 font-display text-lg font-extrabold leading-tight text-white">
-                        {stage.title}
+                        {moment.title}
                       </h3>
 
                       <p className="mt-3 text-sm leading-relaxed text-white/60">
-                        {stage.body}
+                        {moment.body}
                       </p>
 
                     </article>
@@ -321,8 +326,7 @@ function WhoItsFor() {
       </section>
 
       {/* =====================================================
-          HOW THE MODEL WORKS
-          NEW DESIGN
+          OPERATING SYSTEM
       ===================================================== */}
 
       <section className="bg-background py-24 lg:py-32">
@@ -330,7 +334,9 @@ function WhoItsFor() {
 
           <Reveal>
             <div className="max-w-3xl">
-              <Eyebrow>What changes when you work with us</Eyebrow>
+              <Eyebrow>
+                What changes when you work with us
+              </Eyebrow>
 
               <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.04em] text-foreground lg:text-5xl">
                 You get an operating system for the shelf.
@@ -344,23 +350,20 @@ function WhoItsFor() {
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid overflow-hidden rounded-2xl border border-border md:grid-cols-2 lg:grid-cols-4">
 
             {operatingModel.map((item, index) => {
               const Icon = item.icon;
 
               return (
                 <Reveal key={item.title} delay={index * 60}>
-                  <article className="group h-full bg-white p-7 transition-colors duration-300 hover:bg-sand lg:p-8">
+                  <article className="group h-full border-b border-border bg-white p-7 transition-colors duration-300 hover:bg-sand md:border-r md:last:border-r-0 lg:border-b-0 lg:border-r lg:last:border-r-0 lg:p-8">
 
-                    <div className="flex items-start justify-between">
-                      <div className="flex size-11 items-center justify-center rounded-xl bg-brand-deep text-white">
-                        <Icon className="size-5" />
-                      </div>
-
-                      <span className="font-display text-xs font-bold text-muted-foreground/40">
-                        0{index + 1}
-                      </span>
+                    <div className="flex size-10 items-center justify-center rounded-lg bg-brand-deep/5 text-brand-deep transition-colors duration-300 group-hover:bg-coral/10 group-hover:text-coral">
+                      <Icon
+                        strokeWidth={1.7}
+                        className="size-5"
+                      />
                     </div>
 
                     <h3 className="mt-7 font-display text-lg font-extrabold text-foreground">
@@ -382,25 +385,24 @@ function WhoItsFor() {
       </section>
 
       {/* =====================================================
-          CATEGORY / BRAND FIT
-          NEW DESIGN
+          WHERE WE FIT
       ===================================================== */}
 
       <section className="bg-sand py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
           <Reveal>
-            <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+            <div className="grid gap-8 lg:grid-cols-[1fr_0.65fr] lg:items-end">
 
-              <div className="max-w-3xl">
+              <div>
                 <Eyebrow>Where we fit</Eyebrow>
 
-                <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.04em] text-foreground lg:text-5xl">
+                <h2 className="mt-5 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-[-0.04em] text-foreground lg:text-5xl">
                   Built for products that need a human moment at retail.
                 </h2>
               </div>
 
-              <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+              <p className="max-w-md text-sm leading-relaxed text-muted-foreground lg:justify-self-end">
                 From everyday consumer products to emerging D2C brands,
                 our field model is designed around the realities of the
                 physical shelf.
@@ -416,12 +418,9 @@ function WhoItsFor() {
 
                   <div className="flex h-full flex-col justify-between">
 
-                    <div className="flex size-9 items-center justify-center rounded-lg bg-brand-deep/5 text-brand-deep transition-colors duration-300 group-hover:bg-coral/10 group-hover:text-coral">
-                      <ShoppingBag className="size-4" />
-                    </div>
+                    <div className="h-1 w-8 rounded-full bg-coral transition-all duration-300 group-hover:w-12" />
 
                     <div className="mt-10">
-
                       <h3 className="font-display text-lg font-extrabold text-foreground">
                         {industry.title}
                       </h3>
@@ -429,7 +428,6 @@ function WhoItsFor() {
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                         {industry.body}
                       </p>
-
                     </div>
 
                   </div>
@@ -443,7 +441,59 @@ function WhoItsFor() {
       </section>
 
       {/* =====================================================
-          EXISTING FINAL CTA
+          FINAL CUSTOM CTA
+      ===================================================== */}
+
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl bg-brand-deep p-8 text-white sm:p-12 lg:p-16">
+
+              <div className="absolute -right-24 -top-24 size-72 rounded-full border border-white/10" />
+
+              <div className="absolute -right-8 -top-8 size-40 rounded-full border border-coral/20" />
+
+              <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+
+                <div className="max-w-3xl">
+
+                  <p className="text-xs font-bold uppercase tracking-[0.28em] text-coral">
+                    Ready for the shelf
+                  </p>
+
+                  <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.035em] text-white lg:text-5xl">
+                    Your next retail phase needs more than distribution.
+                  </h2>
+
+                  <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/65">
+                    It needs people, process and measurement working
+                    together at the point where the shopper makes a
+                    decision.
+                  </p>
+
+                </div>
+
+                <Link
+                  to="/contact"
+                  className="group inline-flex w-fit items-center gap-3 rounded-xl bg-coral px-6 py-4 font-display text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  Talk to NM Ingenious
+                  <ArrowUpRight
+                    className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
+
+              </div>
+
+            </div>
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          EXISTING GLOBAL CTA
       ===================================================== */}
 
       <CtaBand />
