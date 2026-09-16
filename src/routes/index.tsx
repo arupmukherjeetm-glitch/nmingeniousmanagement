@@ -91,22 +91,24 @@ function Hero() {
           <div className="relative z-20 order-2 lg:order-1">
 
             <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.93] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[60px] xl:text-[68px]">
+  <span className="block">
+    You built the{" "}
+    <span className="hero-highlight hero-highlight-product">
+      <span className="hero-highlight-text">product.</span>
+      <span className="hero-highlight-stroke" aria-hidden="true" />
+      <span className="hero-highlight-dot" aria-hidden="true" />
+    </span>
+  </span>
 
-              <span className="block">
-                You built the{" "}
-                <span className="hero-word-underline hero-product">
-                  product.
-                </span>
-              </span>
-
-              <span className="mt-2 block text-coral">
-                We get it to the{" "}
-                <span className="hero-word-underline hero-people">
-                  people.
-                </span>
-              </span>
-
-            </h1>
+  <span className="mt-2 block text-coral">
+    We get it to the{" "}
+    <span className="hero-highlight hero-highlight-people">
+      <span className="hero-highlight-text">people.</span>
+      <span className="hero-highlight-stroke" aria-hidden="true" />
+      <span className="hero-highlight-dot" aria-hidden="true" />
+    </span>
+  </span>
+</h1>
 
             <p className="mt-6 max-w-[510px] text-[13px] leading-5 text-muted-foreground sm:text-[14px] sm:leading-6 lg:mt-7">
               NM Ingenious turns shelf presence into sell-out through
