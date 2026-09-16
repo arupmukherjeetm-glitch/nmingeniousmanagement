@@ -327,30 +327,25 @@ export const stats = [
 export const aboutStats = stats;
 
 export const problemSignals = [
-  { n: "01", title: "Listed, but not moving", body: "Your product is in stores, but offtake is below expectation." },
-  { n: "02", title: "Visible, but not chosen", body: "Your brand is seen, but shoppers still pick competition." },
+  { title: "Listed, but not moving", body: "Your product is in stores, but offtake is below expectation." },
+  {title: "Visible, but not chosen", body: "Your brand is seen, but shoppers still pick competition." },
   {
-    n: "03",
     title: "Promoters present, but not productive",
     body: "Attendance is happening, but shopper interaction and conversion are weak.",
   },
   {
-    n: "04",
     title: "Activations running, but not converting",
     body: "Sampling and demos are happening, but not translating into purchase.",
   },
   {
-    n: "05",
     title: "Reports coming, but not revealing",
     body: "You get data, but not enough insight into what is blocking sell-out.",
   },
   {
-    n: "06",
     title: "Competitors winning silently",
     body: "Competitor offers, promoters, displays and retailer push are influencing shopper decisions.",
   },
   {
-    n: "07",
     title: "Trade spends leaking",
     body: "Displays, POSM, promoters and schemes are not translating into measurable store performance.",
   },
@@ -1047,7 +1042,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "btl-activations": {
     challengeTitle: "Footfall is not a result",
     challenge: [
-      "Most activation reports end with contacts and samples. Neither is a business outcome. The question a brand should ask is what a converted trial cost and how many of those shoppers came back.",
+      "Most activation reports end with s and samples. Neither is a business outcome. The question a brand should ask is what a converted trial cost and how many of those shoppers came back.",
       "Activations also fail quietly on placement: the right idea at the wrong catchment, on the wrong day, in front of the wrong shopper.",
     ],
     approachTitle: "Planned for reach, judged on trial",
