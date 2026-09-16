@@ -99,7 +99,7 @@ function isImageFreeService(service: { name: string; slug: string }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ICON MAPPING                                                               */
+/* ICONS                                                                      */
 /* -------------------------------------------------------------------------- */
 
 function getServiceIcon(name: string, slug: string) {
@@ -121,7 +121,7 @@ function getServiceIcon(name: string, slug: string) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* IMAGE SERVICE CARD                                                         */
+/* IMAGE CARD                                                                 */
 /* -------------------------------------------------------------------------- */
 
 function ImageServiceCard({
@@ -132,51 +132,45 @@ function ImageServiceCard({
   index: number;
 }) {
   return (
-    <Reveal delay={index * 60}>
+    <Reveal delay={index * 50}>
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_22px_60px_rgba(11,27,51,0.10)]"
+        className="group block h-full overflow-hidden rounded-[1.35rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_20px_50px_rgba(11,27,51,0.10)]"
       >
-        {/* ---------------------------------------------------------------- */}
-        {/* FULL IMAGE — NO CROPPING                                         */}
-        {/* ---------------------------------------------------------------- */}
-
-        <div className="relative overflow-hidden bg-muted/[0.08]">
+        {/* IMAGE */}
+        <div className="relative h-[245px] overflow-hidden bg-muted/10">
           <img
             src={service.image}
             alt={service.caption}
-            loading={index < 2 ? "eager" : "lazy"}
-            className="block h-auto w-full object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.015]"
+            loading={index < 4 ? "eager" : "lazy"}
+            className="size-full object-cover object-center transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
           />
 
-          {/* Light layer over image */}
-          <div className="pointer-events-none absolute inset-0 bg-white/[0.09] transition-opacity duration-500 group-hover:bg-white/[0.035]" />
+          {/* LIGHT LAYER */}
+          <div className="pointer-events-none absolute inset-0 bg-white/[0.10] transition-opacity duration-500 group-hover:bg-white/[0.045]" />
         </div>
 
-        {/* ---------------------------------------------------------------- */}
-        {/* CONTENT                                                          */}
-        {/* ---------------------------------------------------------------- */}
-
-        <div className="p-6 sm:p-7 lg:p-8">
-          <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
+        {/* CONTENT */}
+        <div className="p-5">
+          <p className="font-display text-[9px] font-extrabold uppercase tracking-[0.16em] text-coral">
             {service.tagline}
           </p>
 
-          <h3 className="mt-3 font-display text-2xl font-extrabold leading-[1.05] tracking-[-0.02em] text-foreground transition-colors duration-300 group-hover:text-brand lg:text-[1.75rem]">
+          <h2 className="mt-2 font-display text-xl font-extrabold leading-[1.08] tracking-[-0.02em] text-foreground transition-colors duration-300 group-hover:text-brand">
             {service.name}
-          </h3>
+          </h2>
 
-          <p className="mt-4 text-sm leading-6 text-muted-foreground">
+          <p className="mt-3 line-clamp-3 text-xs leading-5 text-muted-foreground">
             {service.summary}
           </p>
 
-          <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
-            <span className="font-display text-[10px] font-extrabold uppercase tracking-[0.14em] text-brand">
+          <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
+            <span className="font-display text-[9px] font-extrabold uppercase tracking-[0.13em] text-brand">
               Explore service
             </span>
 
-            <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1.5" />
+            <ArrowRight className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -185,7 +179,7 @@ function ImageServiceCard({
 }
 
 /* -------------------------------------------------------------------------- */
-/* NORMAL ICON SERVICE CARD                                                   */
+/* ICON CARD                                                                  */
 /* -------------------------------------------------------------------------- */
 
 function IconServiceCard({
@@ -198,50 +192,42 @@ function IconServiceCard({
   const Icon = getServiceIcon(service.name, service.slug);
 
   return (
-    <Reveal delay={index * 60}>
+    <Reveal delay={index * 50}>
       <Link
         to="/services/$slug"
         params={{ slug: service.slug }}
-        className="group block h-full overflow-hidden rounded-[1.5rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_22px_60px_rgba(11,27,51,0.10)]"
+        className="group block h-full overflow-hidden rounded-[1.35rem] border border-border/70 bg-background transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_20px_50px_rgba(11,27,51,0.10)]"
       >
-        {/* ---------------------------------------------------------------- */}
-        {/* SIMPLE NORMAL ICON AREA                                         */}
-        {/* ---------------------------------------------------------------- */}
-
-        <div className="relative flex h-[190px] items-center justify-center overflow-hidden bg-muted/[0.16] sm:h-[205px]">
-          {/* Extremely subtle brand wash */}
+        {/* NORMAL ICON AREA */}
+        <div className="relative flex h-[150px] items-center justify-center overflow-hidden bg-muted/[0.16]">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand/[0.018] via-transparent to-coral/[0.025]" />
 
-          {/* Normal, clearly visible icon */}
           <Icon
-            className="relative size-12 text-brand transition-all duration-500 group-hover:scale-[1.04] group-hover:text-coral"
+            className="relative size-12 text-brand transition-all duration-500 group-hover:scale-[1.05] group-hover:text-coral"
             strokeWidth={1.2}
           />
         </div>
 
-        {/* ---------------------------------------------------------------- */}
-        {/* CONTENT                                                          */}
-        {/* ---------------------------------------------------------------- */}
-
-        <div className="p-6 sm:p-7 lg:p-8">
-          <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.18em] text-coral">
+        {/* CONTENT */}
+        <div className="p-5">
+          <p className="font-display text-[9px] font-extrabold uppercase tracking-[0.16em] text-coral">
             {service.tagline}
           </p>
 
-          <h3 className="mt-3 font-display text-2xl font-extrabold leading-[1.05] tracking-[-0.02em] text-foreground transition-colors duration-300 group-hover:text-brand lg:text-[1.75rem]">
+          <h2 className="mt-2 font-display text-xl font-extrabold leading-[1.08] tracking-[-0.02em] text-foreground transition-colors duration-300 group-hover:text-brand">
             {service.name}
-          </h3>
+          </h2>
 
-          <p className="mt-4 text-sm leading-6 text-muted-foreground">
+          <p className="mt-3 line-clamp-3 text-xs leading-5 text-muted-foreground">
             {service.summary}
           </p>
 
-          <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
-            <span className="font-display text-[10px] font-extrabold uppercase tracking-[0.14em] text-brand">
+          <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
+            <span className="font-display text-[9px] font-extrabold uppercase tracking-[0.13em] text-brand">
               Explore service
             </span>
 
-            <ArrowRight className="size-4 text-coral transition-transform duration-300 group-hover:translate-x-1.5" />
+            <ArrowRight className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -383,7 +369,7 @@ function ConnectionSection() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* MAIN PAGE                                                                  */
+/* PAGE                                                                       */
 /* -------------------------------------------------------------------------- */
 
 function ServicesIndex() {
@@ -397,13 +383,10 @@ function ServicesIndex() {
 
   return (
     <>
-      {/* ------------------------------------------------------------------ */}
-      {/* INTRO                                                               */}
-      {/* ------------------------------------------------------------------ */}
-
+      {/* PAGE INTRO */}
       <section className="bg-background pt-16 lg:pt-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="max-w-3xl pb-12 lg:pb-16">
+          <div className="max-w-3xl pb-10 lg:pb-14">
             <Eyebrow>Services</Eyebrow>
 
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-[-0.035em] text-foreground sm:text-5xl lg:text-6xl">
@@ -419,14 +402,13 @@ function ServicesIndex() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* SERVICES                                                            */}
-      {/* ------------------------------------------------------------------ */}
+      {/* ================================================================ */}
+      {/* ROW 1 — FOUR IMAGE SERVICES                                     */}
+      {/* ================================================================ */}
 
-      <section className="bg-background pb-20 lg:pb-28">
+      <section className="bg-background pb-6 lg:pb-8">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2">
-            {/* 4 IMAGE SERVICES */}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {imageServices.map((service, index) => (
               <ImageServiceCard
                 key={service.slug}
@@ -434,8 +416,17 @@ function ServicesIndex() {
                 index={index}
               />
             ))}
+          </div>
+        </div>
+      </section>
 
-            {/* 4 NON-IMAGE SERVICES */}
+      {/* ================================================================ */}
+      {/* ROW 2 — FOUR ICON SERVICES                                      */}
+      {/* ================================================================ */}
+
+      <section className="bg-background pb-20 lg:pb-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {iconServices.map((service, index) => (
               <IconServiceCard
                 key={service.slug}
@@ -447,22 +438,13 @@ function ServicesIndex() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* ONE SYSTEM                                                          */}
-      {/* ------------------------------------------------------------------ */}
-
+      {/* ONE SYSTEM */}
       <OperatingSystemSection />
 
-      {/* ------------------------------------------------------------------ */}
-      {/* HOW IT CONNECTS                                                     */}
-      {/* ------------------------------------------------------------------ */}
-
+      {/* HOW IT CONNECTS */}
       <ConnectionSection />
 
-      {/* ------------------------------------------------------------------ */}
-      {/* CTA                                                                 */}
-      {/* ------------------------------------------------------------------ */}
-
+      {/* CTA */}
       <CtaBand />
     </>
   );
