@@ -150,17 +150,16 @@ function Hero() {
 
               <div className="overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
 
-  <video
-    src={heroVideoUrl}
-    autoPlay
-    loop
-    muted
-    playsInline
-    preload="auto"
-    className="block aspect-[16/9] w-full object-cover object-center"
-  />
-
-</div>
+                <video
+  src={heroVideoUrl}
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="auto"
+  className="block aspect-[16/9] w-full object-contain object-center"
+  style={{ backgroundColor: "var(--brand-deep)" }}
+/>
 
                 <div
                   aria-hidden
