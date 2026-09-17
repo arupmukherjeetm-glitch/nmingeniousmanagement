@@ -149,7 +149,8 @@ function Hero() {
             <div className="relative z-10 ml-auto w-full max-w-[720px]">
 
               <div className="overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
-<video
+
+  <video
     src={heroVideoUrl}
     autoPlay
     loop
@@ -158,6 +159,7 @@ function Hero() {
     preload="auto"
     className="block aspect-[16/9] w-full object-cover object-center"
   />
+
 </div>
 
                 <div
