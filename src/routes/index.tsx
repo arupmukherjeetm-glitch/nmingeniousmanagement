@@ -138,36 +138,38 @@ function Hero() {
           {/* =====================================================
               VIDEO
           ===================================================== */}
-          <div className="relative z-10 ml-auto w-full max-w-[720px]">
+          <div className="relative z-10 order-1 lg:order-2">
 
-  {/* Decorative coral corner */}
-  <div
-    aria-hidden
-    className="absolute -right-2 -top-2 z-0 h-16 w-16 rounded-[20px] bg-coral sm:-right-3 sm:-top-3 sm:h-20 sm:w-20 lg:-right-5 lg:-top-5"
-  />
+            {/* Decorative coral corner */}
+            <div
+              aria-hidden
+              className="absolute -right-2 -top-2 z-0 h-16 w-16 rounded-[20px] bg-coral sm:-right-3 sm:-top-3 sm:h-20 sm:w-20 lg:-right-5 lg:-top-5"
+            />
 
-  <div className="relative z-10 overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
+            <div className="relative z-10 ml-auto w-full max-w-[720px]">
 
-    <div className="aspect-[16/9] w-full overflow-hidden">
-      <video
-        src={heroVideoUrl}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="block h-full w-full scale-[2.8] object-cover object-center"
-      />
-    </div>
+              {/* VIDEO FRAME */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
 
-    <div
-      aria-hidden
-      className="h-1.5 w-full bg-coral"
-    />
+                <video
+                  src={heroVideoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="absolute inset-0 block h-full w-full scale-[2.2] object-cover object-center sm:scale-[2.5] lg:scale-[2.8]"
+                />
 
-  </div>
+                {/* Bottom coral accent */}
+                <div
+                  aria-hidden
+                  className="absolute bottom-0 left-0 right-0 z-20 h-1.5 bg-coral"
+                />
 
-</div>
+              </div>
+
+            </div>
           </div>
 
         </div>
