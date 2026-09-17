@@ -149,17 +149,17 @@ function Hero() {
             <div className="relative z-10 ml-auto w-full max-w-[720px]">
 
               <div className="overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
-<div className="aspect-[16/9] w-full overflow-hidden">
-    <video
-      src={heroVideoUrl}
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="auto"
-      className="block h-full w-full scale-[1.39] object-cover object-top"
-    />
-  </div>
+<div className="relative aspect-[16/9] w-full overflow-hidden">
+  <video
+    src={heroVideoUrl}
+    autoPlay
+    loop
+    muted
+    playsInline
+    preload="auto"
+    className="absolute inset-0 z-10 h-full w-full scale-[1.18] object-cover object-top"
+  />
+</div>
 
                 <div
                   aria-hidden
