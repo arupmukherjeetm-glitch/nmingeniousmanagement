@@ -157,84 +157,134 @@ export function CtaBand() {
    CLIENT LOGO WALL
    ========================================================= */
 
-export function LogoWall({ compact = false }: { compact?: boolean }) {
-  const row = [...clientLogos, ...clientLogos];
+export function LogoWall() {
+  const logos = [
+    {
+      name: "Marico",
+      src: "/logos/marico.png",
+    },
+    {
+      name: "Castrol",
+      src: "/logos/castrol.png",
+    },
+    {
+      name: "Cipla Health",
+      src: "/logos/cipla-health.png",
+    },
+    {
+      name: "Ariel",
+      src: "/logos/ariel.png",
+    },
+    {
+      name: "Ambi Pur",
+      src: "/logos/ambi-pur.png",
+    },
+    {
+      name: "Bournvita",
+      src: "/logos/bournvita.png",
+    },
+    {
+      name: "Complan",
+      src: "/logos/complan.png",
+    },
+    {
+      name: "Pillsbury",
+      src: "/logos/pillsbury.png",
+    },
+  ];
 
   return (
-    <section
-      className={cn(
-        "w-full overflow-hidden bg-background",
-        compact ? "py-16" : "py-20 lg:py-28"
-      )}
-    >
-      {/* Heading */}
-      <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
-        {!compact && (
-          <div className="max-w-3xl">
-            <Eyebrow>Trusted by</Eyebrow>
+    <section className="bg-background py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-            <h2 className="mt-5 max-w-3xl font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-foreground lg:text-5xl">
-              Already trusted on the shelves of India's biggest brands.
-            </h2>
+        {/* =====================================================
+            HEADER
+        ====================================================== */}
 
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              From global FMCG leaders to new-age brands, companies hand us
-              the last three feet between their product and their shopper.
-            </p>
-          </div>
-        )}
-      </div>
+        <div className="max-w-3xl">
+          <h2
+            className="
+              font-display
+              text-3xl
+              font-extrabold
+              leading-[1.02]
+              tracking-[-0.035em]
+              text-foreground
+              sm:text-4xl
+              lg:text-5xl
+            "
+          >
+            Already trusted on the shelves of
+            <br />
+            India&apos;s biggest brands.
+          </h2>
 
-      {/* Logo marquee */}
-      <div
-        className="relative mt-14 w-full overflow-hidden"
-        style={{
-          maskImage:
-            "linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%)",
-        }}
-      >
-        <div className="marquee-track flex w-max items-center gap-6 lg:gap-8">
-          {row.map((logo, index) => (
+          <p
+            className="
+              mt-6
+              max-w-2xl
+              text-sm
+              leading-7
+              text-muted-foreground
+              sm:text-base
+            "
+          >
+            From global FMCG leaders to new-age brands, companies hand us
+            the last three feet between their product and their shopper.
+          </p>
+        </div>
+
+
+        {/* =====================================================
+            LOGO GRID
+        ====================================================== */}
+
+        <div
+          className="
+            mt-14
+            grid
+            grid-cols-2
+            items-center
+            gap-x-8
+            gap-y-10
+            sm:grid-cols-4
+            lg:grid-cols-8
+          "
+        >
+          {logos.map((logo) => (
             <div
-              key={`${logo.name}-${index}`}
+              key={logo.name}
               className="
+                group
                 flex
-                h-20
-                w-[135px]
-                shrink-0
+                min-h-[80px]
                 items-center
                 justify-center
-                sm:w-[145px]
-                lg:w-[155px]
               "
             >
               <img
-                src={logo.url}
+                src={logo.src}
                 alt={logo.name}
                 loading="lazy"
                 className="
                   block
-                  max-h-14
-                  max-w-[130px]
+                  h-auto
+                  max-h-16
                   w-auto
+                  max-w-[150px]
                   object-contain
-                  opacity-60
-                  grayscale
-                  transition-all
-                  duration-500
-                  hover:opacity-100
-                  hover:grayscale-0
-                  sm:max-h-16
-                  sm:max-w-[140px]
-                  lg:max-h-[68px]
-                  lg:max-w-[150px]
+                  opacity-100
+                  grayscale-0
+                  transition-transform
+                  duration-300
+                  ease-out
+                  group-hover:scale-105
                 "
               />
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
