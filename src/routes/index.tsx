@@ -75,105 +75,125 @@ function Home() {
 /* HERO */
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#F3F6FA]">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-        <div className="relative grid min-h-[500px] items-center gap-8 py-8 sm:min-h-[520px] sm:py-10 lg:min-h-[540px] lg:grid-cols-[0.88fr_1.12fr] lg:gap-10 lg:py-10 xl:gap-14">
+    <section
+      className="relative isolate min-h-[500px] overflow-hidden bg-brand-deep text-white sm:min-h-[530px] lg:min-h-[555px]"
+    >
+      {/* =====================================================
+          FULL-BLEED VIDEO
+      ===================================================== */}
+      <div className="absolute inset-0 overflow-hidden">
+        <video
+          src={heroVideoUrl}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-[center_36%] scale-[1.02] sm:object-[center_34%] lg:object-[center_32%]"
+        />
 
-          {/* Subtle decorative shape */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -left-24 top-10 h-48 w-48 rounded-full border-[18px] border-coral/[0.06]"
-          />
+        {/* Left cinematic gradient for readable typography */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background: `
+              linear-gradient(
+                90deg,
+                rgba(5, 30, 70, 0.96) 0%,
+                rgba(5, 30, 70, 0.90) 22%,
+                rgba(5, 30, 70, 0.70) 40%,
+                rgba(5, 30, 70, 0.38) 56%,
+                rgba(5, 30, 70, 0.12) 76%,
+                rgba(5, 30, 70, 0.05) 100%
+              )
+            `,
+          }}
+        />
 
-          {/* =====================================================
-              HERO COPY
-          ===================================================== */}
-          <div className="relative z-20 order-2 lg:order-1">
+        {/* Top cinematic fade */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-20"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(5,30,70,0.24), transparent)",
+          }}
+        />
 
-            <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.93] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[60px] xl:text-[68px]">
-              <span className="block">
-                You built the{" "}
-                <span className="hero-word hero-word-product">
-                  product.
-                </span>
-              </span>
+        {/* Bottom cinematic fade */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-28"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(5,30,70,0.55), transparent)",
+          }}
+        />
 
-              <span className="mt-2 block text-coral">
-                We get it to the{" "}
-                <span className="hero-word hero-word-people">
-                  people.
-                </span>
-              </span>
-            </h1>
+        {/* Subtle overall color treatment */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-brand-deep/[0.06]"
+        />
+      </div>
 
-            <p className="mt-6 max-w-[510px] text-[13px] leading-5 text-muted-foreground sm:text-[14px] sm:leading-6 lg:mt-7">
-              NM Ingenious turns shelf presence into sell-out through
-              trained promoters, disciplined retail execution and
-              real-time store intelligence.
-            </p>
+      {/* =====================================================
+          HERO CONTENT
+      ===================================================== */}
+      <div className="relative z-10 mx-auto flex min-h-[500px] max-w-[1500px] items-center px-5 sm:min-h-[530px] sm:px-8 lg:min-h-[555px] lg:px-12 xl:px-16">
+        <div className="w-full max-w-[620px] py-12 sm:py-14 lg:py-16">
+          <h1 className="max-w-[650px] font-display text-[46px] font-black leading-[0.9] tracking-[-0.06em] text-white sm:text-[58px] md:text-[64px] lg:text-[68px] xl:text-[76px]">
+            <span className="block">
+              You built the
+            </span>
 
-            <div className="mt-7 flex flex-wrap items-center gap-5">
+            <span className="block">
+              product.
+            </span>
 
-              <Link
-                to="/contact"
-                className="group inline-flex items-center gap-3 rounded-full bg-coral px-6 py-3.5 font-display text-xs font-bold text-coral-foreground shadow-[0_12px_28px_rgba(239,68,68,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
-              >
-                Request an Audit
+            <span className="mt-3 block text-coral">
+              We get it to the
+            </span>
 
-                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+            <span className="block text-coral">
+              people.
+            </span>
+          </h1>
 
-              <Link
-                to="/services"
-                className="group inline-flex items-center gap-2 font-display text-xs font-bold text-brand-deep"
-              >
-                Explore services
+          <p className="mt-6 max-w-[520px] text-[13px] leading-6 text-white/75 sm:text-[14px] sm:leading-6 lg:mt-7">
+            NM Ingenious turns shelf presence into sell-out through trained promoters,
+            disciplined retail execution and real-time store intelligence.
+          </p>
 
-                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+          <div className="mt-8 flex flex-wrap items-center gap-5 sm:gap-6">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-3 rounded-full bg-coral px-6 py-3.5 font-display text-xs font-bold text-white shadow-[0_14px_35px_rgba(239,68,68,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_18px_42px_rgba(239,68,68,0.36)] sm:px-7 sm:py-4"
+            >
+              Request an Audit
 
-            </div>
+              <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1 sm:size-4" />
+            </Link>
+
+            <Link
+              to="/services"
+              className="group inline-flex items-center gap-2 font-display text-xs font-bold text-white transition-colors duration-300 hover:text-coral"
+            >
+              Explore services
+
+              <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1 sm:size-4" />
+            </Link>
           </div>
-
-          {/* =====================================================
-              VIDEO
-          ===================================================== */}
-          <div className="relative z-10 order-1 lg:order-2">
-
-            {/* Decorative coral corner */}
-            <div
-              aria-hidden
-              className="absolute -right-2 -top-2 z-0 h-16 w-16 rounded-[20px] bg-coral sm:-right-3 sm:-top-3 sm:h-20 sm:w-20 lg:-right-5 lg:-top-5"
-            />
-
-            <div className="relative z-10 ml-auto w-full max-w-[720px]">
-
-              {/* VIDEO FRAME */}
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
-
-                <video
-                  src={heroVideoUrl}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="absolute inset-0 block h-full w-full scale-[2.2] object-cover object-center sm:scale-[2.5] lg:scale-[2.8]"
-                />
-
-                {/* Bottom coral accent */}
-                <div
-                  aria-hidden
-                  className="absolute bottom-0 left-0 right-0 z-20 h-1.5 bg-coral"
-                />
-
-              </div>
-
-            </div>
-          </div>
-
         </div>
       </div>
+
+      {/* Minimal coral brand accent */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 z-20 h-[4px] bg-coral"
+      />
     </section>
   );
 }
