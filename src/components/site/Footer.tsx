@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone, Smartphone } from "lucide-react";
+import { Mail, MapPin, Smartphone } from "lucide-react";
 import { logoUrl, services } from "@/lib/site-data";
 
 export function Footer() {
@@ -221,11 +221,12 @@ export function Footer() {
 
           </div>
 
+
           {/* =================================================
               COLUMN 2 — QUICK LINKS / SERVICES
           ================================================== */}
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-4">
 
             {/* HEADING */}
 
@@ -283,11 +284,12 @@ export function Footer() {
 
           </div>
 
+
           {/* =================================================
               COLUMN 3 — CONTACT INFO
           ================================================== */}
 
-          <div className="lg:col-span-3">
+          <div className="min-w-0 lg:col-span-4">
 
             {/* HEADING */}
 
@@ -332,6 +334,7 @@ export function Footer() {
 
               </div>
 
+
               {/* GOOGLE PLUS CODE */}
 
               <div className="border-l border-white/15 pl-8">
@@ -348,29 +351,11 @@ export function Footer() {
 
               </div>
 
-              {/* LANDLINE */}
 
-              <div className="flex items-center gap-3">
-
-                <Phone
-                  className="h-5 w-5 shrink-0 text-white"
-                  strokeWidth={2}
-                />
-
-                <a
-                  href="tel:+912249240438"
-                  className="
-                    text-white/75
-                    transition-colors
-                    hover:text-white
-                  "
-                >
-                  +91-2249240438
-                </a>
-
-              </div>
-
-              {/* MOBILE NUMBERS */}
+              {/* =================================================
+                  MOBILE NUMBERS
+                  LANDLINE REMOVED
+              ================================================== */}
 
               <div className="flex items-start gap-3">
 
@@ -421,7 +406,11 @@ export function Footer() {
 
               </div>
 
-              {/* EMAIL */}
+
+              {/* =================================================
+                  EMAIL
+                  SINGLE CONTINUOUS LINE
+              ================================================== */}
 
               <div className="flex items-start gap-3">
 
@@ -433,10 +422,12 @@ export function Footer() {
                 <a
                   href="mailto:business.enquiry@ingeniousmanagement.com?subject=enquiry"
                   className="
-                    break-all
+                    whitespace-nowrap
+                    text-[12px]
                     text-white/75
                     transition-colors
                     hover:text-white
+                    sm:text-[13px]
                   "
                 >
                   business.enquiry@ingeniousmanagement.com
@@ -447,6 +438,7 @@ export function Footer() {
             </div>
 
           </div>
+
 
           {/* =================================================
               COLUMN 4 — BRANCH OFFICES
@@ -474,6 +466,7 @@ export function Footer() {
 
             </div>
 
+
             {/* BANGALORE */}
 
             <div className="mb-6">
@@ -483,6 +476,7 @@ export function Footer() {
               </p>
 
             </div>
+
 
             {/* NEW DELHI */}
 
@@ -499,6 +493,7 @@ export function Footer() {
         </div>
 
       </div>
+
 
       {/* =====================================================
           BOTTOM COPYRIGHT
