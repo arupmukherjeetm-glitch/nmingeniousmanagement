@@ -73,292 +73,422 @@ function Home() {
 }
 
 /* =========================================================
-   HERO
+   HERO — CINEMATIC 2026
 ========================================================= */
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#F3F6FA]">
-      {/* Very subtle background atmosphere */}
+    <section className="relative isolate overflow-hidden bg-[#F5F7FB]">
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
+
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 82% 42%, rgba(20,58,120,0.07), transparent 34%), radial-gradient(circle at 4% 35%, rgba(239,68,68,0.055), transparent 22%)",
-        }}
-      />
+      >
+        {/* Soft brand glow */}
+        <div
+          className="
+            absolute
+            -left-40
+            top-[-180px]
+            h-[520px]
+            w-[520px]
+            rounded-full
+            bg-brand/[0.045]
+            blur-3xl
+          "
+        />
 
-      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-7 lg:px-10 xl:px-12">
+        <div
+          className="
+            absolute
+            right-[-160px]
+            bottom-[-220px]
+            h-[520px]
+            w-[520px]
+            rounded-full
+            bg-coral/[0.045]
+            blur-3xl
+          "
+        />
+
+        {/* Very subtle grid */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(8,43,97,1) 1px, transparent 1px), linear-gradient(90deg, rgba(8,43,97,1) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+      </div>
+
+      {/* =====================================================
+          MAIN HERO
+      ===================================================== */}
+
+      <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12 xl:px-16">
         <div
           className="
             grid
             items-center
-            gap-8
-            py-9
-            sm:py-10
-            lg:min-h-[470px]
-            lg:grid-cols-[0.82fr_1.18fr]
-            lg:gap-12
-            lg:py-11
-            xl:min-h-[490px]
-            xl:gap-16
+            gap-12
+            py-14
+            sm:py-16
+            lg:min-h-[570px]
+            lg:grid-cols-[0.78fr_1.22fr]
+            lg:gap-14
+            lg:py-16
+            xl:min-h-[600px]
+            xl:gap-20
           "
         >
-          {/* =====================================================
-              CONTENT
-          ===================================================== */}
+
+          {/* =================================================
+              LEFT — MESSAGE
+          ================================================= */}
 
           <div className="relative z-20 order-2 lg:order-1">
-            <h1
-              className="
-                max-w-[590px]
-                font-display
-                text-[43px]
-                font-black
-                leading-[0.94]
-                tracking-[-0.055em]
-                text-brand-deep
-                sm:text-[54px]
-                lg:text-[58px]
-                xl:text-[64px]
-              "
-            >
-              <span className="block">
-                You built the{" "}
-                <span className="hero-word hero-word-product">
+            <div className="max-w-[610px]">
+
+              <h1
+                className="
+                  font-display
+                  text-[46px]
+                  font-black
+                  leading-[0.91]
+                  tracking-[-0.06em]
+                  text-brand-deep
+                  sm:text-[58px]
+                  md:text-[64px]
+                  lg:text-[61px]
+                  xl:text-[72px]
+                "
+              >
+                <span className="block">
+                  You built the
+                </span>
+
+                <span className="block">
                   product.
                 </span>
-              </span>
 
-              <span className="mt-2 block text-coral">
-                We get it to the{" "}
-                <span className="hero-word hero-word-people">
+                <span
+                  className="
+                    mt-2
+                    block
+                    text-coral
+                  "
+                >
+                  We get it to the
+                </span>
+
+                <span
+                  className="
+                    block
+                    text-coral
+                  "
+                >
                   people.
                 </span>
-              </span>
-            </h1>
+              </h1>
 
-            <p
-              className="
-                mt-6
-                max-w-[510px]
-                text-[13px]
-                leading-6
-                text-muted-foreground
-                sm:text-[14px]
-                lg:mt-7
-              "
-            >
-              NM Ingenious turns shelf presence into sell-out through
-              trained promoters, disciplined retail execution and
-              real-time store intelligence.
-            </p>
+              {/* Small brand rule */}
+              <div className="mt-8 flex items-center gap-3">
+                <span className="h-[3px] w-10 rounded-full bg-coral" />
+                <span className="h-px w-16 bg-brand-deep/15" />
+              </div>
 
-            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
-              <Link
-                to="/contact"
+              <p
                 className="
-                  group
-                  inline-flex
-                  items-center
-                  gap-3
-                  rounded-full
-                  bg-coral
-                  px-6
-                  py-3.5
-                  font-display
-                  text-xs
-                  font-bold
-                  text-coral-foreground
-                  shadow-[0_12px_30px_rgba(239,68,68,0.20)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-0.5
-                  hover:shadow-[0_16px_34px_rgba(239,68,68,0.26)]
-                  hover:brightness-105
+                  mt-6
+                  max-w-[500px]
+                  text-[13px]
+                  leading-6
+                  text-slate-600
+                  sm:text-[14px]
+                  sm:leading-6
                 "
               >
-                Request an Audit
+                NM Ingenious turns shelf presence into sell-out through
+                trained promoters, disciplined retail execution and
+                real-time store intelligence.
+              </p>
 
-                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              {/* =================================================
+                  CTA
+              ================================================= */}
 
-              <Link
-                to="/services"
-                className="
-                  group
-                  inline-flex
-                  items-center
-                  gap-2
-                  font-display
-                  text-xs
-                  font-bold
-                  text-brand-deep
-                  transition-colors
-                  duration-300
-                  hover:text-coral
-                "
-              >
-                Explore services
+              <div className="mt-8 flex flex-wrap items-center gap-6">
 
-                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+                <Link
+                  to="/contact"
+                  className="
+                    group
+                    inline-flex
+                    items-center
+                    gap-3
+                    rounded-full
+                    bg-coral
+                    px-7
+                    py-4
+                    font-display
+                    text-xs
+                    font-bold
+                    text-white
+                    shadow-[0_14px_35px_rgba(239,68,68,0.20)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:shadow-[0_20px_40px_rgba(239,68,68,0.25)]
+                  "
+                >
+                  Request an Audit
+
+                  <ArrowRight
+                    className="
+                      size-4
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  />
+                </Link>
+
+                <Link
+                  to="/services"
+                  className="
+                    group
+                    inline-flex
+                    items-center
+                    gap-2
+                    font-display
+                    text-xs
+                    font-bold
+                    text-brand-deep
+                    transition-colors
+                    duration-300
+                    hover:text-coral
+                  "
+                >
+                  Explore services
+
+                  <ArrowRight
+                    className="
+                      size-4
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  />
+                </Link>
+
+              </div>
             </div>
           </div>
 
-          {/* =====================================================
-              CINEMATIC VIDEO
-          ===================================================== */}
+
+          {/* =================================================
+              RIGHT — CINEMATIC VIDEO
+          ================================================= */}
 
           <div className="relative z-10 order-1 lg:order-2">
-            <div className="relative ml-auto w-full max-w-[760px]">
 
-              {/* soft depth behind video */}
-              <div
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  -inset-x-3
-                  bottom-[-14px]
-                  top-8
-                  rounded-[32px]
-                  bg-brand-deep/[0.08]
-                  blur-2xl
-                "
-              />
+            {/* =================================================
+                OFFSET CORAL BLOCK
+            ================================================= */}
 
-              {/* Coral edge - decorative only */}
-              <div
-                aria-hidden="true"
-                className="
-                  absolute
-                  -right-2
-                  -top-2
-                  h-[72px]
-                  w-[72px]
-                  rounded-[24px]
-                  bg-coral
-                  sm:-right-3
-                  sm:-top-3
-                  sm:h-[84px]
-                  sm:w-[84px]
-                  lg:-right-4
-                  lg:-top-4
-                "
-              />
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                -right-3
+                -top-3
+                h-24
+                w-24
+                rounded-[28px]
+                bg-coral
+                sm:-right-4
+                sm:-top-4
+                sm:h-28
+                sm:w-28
+                lg:-right-5
+                lg:-top-5
+              "
+            />
 
-              {/* VIDEO FRAME */}
+            {/* =================================================
+                VIDEO SHADOW
+            ================================================= */}
+
+            <div
+              aria-hidden="true"
+              className="
+                pointer-events-none
+                absolute
+                -inset-5
+                rounded-[42px]
+                bg-brand-deep/[0.06]
+                blur-3xl
+              "
+            />
+
+            {/* =================================================
+                VIDEO CARD
+            ================================================= */}
+
+            <div
+              className="
+                relative
+                overflow-hidden
+                rounded-[28px]
+                border
+                border-white
+                bg-brand-deep
+                shadow-[0_30px_80px_rgba(8,43,97,0.20)]
+                sm:rounded-[32px]
+                lg:rounded-[36px]
+              "
+            >
+
+              {/* =================================================
+                  CINEMATIC VIEWPORT
+
+                  IMPORTANT:
+                  The viewport is intentionally slightly wider /
+                  shorter than the original 16:9 video.
+
+                  This naturally crops the lower part of the
+                  source video where the watermark sits.
+              ================================================= */}
+
               <div
                 className="
                   relative
+                  h-[255px]
+                  w-full
                   overflow-hidden
-                  rounded-[22px]
-                  border-[3px]
-                  border-white
-                  bg-brand-deep
-                  shadow-[0_24px_65px_rgba(8,43,97,0.18)]
-                  sm:rounded-[26px]
-                  lg:rounded-[28px]
+                  sm:h-[330px]
+                  md:h-[380px]
+                  lg:h-[390px]
+                  xl:h-[420px]
                 "
               >
-                {/* 
-                  Controlled cinematic height instead of a tall hero.
-                  The video remains wide and feels like a cover.
+
+                <video
+                  src={heroVideoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="
+                    absolute
+                    inset-0
+                    h-full
+                    w-full
+                    object-cover
+                    object-[center_18%]
+                    scale-[1.035]
+                  "
+                />
+
+                {/* =================================================
+                    CINEMATIC COLOR TREATMENT
+                ================================================= */}
+
+                {/* Very subtle navy tint */}
+                <div
+                  aria-hidden="true"
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    bg-brand-deep/[0.045]
+                  "
+                />
+
+                {/* Left-side depth */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-0 left-0 w-[38%]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, rgba(8,43,97,0.16), rgba(8,43,97,0.025), transparent)",
+                  }}
+                />
+
+                {/* Bottom cinematic fade
+                    This also gives additional protection around
+                    the lower edge without creating a visible block.
                 */}
                 <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%]"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(8,43,97,0.20), transparent)",
+                  }}
+                />
+
+                {/* Subtle edge vignette */}
+                <div
+                  aria-hidden="true"
                   className="
-                    relative
-                    h-[250px]
-                    w-full
-                    sm:h-[320px]
-                    md:h-[365px]
-                    lg:h-[350px]
-                    xl:h-[380px]
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    rounded-[28px]
+                    ring-1
+                    ring-inset
+                    ring-black/[0.06]
+                    sm:rounded-[32px]
+                    lg:rounded-[36px]
                   "
-                >
-                  <video
-                    src={heroVideoUrl}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    className="
-                      absolute
-                      inset-0
-                      h-full
-                      w-full
-                      object-cover
-                      object-center
-                    "
-                  />
+                />
 
-                  {/* =================================================
-                      CINEMATIC SHADING
-                      
-                      No text.
-                      No badges.
-                      No extra content.
-                  ================================================= */}
+                {/* =================================================
+                    BRAND ACCENT
+                ================================================= */}
 
-                  {/* overall refinement */}
-                  <div
-                    aria-hidden="true"
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-0
-                      bg-brand-deep/[0.05]
-                    "
-                  />
-
-                  {/* Left-to-right cinematic shade */}
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, rgba(8,43,97,0.16) 0%, rgba(8,43,97,0.03) 35%, transparent 62%)",
-                    }}
-                  />
-
-                  {/* Bottom shade helps suppress edited/watermark area */}
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[28%]"
-                    style={{
-                      background:
-                        "linear-gradient(to top, rgba(8,43,97,0.30) 0%, rgba(8,43,97,0.10) 45%, transparent 100%)",
-                    }}
-                  />
-
-                  {/* very subtle edge vignette */}
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      boxShadow:
-                        "inset 0 0 70px rgba(8,43,97,0.10)",
-                    }}
-                  />
-
-                  {/* Brand red finishing line */}
-                  <div
-                    aria-hidden="true"
-                    className="
-                      absolute
-                      inset-x-0
-                      bottom-0
-                      z-20
-                      h-[4px]
-                      bg-coral
-                    "
-                  />
-                </div>
+                <div
+                  aria-hidden="true"
+                  className="
+                    absolute
+                    bottom-0
+                    left-0
+                    right-0
+                    z-20
+                    h-[5px]
+                    bg-coral
+                  "
+                />
               </div>
             </div>
+
+
+            {/* =================================================
+                SMALL OFFSET SHADOW / CORNER
+            ================================================= */}
+
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                -bottom-3
+                -left-3
+                h-12
+                w-12
+                rounded-full
+                border
+                border-brand-deep/10
+                bg-white/60
+                backdrop-blur-sm
+              "
+            />
+
           </div>
         </div>
       </div>
