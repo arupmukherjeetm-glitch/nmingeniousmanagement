@@ -54,7 +54,7 @@ const pdm3 = { url: "/media/pdm3.png" };
 const pdm4 = { url: "/media/pdm4.png" };
 
 export const logoUrl = "/media/logo.jpg";
-export const heroVideoUrl = "media/hero_final (1).mp4";
+export const heroVideoUrl = "hero_section_video.mp4";
 export const madhaviUrl = "/media/madhavi.webp";
 export const virenUrl = "/media/viren.webp";
 
@@ -562,7 +562,6 @@ export const gallery = [
   { url: a38.url, alt: "" },
   { url: a39.url, alt: "" },
   { url: a40.url, alt: "" },
-  { url: a41.url, alt: "" },
   { url: a42.url, alt: "" },
   { url: a43.url, alt: "" },
   { url: a44.url, alt: "" },
@@ -598,11 +597,6 @@ export const foundersGallery = [
     image: "/media/founders-06.webp",
     alt: "Recognition moment from the Goldman Sachs 10,000 Women programme",
     size: "medium",
-  },
-  {
-    image: "/media/founders-07.webp",
-    alt: "NM Ingenious leadership speaking at an industry event",
-    size: "large",
   },
   {
     image: "/media/a29.webp",
