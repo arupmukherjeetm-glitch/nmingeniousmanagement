@@ -72,300 +72,108 @@ function Home() {
   );
 }
 
-/* =========================================================
-   HERO — FULL-BLEED CINEMATIC COVER
-========================================================= */
-
+/* HERO */
 function Hero() {
   return (
-    <section
-      className="
-        relative
-        isolate
-        min-h-[500px]
-        overflow-hidden
-        bg-brand-deep
-        text-white
-        sm:min-h-[530px]
-        lg:min-h-[555px]
-      "
-    >
-      {/* =====================================================
-          FULL-BLEED VIDEO
-      ===================================================== */}
+    <section className="relative overflow-hidden bg-[#F3F6FA]">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+        <div className="relative grid min-h-[500px] items-center gap-8 py-8 sm:min-h-[520px] sm:py-10 lg:min-h-[540px] lg:grid-cols-[0.88fr_1.12fr] lg:gap-10 lg:py-10 xl:gap-14">
 
-      <div className="absolute inset-0 overflow-hidden">
-        <video
-          src={heroVideoUrl}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          className="
-            absolute
-            inset-0
-            h-full
-            w-full
-            object-cover
-            object-[center_36%]
-            scale-[1.02]
-            sm:object-[center_34%]
-            lg:object-[center_32%]
-          "
-        />
-
-        {/* ===================================================
-            LEFT CINEMATIC GRADIENT
-            Keeps the headline highly readable.
-        =================================================== */}
-
-        <div
-          aria-hidden="true"
-          className="absolute inset-0"
-          style={{
-            background: `
-              linear-gradient(
-                90deg,
-                rgba(5, 30, 70, 0.96) 0%,
-                rgba(5, 30, 70, 0.90) 22%,
-                rgba(5, 30, 70, 0.70) 40%,
-                rgba(5, 30, 70, 0.38) 56%,
-                rgba(5, 30, 70, 0.12) 76%,
-                rgba(5, 30, 70, 0.05) 100%
-              )
-            `,
-          }}
-        />
-
-        {/* ===================================================
-            TOP CINEMATIC FADE
-        =================================================== */}
-
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-20"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(5,30,70,0.24), transparent)",
-          }}
-        />
-
-        {/* ===================================================
-            BOTTOM CINEMATIC FADE
-        =================================================== */}
-
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-28"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(5,30,70,0.55), transparent)",
-          }}
-        />
-
-        {/* ===================================================
-            SUBTLE OVERALL COLOR TREATMENT
-        =================================================== */}
-
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-brand-deep/[0.06]"
-        />
-      </div>
-
-      {/* =====================================================
-          HERO CONTENT
-      ===================================================== */}
-
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          flex
-          min-h-[500px]
-          max-w-[1500px]
-          items-center
-          px-5
-          sm:min-h-[530px]
-          sm:px-8
-          lg:min-h-[555px]
-          lg:px-12
-          xl:px-16
-        "
-      >
-        <div
-          className="
-            w-full
-            max-w-[620px]
-            py-12
-            sm:py-14
-            lg:py-16
-          "
-        >
-          {/* =================================================
-              HEADLINE
-          ================================================= */}
-
-          <h1
-            className="
-              max-w-[650px]
-              font-display
-              text-[46px]
-              font-black
-              leading-[0.9]
-              tracking-[-0.06em]
-              text-white
-              sm:text-[58px]
-              md:text-[64px]
-              lg:text-[68px]
-              xl:text-[76px]
-            "
-          >
-            <span className="block">
-              You built the
-            </span>
-
-            <span className="block">
-              product.
-            </span>
-
-            <span className="mt-3 block text-coral">
-              We get it to the
-            </span>
-
-            <span className="block text-coral">
-              people.
-            </span>
-          </h1>
-
-          {/* =================================================
-              DESCRIPTION
-          ================================================= */}
-
-          <p
-            className="
-              mt-6
-              max-w-[520px]
-              text-[13px]
-              leading-6
-              text-white/75
-              sm:text-[14px]
-              sm:leading-6
-              lg:mt-7
-            "
-          >
-            NM Ingenious turns shelf presence into sell-out through
-            trained promoters, disciplined retail execution and
-            real-time store intelligence.
-          </p>
-
-          {/* =================================================
-              CTA
-          ================================================= */}
-
+          {/* Subtle decorative shape */}
           <div
-            className="
-              mt-8
-              flex
-              flex-wrap
-              items-center
-              gap-5
-              sm:gap-6
-            "
-          >
-            {/* Primary CTA */}
+            aria-hidden
+            className="pointer-events-none absolute -left-24 top-10 h-48 w-48 rounded-full border-[18px] border-coral/[0.06]"
+          />
 
-            <Link
-              to="/contact"
-              className="
-                group
-                inline-flex
-                items-center
-                gap-3
-                rounded-full
-                bg-coral
-                px-6
-                py-3.5
-                font-display
-                text-xs
-                font-bold
-                text-white
-                shadow-[0_14px_35px_rgba(239,68,68,0.28)]
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:brightness-105
-                hover:shadow-[0_18px_42px_rgba(239,68,68,0.36)]
-                sm:px-7
-                sm:py-4
-              "
-            >
-              Request an Audit
+          {/* =====================================================
+              HERO COPY
+          ===================================================== */}
+          <div className="relative z-20 order-2 lg:order-1">
 
-              <ArrowRight
-                className="
-                  size-3.5
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                  sm:size-4
-                "
-              />
-            </Link>
+            <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.93] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[60px] xl:text-[68px]">
+              <span className="block">
+                You built the{" "}
+                <span className="hero-word hero-word-product">
+                  product.
+                </span>
+              </span>
 
-            {/* Secondary CTA */}
+              <span className="mt-2 block text-coral">
+                We get it to the{" "}
+                <span className="hero-word hero-word-people">
+                  people.
+                </span>
+              </span>
+            </h1>
 
-            <Link
-              to="/services"
-              className="
-                group
-                inline-flex
-                items-center
-                gap-2
-                font-display
-                text-xs
-                font-bold
-                text-white
-                transition-colors
-                duration-300
-                hover:text-coral
-              "
-            >
-              Explore services
+            <p className="mt-6 max-w-[510px] text-[13px] leading-5 text-muted-foreground sm:text-[14px] sm:leading-6 lg:mt-7">
+              NM Ingenious turns shelf presence into sell-out through
+              trained promoters, disciplined retail execution and
+              real-time store intelligence.
+            </p>
 
-              <ArrowRight
-                className="
-                  size-3.5
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-              />
-            </Link>
+            <div className="mt-7 flex flex-wrap items-center gap-5">
+
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-3 rounded-full bg-coral px-6 py-3.5 font-display text-xs font-bold text-coral-foreground shadow-[0_12px_28px_rgba(239,68,68,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
+              >
+                Request an Audit
+
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+              <Link
+                to="/services"
+                className="group inline-flex items-center gap-2 font-display text-xs font-bold text-brand-deep"
+              >
+                Explore services
+
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+            </div>
           </div>
+
+          {/* =====================================================
+              VIDEO
+          ===================================================== */}
+          <div className="relative z-10 order-1 lg:order-2">
+
+            {/* Decorative coral corner */}
+            <div
+              aria-hidden
+              className="absolute -right-2 -top-2 z-0 h-16 w-16 rounded-[20px] bg-coral sm:-right-3 sm:-top-3 sm:h-20 sm:w-20 lg:-right-5 lg:-top-5"
+            />
+
+            <div className="relative z-10 ml-auto w-full max-w-[720px]">
+
+              {/* VIDEO FRAME */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
+
+                <video
+                  src={heroVideoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="absolute inset-0 block h-full w-full scale-[2.2] object-cover object-center sm:scale-[2.5] lg:scale-[2.8]"
+                />
+
+                {/* Bottom coral accent */}
+                <div
+                  aria-hidden
+                  className="absolute bottom-0 left-0 right-0 z-20 h-1.5 bg-coral"
+                />
+
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
-
-      {/* =====================================================
-          CORAL BRAND ACCENT
-          Minimal — no decorative shapes.
-      ===================================================== */}
-
-      <div
-        aria-hidden="true"
-        className="
-          absolute
-          bottom-0
-          left-0
-          right-0
-          z-20
-          h-[4px]
-          bg-coral
-        "
-      />
     </section>
   );
 }
@@ -751,10 +559,7 @@ function ServicesSection() {
     <section className="w-full overflow-hidden bg-background py-20 lg:py-28">
       <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
 
-        {/* =====================================================
-            SECTION HEADER
-        ====================================================== */}
-
+        {/* SECTION HEADER */}
         <div className="max-w-2xl">
           <Eyebrow>What we do</Eyebrow>
 
@@ -765,986 +570,180 @@ function ServicesSection() {
             <br />
             the shelf.
           </h2>
+
+          <p className="mt-6 max-w-xl text-sm leading-7 text-muted-foreground lg:text-base">
+            From people at the shelf to the systems behind them, we provide the
+            execution, visibility and workforce infrastructure that keeps retail moving.
+          </p>
         </div>
 
-
-        {/* =====================================================
-            FIRST 4 SERVICES
-            Single column below LG
-            Two columns on LG+
-        ====================================================== */}
-
-        <div className="mt-10 grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-2">
-
-          {services.slice(0, 4).map((s, i) => (
-            <Reveal
-              key={s.slug}
-              delay={i * 50}
-              className="w-full min-w-0"
-            >
+        {/* FIRST 4 — IMAGE SERVICE CARDS */}
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {services.slice(0, 4).map((service, index) => (
+            <Reveal key={service.slug} delay={index * 50} className="h-full">
               <Link
                 to="/services/$slug"
-                params={{ slug: s.slug }}
-                className="
-                  group
-                  flex
-                  h-[230px]
-                  w-full
-                  min-w-0
-                  max-w-full
-                  overflow-hidden
-                  rounded-2xl
-                  border
-                  border-border
-                  bg-white
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
-                "
+                params={{ slug: service.slug }}
+                className="group flex h-full flex-col overflow-hidden rounded-[18px] border border-border bg-white transition-all duration-500 hover:-translate-y-1 hover:border-brand/20 hover:shadow-[0_18px_45px_rgba(20,45,90,0.10)]"
               >
-
-                {/* =================================================
-                    IMAGE
-                ================================================== */}
-
-                <div
-                  className="
-                    relative
-                    h-full
-                    w-[145px]
-                    shrink-0
-                    overflow-hidden
-                    bg-[#E9EEF5]
-                    sm:w-[160px]
-                    lg:w-[170px]
-                  "
-                >
-
-                  {/* Main image - fills the entire panel */}
-
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#EEF2F7]">
                   <img
-                    src={s.image}
-                    alt={s.caption}
-                    loading="lazy"
-                    className="
-                      relative
-                      z-10
-                      block
-                      h-full
-                      w-full
-                      object-cover
-                      object-center
-                      transition-transform
-                      duration-700
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
-                      group-hover:scale-[1.03]
-                    "
+                    src={service.image}
+                    alt={service.caption}
+                    loading={index < 2 ? "eager" : "lazy"}
+                    className="block h-full w-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]"
                   />
 
-                  {/* Bottom gradient */}
-
-                  <span
+                  <div
                     aria-hidden
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-x-0
-                      bottom-0
-                      z-20
-                      h-20
-                    "
-                    style={{
-                      background:
-                        "linear-gradient(to top, oklch(0.25 0.07 245 / 0.72), transparent)",
-                    }}
+                    className="pointer-events-none absolute inset-0 bg-white/[0.08] transition-opacity duration-500 group-hover:opacity-0"
                   />
 
-                  {/* Caption */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-brand-deep/65 to-transparent"
+                  />
 
-                  <span
-                    className="
-                      absolute
-                      bottom-3
-                      left-3
-                      right-3
-                      z-30
-                      font-display
-                      text-[8px]
-                      font-bold
-                      uppercase
-                      leading-tight
-                      tracking-[0.14em]
-                      text-white
-                    "
-                  >
-                    {s.caption}
+                  <span className="absolute bottom-3 left-3 right-3 z-20 font-display text-[8px] font-bold uppercase leading-tight tracking-[0.14em] text-white">
+                    {service.caption}
                   </span>
-
                 </div>
 
-
-                {/* =================================================
-                    CONTENT
-                ================================================== */}
-
-                <div
-                  className="
-                    flex
-                    min-w-0
-                    flex-1
-                    flex-col
-                    overflow-hidden
-                    px-5
-                    py-5
-                    sm:px-6
-                  "
-                >
-
-                  {/* Service name */}
-
-                  <h3
-                    className="
-                      max-w-full
-                      font-display
-                      text-[17px]
-                      font-extrabold
-                      leading-[1.1]
-                      tracking-[-0.02em]
-                      text-foreground
-                      transition-colors
-                      duration-300
-                      group-hover:text-brand
-                      sm:text-lg
-                    "
-                  >
-                    {s.name}
-                  </h3>
-
-
-                  {/* Description */}
-
-                  <p
-                    className="
-                      mt-3
-                      max-w-full
-                      text-xs
-                      leading-[1.5]
-                      text-muted-foreground
-                      sm:text-[13px]
-                    "
-                  >
-                    {s.summary}
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="font-display text-[8px] font-bold uppercase tracking-[0.17em] text-coral">
+                    {service.tagline}
                   </p>
 
+                  <h3 className="mt-2 font-display text-[17px] font-extrabold leading-[1.08] tracking-[-0.025em] text-foreground transition-colors duration-300 group-hover:text-brand">
+                    {service.name}
+                  </h3>
 
-                  {/* Explore */}
+                  <p className="mt-3 line-clamp-3 text-[11px] leading-[1.55] text-muted-foreground">
+                    {service.summary}
+                  </p>
 
-                  <span
-                    className="
-                      mt-5
-                      inline-flex
-                      w-fit
-                      items-center
-                      gap-2
-                      font-display
-                      text-[10px]
-                      font-bold
-                      uppercase
-                      tracking-[0.12em]
-                      text-coral
-                    "
-                  >
-                    Explore
+                  <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
+                    <span className="font-display text-[9px] font-bold uppercase tracking-[0.13em] text-brand">
+                      Explore service
+                    </span>
 
                     <ArrowRight
-                      className="
-                        size-3.5
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
+                      className="size-3.5 text-coral transition-transform duration-300 group-hover:translate-x-1"
+                      aria-hidden
                     />
-                  </span>
-
+                  </div>
                 </div>
-
               </Link>
             </Reveal>
           ))}
-
         </div>
 
-
-        {/* =====================================================
-            LAST 4 SERVICES
-            CUSTOM ICON CARDS
-        ====================================================== */}
-
-        <div className="mt-4 grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-
-          {/* =================================================
-              5. REAL-TIME TRACKING & REPORTING
-          ================================================== */}
-
-          <Reveal
-            delay={0}
-            className="w-full min-w-0"
-          >
-            <Link
-              to="/services/$slug"
-              params={{ slug: services[4]?.slug }}
-              className="
-                group
-                relative
-                flex
-                h-full
-                min-h-[230px]
-                min-w-0
-                w-full
-                flex-col
-                overflow-hidden
-                rounded-2xl
-                border
-                border-border
-                bg-white
-                p-7
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-coral/40
-                hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
-              "
-            >
-
-              {/* Red accent */}
-
-              <span
-                aria-hidden
-                className="
-                  absolute
-                  left-7
-                  top-0
-                  h-[3px]
-                  w-8
-                  bg-coral
-                  transition-all
-                  duration-300
-                  group-hover:w-14
-                "
-              />
-
-
-              {/* Custom icon */}
-
-              <div
-                className="
-                  mb-6
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  text-brand
-                  transition-colors
-                  duration-300
-                  group-hover:text-coral
-                "
+        {/* LAST 4 — ICON SERVICE CARDS */}
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {services.slice(4, 8).map((service, index) => (
+            <Reveal key={service.slug} delay={index * 50} className="h-full">
+              <Link
+                to="/services/$slug"
+                params={{ slug: service.slug }}
+                className="group relative flex h-full min-h-[255px] flex-col overflow-hidden rounded-[18px] border border-border bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-coral/35 hover:shadow-[0_18px_45px_rgba(20,45,90,0.09)]"
               >
-                <svg
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10"
-                >
-                  <rect
-                    x="5"
-                    y="8"
-                    width="18"
-                    height="28"
-                    rx="2"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                  />
-
-                  <path
-                    d="M9 16H19M9 22H19M9 28H19"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-
-                  <path
-                    d="M26 32L31 26L35 29L43 18"
-                    stroke="currentColor"
-                    strokeWidth="1.9"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-
-                  <circle
-                    cx="43"
-                    cy="18"
-                    r="2.5"
-                    fill="currentColor"
-                  />
-
-                  <path
-                    d="M24 14H30C34 14 37 17 37 21V24"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeDasharray="2.5 3"
-                  />
-                </svg>
-              </div>
-
-
-              {/* Title */}
-
-              <h3
-                className="
-                  max-w-full
-                  font-display
-                  text-[17px]
-                  font-extrabold
-                  leading-[1.15]
-                  tracking-[-0.02em]
-                  text-foreground
-                  transition-colors
-                  duration-300
-                  group-hover:text-brand
-                "
-              >
-                {services[4]?.name}
-              </h3>
-
-
-              {/* Description */}
-
-              <p
-                className="
-                  mt-3
-                  flex-1
-                  text-[12px]
-                  leading-[1.55]
-                  text-muted-foreground
-                "
-              >
-                {services[4]?.summary}
-              </p>
-
-
-              {/* Explore */}
-
-              <span
-                className="
-                  mt-6
-                  inline-flex
-                  w-fit
-                  items-center
-                  gap-2
-                  font-display
-                  text-[10px]
-                  font-bold
-                  uppercase
-                  tracking-[0.12em]
-                  text-coral
-                "
-              >
-                Explore
-
-                <ArrowRight
-                  className="
-                    size-3.5
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                  "
+                <span
+                  aria-hidden
+                  className="absolute left-6 top-0 h-[3px] w-8 bg-coral transition-all duration-300 group-hover:w-12"
                 />
-              </span>
 
-            </Link>
-          </Reveal>
-
-
-          {/* =================================================
-              6. WORKFORCE MANAGEMENT
-          ================================================== */}
-
-          <Reveal
-            delay={50}
-            className="w-full min-w-0"
-          >
-            <Link
-              to="/services/$slug"
-              params={{ slug: services[5]?.slug }}
-              className="
-                group
-                relative
-                flex
-                h-full
-                min-h-[230px]
-                min-w-0
-                w-full
-                flex-col
-                overflow-hidden
-                rounded-2xl
-                border
-                border-border
-                bg-white
-                p-7
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-coral/40
-                hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
-              "
-            >
-
-              <span
-                aria-hidden
-                className="
-                  absolute
-                  left-7
-                  top-0
-                  h-[3px]
-                  w-8
-                  bg-coral
-                  transition-all
-                  duration-300
-                  group-hover:w-14
-                "
-              />
-
-              {/* Custom icon */}
-
-              <div
-                className="
-                  mb-6
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  text-brand
-                  transition-colors
-                  duration-300
-                  group-hover:text-coral
-                "
-              >
-                <svg
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10"
-                >
-                  <circle
-                    cx="17"
-                    cy="13"
-                    r="5"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                  />
-
-                  <path
-                    d="M8 31C8 25.5 11.8 21 17 21C22.2 21 26 25.5 26 31"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                  />
-
-                  <circle
-                    cx="31"
-                    cy="17"
-                    r="4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-
-                  <path
-                    d="M26 31C26.5 26.8 29 24 32.5 24C36.2 24 39 27 39 31"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-
-                  <circle
-                    cx="34"
-                    cy="34"
-                    r="7"
-                    fill="white"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                  />
-
-                  <path
-                    d="M30.5 34L33 36.5L37.5 31.5"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-
-
-              {/* Title */}
-
-              <h3
-                className="
-                  max-w-full
-                  font-display
-                  text-[17px]
-                  font-extrabold
-                  leading-[1.15]
-                  tracking-[-0.02em]
-                  text-foreground
-                  transition-colors
-                  duration-300
-                  group-hover:text-brand
-                "
-              >
-                {services[5]?.name}
-              </h3>
-
-
-              {/* Description */}
-
-              <p
-                className="
-                  mt-3
-                  flex-1
-                  text-[12px]
-                  leading-[1.55]
-                  text-muted-foreground
-                "
-              >
-                {services[5]?.summary}
-              </p>
-
-
-              {/* Explore */}
-
-              <span
-                className="
-                  mt-6
-                  inline-flex
-                  w-fit
-                  items-center
-                  gap-2
-                  font-display
-                  text-[10px]
-                  font-bold
-                  uppercase
-                  tracking-[0.12em]
-                  text-coral
-                "
-              >
-                Explore
-
-                <ArrowRight
-                  className="
-                    size-3.5
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                  "
-                />
-              </span>
-
-            </Link>
-          </Reveal>
-
-
-          {/* =================================================
-              7. PAYROLL SERVICES
-          ================================================== */}
-
-          <Reveal
-            delay={100}
-            className="w-full min-w-0"
-          >
-            <Link
-              to="/services/$slug"
-              params={{ slug: services[6]?.slug }}
-              className="
-                group
-                relative
-                flex
-                h-full
-                min-h-[230px]
-                min-w-0
-                w-full
-                flex-col
-                overflow-hidden
-                rounded-2xl
-                border
-                border-border
-                bg-white
-                p-7
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-coral/40
-                hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
-              "
-            >
-
-              <span
-                aria-hidden
-                className="
-                  absolute
-                  left-7
-                  top-0
-                  h-[3px]
-                  w-8
-                  bg-coral
-                  transition-all
-                  duration-300
-                  group-hover:w-14
-                "
-              />
-
-              {/* Custom icon */}
-
-              <div
-                className="
-                  mb-6
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  text-brand
-                  transition-colors
-                  duration-300
-                  group-hover:text-coral
-                "
-              >
-                <svg
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10"
-                >
-                  <rect
-                    x="7"
-                    y="6"
-                    width="26"
-                    height="34"
-                    rx="2.5"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                  />
-
-                  <path
-                    d="M12 14H27M12 19H27M12 24H21"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-
-                  <path
-                    d="M12 30H23"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-
-                  <circle
-                    cx="34"
-                    cy="32"
-                    r="8"
-                    fill="white"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                  />
-
-                  <path
-                    d="M31.5 29H36.5"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                  />
-
-                  <path
-                    d="M31.5 32H35"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                  />
-
-                  <path
-                    d="M33 29C35.2 29 36.5 30.1 36.5 31.5C36.5 33 35.2 34 33 34L36 37"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-
-
-              {/* Title */}
-
-              <h3
-                className="
-                  max-w-full
-                  font-display
-                  text-[17px]
-                  font-extrabold
-                  leading-[1.15]
-                  tracking-[-0.02em]
-                  text-foreground
-                  transition-colors
-                  duration-300
-                  group-hover:text-brand
-                "
-              >
-                {services[6]?.name}
-              </h3>
-
-
-              {/* Description */}
-
-              <p
-                className="
-                  mt-3
-                  flex-1
-                  text-[12px]
-                  leading-[1.55]
-                  text-muted-foreground
-                "
-              >
-                {services[6]?.summary}
-              </p>
-
-
-              {/* Explore */}
-
-              <span
-                className="
-                  mt-6
-                  inline-flex
-                  w-fit
-                  items-center
-                  gap-2
-                  font-display
-                  text-[10px]
-                  font-bold
-                  uppercase
-                  tracking-[0.12em]
-                  text-coral
-                "
-              >
-                Explore
-
-                <ArrowRight
-                  className="
-                    size-3.5
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                  "
-                />
-              </span>
-
-            </Link>
-          </Reveal>
-
-
-          {/* =================================================
-              8. FRACTIONAL HR SERVICES
-          ================================================== */}
-
-          <Reveal
-            delay={150}
-            className="w-full min-w-0"
-          >
-            <Link
-              to="/services/$slug"
-              params={{ slug: services[7]?.slug }}
-              className="
-                group
-                relative
-                flex
-                h-full
-                min-h-[230px]
-                min-w-0
-                w-full
-                flex-col
-                overflow-hidden
-                rounded-2xl
-                border
-                border-border
-                bg-white
-                p-7
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-coral/40
-                hover:shadow-[0_16px_40px_rgba(20,45,90,0.10)]
-              "
-            >
-
-              <span
-                aria-hidden
-                className="
-                  absolute
-                  left-7
-                  top-0
-                  h-[3px]
-                  w-8
-                  bg-coral
-                  transition-all
-                  duration-300
-                  group-hover:w-14
-                "
-              />
-
-              {/* Custom icon */}
-
-              <div
-                className="
-                  mb-6
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  text-brand
-                  transition-colors
-                  duration-300
-                  group-hover:text-coral
-                "
-              >
-                <svg
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10"
-                >
-                  <circle
-                    cx="24"
-                    cy="13"
-                    r="5"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                  />
-
-                  <path
-                    d="M15 29C15 23.5 18.8 19.5 24 19.5C29.2 19.5 33 23.5 33 29"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                  />
-
-                  <circle
-                    cx="10"
-                    cy="36"
-                    r="4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-
-                  <circle
-                    cx="38"
-                    cy="36"
-                    r="4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-
-                  <path
-                    d="M18 27L12 33M30 27L36 33"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                  />
-
-                  <circle
-                    cx="24"
-                    cy="30"
-                    r="2.2"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-
-
-              {/* Title */}
-
-              <h3
-                className="
-                  max-w-full
-                  font-display
-                  text-[17px]
-                  font-extrabold
-                  leading-[1.15]
-                  tracking-[-0.02em]
-                  text-foreground
-                  transition-colors
-                  duration-300
-                  group-hover:text-brand
-                "
-              >
-                {services[7]?.name}
-              </h3>
-
-
-              {/* Description */}
-
-              <p
-                className="
-                  mt-3
-                  flex-1
-                  text-[12px]
-                  leading-[1.55]
-                  text-muted-foreground
-                "
-              >
-                {services[7]?.summary}
-              </p>
-
-
-              {/* Explore */}
-
-              <span
-                className="
-                  mt-6
-                  inline-flex
-                  w-fit
-                  items-center
-                  gap-2
-                  font-display
-                  text-[10px]
-                  font-bold
-                  uppercase
-                  tracking-[0.12em]
-                  text-coral
-                "
-              >
-                Explore
-
-                <ArrowRight
-                  className="
-                    size-3.5
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                  "
-                />
-              </span>
-
-            </Link>
-          </Reveal>
-
+                <div className="flex h-11 items-center text-brand transition-colors duration-300 group-hover:text-coral">
+                  <ServiceIcon index={index + 4} />
+                </div>
+
+                <h3 className="mt-7 font-display text-[17px] font-extrabold leading-[1.12] tracking-[-0.02em] text-foreground transition-colors duration-300 group-hover:text-brand">
+                  {service.name}
+                </h3>
+
+                <p className="mt-3 flex-1 text-[12px] leading-[1.55] text-muted-foreground">
+                  {service.summary}
+                </p>
+
+                <span className="mt-6 inline-flex w-fit items-center gap-2 font-display text-[9px] font-bold uppercase tracking-[0.14em] text-coral">
+                  Explore
+                  <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </Link>
+            </Reveal>
+          ))}
         </div>
 
+        <div className="mt-10 flex justify-center">
+          <Link
+            to="/services"
+            className="group inline-flex items-center gap-3 rounded-full border border-brand/20 bg-white px-6 py-3 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-brand shadow-[0_8px_24px_rgba(20,45,90,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-coral/30 hover:text-coral hover:shadow-[0_12px_30px_rgba(20,45,90,0.09)]"
+          >
+            View all services
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
+  );
+}
+
+function ServiceIcon({ index }: { index: number }) {
+  const common = {
+    viewBox: "0 0 48 48",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    className: "h-10 w-10",
+    "aria-hidden": true,
+  } as const;
+
+  if (index === 4) {
+    return (
+      <svg {...common}>
+        <rect x="5" y="8" width="18" height="28" rx="2" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M9 16H19M9 22H19M9 28H19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M26 32L31 26L35 29L43 18" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="43" cy="18" r="2.5" fill="currentColor" />
+        <path d="M24 14H30C34 14 37 17 37 21V24" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeDasharray="2.5 3" />
+      </svg>
+    );
+  }
+
+  if (index === 5) {
+    return (
+      <svg {...common}>
+        <circle cx="17" cy="13" r="5" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M8 31C8 25.5 11.8 21 17 21C22.2 21 26 25.5 26 31" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <circle cx="31" cy="17" r="4" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M26 31C26.5 26.8 29 24 32.5 24C36.2 24 39 27 39 31" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="34" cy="34" r="7" fill="white" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M30.5 34L33 36.5L37.5 31.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  if (index === 6) {
+    return (
+      <svg {...common}>
+        <rect x="7" y="6" width="26" height="34" rx="2.5" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M12 14H27M12 19H27M12 24H21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M12 30H23" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="34" cy="32" r="8" fill="white" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M31.5 29H36.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <path d="M31.5 32H35" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <path d="M33 29C35.2 29 36.5 30.1 36.5 31.5C36.5 33 35.2 34 33 34L36 37" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...common}>
+      <circle cx="24" cy="13" r="5" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M15 29C15 23.5 18.8 19.5 24 19.5C29.2 19.5 33 23.5 33 29" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <circle cx="10" cy="36" r="4" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="38" cy="36" r="4" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M18 27L12 33M30 27L36 33" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="24" cy="30" r="2.2" fill="currentColor" />
+    </svg>
   );
 }
 /* SERVICE VIDEO */
