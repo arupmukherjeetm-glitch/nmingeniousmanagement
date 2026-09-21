@@ -145,6 +145,7 @@ export function CtaBand() {
 
 /* =========================================================
    CLIENT LOGO WALL
+   Full-colour logos — no grayscale / no opacity treatment
    ========================================================= */
 
 export function LogoWall({ compact = false }: { compact?: boolean }) {
@@ -157,17 +158,40 @@ export function LogoWall({ compact = false }: { compact?: boolean }) {
         compact ? "py-16" : "py-20 lg:py-28"
       )}
     >
-      {/* Heading */}
+      {/* =====================================================
+          HEADING
+      ====================================================== */}
+
       <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
         {!compact && (
           <div className="max-w-3xl">
             <Eyebrow>Trusted by</Eyebrow>
 
-            <h2 className="mt-5 max-w-3xl font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-foreground lg:text-5xl">
+            <h2
+              className="
+                mt-5
+                max-w-3xl
+                font-display
+                text-3xl
+                font-extrabold
+                leading-[1.08]
+                tracking-[-0.035em]
+                text-foreground
+                lg:text-5xl
+              "
+            >
               Already trusted on the shelves of India's biggest brands.
             </h2>
 
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+            <p
+              className="
+                mt-5
+                max-w-2xl
+                text-base
+                leading-relaxed
+                text-muted-foreground
+              "
+            >
               From global FMCG leaders to new-age brands, companies hand us
               the last three feet between their product and their shopper.
             </p>
@@ -175,7 +199,11 @@ export function LogoWall({ compact = false }: { compact?: boolean }) {
         )}
       </div>
 
-      {/* Logo marquee */}
+
+      {/* =====================================================
+          LOGO MARQUEE
+      ====================================================== */}
+
       <div
         className="relative mt-14 w-full overflow-hidden"
         style={{
@@ -185,7 +213,9 @@ export function LogoWall({ compact = false }: { compact?: boolean }) {
             "linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%)",
         }}
       >
+
         <div className="marquee-track flex w-max items-center gap-6 lg:gap-8">
+
           {row.map((logo, index) => (
             <div
               key={`${logo.name}-${index}`}
@@ -200,31 +230,41 @@ export function LogoWall({ compact = false }: { compact?: boolean }) {
                 lg:w-[155px]
               "
             >
+
               <img
                 src={logo.url}
                 alt={logo.name}
                 loading="lazy"
                 className="
                   block
+                  h-auto
                   max-h-14
                   max-w-[130px]
                   w-auto
                   object-contain
-                  opacity-60
-                  grayscale
-                  transition-all
-                  duration-500
-                  hover:opacity-100
-                  hover:grayscale-0
+                  opacity-100
+                  grayscale-0
+                  saturate-100
+                  transition-transform
+                  duration-300
+                  ease-out
+                  hover:scale-105
                   sm:max-h-16
                   sm:max-w-[140px]
                   lg:max-h-[68px]
                   lg:max-w-[150px]
                 "
+                style={{
+                  filter: "none",
+                  opacity: 1,
+                }}
               />
+
             </div>
           ))}
+
         </div>
+
       </div>
     </section>
   );
