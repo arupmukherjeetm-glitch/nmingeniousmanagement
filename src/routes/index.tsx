@@ -72,25 +72,58 @@ function Home() {
   );
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
+
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#F3F6FA]">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-        <div className="relative grid min-h-[500px] items-center gap-8 py-8 sm:min-h-[520px] sm:py-10 lg:min-h-[540px] lg:grid-cols-[0.88fr_1.12fr] lg:gap-10 lg:py-10 xl:gap-14">
+      {/* Very subtle background atmosphere */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at 82% 42%, rgba(20,58,120,0.07), transparent 34%), radial-gradient(circle at 4% 35%, rgba(239,68,68,0.055), transparent 22%)",
+        }}
+      />
 
-          {/* Subtle decorative shape */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -left-24 top-10 h-48 w-48 rounded-full border-[18px] border-coral/[0.06]"
-          />
-
+      <div className="relative mx-auto max-w-[1440px] px-5 sm:px-7 lg:px-10 xl:px-12">
+        <div
+          className="
+            grid
+            items-center
+            gap-8
+            py-9
+            sm:py-10
+            lg:min-h-[470px]
+            lg:grid-cols-[0.82fr_1.18fr]
+            lg:gap-12
+            lg:py-11
+            xl:min-h-[490px]
+            xl:gap-16
+          "
+        >
           {/* =====================================================
-              HERO COPY
+              CONTENT
           ===================================================== */}
-          <div className="relative z-20 order-2 lg:order-1">
 
-            <h1 className="max-w-[650px] font-display text-[42px] font-black leading-[0.93] tracking-[-0.055em] text-brand-deep sm:text-[54px] lg:text-[60px] xl:text-[68px]">
+          <div className="relative z-20 order-2 lg:order-1">
+            <h1
+              className="
+                max-w-[590px]
+                font-display
+                text-[43px]
+                font-black
+                leading-[0.94]
+                tracking-[-0.055em]
+                text-brand-deep
+                sm:text-[54px]
+                lg:text-[58px]
+                xl:text-[64px]
+              "
+            >
               <span className="block">
                 You built the{" "}
                 <span className="hero-word hero-word-product">
@@ -106,17 +139,45 @@ function Hero() {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-[510px] text-[13px] leading-5 text-muted-foreground sm:text-[14px] sm:leading-6 lg:mt-7">
+            <p
+              className="
+                mt-6
+                max-w-[510px]
+                text-[13px]
+                leading-6
+                text-muted-foreground
+                sm:text-[14px]
+                lg:mt-7
+              "
+            >
               NM Ingenious turns shelf presence into sell-out through
               trained promoters, disciplined retail execution and
               real-time store intelligence.
             </p>
 
-            <div className="mt-7 flex flex-wrap items-center gap-5">
-
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-3 rounded-full bg-coral px-6 py-3.5 font-display text-xs font-bold text-coral-foreground shadow-[0_12px_28px_rgba(239,68,68,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
+                className="
+                  group
+                  inline-flex
+                  items-center
+                  gap-3
+                  rounded-full
+                  bg-coral
+                  px-6
+                  py-3.5
+                  font-display
+                  text-xs
+                  font-bold
+                  text-coral-foreground
+                  shadow-[0_12px_30px_rgba(239,68,68,0.20)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                  hover:shadow-[0_16px_34px_rgba(239,68,68,0.26)]
+                  hover:brightness-105
+                "
               >
                 Request an Audit
 
@@ -125,53 +186,180 @@ function Hero() {
 
               <Link
                 to="/services"
-                className="group inline-flex items-center gap-2 font-display text-xs font-bold text-brand-deep"
+                className="
+                  group
+                  inline-flex
+                  items-center
+                  gap-2
+                  font-display
+                  text-xs
+                  font-bold
+                  text-brand-deep
+                  transition-colors
+                  duration-300
+                  hover:text-coral
+                "
               >
                 Explore services
 
                 <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-
             </div>
           </div>
 
           {/* =====================================================
-              VIDEO
+              CINEMATIC VIDEO
           ===================================================== */}
+
           <div className="relative z-10 order-1 lg:order-2">
+            <div className="relative ml-auto w-full max-w-[760px]">
 
-            {/* Decorative coral corner */}
-            <div
-              aria-hidden
-              className="absolute -right-2 -top-2 z-0 h-16 w-16 rounded-[20px] bg-coral sm:-right-3 sm:-top-3 sm:h-20 sm:w-20 lg:-right-5 lg:-top-5"
-            />
+              {/* soft depth behind video */}
+              <div
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  -inset-x-3
+                  bottom-[-14px]
+                  top-8
+                  rounded-[32px]
+                  bg-brand-deep/[0.08]
+                  blur-2xl
+                "
+              />
 
-            <div className="relative z-10 ml-auto w-full max-w-[720px]">
+              {/* Coral edge - decorative only */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  -right-2
+                  -top-2
+                  h-[72px]
+                  w-[72px]
+                  rounded-[24px]
+                  bg-coral
+                  sm:-right-3
+                  sm:-top-3
+                  sm:h-[84px]
+                  sm:w-[84px]
+                  lg:-right-4
+                  lg:-top-4
+                "
+              />
 
               {/* VIDEO FRAME */}
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[22px] border-[3px] border-white bg-brand-deep shadow-[0_25px_65px_rgba(8,43,97,0.18)] sm:rounded-[28px]">
-
-                <video
-                  src={heroVideoUrl}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="absolute inset-0 block h-full w-full scale-[2.2] object-cover object-center sm:scale-[2.5] lg:scale-[2.8]"
-                />
-
-                {/* Bottom coral accent */}
+              <div
+                className="
+                  relative
+                  overflow-hidden
+                  rounded-[22px]
+                  border-[3px]
+                  border-white
+                  bg-brand-deep
+                  shadow-[0_24px_65px_rgba(8,43,97,0.18)]
+                  sm:rounded-[26px]
+                  lg:rounded-[28px]
+                "
+              >
+                {/* 
+                  Controlled cinematic height instead of a tall hero.
+                  The video remains wide and feels like a cover.
+                */}
                 <div
-                  aria-hidden
-                  className="absolute bottom-0 left-0 right-0 z-20 h-1.5 bg-coral"
-                />
+                  className="
+                    relative
+                    h-[250px]
+                    w-full
+                    sm:h-[320px]
+                    md:h-[365px]
+                    lg:h-[350px]
+                    xl:h-[380px]
+                  "
+                >
+                  <video
+                    src={heroVideoUrl}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="
+                      absolute
+                      inset-0
+                      h-full
+                      w-full
+                      object-cover
+                      object-center
+                    "
+                  />
 
+                  {/* =================================================
+                      CINEMATIC SHADING
+                      
+                      No text.
+                      No badges.
+                      No extra content.
+                  ================================================= */}
+
+                  {/* overall refinement */}
+                  <div
+                    aria-hidden="true"
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-0
+                      bg-brand-deep/[0.05]
+                    "
+                  />
+
+                  {/* Left-to-right cinematic shade */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, rgba(8,43,97,0.16) 0%, rgba(8,43,97,0.03) 35%, transparent 62%)",
+                    }}
+                  />
+
+                  {/* Bottom shade helps suppress edited/watermark area */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[28%]"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(8,43,97,0.30) 0%, rgba(8,43,97,0.10) 45%, transparent 100%)",
+                    }}
+                  />
+
+                  {/* very subtle edge vignette */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      boxShadow:
+                        "inset 0 0 70px rgba(8,43,97,0.10)",
+                    }}
+                  />
+
+                  {/* Brand red finishing line */}
+                  <div
+                    aria-hidden="true"
+                    className="
+                      absolute
+                      inset-x-0
+                      bottom-0
+                      z-20
+                      h-[4px]
+                      bg-coral
+                    "
+                  />
+                </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
