@@ -54,7 +54,7 @@ const pdm3 = { url: "/media/pdm3.png" };
 const pdm4 = { url: "/media/pdm4.png" };
 
 export const logoUrl = "/media/logo.jpg";
-export const heroVideoUrl = "hero_section_video.mp4";
+export const heroVideoUrl = "/media/hero_section_video.mp4";
 export const madhaviUrl = "/media/madhavi.webp";
 export const virenUrl = "/media/viren.webp";
 
