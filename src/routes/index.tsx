@@ -72,20 +72,29 @@ function Home() {
   );
 }
 
- /* =========================================================
-   HERO — FULL BLEED CINEMATIC COVER
+/* =========================================================
+   HERO — FULL-BLEED CINEMATIC COVER
 ========================================================= */
 
 function Hero() {
   return (
-    <section className="relative isolate min-h-[610px] overflow-hidden bg-brand-deep text-white sm:min-h-[650px] lg:min-h-[680px]">
-
+    <section
+      className="
+        relative
+        isolate
+        min-h-[500px]
+        overflow-hidden
+        bg-brand-deep
+        text-white
+        sm:min-h-[530px]
+        lg:min-h-[555px]
+      "
+    >
       {/* =====================================================
           FULL-BLEED VIDEO
       ===================================================== */}
 
       <div className="absolute inset-0 overflow-hidden">
-
         <video
           src={heroVideoUrl}
           autoPlay
@@ -100,19 +109,16 @@ function Hero() {
             h-full
             w-full
             object-cover
-            object-[center_38%]
-            scale-[1.04]
-            sm:object-[center_35%]
+            object-[center_36%]
+            scale-[1.02]
+            sm:object-[center_34%]
             lg:object-[center_32%]
           "
         />
 
         {/* ===================================================
-            CINEMATIC COLOR GRADING
-
-            The video stays visible.
-            The left side becomes darker naturally so the
-            white/red typography remains highly readable.
+            LEFT CINEMATIC GRADIENT
+            Keeps the headline highly readable.
         =================================================== */}
 
         <div
@@ -123,61 +129,82 @@ function Hero() {
               linear-gradient(
                 90deg,
                 rgba(5, 30, 70, 0.96) 0%,
-                rgba(5, 30, 70, 0.88) 25%,
-                rgba(5, 30, 70, 0.58) 45%,
-                rgba(5, 30, 70, 0.18) 68%,
-                rgba(5, 30, 70, 0.08) 100%
+                rgba(5, 30, 70, 0.90) 22%,
+                rgba(5, 30, 70, 0.70) 40%,
+                rgba(5, 30, 70, 0.38) 56%,
+                rgba(5, 30, 70, 0.12) 76%,
+                rgba(5, 30, 70, 0.05) 100%
               )
             `,
           }}
         />
 
-        {/* Top cinematic fade */}
+        {/* ===================================================
+            TOP CINEMATIC FADE
+        =================================================== */}
+
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-28"
+          className="absolute inset-x-0 top-0 h-20"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(5,30,70,0.28), transparent)",
+              "linear-gradient(to bottom, rgba(5,30,70,0.24), transparent)",
           }}
         />
 
-        {/* Bottom cinematic fade */}
+        {/* ===================================================
+            BOTTOM CINEMATIC FADE
+        =================================================== */}
+
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-32"
+          className="absolute inset-x-0 bottom-0 h-28"
           style={{
             background:
-              "linear-gradient(to top, rgba(5,30,70,0.58), transparent)",
+              "linear-gradient(to top, rgba(5,30,70,0.55), transparent)",
           }}
         />
 
-        {/* Subtle overall film treatment */}
+        {/* ===================================================
+            SUBTLE OVERALL COLOR TREATMENT
+        =================================================== */}
+
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-brand-deep/[0.08]"
+          className="absolute inset-0 bg-brand-deep/[0.06]"
         />
-
       </div>
 
-
       {/* =====================================================
-          CONTENT
+          HERO CONTENT
       ===================================================== */}
 
-      <div className="relative z-10 mx-auto flex min-h-[610px] max-w-[1500px] items-center px-5 sm:min-h-[650px] sm:px-8 lg:min-h-[680px] lg:px-12 xl:px-16">
-
-        <div className="w-full max-w-[620px] py-20 lg:py-24">
-
-          {/* Small brand line */}
-
-          <div className="mb-7 flex items-center gap-3">
-            <span className="h-[3px] w-12 rounded-full bg-coral" />
-
-            <span className="h-px w-16 bg-white/30" />
-          </div>
-
-
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          flex
+          min-h-[500px]
+          max-w-[1500px]
+          items-center
+          px-5
+          sm:min-h-[530px]
+          sm:px-8
+          lg:min-h-[555px]
+          lg:px-12
+          xl:px-16
+        "
+      >
+        <div
+          className="
+            w-full
+            max-w-[620px]
+            py-12
+            sm:py-14
+            lg:py-16
+          "
+        >
           {/* =================================================
               HEADLINE
           ================================================= */}
@@ -186,15 +213,15 @@ function Hero() {
             className="
               max-w-[650px]
               font-display
-              text-[48px]
+              text-[46px]
               font-black
               leading-[0.9]
               tracking-[-0.06em]
               text-white
-              sm:text-[62px]
-              md:text-[70px]
-              lg:text-[72px]
-              xl:text-[82px]
+              sm:text-[58px]
+              md:text-[64px]
+              lg:text-[68px]
+              xl:text-[76px]
             "
           >
             <span className="block">
@@ -214,20 +241,20 @@ function Hero() {
             </span>
           </h1>
 
-
           {/* =================================================
               DESCRIPTION
           ================================================= */}
 
           <p
             className="
-              mt-7
+              mt-6
               max-w-[520px]
-              text-[14px]
+              text-[13px]
               leading-6
               text-white/75
-              sm:text-[15px]
-              sm:leading-7
+              sm:text-[14px]
+              sm:leading-6
+              lg:mt-7
             "
           >
             NM Ingenious turns shelf presence into sell-out through
@@ -235,12 +262,21 @@ function Hero() {
             real-time store intelligence.
           </p>
 
-
           {/* =================================================
               CTA
           ================================================= */}
 
-          <div className="mt-9 flex flex-wrap items-center gap-6">
+          <div
+            className="
+              mt-8
+              flex
+              flex-wrap
+              items-center
+              gap-5
+              sm:gap-6
+            "
+          >
+            {/* Primary CTA */}
 
             <Link
               to="/contact"
@@ -251,32 +287,36 @@ function Hero() {
                 gap-3
                 rounded-full
                 bg-coral
-                px-7
-                py-4
+                px-6
+                py-3.5
                 font-display
                 text-xs
                 font-bold
                 text-white
-                shadow-[0_16px_40px_rgba(239,68,68,0.30)]
+                shadow-[0_14px_35px_rgba(239,68,68,0.28)]
                 transition-all
                 duration-300
-                hover:-translate-y-1
-                hover:bg-[#f13a3a]
-                hover:shadow-[0_20px_45px_rgba(239,68,68,0.40)]
+                hover:-translate-y-0.5
+                hover:brightness-105
+                hover:shadow-[0_18px_42px_rgba(239,68,68,0.36)]
+                sm:px-7
+                sm:py-4
               "
             >
               Request an Audit
 
               <ArrowRight
                 className="
-                  size-4
+                  size-3.5
                   transition-transform
                   duration-300
                   group-hover:translate-x-1
+                  sm:size-4
                 "
               />
             </Link>
 
+            {/* Secondary CTA */}
 
             <Link
               to="/services"
@@ -298,22 +338,20 @@ function Hero() {
 
               <ArrowRight
                 className="
-                  size-4
+                  size-3.5
                   transition-transform
                   duration-300
                   group-hover:translate-x-1
                 "
               />
             </Link>
-
           </div>
-
         </div>
       </div>
 
-
       {/* =====================================================
-          BOTTOM BRAND STRIP
+          CORAL BRAND ACCENT
+          Minimal — no decorative shapes.
       ===================================================== */}
 
       <div
@@ -328,7 +366,6 @@ function Hero() {
           bg-coral
         "
       />
-
     </section>
   );
 }
