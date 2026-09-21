@@ -72,426 +72,263 @@ function Home() {
   );
 }
 
-  /* =========================================================
-   HERO — CINEMATIC 2026
+ /* =========================================================
+   HERO — FULL BLEED CINEMATIC COVER
 ========================================================= */
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#F5F7FB]">
+    <section className="relative isolate min-h-[610px] overflow-hidden bg-brand-deep text-white sm:min-h-[650px] lg:min-h-[680px]">
+
       {/* =====================================================
-          BACKGROUND
+          FULL-BLEED VIDEO
+      ===================================================== */}
+
+      <div className="absolute inset-0 overflow-hidden">
+
+        <video
+          src={heroVideoUrl}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          className="
+            absolute
+            inset-0
+            h-full
+            w-full
+            object-cover
+            object-[center_38%]
+            scale-[1.04]
+            sm:object-[center_35%]
+            lg:object-[center_32%]
+          "
+        />
+
+        {/* ===================================================
+            CINEMATIC COLOR GRADING
+
+            The video stays visible.
+            The left side becomes darker naturally so the
+            white/red typography remains highly readable.
+        =================================================== */}
+
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background: `
+              linear-gradient(
+                90deg,
+                rgba(5, 30, 70, 0.96) 0%,
+                rgba(5, 30, 70, 0.88) 25%,
+                rgba(5, 30, 70, 0.58) 45%,
+                rgba(5, 30, 70, 0.18) 68%,
+                rgba(5, 30, 70, 0.08) 100%
+              )
+            `,
+          }}
+        />
+
+        {/* Top cinematic fade */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-28"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(5,30,70,0.28), transparent)",
+          }}
+        />
+
+        {/* Bottom cinematic fade */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-32"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(5,30,70,0.58), transparent)",
+          }}
+        />
+
+        {/* Subtle overall film treatment */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-brand-deep/[0.08]"
+        />
+
+      </div>
+
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+
+      <div className="relative z-10 mx-auto flex min-h-[610px] max-w-[1500px] items-center px-5 sm:min-h-[650px] sm:px-8 lg:min-h-[680px] lg:px-12 xl:px-16">
+
+        <div className="w-full max-w-[620px] py-20 lg:py-24">
+
+          {/* Small brand line */}
+
+          <div className="mb-7 flex items-center gap-3">
+            <span className="h-[3px] w-12 rounded-full bg-coral" />
+
+            <span className="h-px w-16 bg-white/30" />
+          </div>
+
+
+          {/* =================================================
+              HEADLINE
+          ================================================= */}
+
+          <h1
+            className="
+              max-w-[650px]
+              font-display
+              text-[48px]
+              font-black
+              leading-[0.9]
+              tracking-[-0.06em]
+              text-white
+              sm:text-[62px]
+              md:text-[70px]
+              lg:text-[72px]
+              xl:text-[82px]
+            "
+          >
+            <span className="block">
+              You built the
+            </span>
+
+            <span className="block">
+              product.
+            </span>
+
+            <span className="mt-3 block text-coral">
+              We get it to the
+            </span>
+
+            <span className="block text-coral">
+              people.
+            </span>
+          </h1>
+
+
+          {/* =================================================
+              DESCRIPTION
+          ================================================= */}
+
+          <p
+            className="
+              mt-7
+              max-w-[520px]
+              text-[14px]
+              leading-6
+              text-white/75
+              sm:text-[15px]
+              sm:leading-7
+            "
+          >
+            NM Ingenious turns shelf presence into sell-out through
+            trained promoters, disciplined retail execution and
+            real-time store intelligence.
+          </p>
+
+
+          {/* =================================================
+              CTA
+          ================================================= */}
+
+          <div className="mt-9 flex flex-wrap items-center gap-6">
+
+            <Link
+              to="/contact"
+              className="
+                group
+                inline-flex
+                items-center
+                gap-3
+                rounded-full
+                bg-coral
+                px-7
+                py-4
+                font-display
+                text-xs
+                font-bold
+                text-white
+                shadow-[0_16px_40px_rgba(239,68,68,0.30)]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:bg-[#f13a3a]
+                hover:shadow-[0_20px_45px_rgba(239,68,68,0.40)]
+              "
+            >
+              Request an Audit
+
+              <ArrowRight
+                className="
+                  size-4
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
+            </Link>
+
+
+            <Link
+              to="/services"
+              className="
+                group
+                inline-flex
+                items-center
+                gap-2
+                font-display
+                text-xs
+                font-bold
+                text-white
+                transition-colors
+                duration-300
+                hover:text-coral
+              "
+            >
+              Explore services
+
+              <ArrowRight
+                className="
+                  size-4
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
+            </Link>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      {/* =====================================================
+          BOTTOM BRAND STRIP
       ===================================================== */}
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-      >
-        {/* Soft brand glow */}
-        <div
-          className="
-            absolute
-            -left-40
-            top-[-180px]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            bg-brand/[0.045]
-            blur-3xl
-          "
-        />
+        className="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          z-20
+          h-[4px]
+          bg-coral
+        "
+      />
 
-        <div
-          className="
-            absolute
-            right-[-160px]
-            bottom-[-220px]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            bg-coral/[0.045]
-            blur-3xl
-          "
-        />
-
-        {/* Very subtle grid */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(8,43,97,1) 1px, transparent 1px), linear-gradient(90deg, rgba(8,43,97,1) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
-      </div>
-
-      {/* =====================================================
-          MAIN HERO
-      ===================================================== */}
-
-      <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12 xl:px-16">
-        <div
-          className="
-            grid
-            items-center
-            gap-12
-            py-14
-            sm:py-16
-            lg:min-h-[570px]
-            lg:grid-cols-[0.78fr_1.22fr]
-            lg:gap-14
-            lg:py-16
-            xl:min-h-[600px]
-            xl:gap-20
-          "
-        >
-
-          {/* =================================================
-              LEFT — MESSAGE
-          ================================================= */}
-
-          <div className="relative z-20 order-2 lg:order-1">
-            <div className="max-w-[610px]">
-
-              <h1
-                className="
-                  font-display
-                  text-[46px]
-                  font-black
-                  leading-[0.91]
-                  tracking-[-0.06em]
-                  text-brand-deep
-                  sm:text-[58px]
-                  md:text-[64px]
-                  lg:text-[61px]
-                  xl:text-[72px]
-                "
-              >
-                <span className="block">
-                  You built the
-                </span>
-
-                <span className="block">
-                  product.
-                </span>
-
-                <span
-                  className="
-                    mt-2
-                    block
-                    text-coral
-                  "
-                >
-                  We get it to the
-                </span>
-
-                <span
-                  className="
-                    block
-                    text-coral
-                  "
-                >
-                  people.
-                </span>
-              </h1>
-
-              {/* Small brand rule */}
-              <div className="mt-8 flex items-center gap-3">
-                <span className="h-[3px] w-10 rounded-full bg-coral" />
-                <span className="h-px w-16 bg-brand-deep/15" />
-              </div>
-
-              <p
-                className="
-                  mt-6
-                  max-w-[500px]
-                  text-[13px]
-                  leading-6
-                  text-slate-600
-                  sm:text-[14px]
-                  sm:leading-6
-                "
-              >
-                NM Ingenious turns shelf presence into sell-out through
-                trained promoters, disciplined retail execution and
-                real-time store intelligence.
-              </p>
-
-              {/* =================================================
-                  CTA
-              ================================================= */}
-
-              <div className="mt-8 flex flex-wrap items-center gap-6">
-
-                <Link
-                  to="/contact"
-                  className="
-                    group
-                    inline-flex
-                    items-center
-                    gap-3
-                    rounded-full
-                    bg-coral
-                    px-7
-                    py-4
-                    font-display
-                    text-xs
-                    font-bold
-                    text-white
-                    shadow-[0_14px_35px_rgba(239,68,68,0.20)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:shadow-[0_20px_40px_rgba(239,68,68,0.25)]
-                  "
-                >
-                  Request an Audit
-
-                  <ArrowRight
-                    className="
-                      size-4
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-                </Link>
-
-                <Link
-                  to="/services"
-                  className="
-                    group
-                    inline-flex
-                    items-center
-                    gap-2
-                    font-display
-                    text-xs
-                    font-bold
-                    text-brand-deep
-                    transition-colors
-                    duration-300
-                    hover:text-coral
-                  "
-                >
-                  Explore services
-
-                  <ArrowRight
-                    className="
-                      size-4
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-                </Link>
-
-              </div>
-            </div>
-          </div>
-
-
-          {/* =================================================
-              RIGHT — CINEMATIC VIDEO
-          ================================================= */}
-
-          <div className="relative z-10 order-1 lg:order-2">
-
-            {/* =================================================
-                OFFSET CORAL BLOCK
-            ================================================= */}
-
-            <div
-              aria-hidden="true"
-              className="
-                absolute
-                -right-3
-                -top-3
-                h-24
-                w-24
-                rounded-[28px]
-                bg-coral
-                sm:-right-4
-                sm:-top-4
-                sm:h-28
-                sm:w-28
-                lg:-right-5
-                lg:-top-5
-              "
-            />
-
-            {/* =================================================
-                VIDEO SHADOW
-            ================================================= */}
-
-            <div
-              aria-hidden="true"
-              className="
-                pointer-events-none
-                absolute
-                -inset-5
-                rounded-[42px]
-                bg-brand-deep/[0.06]
-                blur-3xl
-              "
-            />
-
-            {/* =================================================
-                VIDEO CARD
-            ================================================= */}
-
-            <div
-              className="
-                relative
-                overflow-hidden
-                rounded-[28px]
-                border
-                border-white
-                bg-brand-deep
-                shadow-[0_30px_80px_rgba(8,43,97,0.20)]
-                sm:rounded-[32px]
-                lg:rounded-[36px]
-              "
-            >
-
-              {/* =================================================
-                  CINEMATIC VIEWPORT
-
-                  IMPORTANT:
-                  The viewport is intentionally slightly wider /
-                  shorter than the original 16:9 video.
-
-                  This naturally crops the lower part of the
-                  source video where the watermark sits.
-              ================================================= */}
-
-              <div
-                className="
-                  relative
-                  h-[255px]
-                  w-full
-                  overflow-hidden
-                  sm:h-[330px]
-                  md:h-[380px]
-                  lg:h-[390px]
-                  xl:h-[420px]
-                "
-              >
-
-                <video
-                  src={heroVideoUrl}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="
-                    absolute
-                    inset-0
-                    h-full
-                    w-full
-                    object-cover
-                    object-[center_18%]
-                    scale-[1.035]
-                  "
-                />
-
-                {/* =================================================
-                    CINEMATIC COLOR TREATMENT
-                ================================================= */}
-
-                {/* Very subtle navy tint */}
-                <div
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    bg-brand-deep/[0.045]
-                  "
-                />
-
-                {/* Left-side depth */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-y-0 left-0 w-[38%]"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, rgba(8,43,97,0.16), rgba(8,43,97,0.025), transparent)",
-                  }}
-                />
-
-                {/* Bottom cinematic fade
-                    This also gives additional protection around
-                    the lower edge without creating a visible block.
-                */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%]"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(8,43,97,0.20), transparent)",
-                  }}
-                />
-
-                {/* Subtle edge vignette */}
-                <div
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    rounded-[28px]
-                    ring-1
-                    ring-inset
-                    ring-black/[0.06]
-                    sm:rounded-[32px]
-                    lg:rounded-[36px]
-                  "
-                />
-
-                {/* =================================================
-                    BRAND ACCENT
-                ================================================= */}
-
-                <div
-                  aria-hidden="true"
-                  className="
-                    absolute
-                    bottom-0
-                    left-0
-                    right-0
-                    z-20
-                    h-[5px]
-                    bg-coral
-                  "
-                />
-              </div>
-            </div>
-
-
-            {/* =================================================
-                SMALL OFFSET SHADOW / CORNER
-            ================================================= */}
-
-            <div
-              aria-hidden="true"
-              className="
-                absolute
-                -bottom-3
-                -left-3
-                h-12
-                w-12
-                rounded-full
-                border
-                border-brand-deep/10
-                bg-white/60
-                backdrop-blur-sm
-              "
-            />
-
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
