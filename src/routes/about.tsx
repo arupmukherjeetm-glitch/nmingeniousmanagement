@@ -37,7 +37,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "From 5 employees in 2008 to 1,650+ people across 185+ cities. The story, leadership, strengths and awards behind NM Ingenious Management Services Pvt. Ltd.",
+          "From 5 employees in 2008 to 2150+ people across 185+ cities. The story, leadership, strengths and awards behind NM Ingenious Management Services Pvt. Ltd.",
       },
       {
         property: "og:title",
@@ -67,7 +67,7 @@ function About() {
           <>
             Started with five people.{" "}
             <em className="not-italic text-coral">
-              Now a family of sixteen hundred.
+              Now a Family of twenty one hundred plus.
             </em>
           </>
         }
