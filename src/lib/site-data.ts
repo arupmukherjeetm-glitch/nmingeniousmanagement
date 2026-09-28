@@ -787,9 +787,9 @@ export const awards = [
     body: "For adopting the highest standards of integrity and good governance, and following ethical practices in conducting its activities.",
   },
   {
-    title: "Award of Excellence",
-    subtitle: "P&G, Madhavi Pundalik",
-    body: "On successful completion of the women business empowerment programme 2018.",
+    title: "GOLDMAN SACHS 10,000 WOMEN",
+    subtitle: "Entrepreneur & Alumni Community",
+    body: "Alumni of the Goldman Sachs 10,000 Women Entrepreneur Community.",
   },
 ];
 
