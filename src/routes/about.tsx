@@ -71,7 +71,7 @@ function About() {
             </em>
           </>
         }
-        intro="NM Ingenious Management Services Pvt. Ltd. is a workforce outsourcing, retail execution and HR services company built inside Indian stores. We started in February 2008 as Ingenious Management Services and have spent every year since learning what actually moves a product off a shelf."
+        intro="NM Ingenious Management Services Pvt. Ltd. is a workforce outsourcing, retail execution and HR services company built inside Indian stores. We started in February 2008 as Ingenious Management Services, since then we have spent every year as learning what actually moves product."
         accent="Established 2008 · Mumbai, India"
       />
 
