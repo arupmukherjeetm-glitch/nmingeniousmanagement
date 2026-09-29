@@ -810,7 +810,7 @@ function About() {
               "
             >
               <img
-                src="/media/Women-Owned-Certificate.png"
+                src="/media/Women Owned_Cerificate Image.png"
                 alt="Certified Women's Business Enterprise certificate"
                 loading="lazy"
                 className="
