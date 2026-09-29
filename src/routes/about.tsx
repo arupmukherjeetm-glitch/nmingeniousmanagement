@@ -75,7 +75,7 @@ function About() {
         accent="Established 2008 · Mumbai, India"
       />
 
-       {/* ============================================================
+      {/* ============================================================
           WHO WE ARE
       ============================================================ */}
 
@@ -171,359 +171,491 @@ function About() {
         </div>
       </section>
 
-     {/* ============================================================
-    LEADERSHIP
-    "THE PEOPLE WHO SET THE STANDARD."
-============================================================ */}
+      {/* ============================================================
+          LEADERSHIP
+          "THE PEOPLE WHO SET THE STANDARD."
+      ============================================================ */}
 
-<section className="bg-[#F5F7FB] py-20 lg:py-24">
-  <div className="mx-auto max-w-6xl px-5 lg:px-8">
+      <section className="bg-[#F5F7FB] py-20 lg:py-24">
+        <div className="mx-auto max-w-6xl px-5 lg:px-8">
 
-    {/* Section Heading */}
-    <div className="mx-auto max-w-2xl text-center">
-      <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-coral">
-        Leadership
-      </p>
+          {/* Section Heading */}
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-coral">
+              Leadership
+            </p>
 
-      <h2 className="mt-4 font-display text-3xl font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[46px]">
-        The people who set the standard.
-      </h2>
-    </div>
-
-
-    {/* ==========================================================
-        LEADERS
-    ========================================================== */}
-
-    <div className="mt-14 grid gap-16 lg:mt-18 lg:grid-cols-2 lg:gap-0">
-
-      {/* ========================================================
-          MADHAVI MHATRE
-      ======================================================== */}
-
-      <article className="group flex flex-col items-center px-4 text-center lg:border-r lg:border-border lg:px-14">
-
-        {/* Portrait */}
-        <div className="relative">
-
-          {/* Fine coral ring */}
-          <div
-            className="
-              absolute
-              -inset-3
-              rounded-full
-              border
-              border-coral/20
-              transition-all
-              duration-500
-              group-hover:-inset-4
-              group-hover:border-coral/45
-            "
-          />
-
-          {/* Image */}
-          <div
-            className="
-              relative
-              h-52
-              w-52
-              overflow-hidden
-              rounded-full
-              border-[5px]
-              border-background
-              bg-muted
-              shadow-[0_10px_35px_rgba(0,0,0,0.10)]
-              sm:h-56
-              sm:w-56
-              lg:h-60
-              lg:w-60
-            "
-          >
-            <img
-              src="/media/madhavi.webp"
-              alt="Madhavi Pundalik"
-              loading="lazy"
-              className="
-                h-full
-                w-full
-                object-cover
-                object-center
-                transition-transform
-                duration-700
-                ease-out
-                group-hover:scale-[1.05]
-              "
-            />
+            <h2 className="mt-4 font-display text-3xl font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[46px]">
+              The people who set the standard.
+            </h2>
           </div>
 
-          {/* LinkedIn logo */}
-          <a
-            href="https://www.linkedin.com/in/madhavi-pundalik-9256135/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Madhavi Pundalik on LinkedIn"
-            className="
-              absolute
-              bottom-0
-              right-0
-              flex
-              h-10
-              w-10
-              items-center
-              justify-center
-              rounded-full
-              bg-[#0A66C2]
-              text-white
-              shadow-md
-              ring-4
-              ring-background
-              transition-all
-              duration-300
-              hover:scale-110
-              hover:bg-[#004182]
-            "
-          >
-            <span className="text-[19px] font-black leading-none tracking-[-0.08em]">
-              in
-            </span>
-          </a>
+          {/* ==========================================================
+              LEADERS
+          ========================================================== */}
 
-        </div>
+          <div className="mt-14 grid gap-16 lg:mt-18 lg:grid-cols-2 lg:gap-0">
 
+            {/* ========================================================
+                MADHAVI MHATRE
+            ======================================================== */}
 
-        {/* Profile */}
-        <div className="mt-8 max-w-md">
+            <article className="group flex flex-col items-center px-4 text-center lg:border-r lg:border-border lg:px-14">
 
-          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
-            Founder & Director
-          </p>
+              {/* Portrait */}
+              <div className="relative">
 
-          <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-[34px]">
-            Madhavi Mhatre
-          </h3>
+                {/* Fine coral ring */}
+                <div
+                  className="
+                    absolute
+                    -inset-3
+                    rounded-full
+                    border
+                    border-coral/20
+                    transition-all
+                    duration-500
+                    group-hover:-inset-4
+                    group-hover:border-coral/45
+                  "
+                />
 
-          <div className="mx-auto mt-4 h-[2px] w-9 bg-coral transition-all duration-500 group-hover:w-14" />
+                {/* Image */}
+                <div
+                  className="
+                    relative
+                    h-52
+                    w-52
+                    overflow-hidden
+                    rounded-full
+                    border-[5px]
+                    border-background
+                    bg-muted
+                    shadow-[0_10px_35px_rgba(0,0,0,0.10)]
+                    sm:h-56
+                    sm:w-56
+                    lg:h-60
+                    lg:w-60
+                  "
+                >
+                  <img
+                    src="/media/madhavi.webp"
+                    alt="Madhavi Pundalik"
+                    loading="lazy"
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                      object-center
+                      transition-transform
+                      duration-700
+                      ease-out
+                      group-hover:scale-[1.05]
+                    "
+                  />
+                </div>
 
-          <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-[15px]">
-            A 35+ year veteran in business development, sales, marketing,
-            product development and brand strategy in Indian markets, with
-            a proven track record in brand establishment, market
-            segmentation, networking, revenue growth and sales
-            optimization. IIM Ahmedabad Goldman Sachs 10,000 Women
-            programme graduate, MBA-educated and a boundless thinker.
-          </p>
+                {/* LinkedIn logo */}
+                <a
+                  href="https://www.linkedin.com/in/madhavi-pundalik-9256135/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Madhavi Pundalik on LinkedIn"
+                  className="
+                    absolute
+                    bottom-0
+                    right-0
+                    flex
+                    h-10
+                    w-10
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#0A66C2]
+                    text-white
+                    shadow-md
+                    ring-4
+                    ring-background
+                    transition-all
+                    duration-300
+                    hover:scale-110
+                    hover:bg-[#004182]
+                  "
+                >
+                  <span className="text-[19px] font-black leading-none tracking-[-0.08em]">
+                    in
+                  </span>
+                </a>
 
-        </div>
+              </div>
 
-      </article>
+              {/* Profile */}
+              <div className="mt-8 max-w-md">
 
+                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
+                  Founder & Director
+                </p>
 
-      {/* ========================================================
-          VIRU MHATRE
-      ======================================================== */}
+                <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-[34px]">
+                  Madhavi Mhatre
+                </h3>
 
-      <article className="group flex flex-col items-center px-4 text-center lg:px-14">
+                <div className="mx-auto mt-4 h-[2px] w-9 bg-coral transition-all duration-500 group-hover:w-14" />
 
-        {/* Portrait */}
-        <div className="relative">
+                <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-[15px]">
+                  A 35+ year veteran in business development, sales, marketing,
+                  product development and brand strategy in Indian markets, with
+                  a proven track record in brand establishment, market
+                  segmentation, networking, revenue growth and sales
+                  optimization. IIM Ahmedabad Goldman Sachs 10,000 Women
+                  programme graduate, MBA-educated and a boundless thinker.
+                </p>
 
-          {/* Fine coral ring */}
-          <div
-            className="
-              absolute
-              -inset-3
-              rounded-full
-              border
-              border-coral/20
-              transition-all
-              duration-500
-              group-hover:-inset-4
-              group-hover:border-coral/45
-            "
-          />
+              </div>
 
-          {/* Image */}
-          <div
-            className="
-              relative
-              h-52
-              w-52
-              overflow-hidden
-              rounded-full
-              border-[5px]
-              border-background
-              bg-muted
-              shadow-[0_10px_35px_rgba(0,0,0,0.10)]
-              sm:h-56
-              sm:w-56
-              lg:h-60
-              lg:w-60
-            "
-          >
-            <img
-              src="/media/founders-05.webp"
-              alt="Viru Mhatre"
-              loading="lazy"
-              className="
-                h-full
-                w-full
-                object-cover
-                object-top
-                transition-transform
-                duration-700
-                ease-out
-                group-hover:scale-[1.05]
-              "
-            />
+            </article>
+
+            {/* ========================================================
+                VIRU MHATRE
+            ======================================================== */}
+
+            <article className="group flex flex-col items-center px-4 text-center lg:px-14">
+
+              {/* Portrait */}
+              <div className="relative">
+
+                {/* Fine coral ring */}
+                <div
+                  className="
+                    absolute
+                    -inset-3
+                    rounded-full
+                    border
+                    border-coral/20
+                    transition-all
+                    duration-500
+                    group-hover:-inset-4
+                    group-hover:border-coral/45
+                  "
+                />
+
+                {/* Image */}
+                <div
+                  className="
+                    relative
+                    h-52
+                    w-52
+                    overflow-hidden
+                    rounded-full
+                    border-[5px]
+                    border-background
+                    bg-muted
+                    shadow-[0_10px_35px_rgba(0,0,0,0.10)]
+                    sm:h-56
+                    sm:w-56
+                    lg:h-60
+                    lg:w-60
+                  "
+                >
+                  <img
+                    src="/media/founders-05.webp"
+                    alt="Viru Mhatre"
+                    loading="lazy"
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                      object-top
+                      transition-transform
+                      duration-700
+                      ease-out
+                      group-hover:scale-[1.05]
+                    "
+                  />
+                </div>
+
+                {/* LinkedIn logo */}
+                <a
+                  href="https://www.linkedin.com/in/virendrayeshwantmhatre/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Viru Mhatre on LinkedIn"
+                  className="
+                    absolute
+                    bottom-0
+                    right-0
+                    flex
+                    h-10
+                    w-10
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#0A66C2]
+                    text-white
+                    shadow-md
+                    ring-4
+                    ring-background
+                    transition-all
+                    duration-300
+                    hover:scale-110
+                    hover:bg-[#004182]
+                  "
+                >
+                  <span className="text-[19px] font-black leading-none tracking-[-0.08em]">
+                    in
+                  </span>
+                </a>
+
+              </div>
+
+              {/* Profile */}
+              <div className="mt-8 max-w-md">
+
+                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
+                  Director
+                </p>
+
+                <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-[34px]">
+                  Viru Mhatre
+                </h3>
+
+                <div className="mx-auto mt-4 h-[2px] w-9 bg-coral transition-all duration-500 group-hover:w-14" />
+
+                <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-[15px]">
+                  With over 37 years of diverse experience in corporate planning
+                  across EdTech, IT, BPO and telecom, Viru is a seasoned design
+                  thinker and MBA. His leadership extends to driving strategic
+                  roadmaps, contributing significantly to executive team planning
+                  at NMIMSPL.
+                </p>
+
+              </div>
+
+            </article>
+
           </div>
 
-          {/* LinkedIn logo */}
-          <a
-            href="https://www.linkedin.com/in/virendrayeshwantmhatre/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Viru Mhatre on LinkedIn"
-            className="
-              absolute
-              bottom-0
-              right-0
-              flex
-              h-10
-              w-10
-              items-center
-              justify-center
-              rounded-full
-              bg-[#0A66C2]
-              text-white
-              shadow-md
-              ring-4
-              ring-background
-              transition-all
-              duration-300
-              hover:scale-110
-              hover:bg-[#004182]
-            "
-          >
-            <span className="text-[19px] font-black leading-none tracking-[-0.08em]">
-              in
-            </span>
-          </a>
-
         </div>
-
-
-        {/* Profile */}
-        <div className="mt-8 max-w-md">
-
-          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
-            Director
-          </p>
-
-          <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-[34px]">
-            Viru Mhatre
-          </h3>
-
-          <div className="mx-auto mt-4 h-[2px] w-9 bg-coral transition-all duration-500 group-hover:w-14" />
-
-          <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-[15px]">
-            With over 37 years of diverse experience in corporate planning
-            across EdTech, IT, BPO and telecom, Viru is a seasoned design
-            thinker and MBA. His leadership extends to driving strategic
-            roadmaps, contributing significantly to executive team planning
-            at NMIMSPL.
-          </p>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-</section>
+      </section>
 
       {/* ============================================================
           FOUNDER'S GALLERY
       ============================================================ */}
 
-          {/* Founder’s Gallery */}
-<section className="bg-background py-12 lg:py-14">
-  <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <section className="bg-background py-12 lg:py-14">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-    <div className="mb-6">
-      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
-        Founder’s Gallery
-      </p>
+          <div className="mb-6">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
+              Founder’s Gallery
+            </p>
 
-      <h2 className="mt-2 max-w-3xl font-display text-3xl font-extrabold leading-[1.08] tracking-tight text-black sm:text-4xl lg:text-[42px]">
-        The moments behind the journey.
-      </h2>
-    </div>
-
-    {/* Desktop: all 7 visible | Mobile: horizontal scroll */}
-    <div className="overflow-x-auto pb-1 lg:overflow-visible">
-      <div className="flex min-w-max items-end gap-1.5 lg:min-w-0">
-
-        {foundersGallery.map((item, index) => (
-          <div
-            key={item.image}
-            className={`
-              group relative shrink-0 overflow-hidden rounded-md bg-muted
-              lg:min-w-0 lg:flex-1
-              ${
-                index === 0
-                  ? "h-[280px] w-[190px] lg:h-[285px]"
-                  : index === 1
-                    ? "h-[250px] w-[175px] lg:h-[255px]"
-                    : index === 2
-                      ? "h-[270px] w-[185px] lg:h-[275px]"
-                      : index === 3
-                        ? "h-[245px] w-[170px] lg:h-[250px]"
-                        : index === 4
-                          ? "h-[275px] w-[185px] lg:h-[280px]"
-                          : index === 5
-                            ? "h-[250px] w-[175px] lg:h-[255px]"
-                            : "h-[265px] w-[180px] lg:h-[270px]"
-              }
-            `}
-          >
-            <img
-              src={item.image}
-              alt={item.alt}
-              loading="lazy"
-              className="
-                h-full
-                w-full
-                object-cover
-                object-top
-                transition-transform
-                duration-500
-                ease-out
-                group-hover:scale-[1.04]
-              "
-            />
-
-            <div
-              className="
-                pointer-events-none
-                absolute inset-0
-                bg-gradient-to-t
-                from-black/30
-                via-transparent
-                to-transparent
-                opacity-0
-                transition-opacity
-                duration-300
-                group-hover:opacity-100
-              "
-            />
+            <h2 className="mt-2 max-w-3xl font-display text-3xl font-extrabold leading-[1.08] tracking-tight text-black sm:text-4xl lg:text-[42px]">
+              The moments behind the journey.
+            </h2>
           </div>
-        ))}
 
-      </div>
-    </div>
-  </div>
-</section>
+          {/* Desktop: all 7 visible | Mobile: horizontal scroll */}
+          <div className="overflow-x-auto pb-1 lg:overflow-visible">
+            <div className="flex min-w-max items-end gap-1.5 lg:min-w-0">
+
+              {foundersGallery.map((item, index) => (
+                <div
+                  key={item.image}
+                  className={`
+                    group relative shrink-0 overflow-hidden rounded-md bg-muted
+                    lg:min-w-0 lg:flex-1
+                    ${
+                      index === 0
+                        ? "h-[280px] w-[190px] lg:h-[285px]"
+                        : index === 1
+                          ? "h-[250px] w-[175px] lg:h-[255px]"
+                          : index === 2
+                            ? "h-[270px] w-[185px] lg:h-[275px]"
+                            : index === 3
+                              ? "h-[245px] w-[170px] lg:h-[250px]"
+                              : index === 4
+                                ? "h-[275px] w-[185px] lg:h-[280px]"
+                                : index === 5
+                                  ? "h-[250px] w-[175px] lg:h-[255px]"
+                                  : "h-[265px] w-[180px] lg:h-[270px]"
+                    }
+                  `}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                      object-top
+                      transition-transform
+                      duration-500
+                      ease-out
+                      group-hover:scale-[1.04]
+                    "
+                  />
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-0
+                      bg-gradient-to-t
+                      from-black/30
+                      via-transparent
+                      to-transparent
+                      opacity-0
+                      transition-opacity
+                      duration-300
+                      group-hover:opacity-100
+                    "
+                  />
+                </div>
+              ))}
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ============================================================
+          CERTIFICATIONS & CREDENTIALS
+      ============================================================ */}
+
+      <section className="bg-[#F5F7FB] py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+          {/* Section Heading */}
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+
+              <Eyebrow>Certifications & credentials</Eyebrow>
+
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                Recognised credentials that reflect our journey.
+              </h2>
+
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                Our leadership and organisation continue to build credibility
+                through recognised programmes, certifications and business
+                credentials.
+              </p>
+
+            </div>
+          </Reveal>
+
+          {/* Certificates */}
+          <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10">
+
+            {/* ========================================================
+                IIM AHMEDABAD CERTIFICATE
+            ======================================================== */}
+
+            <Reveal delay={80}>
+              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-white shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(0,0,0,0.10)]">
+
+                {/* Certificate Image */}
+                <div className="relative overflow-hidden bg-white p-3 sm:p-5">
+
+                  <div className="overflow-hidden rounded-lg border border-border bg-white">
+                    <img
+                      src="/media/IIM-Certificate.png"
+                      alt="IIM Ahmedabad Goldman Sachs 10,000 Women programme certificate awarded to Madhavi Mhatre"
+                      loading="lazy"
+                      className="
+                        h-auto
+                        w-full
+                        object-contain
+                        transition-transform
+                        duration-700
+                        ease-out
+                        group-hover:scale-[1.015]
+                      "
+                    />
+                  </div>
+
+                </div>
+
+                {/* Certificate Information */}
+                <div className="px-6 pb-7 pt-3 sm:px-8 sm:pb-8">
+
+                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
+                    IIM Ahmedabad
+                  </p>
+
+                  <h3 className="mt-2 font-display text-xl font-extrabold text-foreground sm:text-2xl">
+                    Goldman Sachs 10,000 Women
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    Madhavi Mhatre participated in the Goldman Sachs 10,000
+                    Women programme held at the Indian Institute of Management
+                    Ahmedabad from December 8, 2025 to February 6, 2026.
+                  </p>
+
+                </div>
+
+              </article>
+            </Reveal>
+
+            {/* ========================================================
+                WOMEN'S BUSINESS ENTERPRISE CERTIFICATE
+            ======================================================== */}
+
+            <Reveal delay={140}>
+              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-white shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(0,0,0,0.10)]">
+
+                {/* Certificate Image */}
+                <div className="relative overflow-hidden bg-white p-3 sm:p-5">
+
+                  <div className="overflow-hidden rounded-lg border border-border bg-white">
+                    <img
+                      src="/media/Women-Owned-Certificate.png"
+                      alt="Certified Women's Business Enterprise credential awarded to NM Ingenious Management Services Private Limited"
+                      loading="lazy"
+                      className="
+                        h-auto
+                        w-full
+                        object-contain
+                        transition-transform
+                        duration-700
+                        ease-out
+                        group-hover:scale-[1.015]
+                      "
+                    />
+                  </div>
+
+                </div>
+
+                {/* Certificate Information */}
+                <div className="px-6 pb-7 pt-3 sm:px-8 sm:pb-8">
+
+                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
+                    WECONNECT INTERNATIONAL
+                  </p>
+
+                  <h3 className="mt-2 font-display text-xl font-extrabold text-foreground sm:text-2xl">
+                    Certified Women’s Business Enterprise
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    NM Ingenious Management Services Private Limited, India,
+                    holds the Certified Women’s Business Enterprise credential.
+                  </p>
+
+                </div>
+
+              </article>
+            </Reveal>
+
+          </div>
+
+        </div>
+      </section>
 
       {/* ============================================================
           OUR STRENGTHS
@@ -531,6 +663,7 @@ function About() {
 
       <section className="bg-background py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
           <div className="max-w-2xl">
             <Eyebrow>Our strengths</Eyebrow>
 
@@ -542,6 +675,7 @@ function About() {
           <div className="mt-14 space-y-12">
             {strengths.map((g, gi) => (
               <div key={g.group}>
+
                 <div className="flex items-center gap-5">
                   <span className="font-display text-4xl font-extrabold text-border">
                     {String(gi + 1).padStart(2, "0")}
@@ -556,6 +690,7 @@ function About() {
                   {g.points.map((p, i) => (
                     <Reveal key={p.title} delay={i * 50}>
                       <div className="brand-box h-full p-6">
+
                         <h4 className="font-display text-base font-extrabold text-foreground">
                           {p.title}
                         </h4>
@@ -563,13 +698,16 @@ function About() {
                         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                           {p.body}
                         </p>
+
                       </div>
                     </Reveal>
                   ))}
                 </div>
+
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -589,6 +727,7 @@ function About() {
 
       <section className="bg-sand py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
           <div className="max-w-2xl">
             <Eyebrow>Awards & recognition</Eyebrow>
 
@@ -601,6 +740,7 @@ function About() {
             {awards.map((a, i) => (
               <Reveal key={a.title} delay={i * 60}>
                 <article className="brand-box h-full p-8">
+
                   <h3 className="font-display text-xl font-extrabold text-foreground">
                     {a.title}
                   </h3>
@@ -612,10 +752,12 @@ function About() {
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                     {a.body}
                   </p>
+
                 </article>
               </Reveal>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -631,6 +773,7 @@ function About() {
 
       <section className="bg-background pb-24 lg:pb-32">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
+
           <div className="lg:col-span-4">
             <Eyebrow>FAQs</Eyebrow>
 
@@ -641,6 +784,7 @@ function About() {
 
           <div className="lg:col-span-8">
             <Accordion type="single" collapsible className="w-full">
+
               {faqs.map((f, i) => (
                 <AccordionItem
                   key={f.q}
@@ -656,8 +800,10 @@ function About() {
                   </AccordionContent>
                 </AccordionItem>
               ))}
+
             </Accordion>
           </div>
+
         </div>
       </section>
 
