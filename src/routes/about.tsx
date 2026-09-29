@@ -315,6 +315,7 @@ function About() {
 
             </article>
 
+
             {/* ========================================================
                 VIRU MHATRE
             ======================================================== */}
@@ -501,8 +502,7 @@ function About() {
                   <div
                     className="
                       pointer-events-none
-                      absolute
-                      inset-0
+                      absolute inset-0
                       bg-gradient-to-t
                       from-black/30
                       via-transparent
@@ -517,141 +517,6 @@ function About() {
               ))}
 
             </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ============================================================
-          CERTIFICATIONS & CREDENTIALS
-      ============================================================ */}
-
-      <section className="bg-[#F5F7FB] py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-
-          {/* Section Heading */}
-          <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
-
-              <Eyebrow>Certifications & credentials</Eyebrow>
-
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground sm:text-4xl lg:text-5xl">
-                Recognised credentials that reflect our journey.
-              </h2>
-
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                Our leadership and organisation continue to build credibility
-                through recognised programmes, certifications and business
-                credentials.
-              </p>
-
-            </div>
-          </Reveal>
-
-          {/* Certificates */}
-          <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10">
-
-            {/* ========================================================
-                IIM AHMEDABAD CERTIFICATE
-            ======================================================== */}
-
-            <Reveal delay={80}>
-              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-white shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(0,0,0,0.10)]">
-
-                {/* Certificate Image */}
-                <div className="relative overflow-hidden bg-white p-3 sm:p-5">
-
-                  <div className="overflow-hidden rounded-lg border border-border bg-white">
-                    <img
-                      src="/media/IIM-Certificate.png"
-                      alt="IIM Ahmedabad Goldman Sachs 10,000 Women programme certificate awarded to Madhavi Mhatre"
-                      loading="lazy"
-                      className="
-                        h-auto
-                        w-full
-                        object-contain
-                        transition-transform
-                        duration-700
-                        ease-out
-                        group-hover:scale-[1.015]
-                      "
-                    />
-                  </div>
-
-                </div>
-
-                {/* Certificate Information */}
-                <div className="px-6 pb-7 pt-3 sm:px-8 sm:pb-8">
-
-                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
-                    IIM Ahmedabad
-                  </p>
-
-                  <h3 className="mt-2 font-display text-xl font-extrabold text-foreground sm:text-2xl">
-                    Goldman Sachs 10,000 Women
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    Madhavi Mhatre participated in the Goldman Sachs 10,000
-                    Women programme held at the Indian Institute of Management
-                    Ahmedabad from December 8, 2025 to February 6, 2026.
-                  </p>
-
-                </div>
-
-              </article>
-            </Reveal>
-
-            {/* ========================================================
-                WOMEN'S BUSINESS ENTERPRISE CERTIFICATE
-            ======================================================== */}
-
-            <Reveal delay={140}>
-              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-white shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(0,0,0,0.10)]">
-
-                {/* Certificate Image */}
-                <div className="relative overflow-hidden bg-white p-3 sm:p-5">
-
-                  <div className="overflow-hidden rounded-lg border border-border bg-white">
-                    <img
-                      src="/media/Women-Owned-Certificate.png"
-                      alt="Certified Women's Business Enterprise credential awarded to NM Ingenious Management Services Private Limited"
-                      loading="lazy"
-                      className="
-                        h-auto
-                        w-full
-                        object-contain
-                        transition-transform
-                        duration-700
-                        ease-out
-                        group-hover:scale-[1.015]
-                      "
-                    />
-                  </div>
-
-                </div>
-
-                {/* Certificate Information */}
-                <div className="px-6 pb-7 pt-3 sm:px-8 sm:pb-8">
-
-                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-coral">
-                    WECONNECT INTERNATIONAL
-                  </p>
-
-                  <h3 className="mt-2 font-display text-xl font-extrabold text-foreground sm:text-2xl">
-                    Certified Women’s Business Enterprise
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    NM Ingenious Management Services Private Limited, India,
-                    holds the Certified Women’s Business Enterprise credential.
-                  </p>
-
-                </div>
-
-              </article>
-            </Reveal>
-
           </div>
 
         </div>
@@ -673,6 +538,7 @@ function About() {
           </div>
 
           <div className="mt-14 space-y-12">
+
             {strengths.map((g, gi) => (
               <div key={g.group}>
 
@@ -687,6 +553,7 @@ function About() {
                 </div>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
                   {g.points.map((p, i) => (
                     <Reveal key={p.title} delay={i * 50}>
                       <div className="brand-box h-full p-6">
@@ -702,10 +569,12 @@ function About() {
                       </div>
                     </Reveal>
                   ))}
+
                 </div>
 
               </div>
             ))}
+
           </div>
 
         </div>
@@ -737,6 +606,7 @@ function About() {
           </div>
 
           <div className="mt-14 grid gap-4 sm:grid-cols-2">
+
             {awards.map((a, i) => (
               <Reveal key={a.title} delay={i * 60}>
                 <article className="brand-box h-full p-8">
@@ -756,6 +626,81 @@ function About() {
                 </article>
               </Reveal>
             ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ============================================================
+          CERTIFICATIONS & CREDENTIALS
+      ============================================================ */}
+
+      <section className="bg-[#F5F7FB] py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+          {/* Left-aligned section heading */}
+          <Reveal>
+            <div className="max-w-3xl">
+
+              <Eyebrow>Certifications & credentials</Eyebrow>
+
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                Recognised credentials that reflect our journey.
+              </h2>
+
+            </div>
+          </Reveal>
+
+          {/* Certificates */}
+          <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10">
+
+            {/* IIM Ahmedabad Certificate */}
+            <Reveal delay={80}>
+              <div className="group overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(0,0,0,0.10)] sm:p-5">
+
+                <img
+                  src="/media/IIM-Certificate.png"
+                  alt="IIM Ahmedabad Goldman Sachs 10,000 Women certificate"
+                  loading="lazy"
+                  className="
+                    h-auto
+                    w-full
+                    rounded-lg
+                    object-contain
+                    transition-transform
+                    duration-700
+                    ease-out
+                    group-hover:scale-[1.015]
+                  "
+                />
+
+              </div>
+            </Reveal>
+
+            {/* Certified Women's Business Enterprise Certificate */}
+            <Reveal delay={140}>
+              <div className="group overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(0,0,0,0.10)] sm:p-5">
+
+                <img
+                  src="/media/Women-Owned-Certificate.png"
+                  alt="Certified Women's Business Enterprise certificate"
+                  loading="lazy"
+                  className="
+                    h-auto
+                    w-full
+                    rounded-lg
+                    object-contain
+                    transition-transform
+                    duration-700
+                    ease-out
+                    group-hover:scale-[1.015]
+                  "
+                />
+
+              </div>
+            </Reveal>
+
           </div>
 
         </div>
@@ -783,6 +728,7 @@ function About() {
           </div>
 
           <div className="lg:col-span-8">
+
             <Accordion type="single" collapsible className="w-full">
 
               {faqs.map((f, i) => (
@@ -802,6 +748,7 @@ function About() {
               ))}
 
             </Accordion>
+
           </div>
 
         </div>
