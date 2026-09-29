@@ -97,26 +97,14 @@ export function Footer() {
               retail execution and real-time store intelligence.
             </p>
 
-            {/* CERTIFICATION */}
+            {/* CERTIFICATION BADGE */}
 
-            <p
-              className="
-                mt-6
-                inline-block
-                rounded-full
-                border
-                border-white/20
-                px-4
-                py-1.5
-                text-[10px]
-                font-semibold
-                uppercase
-                tracking-[0.14em]
-                text-white/80
-              "
-            >
-              Certified women-owned enterprise
-            </p>
+            <img
+              src="/media/WECI.jpeg"
+              alt="Certified Women's Business Enterprise"
+              className="mt-6 h-auto w-28 object-contain"
+              loading="lazy"
+            />
 
             {/* =================================================
                 SOCIAL ICONS
@@ -352,10 +340,7 @@ export function Footer() {
               </div>
 
 
-              {/* =================================================
-                  MOBILE NUMBERS
-                  LANDLINE REMOVED
-              ================================================== */}
+              {/* MOBILE NUMBERS */}
 
               <div className="flex items-start gap-3">
 
@@ -407,10 +392,7 @@ export function Footer() {
               </div>
 
 
-              {/* =================================================
-                  EMAIL
-                  SINGLE CONTINUOUS LINE
-              ================================================== */}
+              {/* EMAIL */}
 
               <div className="flex items-start gap-3">
 
