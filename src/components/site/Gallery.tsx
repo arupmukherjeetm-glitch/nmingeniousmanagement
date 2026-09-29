@@ -503,7 +503,6 @@ export function Gallery({
               flex
               flex-col
               gap-8
-
               lg:flex-row
               lg:items-end
               lg:justify-between
@@ -514,24 +513,9 @@ export function Gallery({
 
             <div className="max-w-3xl">
 
-              <div
-                className="
-                  mb-6
-                  flex
-                  items-center
-                  gap-4
-                "
-              >
+              {/* EYEBROW — DASH REMOVED */}
 
-                <span
-                  aria-hidden="true"
-                  className="
-                    h-[2px]
-                    w-12
-                    bg-coral
-                  "
-                />
-
+              <div className="mb-6">
                 <p
                   className="
                     text-[11px]
@@ -543,9 +527,10 @@ export function Gallery({
                 >
                   {eyebrow}
                 </p>
-
               </div>
 
+
+              {/* TITLE */}
 
               <h2
                 className="
@@ -555,9 +540,7 @@ export function Gallery({
                   leading-[0.96]
                   tracking-[-0.045em]
                   text-foreground
-
                   sm:text-5xl
-
                   lg:text-6xl
                 "
               >
@@ -575,7 +558,6 @@ export function Gallery({
                 text-sm
                 leading-7
                 text-muted-foreground
-
                 lg:text-base
               "
             >
@@ -602,11 +584,9 @@ export function Gallery({
             nm-gallery-window
             mt-14
           "
-
           onMouseEnter={() =>
             setIsPaused(true)
           }
-
           onMouseLeave={() =>
             setIsPaused(false)
           }
@@ -664,11 +644,8 @@ export function Gallery({
                     key={
                       `first-${image.url}-${index}`
                     }
-
                     image={image}
-
                     index={index}
-
                     onOpen={() =>
                       setOpen(index)
                     }
@@ -689,7 +666,6 @@ export function Gallery({
               className="
                 nm-gallery-group
               "
-
               aria-hidden="true"
             >
 
@@ -699,11 +675,8 @@ export function Gallery({
                     key={
                       `second-${image.url}-${index}`
                     }
-
                     image={image}
-
                     index={index}
-
                     onOpen={() =>
                       setOpen(index)
                     }
@@ -716,6 +689,7 @@ export function Gallery({
           </div>
 
         </div>
+
 
         {/* ======================================================
             NO TEXT / STATUS BAR HERE
@@ -740,24 +714,16 @@ export function Gallery({
             fixed
             inset-0
             z-[100]
-
             flex
             items-center
             justify-center
-
             bg-[#071F36]/95
-
             p-5
-
             backdrop-blur-xl
           "
-
           role="dialog"
-
           aria-modal="true"
-
           aria-label="Gallery image viewer"
-
           onClick={close}
         >
 
@@ -767,36 +733,25 @@ export function Gallery({
 
           <button
             type="button"
-
             aria-label="Close image viewer"
-
             onClick={close}
-
             className="
               absolute
               right-5
               top-5
               z-30
-
               flex
               size-12
               items-center
               justify-center
-
               rounded-full
-
               border
               border-white/20
-
               bg-white/5
-
               text-white
-
               backdrop-blur-md
-
               transition-all
               duration-300
-
               hover:bg-white/10
             "
           >
@@ -812,41 +767,28 @@ export function Gallery({
 
           <button
             type="button"
-
             aria-label="Previous image"
-
             onClick={(event) => {
               event.stopPropagation();
-
               previous();
             }}
-
             className="
               absolute
               left-3
               z-30
-
               flex
               size-12
               items-center
               justify-center
-
               rounded-full
-
               border
               border-white/20
-
               bg-white/5
-
               text-white
-
               backdrop-blur-md
-
               transition-all
               duration-300
-
               hover:bg-white/10
-
               lg:left-8
             "
           >
@@ -862,41 +804,28 @@ export function Gallery({
 
           <button
             type="button"
-
             aria-label="Next image"
-
             onClick={(event) => {
               event.stopPropagation();
-
               next();
             }}
-
             className="
               absolute
               right-3
               z-30
-
               flex
               size-12
               items-center
               justify-center
-
               rounded-full
-
               border
               border-white/20
-
               bg-white/5
-
               text-white
-
               backdrop-blur-md
-
               transition-all
               duration-300
-
               hover:bg-white/10
-
               lg:right-8
             "
           >
@@ -916,7 +845,6 @@ export function Gallery({
               max-h-[90vh]
               max-w-6xl
             "
-
             onClick={(event) =>
               event.stopPropagation()
             }
@@ -924,18 +852,13 @@ export function Gallery({
 
             <img
               src={active.url}
-
               alt={active.alt}
-
               className="
                 max-h-[78vh]
                 w-auto
                 max-w-full
-
                 rounded-2xl
-
                 object-contain
-
                 shadow-2xl
               "
             />
@@ -944,6 +867,7 @@ export function Gallery({
 
         </div>
       )}
+
     </>
   );
 }
@@ -976,11 +900,8 @@ function GalleryCard({
   return (
     <button
       type="button"
-
       onClick={onOpen}
-
       aria-label={`View image: ${image.alt}`}
-
       className="
         nm-gallery-card
         group
@@ -989,17 +910,13 @@ function GalleryCard({
 
       <img
         src={image.url}
-
         alt={image.alt}
-
         loading={
           index < 5
             ? "eager"
             : "lazy"
         }
-
         draggable={false}
-
         className="
           nm-gallery-card-image
         "
@@ -1010,7 +927,6 @@ function GalleryCard({
 
       <span
         aria-hidden="true"
-
         className="
           nm-gallery-card-overlay
         "
