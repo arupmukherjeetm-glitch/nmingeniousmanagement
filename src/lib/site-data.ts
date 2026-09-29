@@ -51,7 +51,7 @@ const compliance = { url: "/media/compliance.webp" };
 const fractionalhr = { url: "/media/fractionalhr.webp" };
 const pdm_final = { url: "/media/pdm_final.webp" };
 const pdm3 = { url: "/media/pdm3.png" };
-const womenowned = { url: "/media/Women Owned_Cerificate Image.png" };
+const womenowned = { url: "/media/Women Owned_Cerificate.png" };
 const weci = { url: "/media/WECI.png" };
 
 export const logoUrl = "/media/logo.jpg";
