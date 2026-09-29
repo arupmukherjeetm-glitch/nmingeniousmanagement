@@ -660,22 +660,77 @@ function About() {
     </Reveal>
 
     {/* Certificates */}
-    <div className="mt-10 grid gap-6 lg:grid-cols-2">
+<div className="mt-10 grid gap-10 lg:grid-cols-2">
 
-      {/* IIM Ahmedabad */}
-      <Reveal delay={80}>
-        <div className="group overflow-hidden rounded-xl border border-border bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.08)]">
+  {/* IIM Ahmedabad Certificate */}
+  <Reveal delay={80}>
+    <div className="group flex h-[420px] items-center justify-center sm:h-[480px]">
 
-          <div className="p-2 sm:p-3">
-            <div className="overflow-hidden rounded-lg bg-white">
+      {/* Outer Wall Frame */}
+      <div
+        className="
+          relative
+          h-full
+          w-full
+          rounded-[3px]
+          bg-[#5a4635]
+          p-[14px]
+          shadow-[0_18px_35px_rgba(0,0,0,0.22)]
+          transition-all
+          duration-500
+          group-hover:-translate-y-1
+          group-hover:shadow-[0_24px_45px_rgba(0,0,0,0.28)]
+        "
+      >
+
+        {/* Outer bevel */}
+        <div
+          className="
+            h-full
+            w-full
+            rounded-[2px]
+            border-[3px]
+            border-[#8c7359]
+            bg-[#d8c7ae]
+            p-[8px]
+            shadow-[inset_0_0_0_2px_#3e3025]
+          "
+        >
+
+          {/* Inner frame */}
+          <div
+            className="
+              flex
+              h-full
+              w-full
+              items-center
+              justify-center
+              bg-[#f7f4ee]
+              p-[12px]
+              shadow-[inset_0_0_0_1px_#b8aa98]
+            "
+          >
+
+            {/* Certificate / Mat */}
+            <div
+              className="
+                flex
+                h-full
+                w-full
+                items-center
+                justify-center
+                bg-white
+                p-3
+                shadow-[0_2px_8px_rgba(0,0,0,0.12)]
+              "
+            >
               <img
                 src="/media/IIM-Certificate.png"
                 alt="IIM Ahmedabad Goldman Sachs 10,000 Women certificate"
                 loading="lazy"
                 className="
-                  block
-                  h-auto
-                  w-full
+                  max-h-full
+                  max-w-full
                   object-contain
                   transition-transform
                   duration-700
@@ -684,25 +739,83 @@ function About() {
                 "
               />
             </div>
+
           </div>
-
         </div>
-      </Reveal>
+      </div>
+    </div>
+  </Reveal>
 
-      {/* Certified Women's Business Enterprise */}
-      <Reveal delay={140}>
-        <div className="group overflow-hidden rounded-xl border border-border bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.08)]">
 
-          <div className="p-2 sm:p-3">
-            <div className="overflow-hidden rounded-lg bg-white">
+  {/* Certified Women's Business Enterprise Certificate */}
+  <Reveal delay={140}>
+    <div className="group flex h-[420px] items-center justify-center sm:h-[480px]">
+
+      {/* Outer Wall Frame */}
+      <div
+        className="
+          relative
+          h-full
+          w-full
+          rounded-[3px]
+          bg-[#5a4635]
+          p-[14px]
+          shadow-[0_18px_35px_rgba(0,0,0,0.22)]
+          transition-all
+          duration-500
+          group-hover:-translate-y-1
+          group-hover:shadow-[0_24px_45px_rgba(0,0,0,0.28)]
+        "
+      >
+
+        {/* Outer bevel */}
+        <div
+          className="
+            h-full
+            w-full
+            rounded-[2px]
+            border-[3px]
+            border-[#8c7359]
+            bg-[#d8c7ae]
+            p-[8px]
+            shadow-[inset_0_0_0_2px_#3e3025]
+          "
+        >
+
+          {/* Inner frame */}
+          <div
+            className="
+              flex
+              h-full
+              w-full
+              items-center
+              justify-center
+              bg-[#f7f4ee]
+              p-[12px]
+              shadow-[inset_0_0_0_1px_#b8aa98]
+            "
+          >
+
+            {/* Certificate / Mat */}
+            <div
+              className="
+                flex
+                h-full
+                w-full
+                items-center
+                justify-center
+                bg-white
+                p-3
+                shadow-[0_2px_8px_rgba(0,0,0,0.12)]
+              "
+            >
               <img
-                src="/media/Women Owned_Cerificate Image.png"
+                src="/media/Women-Owned-Certificate.png"
                 alt="Certified Women's Business Enterprise certificate"
                 loading="lazy"
                 className="
-                  block
-                  h-auto
-                  w-full
+                  max-h-full
+                  max-w-full
                   object-contain
                   transition-transform
                   duration-700
@@ -711,12 +824,14 @@ function About() {
                 "
               />
             </div>
+
           </div>
-
         </div>
-      </Reveal>
-
+      </div>
     </div>
+  </Reveal>
+
+</div>
 
   </div>
 </section>
