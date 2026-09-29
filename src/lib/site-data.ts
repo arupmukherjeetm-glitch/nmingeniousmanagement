@@ -53,6 +53,7 @@ const pdm_final = { url: "/media/pdm_final.webp" };
 const pdm3 = { url: "/media/pdm3.png" };
 const womenowned = { url: "/media/Women Owned_Cerificate.png" };
 const weci = { url: "/media/WECI.png" };
+const weci = { url: "/media/chings.png" };
 
 export const logoUrl = "/media/logo.jpg";
 export const heroVideoUrl = "/media/hero_section_video.mp4";
@@ -626,6 +627,7 @@ export const clientLogos = [
   { name: "Capital Foods", url: "https://nm-ingenious.vercel.app/media/logos/image-46.png" },
   { name: "Clorox", url: "https://nm-ingenious.vercel.app/media/logos/logo-5cb.png" },
   { name: "Axiom", url: "https://nm-ingenious.vercel.app/media/logos/logo-axiom.png" },
+  { name: "Chings", url: "/media/chings.png" },
 ];
 
 export const timeline = [
