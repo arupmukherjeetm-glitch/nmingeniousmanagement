@@ -633,78 +633,93 @@ function About() {
       </section>
 
       {/* ============================================================
-          CERTIFICATIONS & CREDENTIALS
-      ============================================================ */}
+    CERTIFICATIONS & CREDENTIALS
+============================================================ */}
 
-      <section className="bg-[#F5F7FB] py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+<section className="bg-background py-16 lg:py-20">
+  <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-          {/* Left-aligned section heading */}
-          <Reveal>
-            <div className="max-w-3xl">
+    {/* Compact Section Header */}
+    <Reveal>
+      <div className="flex flex-col gap-4 border-b border-border pb-8 sm:flex-row sm:items-end sm:justify-between">
 
-              <Eyebrow>Certifications & credentials</Eyebrow>
+        <div>
+          <Eyebrow>Certifications & credentials</Eyebrow>
 
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground sm:text-4xl lg:text-5xl">
-                Recognised credentials that reflect our journey.
-              </h2>
+          <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[42px]">
+            Credentials that strengthen our story.
+          </h2>
+        </div>
 
+        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-right">
+          Recognised programmes and certifications that reflect our
+          commitment to leadership and responsible business.
+        </p>
+
+      </div>
+    </Reveal>
+
+    {/* Certificates */}
+    <div className="mt-10 grid gap-6 lg:grid-cols-2">
+
+      {/* IIM Ahmedabad */}
+      <Reveal delay={80}>
+        <div className="group overflow-hidden rounded-xl border border-border bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.08)]">
+
+          <div className="p-2 sm:p-3">
+            <div className="overflow-hidden rounded-lg bg-white">
+              <img
+                src="/media/IIM-Certificate.png"
+                alt="IIM Ahmedabad Goldman Sachs 10,000 Women certificate"
+                loading="lazy"
+                className="
+                  block
+                  h-auto
+                  w-full
+                  object-contain
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.01]
+                "
+              />
             </div>
-          </Reveal>
-
-          {/* Certificates */}
-          <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10">
-
-            {/* IIM Ahmedabad Certificate */}
-            <Reveal delay={80}>
-              <div className="group overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(0,0,0,0.10)] sm:p-5">
-
-                <img
-                  src="/media/IIM-Certificate.png"
-                  alt="IIM Ahmedabad Goldman Sachs 10,000 Women certificate"
-                  loading="lazy"
-                  className="
-                    h-auto
-                    w-full
-                    rounded-lg
-                    object-contain
-                    transition-transform
-                    duration-700
-                    ease-out
-                    group-hover:scale-[1.015]
-                  "
-                />
-
-              </div>
-            </Reveal>
-
-            {/* Certified Women's Business Enterprise Certificate */}
-            <Reveal delay={140}>
-              <div className="group overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_55px_rgba(0,0,0,0.10)] sm:p-5">
-
-                <img
-                  src="/media/Women-Owned-Certificate.png"
-                  alt="Certified Women's Business Enterprise certificate"
-                  loading="lazy"
-                  className="
-                    h-auto
-                    w-full
-                    rounded-lg
-                    object-contain
-                    transition-transform
-                    duration-700
-                    ease-out
-                    group-hover:scale-[1.015]
-                  "
-                />
-
-              </div>
-            </Reveal>
-
           </div>
 
         </div>
-      </section>
+      </Reveal>
+
+      {/* Certified Women's Business Enterprise */}
+      <Reveal delay={140}>
+        <div className="group overflow-hidden rounded-xl border border-border bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.08)]">
+
+          <div className="p-2 sm:p-3">
+            <div className="overflow-hidden rounded-lg bg-white">
+              <img
+                src="/media/Women Owned_Cerificate Image.png"
+                alt="Certified Women's Business Enterprise certificate"
+                loading="lazy"
+                className="
+                  block
+                  h-auto
+                  w-full
+                  object-contain
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-[1.01]
+                "
+              />
+            </div>
+          </div>
+
+        </div>
+      </Reveal>
+
+    </div>
+
+  </div>
+</section>
 
       {/* ============================================================
           CLIENT LOGOS
