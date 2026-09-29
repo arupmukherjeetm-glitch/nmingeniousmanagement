@@ -976,7 +976,7 @@ function WeeklySection() {
         <div className="lg:col-span-5">
           <Eyebrow>Every week we ask</Eyebrow>
           <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-foreground lg:text-4xl">
-            So every week, on every store, we ask what a manpower vendor never will.
+           Every week, in every store, we ask one question: what will move this product off the shelf.
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
             Deployment is where we start, not where we stop. We do not measure people supplied. We
