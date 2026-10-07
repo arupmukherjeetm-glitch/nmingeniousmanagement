@@ -1,0 +1,86 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.ingeniousmanagement.com/#organization",
+      "name": "NM Ingenious Management Services Pvt. Ltd.",
+      "url": "https://www.ingeniousmanagement.com/",
+      "logo": "https://www.ingeniousmanagement.com/media/logo.jpg",
+      "email": "madhavi@ingeniousmanagement.com",
+      "telephone": "+91 98202 34332",
+      "description": "Retail execution and workforce management services that help brands turn shelf presence into sell-out.",
+      "areaServed": {"@type": "Country", "name": "India"},
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kandivali West",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.ingeniousmanagement.com/#website",
+      "url": "https://www.ingeniousmanagement.com/",
+      "name": "NM Ingenious",
+      "publisher": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Promoter Deployment and Management",
+      "provider": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "areaServed": {"@type": "Country", "name": "India"},
+      "url": "https://www.ingeniousmanagement.com/services/promoter-deployment"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Beauty Advisors and Product Counsellors",
+      "provider": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "areaServed": {"@type": "Country", "name": "India"},
+      "url": "https://www.ingeniousmanagement.com/services/beauty-advisors"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Merchandising and Visibility Execution",
+      "provider": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "areaServed": {"@type": "Country", "name": "India"},
+      "url": "https://www.ingeniousmanagement.com/services/merchandising"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "BTL Activations and Sampling",
+      "provider": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "areaServed": {"@type": "Country", "name": "India"},
+      "url": "https://www.ingeniousmanagement.com/services/btl-activations"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Real-Time Tracking and Reporting",
+      "provider": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "areaServed": {"@type": "Country", "name": "India"},
+      "url": "https://www.ingeniousmanagement.com/services/retail-intelligence"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Compliant Workforce Management",
+      "provider": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "areaServed": {"@type": "Country", "name": "India"},
+      "url": "https://www.ingeniousmanagement.com/services/workforce-compliance"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Payroll Services",
+      "provider": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "areaServed": {"@type": "Country", "name": "India"},
+      "url": "https://www.ingeniousmanagement.com/services/payroll-services"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Fractional HR Services",
+      "provider": {"@id": "https://www.ingeniousmanagement.com/#organization"},
+      "areaServed": {"@type": "Country", "name": "India"},
+      "url": "https://www.ingeniousmanagement.com/services/fractional-hr"
+    }
+  ]
+}
